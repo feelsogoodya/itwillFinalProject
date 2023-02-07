@@ -31,9 +31,9 @@
                             <a href="./index.html"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 부산광역시 부산진구 동천로</li>
-                            <li>Phone: 051.111.1111</li>
-                            <li>Email: market@itwillbs.com</li>
+                            <li>Address: 부산광역시 부산진구 동천로 109 삼한골든게이트빌딩</li>
+                            <li>Phone: 051-803-0909</li>
+                            <li>Email: market@itwillbs.co.kr</li>
                         </ul>
                     </div>
                 </div>
@@ -41,25 +41,20 @@
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="#">About Us</a></li> <!-- 팀원 소개 -->
+                            <li><a href="#">About Our Shop</a></li><!-- market 취지 소개 -->
+                            <li><a href="#">Projects</a></li> <!-- 프로젝트 소개 -->
                         </ul>
                         <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Contact</a></li> <!-- 이메일 보내는 화면 연결 java 작업 -->
+                            <li><a href="#">Delivery information</a></li><!-- 배송정보 -->
+                            <li><a href="#">Privacy Policy</a></li><!-- 정책 -->
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="footer__widget">
+                    	<!-- 이메일 보내기 java 수업 내용 참고 -->
                         <h6>Join Our Newsletter Now</h6>
                         <p>Get E-mail updates about our latest shop and special offers.</p>
                         <form action="#">
@@ -79,9 +74,9 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Doyeon</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="${pageContext.request.contextPath }/resources/img/payment-item.png" alt=""></div>
+<%--    결제 가능한 카드 이미지 <div class="footer__copyright__payment"><img src="${pageContext.request.contextPath }/resources/img/payment-item.png" alt=""></div> --%>
                     </div>
                 </div>
             </div>

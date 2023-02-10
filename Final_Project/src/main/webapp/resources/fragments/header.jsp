@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,10 +53,22 @@
 <!--                                     <li><a href="#">English</a></li> -->
 <!--                                 </ul> -->
 <!--                             </div> -->
-
+						<!-- 세션값이 없을 때, 로그인 / 있을 때, 닉네임 & 로그아웃 -->
+						<c:if test="${sessionScope.memId == null }">
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="${pageContext.request.contextPath }/member/login"><i class="fa fa-user"></i> Login</a>
                             </div>
+                        </c:if>
+                        
+                        <c:if test="${sessionScope.memId != null }">
+                        	<div class="header__top__right__auth">
+                                <i class="fa fa-user"></i> ${session.memId }님 로그인하셨습니다.</a>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="${pageContext.request.contextPath }/member/logout"><i class="fa fa-user"></i> Logout</a>
+                            </div>
+                        </c:if>
+                        
                         </div>
                     </div>
                 </div>

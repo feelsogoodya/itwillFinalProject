@@ -54,15 +54,15 @@
 <!--                                 </ul> -->
 <!--                             </div> -->
 						<!-- 세션값이 없을 때, 로그인 / 있을 때, 닉네임 & 로그아웃 -->
-						<c:if test="${sessionScope.memId == null }">
+						<c:if test="${empty sessionScope.memId}">
                             <div class="header__top__right__auth">
                                 <a href="${pageContext.request.contextPath }/member/login"><i class="fa fa-user"></i> Login</a>
                             </div>
                         </c:if>
                         
-                        <c:if test="${sessionScope.memId != null }">
+                        <c:if test="${! empty sessionScope.memId}">
                         	<div class="header__top__right__auth">
-                                <i class="fa fa-user"></i> ${session.memId }님 로그인하셨습니다.</a>
+                                <i class="fa fa-user"></i> ${sessionScope.memId }님 로그인하셨습니다.</a>
                             </div>
                             <div class="header__top__right__auth">
                                 <a href="${pageContext.request.contextPath }/member/logout"><i class="fa fa-user"></i> Logout</a>

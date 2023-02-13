@@ -1,5 +1,8 @@
 package com.itwillbs.dao;
 
-public interface ProductDAO {
+import com.itwillbs.domain.ProductDTO;
 
+public interface ProductDAO {
+	
+	public ProductDTO getProduct();
 }

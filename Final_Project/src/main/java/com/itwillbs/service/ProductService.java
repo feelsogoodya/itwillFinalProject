@@ -1,5 +1,8 @@
 package com.itwillbs.service;
 
-public interface ProductService {
+import com.itwillbs.domain.ProductDTO;
 
+public interface ProductService {
+	
+	public ProductDTO getProduct();
 }

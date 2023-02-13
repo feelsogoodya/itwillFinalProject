@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -8,7 +10,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>가지마켓?</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -30,65 +32,6 @@
         <div class="loader"></div>
     </div>
 
-<!--     Humberger Begin -->
-<!--     <div class="humberger__menu__overlay"></div> -->
-<!--     <div class="humberger__menu__wrapper"> -->
-<!--         <div class="humberger__menu__logo"> -->
-<%--             <a href="#"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a> --%>
-<!--         </div> -->
-<!--         <div class="humberger__menu__cart"> -->
-<!--             <ul> -->
-<!--                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> -->
-<!--                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> -->
-<!--             </ul> -->
-<!--             <div class="header__cart__price">item: <span>$150.00</span></div> -->
-<!--         </div> -->
-<!--         <div class="humberger__menu__widget"> -->
-<!--             <div class="header__top__right__language"> -->
-<%--                 <img src="${pageContext.request.contextPath }/resources/img/language.png" alt=""> --%>
-<!--                 <div>English</div> -->
-<!--                 <span class="arrow_carrot-down"></span> -->
-<!--                 <ul> -->
-<!--                     <li><a href="#">Spanis</a></li> -->
-<!--                     <li><a href="#">English</a></li> -->
-<!--                 </ul> -->
-<!--             </div> -->
-<!--             <div class="header__top__right__auth"> -->
-<!--                 <a href="#"><i class="fa fa-user"></i> Login</a> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--         <nav class="humberger__menu__nav mobile-menu"> -->
-<!--             <ul> -->
-<!--                 <li class="active"><a href="./index.html">Home</a></li> -->
-<!--                 <li><a href="./shop-grid.html">Shop</a></li> -->
-<!--                 <li><a href="#">Pages</a> -->
-<!--                     <ul class="header__menu__dropdown"> -->
-<!--                         <li><a href="./shop-details.html">Shop Details</a></li> -->
-<!--                         <li><a href="./shoping-cart.html">Shoping Cart</a></li> -->
-<!--                         <li><a href="./checkout.html">Check Out</a></li> -->
-<!--                         <li><a href="./blog-details.html">Blog Details</a></li> -->
-<!--                     </ul> -->
-<!--                 </li> -->
-<!--                 <li><a href="./blog.html">Blog</a></li> -->
-<!--                 <li><a href="./contact.html">Contact</a></li> -->
-<!--             </ul> -->
-<!--         </nav> -->
-<!--         <div id="mobile-menu-wrap"></div> -->
-<!--         <div class="header__top__right__social"> -->
-<!--             <a href="#"><i class="fa fa-facebook"></i></a> -->
-<!--             <a href="#"><i class="fa fa-twitter"></i></a> -->
-<!--             <a href="#"><i class="fa fa-linkedin"></i></a> -->
-<!--             <a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-<!--         </div> -->
-<!--         <div class="humberger__menu__contact"> -->
-<!--             <ul> -->
-<!--                 <li><i class="fa fa-envelope"></i> hello@colorlib.com</li> -->
-<!--                 <li>Free Shipping for all Order of $99</li> -->
-<!--             </ul> -->
-<!--         </div> -->
-<!--     </div> -->
-<!--     Humberger End -->
-
     <!-- Header Section Begin -->
     <%@ include file = "/resources/fragments/header.jsp" %>
     <!-- Header Section End -->
@@ -105,16 +48,21 @@
                         </div>
                         <!-- 상품 테이블의 카테고리 중복 제거하고 가져와서 출력 -->
                         <ul>
-                            <li><a href="#">의류</a></li>
-                            <li><a href="#">잡화</a></li>
-                            <li><a href="#">디지털/가전</a></li>
-                            <li><a href="#">서적</a></li>
-                            <li><a href="#">생활용품</a></li>
-                            <li><a href="#">뷰티/미용</a></li>
-                            <li><a href="#">취미/게임/음반</a></li>
-                            <li><a href="#">스포츠/레저</a></li>
-                            <li><a href="#">기타</a></li>
+	                        <c:forEach var="item" items="${categories}">
+	                            <li><a href="#">${item}</a></li>
+	                        </c:forEach>
                         </ul>
+<!--                         <ul> -->
+<!--                             <li><a href="#">의류</a></li> -->
+<!--                             <li><a href="#">잡화</a></li> -->
+<!--                             <li><a href="#">디지털/가전</a></li> -->
+<!--                             <li><a href="#">서적</a></li> -->
+<!--                             <li><a href="#">생활용품</a></li> -->
+<!--                             <li><a href="#">뷰티/미용</a></li> -->
+<!--                             <li><a href="#">취미/게임/음반</a></li> -->
+<!--                             <li><a href="#">스포츠/레저</a></li> -->
+                            
+<!--                         </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -126,7 +74,7 @@
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -134,17 +82,17 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>051-803-0909</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>
                     </div>
                     <div class="hero__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero/banner.jpg">
                         <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <span>가지마</span>
+                            <h2>가지마켓 <br />가지가지</h2>
+                            <p>중고마켓 어쩌구</p>
+                            <a href="#" class="primary-btn">바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -153,206 +101,42 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                <!-- 카테고리 별 이미지 설정해서 밑에 카테고리로 연결 작업 -->
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-1.jpg">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-3.jpg">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
-
-<!--     Featured Section Begin -->
-<!--     <section class="featured spad"> -->
+<!--     Categories Section Begin -->
+<!--     <section class="categories"> -->
 <!--         <div class="container"> -->
 <!--             <div class="row"> -->
-<!--                 <div class="col-lg-12"> -->
-<!--                     <div class="section-title"> -->
-<!--                         <h2>Featured Product</h2> -->
-<!--                     </div> -->
-<!--                     <div class="featured__controls"> -->
-<!--                         <ul> -->
-<!--                             <li class="active" data-filter="*">All</li> -->
-<!--                             <li data-filter=".oranges">Oranges</li> -->
-<!--                             <li data-filter=".fresh-meat">Fresh Meat</li> -->
-<!--                             <li data-filter=".vegetables">Vegetables</li> -->
-<!--                             <li data-filter=".fastfood">Fastfood</li> -->
-<!--                         </ul> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--             <div class="row featured__filter"> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-1.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
+<!--                 <div class="categories__slider owl-carousel"> -->
+<!--                 카테고리 별 이미지 설정해서 밑에 카테고리로 연결 작업 -->
+<!--                     <div class="col-lg-3"> -->
+<%--                         <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-1.jpg"> --%>
+<!--                             <h5><a href="#">Fresh Fruit</a></h5> -->
 <!--                         </div> -->
 <!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-2.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
+<!--                     <div class="col-lg-3"> -->
+<%--                         <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-2.jpg"> --%>
+<!--                             <h5><a href="#">Dried Fruit</a></h5> -->
 <!--                         </div> -->
 <!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-3.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
+<!--                     <div class="col-lg-3"> -->
+<%--                         <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-3.jpg"> --%>
+<!--                             <h5><a href="#">Vegetables</a></h5> -->
 <!--                         </div> -->
 <!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-4.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
+<!--                     <div class="col-lg-3"> -->
+<%--                         <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-4.jpg"> --%>
+<!--                             <h5><a href="#">drink fruits</a></h5> -->
 <!--                         </div> -->
 <!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-5.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-6.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-7.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables"> -->
-<!--                     <div class="featured__item"> -->
-<%--                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/featured/feature-8.jpg"> --%>
-<!--                             <ul class="featured__item__pic__hover"> -->
-<!--                                 <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-<!--                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                         <div class="featured__item__text"> -->
-<!--                             <h6><a href="#">Crab Pool Security</a></h6> -->
-<!--                             <h5>$30.00</h5> -->
+<!--                     <div class="col-lg-3"> -->
+<%--                         <div class="categories__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/categories/cat-5.jpg"> --%>
+<!--                             <h5><a href="#">drink fruits</a></h5> -->
 <!--                         </div> -->
 <!--                     </div> -->
 <!--                 </div> -->
 <!--             </div> -->
 <!--         </div> -->
 <!--     </section> -->
-<!--     Featured Section End -->
-
-    <!-- Banner Begin -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="${pageContext.request.contextPath }/resources/img/banner/banner-1.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="${pageContext.request.contextPath }/resources/img/banner/banner-2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Banner End -->
+<!--     Categories Section End -->
 
     <!-- Latest Product Section Begin -->
     <section class="latest-product spad">
@@ -560,6 +344,25 @@
         </div>
     </section>
     <!-- Latest Product Section End -->
+    
+    <!-- Banner Begin -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="${pageContext.request.contextPath }/resources/img/banner/banner-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="${pageContext.request.contextPath }/resources/img/banner/banner-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
 
     <!-- Blog Section Begin -->
     <section class="from-blog spad">

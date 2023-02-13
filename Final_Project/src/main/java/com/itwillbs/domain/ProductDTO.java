@@ -15,7 +15,6 @@ public class ProductDTO {
 	private int productReadcount;
 	private Timestamp productDate;
 	
-	private String[] categories = {"의류", "잡화", "디지털/가전", "서적", "생활용품", "뷰티/미용", "취미/게임/음반", "스포츠/레저", "기타"};
 	
 	public int getProductNum() {
 		return productNum;
@@ -77,12 +76,5 @@ public class ProductDTO {
 	public void setProductDate(Timestamp productDate) {
 		this.productDate = productDate;
 	}
-	public String[] getCategories() {
-		return categories;
-	}
-	public void setCategories(String[] categories) {
-		this.categories = categories;
-	}
-	
 	
 }

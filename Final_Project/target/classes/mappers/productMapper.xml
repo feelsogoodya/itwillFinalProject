@@ -4,5 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itwillbs.mappers.productMapper">
 	
+	<select id="fromTheLatest" resultType="com.itwillbs.domain.ProductDTO">
+		SELECT * FROM (SELECT @ROWNUM:=@ROWNUM+1 AS rank, A.product_title, A.product_price, A.writer, A.product_pic
+					   FROM product A, (SELECT @ROWNUM:=0) R
+					   ) B <![CDATA[WHERE B.rank <= 20]]>
+	</select>
 	
 </mapper>

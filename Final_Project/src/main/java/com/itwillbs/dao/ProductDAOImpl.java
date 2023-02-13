@@ -1,5 +1,7 @@
 package com.itwillbs.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,8 +18,8 @@ public class ProductDAOImpl implements ProductDAO{
 	private static final String namespace = "com.itwillbs.mappers.productMapper";
 
 	@Override
-	public ProductDTO getProduct() {
+	public List<ProductDTO> getPrdFromTheLatest() {
 		
-		return null;
+		return sqlSession.selectList(namespace+".fromTheLatest");
 	}
 }

@@ -1,8 +1,10 @@
 package com.itwillbs.dao;
 
+import java.util.List;
+
 import com.itwillbs.domain.ProductDTO;
 
 public interface ProductDAO {
 	
-	public ProductDTO getProduct();
+	public List<ProductDTO> getPrdFromTheLatest();
 }

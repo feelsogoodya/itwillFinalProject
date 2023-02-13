@@ -105,17 +105,15 @@
                         </div>
                         <!-- 상품 테이블의 카테고리 중복 제거하고 가져와서 출력 -->
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="#">의류</a></li>
+                            <li><a href="#">잡화</a></li>
+                            <li><a href="#">디지털/가전</a></li>
+                            <li><a href="#">서적</a></li>
+                            <li><a href="#">생활용품</a></li>
+                            <li><a href="#">뷰티/미용</a></li>
+                            <li><a href="#">취미/게임/음반</a></li>
+                            <li><a href="#">스포츠/레저</a></li>
+                            <li><a href="#">기타</a></li>
                         </ul>
                     </div>
                 </div>

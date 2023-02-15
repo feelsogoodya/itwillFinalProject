@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class ProductDTO {
 	
 	private int productNum;
-	private String memberId;
+	private String productSeller;
 	private String productCate;
 	private String productTitle;
 	private String productContent;
@@ -22,11 +22,11 @@ public class ProductDTO {
 	public void setProductNum(int productNum) {
 		this.productNum = productNum;
 	}
-	public String getMemberId() {
-		return memberId;
+	public String getProductSeller() {
+		return productSeller;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setProductSeller(String productSeller) {
+		this.productSeller = productSeller;
 	}
 	public String getProductCate() {
 		return productCate;

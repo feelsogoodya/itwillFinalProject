@@ -5,9 +5,19 @@
 <mapper namespace="com.itwillbs.mappers.productMapper">
 	
 	<select id="fromTheLatest" resultType="com.itwillbs.domain.ProductDTO">
-		SELECT * FROM (SELECT @ROWNUM:=@ROWNUM+1 AS rank, A.product_title, A.product_price, A.writer, A.product_pic
-					   FROM product A, (SELECT @ROWNUM:=0) R
-					   ) B <![CDATA[WHERE B.rank <= 20]]>
+		<!-- SELECT * 
+		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS rank, A.product_title
+				   , A.product_price, A.product_seller, A.product_pic
+			  FROM product A, (SELECT @ROWNUM:=0) R ) B 
+		<![CDATA[WHERE B.rank <= 20]]> -->
+		
+		select  product_title
+			  , product_price
+			  , product_seller
+			  , product_pic
+		from product
+		order by product_date desc
+		limit 6
 	</select>
 	
 </mapper>

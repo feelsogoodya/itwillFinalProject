@@ -46,23 +46,12 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <!-- 상품 테이블의 카테고리 중복 제거하고 가져와서 출력 -->
+                        <!-- 왼쪽 사이드 카테고리 -->
                         <ul>
 	                        <c:forEach var="item" items="${categories}">
 	                            <li><a href="#">${item}</a></li>
 	                        </c:forEach>
                         </ul>
-<!--                         <ul> -->
-<!--                             <li><a href="#">의류</a></li> -->
-<!--                             <li><a href="#">잡화</a></li> -->
-<!--                             <li><a href="#">디지털/가전</a></li> -->
-<!--                             <li><a href="#">서적</a></li> -->
-<!--                             <li><a href="#">생활용품</a></li> -->
-<!--                             <li><a href="#">뷰티/미용</a></li> -->
-<!--                             <li><a href="#">취미/게임/음반</a></li> -->
-<!--                             <li><a href="#">스포츠/레저</a></li> -->
-                            
-<!--                         </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -144,204 +133,81 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Latest Products</h4>
+                        <h4>조회순</h4>
                         <!-- 조회순 -->
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
+                            <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
+	                        	<c:if test="${status.index % 3 eq 0 }">
+	                        		<div class="latest-prdouct__slider__item">
+	                        	</c:if>
+                        			<a href="#" class="latest-product__item">
+	                                    <div class="latest-product__item__pic">
+	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+	                                    </div>
+	                                    <div class="latest-product__item__text">
+	                                        <h6>${ProductDTO.productTitle }</h6>
+	                                        <span>${ProductDTO.productPrice }</span>
+	                                        <span>${status.index}</span>
+	                                    </div>
+	                                </a>
+		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
+		                   	</c:forEach>
+		                   </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Top Rated Products</h4>
+                        <h4>관심순</h4>
                         <!-- 관심순 -->
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
+	                            <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
+		                        	<c:if test="${status.index % 3 eq 0 }">
+		                        		<div class="latest-prdouct__slider__item">
+		                        	</c:if>
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                        <span>${status.index}</span>
+		                                    </div>
+		                                </a>
+			                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
+			                   </c:forEach>
+                          </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Review Products</h4>
+                        <h4>최신순</h4>
                         <!-- 최근 등록된 상품 -->
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        
+	                        <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
+	                        	<c:if test="${status.index % 3 eq 0 }">
+	                        		<div class="latest-prdouct__slider__item">
+	                        	</c:if>
+                        			<a href="#" class="latest-product__item">
+	                                    <div class="latest-product__item__pic">
+	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+	                                    </div>
+	                                    <div class="latest-product__item__text">
+	                                        <h6>${ProductDTO.productTitle }</h6>
+	                                        <span>${ProductDTO.productPrice }</span>
+	                                        <span>${status.index}</span>
+	                                    </div>
+	                                </a>
+		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
+		                   </c:forEach>
+	                  </div>
+                  </div>
+              </div>
+          </div>
+       </div>
     </section>
     <!-- Latest Product Section End -->
     

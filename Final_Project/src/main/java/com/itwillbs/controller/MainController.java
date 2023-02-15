@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.ProductDTO;
+import com.itwillbs.service.ProductService;
 
 @Controller
 public class MainController {
-
+	
+	@Inject
+	private ProductService productService;
 	
 	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
 	public String main(Model model) {
@@ -28,9 +33,16 @@ public class MainController {
 		// 관심순으로 상품 6개 가져오기
 		
 		// 최근 등록된 상품 6개 가져오기
+		List<ProductDTO> latestPrdList = productService.getPrdFromTheLatest();
 		
+		
+		for(int i = 0; i < latestPrdList.size(); i++) {
+			System.out.println(latestPrdList.get(i).getProductTitle());
+		}
 		
 		model.addAttribute("categories", categories);
+		
+		model.addAttribute("latestPrdList", latestPrdList);
 		
 		return "main/main";
 	}

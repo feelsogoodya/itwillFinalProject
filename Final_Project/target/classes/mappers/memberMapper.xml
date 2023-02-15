@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwillbs.mappers.memberMapper">
+	
+	 <select id="userCheck" resultType="MemberDTO">
+		select mem_id, mem_pass
+		from members
+		where mem_id=#{memId} and mem_pass=#{memPass}
+	</select>
+</mapper>

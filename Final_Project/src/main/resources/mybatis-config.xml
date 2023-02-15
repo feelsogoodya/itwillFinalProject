@@ -4,4 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.itwillbs.domain.MemberDTO" alias="MemberDTO"/>
+	</typeAliases>
 </configuration>

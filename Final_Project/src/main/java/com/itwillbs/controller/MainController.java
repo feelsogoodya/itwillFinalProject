@@ -31,17 +31,15 @@ public class MainController {
 		// 조회순으로 상품 6개 가져오기
 			
 		// 관심순으로 상품 6개 가져오기
+		List<ProductDTO> orderViews = productService.getPrdTopViews();
 		
 		// 최근 등록된 상품 6개 가져오기
 		List<ProductDTO> latestPrdList = productService.getPrdFromTheLatest();
 		
-		
-		for(int i = 0; i < latestPrdList.size(); i++) {
-			System.out.println(latestPrdList.get(i).getProductTitle());
-		}
-		
 		model.addAttribute("categories", categories);
 		
+		
+		model.addAttribute("orderViews", orderViews);
 		model.addAttribute("latestPrdList", latestPrdList);
 		
 		return "main/main";

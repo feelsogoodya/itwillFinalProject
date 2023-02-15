@@ -136,7 +136,7 @@
                         <h4>조회순</h4>
                         <!-- 조회순 -->
                         <div class="latest-product__slider owl-carousel">
-                            <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
+                            <c:forEach var="ProductDTO" items="${orderViews }" varStatus="status">
 	                        	<c:if test="${status.index % 3 eq 0 }">
 	                        		<div class="latest-prdouct__slider__item">
 	                        	</c:if>
@@ -145,9 +145,8 @@
 	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
 	                                    </div>
 	                                    <div class="latest-product__item__text">
-	                                        <h6>${ProductDTO.productTitle }</h6>
+	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
 	                                        <span>${ProductDTO.productPrice }</span>
-	                                        <span>${status.index}</span>
 	                                    </div>
 	                                </a>
 		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
@@ -170,9 +169,8 @@
 		                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
 		                                    </div>
 		                                    <div class="latest-product__item__text">
-		                                        <h6>${ProductDTO.productTitle }</h6>
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
 		                                        <span>${ProductDTO.productPrice }</span>
-		                                        <span>${status.index}</span>
 		                                    </div>
 		                                </a>
 			                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
@@ -196,9 +194,8 @@
 	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
 	                                    </div>
 	                                    <div class="latest-product__item__text">
-	                                        <h6>${ProductDTO.productTitle }</h6>
+	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
 	                                        <span>${ProductDTO.productPrice }</span>
-	                                        <span>${status.index}</span>
 	                                    </div>
 	                                </a>
 		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>

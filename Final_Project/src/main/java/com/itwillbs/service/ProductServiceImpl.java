@@ -19,4 +19,9 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductDTO> getPrdFromTheLatest() {
 		return productDAO.getPrdFromTheLatest();
 	}
+
+	@Override
+	public List<ProductDTO> getPrdTopViews() {
+		return productDAO.getPrdTopViews();
+	}
 }

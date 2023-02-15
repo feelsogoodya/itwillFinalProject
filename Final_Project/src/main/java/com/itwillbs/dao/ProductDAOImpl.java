@@ -1,6 +1,8 @@
 package com.itwillbs.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -15,11 +17,19 @@ public class ProductDAOImpl implements ProductDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
+	private Map<String, String> param = new HashMap<String, String>();
+	
 	private static final String namespace = "com.itwillbs.mappers.productMapper";
 
 	@Override
 	public List<ProductDTO> getPrdFromTheLatest() {
-		
-		return sqlSession.selectList(namespace+".fromTheLatest");
+		param.put("GB", "date");
+		return sqlSession.selectList(namespace+".orderProduct", param);
+	}
+
+	@Override
+	public List<ProductDTO> getPrdTopViews() {
+		param.put("GB", "views");
+		return sqlSession.selectList(namespace+".orderProduct", param);
 	}
 }

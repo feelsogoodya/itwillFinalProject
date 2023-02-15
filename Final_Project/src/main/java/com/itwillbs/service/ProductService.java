@@ -7,4 +7,6 @@ import com.itwillbs.domain.ProductDTO;
 public interface ProductService {
 	
 	public List<ProductDTO> getPrdFromTheLatest();
+	
+	public List<ProductDTO> getPrdTopViews();
 }

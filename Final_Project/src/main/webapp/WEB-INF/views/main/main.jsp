@@ -33,10 +33,14 @@
     </div>
 
     <!-- Header Section Begin -->
-    <%@ include file = "/resources/fragments/header.jsp" %>
+    <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
 
-    
+    <!-- Hero Section Begin -->
+    <section class="hero">
+    	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+    </section>
+    <!-- Hero Section End -->
 
 <!--     Categories Section Begin -->
 <!--     <section class="categories"> -->

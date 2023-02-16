@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -23,6 +25,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/list.css" type="text/css">
 </head>
 
 <body>
@@ -32,8 +35,14 @@
     </div>
 
     <!-- Header Section Begin -->
-    <%@ include file = "/resources/fragments/header.jsp" %>
+    <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+    	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+    </section>
+    <!-- Hero Section End -->
     
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/breadcrumb.jpg">
@@ -57,26 +66,58 @@
     <section class="blog spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-8">
-                        <div class="blog__sidebar__search">
+            	<!-- search -->
+            	<div class="row col-lg-12">
+                	<div class="col-lg-12">
+                        <div class="col-lg-4 blog__sidebar__search float-right">
                             <form action="#">
                                 <input type="text" placeholder="Search...">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
                         </div>
+                	</div>
                 </div>
-                <div class="col-lg-8 col-md-7">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination blog__pagination">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
+             	<!-- search -->
+             	
+             	<!-- list -->
+             	<table class="board-table">
+            <thead>
+               <tr>
+                  <th scope="col" class="th-num">글번호</th>
+                  <th scope="col" class="th-id">작성자</th>
+                  <th scope="col" class="th-title">글제목</th>
+                  <th scope="col" class="th-date">등록일</th>
+                  <th scope="col" class="th-readcount">조회수</th>
+               </tr>
+            </thead>
+            <tbody>
+               <c:forEach var="dto" items="${noticeList }">
+                  <tr>
+                     <td>${dto.notiNum}</td>
+                     <td>${dto.memId}</td>
+                     <td><a href="${pageContext.request.contextPath }/notice/content?num=${dto.notiNum}"> ${dto.notiTitle} </a></td>
+                     <fmt:parseDate value="${dto.notiDate}" var="date" pattern="yyyy.MM.dd HH:mm" />
+                     <td><fmt:formatDate value="${date}" pattern="yyyy.MM.dd" /></td>
+                     <%--     <td>${dto.noti_date}</td> --%>
+                     <td>${dto.notiReadcount}</td>
+                  </tr>
+               </c:forEach>
+            </tbody>
+         </table>
+             	<!-- list -->
+             	
+             	<!-- paging -->
+                <div class="row col-lg-12">
+                    <div class="col-lg-12" style="text-align: center;">
+                        <div class="product__pagination blog__pagination">
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
+                <!-- paging -->
             </div>
         </div>
     </section>

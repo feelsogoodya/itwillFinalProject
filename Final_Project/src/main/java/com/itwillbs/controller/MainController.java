@@ -28,10 +28,6 @@ public class MainController {
 										Arrays.asList("의류", "잡화", "디지털/가전", "서적", "생활용품"
 													, "뷰티/미용", "취미/게임/음반", "스포츠/레저", "기타"));
 		// 조회순으로 상품 6개 가져오기
-<<<<<<< HEAD
-=======
-//		List<ProductDTO> wishList = productService.getPrdTopWishList();
->>>>>>> 36cbdd0741944e315ecff9669d8e989049c9acc2
 			
 		// 관심순으로 상품 6개 가져오기
 //		List<ProductDTO> orderViews = productService.getPrdTopViews();
@@ -41,12 +37,7 @@ public class MainController {
 		
 		model.addAttribute("categories", categories);
 		
-<<<<<<< HEAD
 		
-=======
-		//DB 부재로 에러
-//		model.addAttribute("wishList", wishList);
->>>>>>> 36cbdd0741944e315ecff9669d8e989049c9acc2
 //		model.addAttribute("orderViews", orderViews);
 //		model.addAttribute("latestPrdList", latestPrdList);
 		

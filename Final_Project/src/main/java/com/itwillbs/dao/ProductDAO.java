@@ -9,4 +9,6 @@ public interface ProductDAO {
 	public List<ProductDTO> getPrdFromTheLatest();
 	
 	public List<ProductDTO> getPrdTopViews();
+	
+	public List<ProductDTO> getPrdTopWishList();
 }

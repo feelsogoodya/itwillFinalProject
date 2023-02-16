@@ -136,7 +136,7 @@
                         <h4>조회순</h4>
                         <!-- 조회순 -->
                         <div class="latest-product__slider owl-carousel">
-                            <c:forEach var="ProductDTO" items="${orderViews }" varStatus="status">
+                            <c:forEach var="ProductDTO" items="${wishList }" varStatus="status">
 	                        	<c:if test="${status.index % 3 eq 0 }">
 	                        		<div class="latest-prdouct__slider__item">
 	                        	</c:if>
@@ -160,7 +160,7 @@
                         <h4>관심순</h4>
                         <!-- 관심순 -->
                         <div class="latest-product__slider owl-carousel">
-	                            <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
+	                            <c:forEach var="ProductDTO" items="${orderViews }" varStatus="status">
 		                        	<c:if test="${status.index % 3 eq 0 }">
 		                        		<div class="latest-prdouct__slider__item">
 		                        	</c:if>

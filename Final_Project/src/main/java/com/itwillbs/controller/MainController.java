@@ -29,18 +29,20 @@ public class MainController {
 													, "뷰티/미용", "취미/게임/음반", "스포츠/레저", "기타"));
 		
 		// 조회순으로 상품 6개 가져오기
+		List<ProductDTO> wishList = productService.getPrdTopWishList();
 			
 		// 관심순으로 상품 6개 가져오기
-		//List<ProductDTO> orderViews = productService.getPrdTopViews();
+		List<ProductDTO> orderViews = productService.getPrdTopViews();
 		
 		// 최근 등록된 상품 6개 가져오기
-		//List<ProductDTO> latestPrdList = productService.getPrdFromTheLatest();
+		List<ProductDTO> latestPrdList = productService.getPrdFromTheLatest();
 		
 		model.addAttribute("categories", categories);
 		
 		//DB 부재로 에러
-		//model.addAttribute("orderViews", orderViews);
-		//model.addAttribute("latestPrdList", latestPrdList);
+		model.addAttribute("wishList", wishList);
+		model.addAttribute("orderViews", orderViews);
+		model.addAttribute("latestPrdList", latestPrdList);
 		
 		return "main/main";
 	}

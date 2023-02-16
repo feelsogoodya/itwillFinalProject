@@ -32,4 +32,10 @@ public class ProductDAOImpl implements ProductDAO{
 		param.put("GB", "views");
 		return sqlSession.selectList(namespace+".orderProduct", param);
 	}
+
+	@Override
+	public List<ProductDTO> getPrdTopWishList() {
+		param.put("GB", "wish");
+		return sqlSession.selectList(namespace+".orderProduct", param);
+	}
 }

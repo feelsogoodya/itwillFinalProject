@@ -5,6 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
+    
+
 </head>
 <body>
 <footer class="footer spad">
@@ -67,5 +82,14 @@
             </div>
         </div>
     </footer>
+  <!-- Js Plugins -->
+  	<script src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/jquery.nice-select.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/jquery-ui.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/jquery.slicknav.js"/>"></script>
+    <script src="<c:url value ="/resources/js/mixitup.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/owl.carousel.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/main.js"/>"></script>
 </body>
 </html>

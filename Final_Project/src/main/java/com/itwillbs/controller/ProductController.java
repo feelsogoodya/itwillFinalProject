@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ProductController {
 	
-//	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
-//	public String main() {
-//		
-//		return "main/main";
-//	}
+	@RequestMapping(value = "/product/details", method = RequestMethod.GET)
+	public String main() {
+		
+		return "product/details";
+	}
 	
 }

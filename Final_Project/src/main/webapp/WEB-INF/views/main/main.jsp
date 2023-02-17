@@ -37,13 +37,9 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-<<<<<<< HEAD
     <section class="hero">
     	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
     </section>
-=======
-   	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
->>>>>>> 4d06fe1e7b851275c4cdb6e3c5f082d47f7ec6df
     <!-- Hero Section End -->
 
     <!-- Latest Product Section Begin -->

@@ -24,8 +24,6 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductDTO> getPrdTopViews() {
 		return productDAO.getPrdTopViews();
 	}
-<<<<<<< HEAD
-=======
 
 	@Override
 	public List<ProductDTO> getPrdTopWishList() {
@@ -38,5 +36,4 @@ public class ProductServiceImpl implements ProductService{
 		System.out.println("productService");
 		return productDAO.getProductInfo(productNum);
 	}
->>>>>>> 4d06fe1e7b851275c4cdb6e3c5f082d47f7ec6df
 }

@@ -32,8 +32,6 @@ public class ProductDAOImpl implements ProductDAO{
 		param.put("GB", "views");
 		return sqlSession.selectList(namespace+".orderProduct", param);
 	}
-<<<<<<< HEAD
-=======
 
 	@Override
 	public List<ProductDTO> getPrdTopWishList() {
@@ -48,5 +46,4 @@ public class ProductDAOImpl implements ProductDAO{
 		System.out.println("productNum1:  " + productNum1);
 		return sqlSession.selectOne(namespace+".productInfo", productNum1);
 	}
->>>>>>> 4d06fe1e7b851275c4cdb6e3c5f082d47f7ec6df
 }

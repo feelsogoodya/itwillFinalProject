@@ -39,7 +39,7 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="hero hero-normal">
     	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
     </section>
     <!-- Hero Section End -->

@@ -5,13 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
-=======
-
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
->>>>>>> 4d06fe1e7b851275c4cdb6e3c5f082d47f7ec6df
 </head>
 <body>
 <footer class="footer spad">

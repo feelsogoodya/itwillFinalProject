@@ -9,6 +9,4 @@ public interface ProductService {
 	public List<ProductDTO> getPrdFromTheLatest();
 	
 	public List<ProductDTO> getPrdTopViews();
-	
-	public List<ProductDTO> getPrdTopWishList();
 }

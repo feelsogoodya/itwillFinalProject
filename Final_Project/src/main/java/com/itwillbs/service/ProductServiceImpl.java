@@ -24,10 +24,4 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductDTO> getPrdTopViews() {
 		return productDAO.getPrdTopViews();
 	}
-
-	@Override
-	public List<ProductDTO> getPrdTopWishList() {
-		
-		return productDAO.getPrdTopWishList();
-	}
 }

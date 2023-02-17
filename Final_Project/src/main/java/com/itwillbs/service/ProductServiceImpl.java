@@ -30,4 +30,10 @@ public class ProductServiceImpl implements ProductService{
 		
 		return productDAO.getPrdTopWishList();
 	}
+
+	@Override
+	public ProductDTO getProductInfo(String productNum) {
+		System.out.println("productService");
+		return productDAO.getProductInfo(productNum);
+	}
 }

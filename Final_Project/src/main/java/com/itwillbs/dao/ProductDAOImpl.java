@@ -38,4 +38,12 @@ public class ProductDAOImpl implements ProductDAO{
 		param.put("GB", "wish");
 		return sqlSession.selectList(namespace+".orderProduct", param);
 	}
+
+	@Override
+	public ProductDTO getProductInfo(String productNum) {
+		System.out.println("productDAO");
+		int productNum1 = Integer.parseInt(productNum);
+		System.out.println("productNum1:  " + productNum1);
+		return sqlSession.selectOne(namespace+".productInfo", productNum1);
+	}
 }

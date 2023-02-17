@@ -40,4 +40,19 @@
 		LIMIT 6
 	</select>
 	
+	<select id="productInfo" resultType="com.itwillbs.domain.ProductDTO">
+		SELECT product_num
+			  ,product_seller
+			  ,product_cate
+			  ,product_title
+			  ,product_content
+			  ,product_price 
+			  ,product_grade
+			  ,product_pic
+			  ,product_readcount
+			  ,product_date
+		FROM product
+		WHERE product_num = #{productNum1}
+	</select>
+	
 </mapper>

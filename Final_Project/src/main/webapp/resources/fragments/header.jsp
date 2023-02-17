@@ -122,7 +122,10 @@
             </div>
         </div>
     </header>
+<<<<<<< HEAD
+=======
 </head>
+>>>>>>> fec8a81ad4b00c8ba8a2c9d2e531300892939477
 <body>
   <!-- Js Plugins -->
   	<script src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>

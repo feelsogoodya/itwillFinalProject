@@ -37,61 +37,7 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero">
-<<<<<<< HEAD
-    	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
-=======
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <!-- 왼쪽 사이드 카테고리 -->
-                        <ul>
-	                        <c:forEach var="item" items="${categories}">
-	                            <li><a href="#">${item}</a></li>
-	                        </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">검색</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>051-803-0909</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>가지마</span>
-                            <h2>가지마켓 <br />가지가지</h2>
-                            <p>중고마켓 어쩌구</p>
-                            <a href="#" class="primary-btn">바로가기</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
->>>>>>> fec8a81ad4b00c8ba8a2c9d2e531300892939477
-    </section>
+   	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
     <!-- Hero Section End -->
 
 <!--     Categories Section Begin -->

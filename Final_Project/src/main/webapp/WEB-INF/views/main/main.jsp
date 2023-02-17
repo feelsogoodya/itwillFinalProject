@@ -33,11 +33,14 @@
     </div>
 
     <!-- Header Section Begin -->
-    <%@ include file = "/resources/fragments/header.jsp" %>
+    <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
     <section class="hero">
+<<<<<<< HEAD
+    	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+=======
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -87,6 +90,7 @@
                 </div>
             </div>
         </div>
+>>>>>>> fec8a81ad4b00c8ba8a2c9d2e531300892939477
     </section>
     <!-- Hero Section End -->
 

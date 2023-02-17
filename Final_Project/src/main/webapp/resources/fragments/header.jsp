@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 </head> 
         <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -67,6 +68,12 @@
     <!-- Humberger End -->
     
 <header class="header">
+=======
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+  <header class="header">
+>>>>>>> 4d06fe1e7b851275c4cdb6e3c5f082d47f7ec6df
         <div class="header__top">
             <div class="container">
                 <div class="row">
@@ -152,6 +159,10 @@
             </div>
         </div>
     </header>
+<<<<<<< HEAD
+=======
+</head>
+>>>>>>> 4d06fe1e7b851275c4cdb6e3c5f082d47f7ec6df
 <body>
 </body>
 </html>

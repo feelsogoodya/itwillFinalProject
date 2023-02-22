@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.output.TaggedOutputStream;
@@ -14,6 +15,7 @@ import com.itwillbs.service.ProductService;
 @Controller
 public class ProductController {
 	
+	@Inject
 	ProductService productService;
 	
 	@RequestMapping(value = "/product/details", method = RequestMethod.GET)

@@ -8,8 +8,8 @@
 	<!-- 디비연결 객체생성-->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/jspdb2?serverTimezone=Asia/Seoul"></property>
-		<property name="username" value="root"></property>
+		<property name="url" value="jdbc:mysql://db.itwillbs.dev:3306/class2_220922_team1_2?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="class2_220922_team1"></property>
 		<property name="password" value="1234"></property>
 	</bean>
 	

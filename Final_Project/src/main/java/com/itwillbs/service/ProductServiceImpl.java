@@ -36,4 +36,10 @@ public class ProductServiceImpl implements ProductService{
 		System.out.println("productService");
 		return productDAO.getProductInfo(productNum);
 	}
+
+	@Override
+	public List<ProductDTO> getSellerProduct(String productSeller) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

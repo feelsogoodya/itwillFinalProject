@@ -66,9 +66,11 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
+                        <!-- 첫번째 사진 -->
                             <img class="product__details__pic__item--large"
                                 src="${pageContext.request.contextPath }/resources/img/product/details/product-details-1.jpg" alt="">
                         </div>
+                        <!-- 나머지 사진 -->
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="${pageContext.request.contextPath }/resources/img/product/details/thumb-1.jpg" alt="">
@@ -101,24 +103,26 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <a href="#" class="primary-btn">채팅하기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
-                            <li><b>Share on</b>
+                            <li><b>상태</b> <span>${productDTO.productGrade }</span></li>
+                            <li><b>거래</b> <span>택배 거래 원해요 <samp>Free pickup today</samp></span></li>
+                            <li><b>등록 날짜</b> <span>${productDTO.productDate }</span></li>
+                            <!-- 공유하기 버튼 -->
+                            <!-- <li><b>Share on</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
                                     <a href="#"><i class="fa fa-pinterest"></i></a>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <!-- 상세내용, 정보, 리뷰 조회 -->
+                <!-- <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
@@ -156,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -168,7 +172,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
+                        <h2>판매자의 다른 상품보기</h2>
                         <!-- 판매자의 다른 상품보기 -->
                     </div>
                 </div>

@@ -13,4 +13,6 @@ public interface ProductService {
 	public List<ProductDTO> getPrdTopWishList();
 	
 	public ProductDTO getProductInfo(String productNum);
+	
+	public List<ProductDTO> getSellerProduct(String productSeller);
 }

@@ -41,15 +41,15 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public ProductDTO getProductInfo(String productNum) {
-		System.out.println("productDAO");
-		int productNum1 = Integer.parseInt(productNum);
-		System.out.println("productNum1: " + productNum1);
-		return sqlSession.selectOne(namespace+".productInfo", productNum1);
+		param.put("productNum", productNum);
+		param.put("productSeller", null);
+		return sqlSession.selectOne(namespace+".productInfo", param);
 	}
 
 	@Override
-	public List<ProductDTO> getSellerProduct(String productSeller) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductDTO> getSellerProduct(ProductDTO productDTO) {
+		param.put("productNum", productDTO.getProductNum()+"");
+		param.put("productSeller", productDTO.getProductSeller());
+		return sqlSession.selectList(namespace + ".productInfo", param);
 	}
 }

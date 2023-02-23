@@ -43,7 +43,13 @@ public class ProductDAOImpl implements ProductDAO{
 	public ProductDTO getProductInfo(String productNum) {
 		System.out.println("productDAO");
 		int productNum1 = Integer.parseInt(productNum);
-		System.out.println("productNum1:  " + productNum1);
+		System.out.println("productNum1: " + productNum1);
 		return sqlSession.selectOne(namespace+".productInfo", productNum1);
+	}
+
+	@Override
+	public List<ProductDTO> getSellerProduct(String productSeller) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

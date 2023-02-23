@@ -3,15 +3,12 @@ package com.itwillbs.domain;
 import java.sql.Timestamp;
 
 public class MemberDTO {
-	// 회원가입 한 내용을 담아서 전달해주는 바구니
-	// 멤버변수 => 접근 제한 => 데이터 은닉, 캡슐화
-	
 	private int memNum;
 	private String memId;
 	private String memPass;
 	private String memPhone;
 	private String memName;
-	private String memNicNname;
+	private String memNname;
 	private String memEmail;
 	private String memAddress;
 	private String memAccount;
@@ -47,11 +44,11 @@ public class MemberDTO {
 	public void setMemName(String memName) {
 		this.memName = memName;
 	}
-	public String getMemNicNname() {
-		return memNicNname;
+	public String getMemNname() {
+		return memNname;
 	}
-	public void setMemNicNname(String memNicNname) {
-		this.memNicNname = memNicNname;
+	public void setMemNname(String memNname) {
+		this.memNname = memNname;
 	}
 	public String getMemEmail() {
 		return memEmail;
@@ -78,5 +75,4 @@ public class MemberDTO {
 		this.memTime = memTime;
 	}
 
-	
 }

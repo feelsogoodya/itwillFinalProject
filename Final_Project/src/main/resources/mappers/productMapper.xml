@@ -40,29 +40,45 @@
 		LIMIT 6
 	</select>
 	
-	<select id="productInfo" resultType="com.itwillbs.domain.ProductDTO" parameterType="hashMap">
+	<resultMap type="map" id="productMap">
+		<id column="product_num" property="productNum"/>
+		<result column="product_seller" property="productSeller"/>
+		<result column="product_cate" property="productCate"/>
+		<result column="product_title" property="productTitle"/>
+		<result column="product_content" property="productContent"/>
+		<result column="product_price" property="productPrice"/>
+		<result column="product_grade" property="productGrade"/>
+		<result column="product_pic" property="productPic"/>
+		<result column="product_readcount" property="productReadcount"/>
+		<result column="product_date" property="productDate"/>
+		<result column="mem_nname" property="memNname"/>
+	</resultMap>
+	
+	<select id="productInfo" resultMap="productMap" parameterType="hashMap">
 	
 		<if test='productSeller != null'>
     	SELECT *
     	FROM (
   		</if>
-			SELECT product_num
-				  ,product_seller
-				  ,product_cate
-				  ,product_title
-				  ,product_content
-				  ,product_price 
-				  ,product_grade
-				  ,product_pic
-				  ,product_readcount
-				  ,product_date
-			FROM product
+			SELECT p.product_num as "product_num"
+				  ,p.product_seller as "product_seller"
+				  ,p.product_cate as "product_cate"
+				  ,p.product_title as "product_title"
+				  ,p.product_content as "product_content"
+				  ,p.product_price as "product_price"
+				  ,p.product_grade as "product_grade"
+				  ,p.product_pic as "product_pic"
+				  ,p.product_readcount as "product_readcount"
+				  ,p.product_date as "product_date"
+				  ,m.mem_nname as "mem_nname"
+			FROM product p join members m
+			on (p.product_seller = m.mem_id)
 			<if test='productSeller == null'>
 	    	WHERE product_num = CAST(#{productNum} AS decimal(7,0))
 	  		</if>
   		<if test='productSeller != null'>
     	WHERE product_seller = #{productSeller}
-    	<!-- AND NOT product_num IN (CAST(#{productNum} AS decimal(7,0)) -->
+    	AND product_num NOT IN (CAST(#{productNum} AS decimal(7,0)))
     	ORDER BY product_date DESC) A
     	LIMIT 4
   		</if>

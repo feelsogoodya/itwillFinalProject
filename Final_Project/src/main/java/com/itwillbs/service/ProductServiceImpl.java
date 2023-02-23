@@ -1,6 +1,7 @@
 package com.itwillbs.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,12 +33,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public ProductDTO getProductInfo(String productNum) {
+	public Map<String, Object> getProductInfo(String productNum) {
 		return productDAO.getProductInfo(productNum);
 	}
 
 	@Override
-	public List<ProductDTO> getSellerProduct(ProductDTO productDTO) {
-		return productDAO.getSellerProduct(productDTO);
+	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap) {
+		System.out.println((String)productMap.get("productNum")+" : 주문번호 Service");
+		return productDAO.getSellerProduct(productMap);
 	}
 }

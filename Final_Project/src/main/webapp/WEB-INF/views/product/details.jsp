@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>${productDTO.productTitle }</h3>
+                        <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -106,9 +106,10 @@
                         <a href="#" class="primary-btn">채팅하기</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
-                            <li><b>상태</b> <span>${productDTO.productGrade }</span></li>
+                            <li><b>상태</b> <span>${productMap.productGrade }</span></li>
                             <li><b>거래</b> <span>택배 거래 원해요 <samp>Free pickup today</samp></span></li>
-                            <li><b>등록 날짜</b> <span>${productDTO.productDate }</span></li>
+                            <li><b>판매자</b> <span>${productMap.memNname }</span></li>
+                            <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
                             <!-- 공유하기 버튼 -->
                             <!-- <li><b>Share on</b>
                                 <div class="share">
@@ -178,7 +179,7 @@
                 </div>
             </div>
             <div class="row">
-                <c:forEach var="ProductDTO" items="${sellerProducts }" varStatus="status">
+                <c:forEach var="map" items="${sellerProducts }" varStatus="status">
 	                <div class="col-lg-3 col-md-4 col-sm-6">
 	                    <div class="product__item">
 	                        <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/product/product-7.jpg">
@@ -189,8 +190,8 @@
 	                            </ul>
 	                        </div>
 	                        <div class="product__item__text">
-	                            <h6><a href="#">${ProductDTO.productTitle }</a></h6>
-	                            <h5>${ProductDTO.productPrice }</h5>
+	                            <h6><a href="#">${map.productTitle }</a></h6>
+	                            <h5>${map.productPrice }</h5>
 	                        </div>
 	                    </div>
 	                </div>

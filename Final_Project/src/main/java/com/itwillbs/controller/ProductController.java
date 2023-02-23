@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -27,19 +28,14 @@ public class ProductController {
 		String productNum = "2302001";
 		System.out.println("productDetails");
 		
-		ProductDTO productDTO = productService.getProductInfo(productNum);
+		Map<String, Object> productMap = productService.getProductInfo(productNum);
 		
-		System.out.println(productDTO.getProductPrice());
-		System.out.println(productDTO.getProductTitle());
-		System.out.println(productDTO.getProductContent());
-		
-		
+		System.out.println((String)productMap.get("productNum")+" : 주문번호 Controller");
 		//판매자 다른 상품 정보 가져오기
-		System.out.println(productDTO.getProductSeller());
-		List<ProductDTO> sellerProducts = productService.getSellerProduct(productDTO);
+		List<Map<String, Object>> sellerProducts = productService.getSellerProduct(productMap);
 		
 		
-		model.addAttribute("productDTO", productDTO);
+		model.addAttribute("productMap", productMap);
 		model.addAttribute("sellerProducts", sellerProducts);
 		
 		return "product/details";

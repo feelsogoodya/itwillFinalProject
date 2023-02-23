@@ -8,7 +8,8 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-	<typeAliases>
+<!-- 	<typeAliases>
 		<typeAlias type="com.itwillbs.domain.MemberDTO" alias="MemberDTO"/>
-	</typeAliases>
+	</typeAliases> -->
+	
 </configuration>

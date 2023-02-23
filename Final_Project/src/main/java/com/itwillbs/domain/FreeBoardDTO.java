@@ -4,7 +4,7 @@ public class FreeBoardDTO {
 	private int freeboardNum;
 	private String memberId;
 	private String subject;
-	private String context;
+	private String content;
 	private int readcount;
 	private String date;
 	private int likeCount;
@@ -27,11 +27,11 @@ public class FreeBoardDTO {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getContext() {
-		return context;
+	public String getContent() {
+		return content;
 	}
-	public void setContext(String context) {
-		this.context = context;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public int getReadcount() {
 		return readcount;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -50,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Blog</h2>
+                        <h2>자유게시판</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
                             <span>Blog</span>
@@ -81,39 +82,64 @@
              	
              	<!-- list -->
              	<table class="board-table">
-            <thead>
-               <tr>
-                  <th scope="col" class="th-num">글번호</th>
-                  <th scope="col" class="th-id">작성자</th>
-                  <th scope="col" class="th-title">글제목</th>
-                  <th scope="col" class="th-date">등록일</th>
-                  <th scope="col" class="th-readcount">조회수</th>
-               </tr>
-            </thead>
-            <tbody>
-               <c:forEach var="dto" items="${noticeList }">
-                  <tr>
-                     <td>${dto.notiNum}</td>
-                     <td>${dto.memId}</td>
-                     <td><a href="${pageContext.request.contextPath }/notice/content?num=${dto.notiNum}"> ${dto.notiTitle} </a></td>
-                     <fmt:parseDate value="${dto.notiDate}" var="date" pattern="yyyy.MM.dd HH:mm" />
-                     <td><fmt:formatDate value="${date}" pattern="yyyy.MM.dd" /></td>
-                     <%--     <td>${dto.noti_date}</td> --%>
-                     <td>${dto.notiReadcount}</td>
-                  </tr>
-               </c:forEach>
-            </tbody>
-         </table>
+            		<thead>
+               			<tr>
+		                  <th scope="col" class="th-num">글번호</th>
+		                  <th scope="col" class="th-id">작성자</th>
+		                  <th scope="col" class="th-title">글제목</th>
+		                  <th scope="col" class="th-date">등록일</th>
+		                  <th scope="col" class="th-readcount">조회수</th>
+               			</tr>
+            		</thead>
+            		<tbody>
+            			<c:if test="${empty boardList}">
+            				<tr>
+            					<td></td>
+            					<td></td>
+            					<td>등록된 글이 없습니다.</td>
+            					<td></td>
+            					<td></td>
+            				</tr>
+            			</c:if>
+            			<c:if test="${!empty boardList}">
+			               <c:forEach var="dto" items="${boardList}">
+			                  <tr onclick="location.href='${pageContext.request.contextPath }/free/content?freeboardNum=${dto.freeboardNum}'">
+			                     <th scope="col" class="th-num">${dto.freeboardNum}</th>
+			                     <th scope="col" class="th-id">${dto.memberId}</th>
+			                     <th scope="col" class="th-title">${dto.subject}</th>
+<%-- 			                     <th scope="col" class="th-date"><fmt:formatDate value="${dto.date}" pattern="yyyy.MM.dd" /></th> --%>
+								<th scope="col" class="th-date">${dto.date }</th>
+			                     <%--     <td>${dto.noti_date}</td> --%>
+			                     <th scope="col" class="th-readcount">${dto.readcount}</th>
+			                  </tr>
+			               </c:forEach>
+		               </c:if>
+           	 		</tbody>
+         		</table>
              	<!-- list -->
              	
              	<!-- paging -->
                 <div class="row col-lg-12">
                     <div class="col-lg-12" style="text-align: center;">
                         <div class="product__pagination blog__pagination">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                        	<c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
+                        		<a href="${pageContext.request.contextPath }/free/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">
+                        			<i class="fa fa-long-arrow-right"></i>
+                        		</a>
+                        	</c:if>
+                        	
+                        	<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+                        		<a href="${pageContext.request.contextPath }/free/list?pageNum=${i}">${i }</a>
+                        	</c:forEach>
+                        	
+                        	<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
+                        		<a href="${pageContext.request.contextPath }/free/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">
+                        			<i class="fa fa-long-arrow-right"></i>
+                        		</a>
+                        	</c:if>
+                        </div>
+                        <div style="text-align: right;">
+                        	<button type="submit" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/wirte'">글쓰기</button>
                         </div>
                     </div>
                 </div>

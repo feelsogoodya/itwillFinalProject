@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwillbs.mappers.freeboardMapper">
+	
+	 <select id="insert">
+		insert into freeboard(freeboard_num, member_id, subject, content, readcount, date, like_count)
+		values(#{freeboardNum}, #{memberId}, #{subject}, #{content}, #{readcount}, #{date}, #{likeCount})
+	</select>
+	
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(freeboard_num)
+		  from freeboard
+	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		select count(freeboard_num)
+		  from freeboard
+	</select>
+	
+	<select id="getBoardList" resultType="com.itwillbs.domain.FreeBoardDTO">
+		select *
+		from freeboard
+		order by freeboard_num desc
+		limit #{startRow}, #{pageSize}
+	</select>
+	
+	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
+		select *
+		from freeboard
+		where freeboard_num = #{freeboardNum}
+	</select>
+	
+	<update id="update">
+		update freeboard
+		   set subject = #{subject}
+		       content = #{content}
+		 where freeboard_num = #{freeboardNum}
+	</update>
+	
+	<delete id="delete">
+		delete from freeboard
+		 where freeboard_num = #{freeboardNum}
+	</delete>
+</mapper>

@@ -2340,7 +2340,7 @@ ol {
 .blog__pagination:before {
 	position: absolute;
 	left: 0;
-	top: -29px;
+	top: 0px;
 	height: 1px;
 	width: 100%;
 	background: #000000;

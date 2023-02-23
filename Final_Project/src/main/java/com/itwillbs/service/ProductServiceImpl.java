@@ -33,13 +33,11 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public ProductDTO getProductInfo(String productNum) {
-		System.out.println("productService");
 		return productDAO.getProductInfo(productNum);
 	}
 
 	@Override
-	public List<ProductDTO> getSellerProduct(String productSeller) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductDTO> getSellerProduct(ProductDTO productDTO) {
+		return productDAO.getSellerProduct(productDTO);
 	}
 }

@@ -14,5 +14,5 @@ public interface ProductService {
 	
 	public ProductDTO getProductInfo(String productNum);
 	
-	public List<ProductDTO> getSellerProduct(String productSeller);
+	public List<ProductDTO> getSellerProduct(ProductDTO productDTO);
 }

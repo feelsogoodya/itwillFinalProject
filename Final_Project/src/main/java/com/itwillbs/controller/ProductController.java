@@ -24,7 +24,7 @@ public class ProductController {
 	public String productDetails(Model model) {
 		//TODO 추후 연결 시, 수정
 //		HttpServletRequest request, String productNum = request.getParameter("productNum");
-		String productNum = "2302005";
+		String productNum = "2302001";
 		System.out.println("productDetails");
 		
 		ProductDTO productDTO = productService.getProductInfo(productNum);
@@ -33,10 +33,14 @@ public class ProductController {
 		System.out.println(productDTO.getProductTitle());
 		System.out.println(productDTO.getProductContent());
 		
-		model.addAttribute("productDTO", productDTO);
 		
 		//판매자 다른 상품 정보 가져오기
-		List<ProductDTO> sellerProducts = productService.getSellerProduct(productDTO.getProductSeller());
+		System.out.println(productDTO.getProductSeller());
+		List<ProductDTO> sellerProducts = productService.getSellerProduct(productDTO);
+		
+		
+		model.addAttribute("productDTO", productDTO);
+		model.addAttribute("sellerProducts", sellerProducts);
 		
 		return "product/details";
 	}

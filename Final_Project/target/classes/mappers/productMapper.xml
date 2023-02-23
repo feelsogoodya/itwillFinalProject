@@ -40,19 +40,33 @@
 		LIMIT 6
 	</select>
 	
-	<select id="productInfo" resultType="com.itwillbs.domain.ProductDTO">
-		SELECT product_num
-			  ,product_seller
-			  ,product_cate
-			  ,product_title
-			  ,product_content
-			  ,product_price 
-			  ,product_grade
-			  ,product_pic
-			  ,product_readcount
-			  ,product_date
-		FROM product
-		WHERE product_num = #{productNum1}
+	<select id="productInfo" resultType="com.itwillbs.domain.ProductDTO" parameterType="hashMap">
+	
+		<if test='productSeller != null'>
+    	SELECT *
+    	FROM (
+  		</if>
+			SELECT product_num
+				  ,product_seller
+				  ,product_cate
+				  ,product_title
+				  ,product_content
+				  ,product_price 
+				  ,product_grade
+				  ,product_pic
+				  ,product_readcount
+				  ,product_date
+			FROM product
+			<if test='productSeller == null'>
+	    	WHERE product_num = CAST(#{productNum} AS decimal(7,0))
+	  		</if>
+  		<if test='productSeller != null'>
+    	WHERE product_seller = #{productSeller}
+    	<!-- AND NOT product_num IN (CAST(#{productNum} AS decimal(7,0)) -->
+    	ORDER BY product_date DESC) A
+    	LIMIT 4
+  		</if>
+		
 	</select>
 	
 </mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwillbs.mappers.reviewMapper">
+
+ 	
+ 
+	<insert id="insertReview">
+		insert into review(reviewee ,rev_content, rev_score) 
+		values(#{reviewee},#{revContent},#{revScore})
+	</insert>
+
+<!-- 	<select id="updateScore" resultType="java.lang.Integer"> -->
+<!-- 		update review set rev_total = rev_score+rev_totalscore -->
+<!-- 		where reviewee = #{reviewee} -->
+<!-- 	</select> -->
+
+
+</mapper>

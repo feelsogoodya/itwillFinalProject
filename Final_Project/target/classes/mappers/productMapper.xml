@@ -23,7 +23,6 @@
 				   , p.product_seller
 				   , p.product_pic
 				   , p.product_readcount
-				   
 			  FROM product p
 			  <if test='GB.equals("date")'>
 			  WHERE p.product_status = '판매중'

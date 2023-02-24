@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <c:forEach var="item" items="${param.categories}">
+                            <c:forEach var="item" items="${sessionScope.categories}">
 	                            <li><a href="#">${item}</a></li>
 	                        </c:forEach>
                         </ul>

@@ -37,7 +37,9 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-   	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+    <section class ="hero hero-normal">
+   		<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+   	</section>
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->

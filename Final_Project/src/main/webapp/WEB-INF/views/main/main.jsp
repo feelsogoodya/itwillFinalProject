@@ -37,9 +37,11 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-   	<jsp:include page="../../../resources/fragments/hero.jsp">
-   		<jsp:param name="categories" value="${categories}" />
-   	</jsp:include>
+    <section class="hero">
+	   	<jsp:include page="../../../resources/fragments/hero.jsp">
+	   		<jsp:param name="categories" value="${categories}" />
+	   	</jsp:include>
+   	</section>
     <!-- Hero Section End -->
 
     <!-- Latest Product Section Begin -->

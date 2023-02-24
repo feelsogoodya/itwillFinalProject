@@ -54,6 +54,7 @@ public class MemberController {
 
 		if (memberDTO != null) {
 			session.setAttribute("memId", memberDTO.getMemId());
+			session.setAttribute("memNname", memberDTO.getMemNname());
 			return "redirect:/member/mypage";
 		} else {
 			return "member/msg";

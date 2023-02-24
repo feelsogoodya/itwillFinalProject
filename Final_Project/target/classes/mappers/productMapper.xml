@@ -18,17 +18,30 @@
 		
 		
 		SELECT *
-		FROM( SELECT product_title
-				   , product_price
-				   , product_seller
-				   , product_pic
-				   , product_readcount
-			  FROM product
+		FROM( SELECT p.product_title
+				   , p.product_price
+				   , p.product_seller
+				   , p.product_pic
+				   , p.product_readcount
+			  FROM product p
 			  <if test='GB.equals("date")'>
+			  WHERE p.product_status = '판매중'
 			  ORDER BY product_date DESC
 			  </if>
 			  <if test='GB.equals("views")'>
+			  WHERE p.product_status = '판매중'
 		 	  ORDER BY product_readcount DESC
+			  </if>
+			  <if test='GB.equals("wish")'>
+			  JOIN wish w
+			  on (p.product_num = w.product_num)
+			  WHERE p.product_status = '판매중'
+              GROUP BY p.product_title
+              		 , p.product_price
+              		 , p.product_seller
+              		 , p.product_pic
+              		 , p.product_readcount
+			  ORDER BY count(w.product_num) DESC
 			  </if>
 			) A
 		LIMIT 6

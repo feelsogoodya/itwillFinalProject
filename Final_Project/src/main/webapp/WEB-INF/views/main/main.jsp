@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -37,9 +38,11 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-   	<jsp:include page="../../../resources/fragments/hero.jsp">
-   		<jsp:param name="categories" value="${categories}" />
-   	</jsp:include>
+    <section class="hero">
+	   	<jsp:include page="../../../resources/fragments/hero.jsp">
+	   		<jsp:param name="categories" value="${categories}" />
+	   	</jsp:include>
+   	</section>
     <!-- Hero Section End -->
 
     <!-- Latest Product Section Begin -->
@@ -57,7 +60,7 @@
 	                        	</c:if>
                         			<a href="#" class="latest-product__item">
 	                                    <div class="latest-product__item__pic">
-	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+	                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
 	                                    </div>
 	                                    <div class="latest-product__item__text">
 	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
@@ -75,13 +78,13 @@
                         <h4>관심순</h4>
                         <!-- 관심순 -->
                         <div class="latest-product__slider owl-carousel">
-	                            <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
+	                            <c:forEach var="ProductDTO" items="${wishList }" varStatus="status">
 		                        	<c:if test="${status.index % 3 eq 0 }">
 		                        		<div class="latest-prdouct__slider__item">
 		                        	</c:if>
 	                        			<a href="#" class="latest-product__item">
 		                                    <div class="latest-product__item__pic">
-		                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
 		                                    </div>
 		                                    <div class="latest-product__item__text">
 		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
@@ -106,7 +109,7 @@
 	                        	</c:if>
                         			<a href="#" class="latest-product__item">
 	                                    <div class="latest-product__item__pic">
-	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+	                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
 	                                    </div>
 	                                    <div class="latest-product__item__text">
 	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>

@@ -1,0 +1,65 @@
+@charset "UTF-8";
+html, body {padding:0; margin:0;}
+/* div {border: 1px solid;} */
+#commentWrap {
+	display: grid;
+	grid-template-columns: 100px 400px;
+	position: relative;
+	min-width: 500px;
+	width: 100%;
+	min-height: 150px;
+	height: auto;
+}
+.profile {
+	position:relative;
+	width:100%;
+	height:100%;
+}
+.profile > .my-img {
+	position: absolute;
+	top:20px;
+	left:50%;
+	transform: translate(-50%);
+	width:70px;
+	height: 70px;
+	border-radius: 70px;
+	overflow: hidden;
+}
+.comment-cont .cmt-info {
+	padding: 5px;
+}
+.comment-cont .cmt-info > .cmt-time {
+	font-size: .8em;
+}
+
+
+/* .cmt-re { */
+/* 	padding-left: 50px; */
+/* } */
+/* .comment-cont .cmt-info > .cmt-time { */
+/* 	font-size: .8em; */
+/* } */
+
+
+
+
+
+.cmt-cont {
+	padding: 5px;
+}
+.cmt-btn {
+	text-align: right;
+}
+.re-cmt {display:none;}
+.re-cmt > textarea {
+	width: 100%;
+	padding:0;
+	border: none;
+	border-bottom: 2px solid red;
+    resize: none;
+    font-size:16px;
+}
+textarea:focus {
+    outline: none;
+}
+input[id^="reCmtBtn"]:checked ~ .re-cmt {display:block;}

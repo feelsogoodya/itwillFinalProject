@@ -26,10 +26,6 @@ public class MainController {
 		
 		// 존재하는 카테고리 전부 불러오기 => 추후 Map으로 카테고리이름-이미지파일이름 수정
 		List<String> categories = productService.getCategories();
-		for(String s : categories) {
-			System.out.println(s);
-		}
-		
 		
 		// 조회순으로 상품 6개 가져오기
 		List<ProductDTO> wishList = productService.getPrdTopWishList();

@@ -107,7 +107,6 @@
                                 <a href="${pageContext.request.contextPath }/member/logout"><i class="fa fa-user"></i> Logout</a>
                             </div>
                         </c:if>
-                        
                         </div>
                     </div>
                 </div>

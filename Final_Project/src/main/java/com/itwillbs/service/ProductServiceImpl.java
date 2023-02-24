@@ -44,7 +44,6 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap) {
-		System.out.println((String)productMap.get("productNum")+" : 주문번호 Service");
 		return productDAO.getSellerProduct(productMap);
 	}
 

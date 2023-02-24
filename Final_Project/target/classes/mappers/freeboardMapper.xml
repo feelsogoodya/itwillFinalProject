@@ -17,11 +17,19 @@
 	<select id="getBoardCount" resultType="int">
 		select count(freeboard_num)
 		  from freeboard
+		 where 1=1
+		 <if test="search != null">
+		 and subject like concat('%',#{search},'%')
+		 </if>
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.FreeBoardDTO">
 		select *
 		from freeboard
+		where 1=1
+		<if test="search != null">
+		 and subject like concat('%',#{search},'%')
+		</if>
 		order by freeboard_num desc
 		limit #{startRow}, #{pageSize}
 	</select>
@@ -34,7 +42,7 @@
 	
 	<update id="update">
 		update freeboard
-		   set subject = #{subject}
+		   set subject = #{subject},
 		       content = #{content}
 		 where freeboard_num = #{freeboardNum}
 	</update>

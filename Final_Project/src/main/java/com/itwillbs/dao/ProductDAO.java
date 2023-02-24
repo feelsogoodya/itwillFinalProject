@@ -1,10 +1,13 @@
 package com.itwillbs.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.itwillbs.domain.ProductDTO;
 
 public interface ProductDAO {
+	
+	public List<String> getCategories();
 	
 	public List<ProductDTO> getPrdFromTheLatest();
 	
@@ -12,7 +15,7 @@ public interface ProductDAO {
 	
 	public List<ProductDTO> getPrdTopWishList();
 	
-	public ProductDTO getProductInfo(String productNum);
+	public Map<String, Object> getProductInfo(String productNum);
 	
-	public List<ProductDTO> getSellerProduct(String productSeller);
+	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap);
 }

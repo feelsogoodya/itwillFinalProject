@@ -20,7 +20,12 @@ public class ProductDAOImpl implements ProductDAO{
 	private Map<String, String> param = new HashMap<String, String>();
 	
 	private static final String namespace = "com.itwillbs.mappers.productMapper";
-
+	
+	@Override
+	public List<String> getCategories() {
+		return sqlSession.selectList(namespace+".getCategories");
+	}
+	
 	@Override
 	public List<ProductDTO> getPrdFromTheLatest() {
 		param.put("GB", "date");
@@ -40,16 +45,22 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public ProductDTO getProductInfo(String productNum) {
-		System.out.println("productDAO");
-		int productNum1 = Integer.parseInt(productNum);
-		System.out.println("productNum1: " + productNum1);
-		return sqlSession.selectOne(namespace+".productInfo", productNum1);
+	public Map<String, Object> getProductInfo(String productNum) {
+		param.put("productNum", productNum);
+		param.put("productSeller", null);
+		System.out.println("전달!");
+		Map<String, Object> map = sqlSession.selectOne(namespace+".productInfo", param);
+		System.out.println((String)map.get(productNum)+" 들고나왔따!");
+		return map;
 	}
 
 	@Override
-	public List<ProductDTO> getSellerProduct(String productSeller) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap) {
+		System.out.println((String)productMap.get("productNum")+" : 주문번호 DAO");
+		param.put("productNum", (String)productMap.get("productNum"));
+		param.put("productSeller", (String)productMap.get("productSeller"));
+		return sqlSession.selectList(namespace + ".productInfo", param);
 	}
+
+	
 }

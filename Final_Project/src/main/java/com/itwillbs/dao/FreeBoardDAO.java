@@ -10,7 +10,7 @@ public interface FreeBoardDAO {
 	public void insertBoard(FreeBoardDTO freeBoardDTO);
 	public Integer getMaxNum();
 	public List<FreeBoardDTO> getBoardList(PageDTO pageDTO);
-	public int getBoardCount();
+	public int getBoardCount(PageDTO pageDTO);
 	public FreeBoardDTO getBoard(int num);
 	public void updateBoard(FreeBoardDTO freeBoardDTO);
 	public void deleteBoard(int num);

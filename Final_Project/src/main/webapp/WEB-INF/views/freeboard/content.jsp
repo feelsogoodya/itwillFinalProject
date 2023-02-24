@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -47,7 +48,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>글쓰기</h2>
+                        <h2>글내용</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
                             <span>Contact Us</span>
@@ -65,24 +66,30 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="contact__form__title">
-                        <h2>글작성</h2>
+                        <h2>글내용</h2>
                     </div>
                 </div>
             </div>
-            <form action="${pageContext.request.contextPath }/free/writePro" method="post">
+            <form method="get">
                 <div class="row">
                 	<div class="col-lg-12 col-md-12">
-                        <input type="text" name="memberId" value="${sessionScope.memId }" readonly>
+                        <input type="text" name="subject" value="${freeboardDTO.subject }" readonly>
+                    </div>
+                	<div class="col-lg-12 col-md-12">
+                        <input type="text" value="${freeboardDTO.memberId }" readonly>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <input type="text" name="subject" placeholder="제목">
+                        <input type="text" value="${freeboardDTO.date }" readonly>
                     </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea name="content" placeholder="글내용"></textarea>
+                    <div class="col-lg-12 text-center" >
+                        <textarea name="content" readonly>${freeboardDTO.content }</textarea>
+                        <c:if test="${sessionScope.memId eq freeboardDTO.memberId }">
                         <div class="col-lg-12 col-md-12" style="text-align: right;">
-                        	<button type="submit" class="site-btn">작성하기</button>
-                        </div>
-                    </div>
+                        	<button type="button" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/update?freeboardNum=${freeboardDTO.freeboardNum}'">글수정</button>
+                       		<button type="button" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/delete?freeboardNum=${freeboardDTO.freeboardNum}'">글삭제</button>
+                    	</div>
+                    	</c:if>
+                    </div> 
                 </div>
             </form>
         </div>

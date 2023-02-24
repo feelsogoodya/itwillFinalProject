@@ -33,10 +33,11 @@ public class FreeBoardController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setSearch(request.getParameter("search"));
 		
 		List<FreeBoardDTO> boardList = boardService.getBoardList(pageDTO);
 		
-		int count = boardService.getBoardCount();
+		int count = boardService.getBoardCount(pageDTO);
 		
 		int pageBlock = 10;
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
@@ -70,6 +71,54 @@ public class FreeBoardController {
 		freeBoardDTO.setContent(request.getParameter("content"));
 		
 		boardService.insertBoard(freeBoardDTO);
+		
+		return "redirect:/free/list";
+	}
+	@RequestMapping(value = "/free/content", method = RequestMethod.GET)
+	public String content(HttpServletRequest request, Model model) {
+		
+		int freeboardNum = Integer.parseInt(request.getParameter("freeboardNum"));
+		
+		FreeBoardDTO freeBoardDTO = boardService.getBoard(freeboardNum);
+		
+		model.addAttribute("freeboardDTO", freeBoardDTO);
+		
+		return "freeboard/content";
+	}
+	
+	@RequestMapping(value = "/free/update", method = RequestMethod.GET)
+	public String update(HttpServletRequest request, Model model) {
+		
+		int freeboardNum = Integer.parseInt(request.getParameter("freeboardNum"));
+		
+		FreeBoardDTO freeBoardDTO = boardService.getBoard(freeboardNum);
+		
+		model.addAttribute("freeboardDTO", freeBoardDTO);
+		
+		return "freeboard/updateForm";
+	}
+	
+	@RequestMapping(value = "/free/updatePro", method = RequestMethod.POST)
+	public String updatePro(HttpServletRequest request, Model model) {
+		
+		FreeBoardDTO freeBoardDTO = new FreeBoardDTO();
+		freeBoardDTO.setFreeboardNum(Integer.parseInt(request.getParameter("freeboardNum")));
+		freeBoardDTO.setSubject(request.getParameter("subject"));
+		freeBoardDTO.setContent(request.getParameter("content"));
+		
+		boardService.updateBoard(freeBoardDTO);
+		
+		model.addAttribute("freeboardDTO", freeBoardDTO);
+		
+		return "redirect:/free/list";
+	}
+	
+	@RequestMapping(value = "/free/delete", method = RequestMethod.GET)
+	public String delete(HttpServletRequest request) {
+		
+		int freeboardNum = Integer.parseInt(request.getParameter("freeboardNum"));
+		
+		boardService.deleteBoard(freeboardNum);
 		
 		return "redirect:/free/list";
 	}

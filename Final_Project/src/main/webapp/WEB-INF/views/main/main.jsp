@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,7 +26,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
 </head>
-
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -37,9 +37,9 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero">
-    	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
-    </section>
+   	<jsp:include page="../../../resources/fragments/hero.jsp">
+   		<jsp:param name="categories" value="${categories}" />
+   	</jsp:include>
     <!-- Hero Section End -->
 
     <!-- Latest Product Section Begin -->

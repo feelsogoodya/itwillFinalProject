@@ -13,6 +13,7 @@ public class PageDTO {
 	private int endPage;
 	private int pageCount;
 	
+	private String search;
 	
 	public int getPageSize() {
 		return pageSize;
@@ -73,6 +74,12 @@ public class PageDTO {
 	}
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
 	}
 	
 	

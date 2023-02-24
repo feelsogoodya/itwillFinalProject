@@ -69,18 +69,19 @@
                     </div>
                 </div>
             </div>
-            <form action="${pageContext.request.contextPath }/free/writePro" method="post">
+            <form action="${pageContext.request.contextPath }/free/updatePro" method="post">
+            <input type="hidden" name="freeboardNum" value="${freeboardDTO.freeboardNum }"/>
                 <div class="row">
                 	<div class="col-lg-12 col-md-12">
-                        <input type="text" name="memberId" value="${sessionScope.memId }" readonly>
+                        <input type="text" value="${sessionScope.memberId }" readonly>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        <input type="text" name="subject" placeholder="제목">
+                        <input type="text" name="subject" value="${freeboardDTO.subject }">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea name="content" placeholder="글내용"></textarea>
+                        <textarea name="content">${freeboardDTO.content }</textarea>
                         <div class="col-lg-12 col-md-12" style="text-align: right;">
-                        	<button type="submit" class="site-btn">작성하기</button>
+                        	<button type="submit" class="site-btn">수정하기</button>
                         </div>
                     </div>
                 </div>

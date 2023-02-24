@@ -29,12 +29,13 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 
 	@Override
 	public List<FreeBoardDTO> getBoardList(PageDTO pageDTO) {
+		System.out.println(pageDTO.getSearch());
 		return sqlSession.selectList(namespace + ".getBoardList", pageDTO);
 	}
 
 	@Override
-	public int getBoardCount() {
-		return sqlSession.selectOne(namespace + ".getBoardCount");
+	public int getBoardCount(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace + ".getBoardCount", pageDTO);
 	}
 
 	@Override

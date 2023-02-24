@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwillbs.mappers.customerserviceMapper">
+  
+  <insert id="insertBoard">
+ 	insert into customerservice(cs_num,    mem_id,   mem_nname,   cs_sub,   cs_content,   cs_readcount,   cs_date,   cs_category,   cs_process,   cs_secret,  cs_file0,    cs_file1,     cs_file2) 
+	values					  (#{csNum},#{memId},#{memNname},#{csSub},#{csContent},#{csReadcount},#{csDate},#{csCategory},#{csProcess},#{csSecret},#{csFile0},#{csFile1},  #{csFile2})
+  </insert>
+  
+  <select id="getMaxNum" resultType="java.lang.Integer">
+    select max(cs_num) from customerservice
+  </select>
+ 
+  <select id="getBoardList" resultType="com.itwillbs.domain.CustomerserviceDTO">
+	select * 
+	from customerservice
+	<if test='searchText != null'>
+	where cs_sub like concat('%', #{searchText}, '%')
+	or cs_content like concat('%', #{searchText}, '%')
+	</if>
+	order by cs_num desc limit #{startRow},#{pageSize}
+  </select>
+  
+  <select id="getBoardCount" resultType="java.lang.Integer">
+  	select count(*) from customerservice
+	<if test='value != null'>
+	where cs_sub like concat('%', #{searchText}, '%')
+	or cs_content like concat('%', #{searchText}, '%')
+	</if>
+  </select>
+  
+  <update id="updateReadcount">
+  	update customerservice set cs_readcount=cs_readcount+1 where cs_num=#{num}
+  </update>
+  
+  <select id="getBoard" resultType="com.itwillbs.domain.CustomerserviceDTO">
+ 	 select * from customerservice where cs_num=#{num}
+  </select>
+  
+	<update id="boardUpdatePro"> 
+		update customerservice set 
+				cs_sub = #{csSub}, 
+				cs_content = #{csContent}, 
+				cs_category = #{csCategory}, 
+				cs_secret = #{csSecret},
+				cs_file0 = #{csFile0},
+				cs_file1 = #{csFile1},
+				cs_file2 = #{csFile2}
+		 where cs_num = #{csNum} 
+	</update>
+	
+	<delete id="Delete1"> 
+		delete from customerservice where cs_num = #{num}
+	</delete>
+	<delete id="Delete2"> 
+		delete from cs_comment where cs_num = #{num}
+	</delete>
+
+
+	
+	
+  <select id="getComBoardCount" resultType="java.lang.Integer" >
+  	select count(*) from cs_comment
+  	where cs_num = "${value}";
+  </select>
+	
+	
+	
+	
+	<select id="getCsComMaxNum" resultType="java.lang.Integer">
+ 		select count(*) as cs_com_num1
+		from cs_comment
+		where cs_num = #{csNum}
+	</select>
+ 
+ 
+ 	<insert id="insertCom">
+		insert into cs_comment(cs_num, 	 cs_com_num1,	 cs_com_num2, 	 mem_id,    mem_nname, 	 cs_com_content, 	 cs_com_date,    cs_com_file0,    cs_com_file1,		  cs_com_file2) 
+  		values				(#{csNum},#{csComNum1}, #{csComNum2} ,#{memId}, #{memNname}, #{csComContent},  #{csComDate}, #{csComFile0}, #{csComFile1},	#{csComFile2})
+  	</insert>
+  	
+  	
+  	<select id="getCsComList" resultType="com.itwillbs.domain.Cs_commentDTO">
+		select * 
+			 , CASE WHEN a.cs_com_num2 != 0  THEN ''
+											 ELSE (SELECT CASE WHEN COUNT(*) > 0 THEN 'Y'
+																				 ELSE 'N' END
+													  FROM cs_comment 
+													 WHERE CS_NUM = A.cs_num
+													   AND CS_COM_NUM1 = A.cs_COM_NUM1
+													   AND CS_COM_NUM2 != 0) 
+                                             END as cs_yn
+		 from cs_comment A
+		where cs_num = #{csNum}
+		order by cs_com_num1 desc, field(cs_com_num2, 0)desc, cs_com_num2 desc limit #{startRow},#{pageSize}
+	</select>
+	
+	
+	
+	<delete id="cs_comdelete"> 
+		delete 
+		from cs_comment 
+		where cs_num = #{csNum} 
+		and cs_com_num1 = #{csComNum1}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="getCsComComMaxNum" resultType="java.lang.Integer">
+ 		select count(*) as cs_com_num2
+		from cs_comment
+		where cs_num = #{csNum}
+		and cs_com_num1 = #{csComNum1}
+<!-- 		and cs_com_num2 = #{cs_com_num2} -->
+	</select>
+	
+	 <insert id="insertComCom">
+  		insert into cs_comment(cs_num, cs_com_num1,cs_com_num2, mem_id, mem_nname, cs_com_content, cs_com_date,     cs_com_file0,    cs_com_file1,	  cs_com_file2) 
+  		values(#{csNum},#{csComNum1},#{csComNum2}, #{memId},#{memNname},#{csComContent},#{csComDate},  #{csComFile0}, #{csComFile1},	#{csComFile2})
+  	</insert>
+  	
+  	<delete id="CsComCommdelete"> 
+		delete 
+		from cs_comment 
+		where cs_num = #{csNum} 
+		and cs_com_num1 = #{csComNum1}
+		and cs_com_num2 = #{csComNum2}
+	</delete>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	<update id="processChange"> 
+		update customerservice set cs_process = #{csProcess} where cs_num = #{csNum}
+	</update>
+  	
+  	
+	
+	
+
+  	
+  
+  
+</mapper>
+

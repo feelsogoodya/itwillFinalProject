@@ -20,7 +20,12 @@ public class ProductDAOImpl implements ProductDAO{
 	private Map<String, String> param = new HashMap<String, String>();
 	
 	private static final String namespace = "com.itwillbs.mappers.productMapper";
-
+	
+	@Override
+	public List<String> getCategories() {
+		return sqlSession.selectList(namespace+".getCategories");
+	}
+	
 	@Override
 	public List<ProductDTO> getPrdFromTheLatest() {
 		param.put("GB", "date");
@@ -56,4 +61,6 @@ public class ProductDAOImpl implements ProductDAO{
 		param.put("productSeller", (String)productMap.get("productSeller"));
 		return sqlSession.selectList(namespace + ".productInfo", param);
 	}
+
+	
 }

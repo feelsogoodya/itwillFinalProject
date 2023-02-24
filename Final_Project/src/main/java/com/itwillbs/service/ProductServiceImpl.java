@@ -17,6 +17,11 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDAO productDAO;
 
 	@Override
+	public List<String> getCategories() {
+		return productDAO.getCategories();
+	}
+	
+	@Override
 	public List<ProductDTO> getPrdFromTheLatest() {
 		return productDAO.getPrdFromTheLatest();
 	}
@@ -42,4 +47,5 @@ public class ProductServiceImpl implements ProductService{
 		System.out.println((String)productMap.get("productNum")+" : 주문번호 Service");
 		return productDAO.getSellerProduct(productMap);
 	}
+
 }

@@ -18,7 +18,7 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <c:forEach var="item" items="${categories}">
+                            <c:forEach var="item" items="${param.categories}">
 	                            <li><a href="#">${item}</a></li>
 	                        </c:forEach>
                         </ul>

@@ -7,6 +7,8 @@ import com.itwillbs.domain.ProductDTO;
 
 public interface ProductDAO {
 	
+	public List<String> getCategories();
+	
 	public List<ProductDTO> getPrdFromTheLatest();
 	
 	public List<ProductDTO> getPrdTopViews();

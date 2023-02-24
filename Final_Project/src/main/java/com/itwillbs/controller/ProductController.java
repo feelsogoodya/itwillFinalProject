@@ -26,11 +26,10 @@ public class ProductController {
 		//TODO 추후 연결 시, 수정
 //		HttpServletRequest request, String productNum = request.getParameter("productNum");
 		String productNum = "2302001";
-		System.out.println("productDetails");
 		
 		Map<String, Object> productMap = productService.getProductInfo(productNum);
 		
-		System.out.println((String)productMap.get("productNum")+" : 주문번호 Controller");
+		System.out.println((String)productMap.get("productSeller")+" : 주문번호 Controller");
 		//판매자 다른 상품 정보 가져오기
 		List<Map<String, Object>> sellerProducts = productService.getSellerProduct(productMap);
 		

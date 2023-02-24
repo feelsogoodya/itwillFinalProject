@@ -48,9 +48,12 @@ public class ProductDAOImpl implements ProductDAO{
 	public Map<String, Object> getProductInfo(String productNum) {
 		param.put("productNum", productNum);
 		param.put("productSeller", null);
+		System.out.println(productNum);
+		System.out.println(param.get("productNum"));
 		System.out.println("전달!");
-		Map<String, Object> map = sqlSession.selectOne(namespace+".productInfo", param);
-		System.out.println((String)map.get(productNum)+" 들고나왔따!");
+		Map<String, Object> map = sqlSession.selectMap(namespace+".productInfo", param, "map");
+		System.out.println("출력");
+		System.out.println((String)map.get("productNum"));
 		return map;
 	}
 

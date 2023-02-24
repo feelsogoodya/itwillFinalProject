@@ -84,7 +84,7 @@
 		                        	</c:if>
 	                        			<a href="#" class="latest-product__item">
 		                                    <div class="latest-product__item__pic">
-		                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
 		                                    </div>
 		                                    <div class="latest-product__item__text">
 		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
@@ -109,7 +109,7 @@
 	                        	</c:if>
                         			<a href="#" class="latest-product__item">
 	                                    <div class="latest-product__item__pic">
-	                                        <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+	                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
 	                                    </div>
 	                                    <div class="latest-product__item__text">
 	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>

@@ -1,5 +1,8 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.output.TaggedOutputStream;
@@ -14,6 +17,7 @@ import com.itwillbs.service.ProductService;
 @Controller
 public class ProductController {
 	
+	@Inject
 	ProductService productService;
 	
 	@RequestMapping(value = "/product/details", method = RequestMethod.GET)
@@ -30,6 +34,9 @@ public class ProductController {
 		System.out.println(productDTO.getProductContent());
 		
 		model.addAttribute("productDTO", productDTO);
+		
+		//판매자 다른 상품 정보 가져오기
+		List<ProductDTO> sellerProducts = productService.getSellerProduct(productDTO.getProductSeller());
 		
 		return "product/details";
 	}

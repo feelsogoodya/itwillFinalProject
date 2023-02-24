@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: DOWNY
+=======
+Built-By: khw64
+>>>>>>> 92318e521fbfc809add06ce4b7d85c92374109bc
 Build-Jdk: 11.0.15
 Created-By: Maven Integration for Eclipse
 

@@ -2,11 +2,99 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.itwillbs.mappers.memberMapper">
-	
-	 <select id="userCheck" resultType="MemberDTO">
-		select mem_id, mem_pass
+
+	<insert id="insertMember">
+		insert into
+		members(mem_num,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
+		values(#{memNum},#{memId},#{memPass},#{memPhone},#{memName},#{memNname},#{memEmail},#{memAddress},#{memAccount},#{memTime})
+	</insert>
+
+	<select id="userCheck"
+		resultType="com.itwillbs.domain.MemberDTO">
+		select
+		mem_num as memNum,
+		mem_id as memId,
+		mem_pass as memPass,
+		mem_phone as memPhone,
+		mem_name as memName,
+		mem_nname as memNname,
+		mem_email as memEmail,
+		mem_address as memAddress,
+		mem_account as memAccount,
+		mem_time as memTime
 		from members
 		where mem_id=#{memId} and mem_pass=#{memPass}
 	</select>
+
+	<select id="getMember"
+		resultType="com.itwillbs.domain.MemberDTO">
+		select * from members
+		where mem_id=#{memId}
+	</select>
+
+	<update id="updateMember">
+		update members
+		set mem_name=#{memName},
+			mem_pass=#{memPass},
+			mem_nname=#{memNname},
+			mem_phone=#{memPhone},
+			mem_email=#{memEmail},
+			mem_address=#{memAddress}
+		where mem_id=#{memId}
+	</update>
+
+	<delete id="deleteMember">
+		delete from members
+		where mem_id=#{memId}
+	</delete>
+
+	<select id="getMemberList"
+		resultType="com.itwillbs.domain.MemberDTO">
+		select * from members
+	</select>
+
+	<select id="memberIdSearch" parameterType="com.itwillbs.domain.MemberDTO" resultType="com.itwillbs.domain.MemberDTO">
+	<![CDATA[
+	    select
+	        *
+	    from
+	        members
+	    where
+	        mem_name = #{memName}
+	    and
+	        mem_phone = #{memPhone}
+	]]>    
+	</select>
+
+	<select id="memberPwdCheck" parameterType="com.itwillbs.domain.MemberDTO" resultType="java.lang.Integer">
+	<![CDATA[
+	    select
+	        count(*)
+	    from
+	        members
+	    where
+	        mem_name = #{memName}
+	    and
+	        mem_phone = #{memPhone}
+	    and
+	        mem_id = #{memId}
+	]]>    
+	</select>
+	 
+	    
+	<update id="passwordUpdate" parameterType="com.itwillbs.domain.MemberDTO" >
+	    UPDATE 
+	        members 
+	    SET 
+	        mem_pass = #{memPass}
+	    where
+	        mem_name = #{memName}
+	    and
+	        mem_phone = #{memPhone}
+	    and
+	        mem_id = #{memId}
+	</update>
+	
 </mapper>

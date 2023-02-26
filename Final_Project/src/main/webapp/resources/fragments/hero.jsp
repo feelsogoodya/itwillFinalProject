@@ -50,12 +50,12 @@
                     <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
                     <c:set var="truePath" value="/main/main" />
                     <c:if test="${path eq truePath}">
-	                    <div class="hero__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero/banner.jpg">
+	                    <div class="hero__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero/banner.png">
 	                        <div class="hero__text">
-	                            <span>가지마</span>
+	                            <!-- <span>가지마</span>
 	                            <h2>가지마켓 <br />가지가지</h2>
-	                            <p>중고마켓 어쩌구</p>
-	                            <a href="${pageContext.request.contextPath }/product/details" class="primary-btn">바로가기</a>
+	                            <p>중고마켓 어쩌구</p> -->
+	                            <a href="${pageContext.request.contextPath }/product/details" class="primary-btn" style="position: relative; left: 220px; top: 110px;">바로가기</a>
 	                        </div>
 	                    </div>
                     </c:if>

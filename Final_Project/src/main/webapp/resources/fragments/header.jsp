@@ -65,11 +65,11 @@
         </div>
     </div>
     <!-- Humberger End -->
-    
-<header class="header">
+   
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    
   <header class="header">
         <div class="header__top">
             <div class="container">
@@ -112,6 +112,7 @@
                 </div>
             </div>
         </div>
+        <!-- 메뉴 아래 연결 -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">

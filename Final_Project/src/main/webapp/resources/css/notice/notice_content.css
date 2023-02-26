@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.write_btn {
+	background: #ac93d8;
+	padding: 10px 30px;
+	border: none;
+	border-radius: 15px;
+	transition: transform .3s;
+	font-weight: 900;
+	color: white;
+}
+.write_btn:hover {
+	background: #987ac9;
+	transform: scale(1.05);
+}

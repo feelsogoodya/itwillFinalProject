@@ -18,4 +18,6 @@ public interface ProductService {
 	public Map<String, Object> getProductInfo(String productNum);
 	
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap);
+	
+	
 }

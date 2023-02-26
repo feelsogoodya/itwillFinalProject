@@ -72,18 +72,15 @@
                         <c:if test=""></c:if>
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/product-details-1.jpg" alt="">
+                                src="${pageContext.request.contextPath }/resources/upload/${fn:split(productMap.productPic,'|')[0]}" alt="">
                         </div>
                         <!-- 나머지 사진 -->
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-4.jpg" alt="">
+	                        <c:set var="pictures" value="${fn:split(productMap.productPic,'|')}"></c:set>
+	                        <c:forEach var="pic" items="${pictures }">
+	                        	<img data-imgbigurl="img/product/details/product-details-2.jpg"
+	                                src="${pageContext.request.contextPath }/resources/upload/${pic}" alt="">
+	                        </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -91,15 +88,15 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
+                            <!-- <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(9 좋아요)</span>
+                            <i class="fa fa-star-half-o"></i> -->
+                            <span>(좋아요 ${productMap.wishCount })</span>
                         </div>
-                        <div class="product__details__price">${productDTO.productPrice }</div>
-                        <p>${productDTO.productContent }</p>
+                        <div class="product__details__price">${productMap.productPrice }</div>
+                        <p>${productMap.productContent }</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">

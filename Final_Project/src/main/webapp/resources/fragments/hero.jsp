@@ -55,7 +55,7 @@
 	                            <!-- <span>가지마</span>
 	                            <h2>가지마켓 <br />가지가지</h2>
 	                            <p>중고마켓 어쩌구</p> -->
-	                            <a href="${pageContext.request.contextPath }/product/details" class="primary-btn" style="position: relative; left: 220px; top: 110px;">바로가기</a>
+	                            <a href="${pageContext.request.contextPath }/product/details" class="primary-btn" style="position: relative; left: 200px; top: 150px;">바로가기</a>
 	                        </div>
 	                    </div>
                     </c:if>

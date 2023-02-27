@@ -126,24 +126,26 @@
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
                             
-                            <li><a href="./shop-grid.html">Shop</a>
-                            	<ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="./shop-grid.html">전체상품</a></li>
+                            
+                            <li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
+                            
+                            <li><a href="${pageContext.request.contextPath }/notice/list">고객센터</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/notice/list">공지사항</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/customerservice/list">Q & A</a></li>
                                 </ul>
                             </li>
-                            <li><a href="${pageContext.request.contextPath }/free/list">Free</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            
+                            <li><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
+                            	<ul class="header__menu__dropdown">
+                                    <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
+                                    <li><a href="./blog-details.html">관심상품</a></li>
+                                    <li><a href="./blog-details.html">채팅목록</a></li>
+                                    <li><a href="./shoping-cart.html">판매내역</a></li>
+                                    <li><a href="./checkout.html">구매내역</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>

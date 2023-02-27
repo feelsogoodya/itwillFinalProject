@@ -16,8 +16,9 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>카테고리</span>
                         </div>
+                        <!-- 카테고리 section -->
                         <ul>
                             <c:forEach var="item" items="${sessionScope.categories}">
 	                            <li><a href="#">${item}</a></li>
@@ -33,7 +34,7 @@
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="어떤 상품을 찾으시나요?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -42,8 +43,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+                                <h5>051-803-0909</h5>
+                                <span>평일 10-18시 상담가능</span>
                             </div>
                         </div>
                     </div>

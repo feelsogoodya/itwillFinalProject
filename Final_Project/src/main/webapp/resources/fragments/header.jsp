@@ -70,6 +70,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     
+  <!-- Header Begin -->
   <header class="header">
         <div class="header__top">
             <div class="container">
@@ -77,8 +78,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> gajimarket@secondhand.com</li>
+                                <li>중고거래 편하고 쉽게 집에서 즐겨보세요</li>
                             </ul>
                         </div>
                     </div>
@@ -124,6 +125,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
+                            
                             <li><a href="./shop-grid.html">Shop</a>
                             	<ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>

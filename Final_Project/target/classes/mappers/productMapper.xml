@@ -55,4 +55,15 @@
 		WHERE product_num = #{productNum1}
 	</select>
 	
+		<select id="getSellList"
+		resultType="com.itwillbs.domain.ProductDTO">
+		select * from product where product_seller= #{sellmemId}
+		order by product_date desc
+	</select>
+
+  <select id="getSellCount" resultType="java.lang.Integer">
+  	select count(*) from product
+  </select>
+	
+	
 </mapper>

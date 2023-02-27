@@ -2,6 +2,7 @@ package com.itwillbs.service;
 
 import java.util.List;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ProductDTO;
 
 public interface ProductService {
@@ -15,4 +16,8 @@ public interface ProductService {
 	public ProductDTO getProductInfo(String productNum);
 	
 	public List<ProductDTO> getSellerProduct(String productSeller);
+	
+	public List<ProductDTO> getSellList(PageDTO pageDTO );
+	
+	public int getSellCount();
 }

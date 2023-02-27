@@ -8,7 +8,14 @@ public class BuyListDTO {
 	private String prodPic;
 	private int prodPrice;
 	private String buyDate;
+	private String prodSeller;
 	
+	public String getProdSeller() {
+		return prodSeller;
+	}
+	public void setProdSeller(String prodSeller) {
+		this.prodSeller = prodSeller;
+	}
 	public int getBuyNum() {
 		return buyNum;
 	}

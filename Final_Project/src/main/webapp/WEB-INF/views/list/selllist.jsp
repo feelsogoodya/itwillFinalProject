@@ -4,9 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>list/selllist.jsp</title>
-<link href="../resources/css/admin.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>가지마켓:selllist</title>
+    
+     <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/admin.css" type="text/css">
+</head>
+
 <style type="text/css">
 
 table {
@@ -29,10 +48,13 @@ font-size: 50px;
 
 
 <body>
-<div class="sell-title">${sessionScope.memberId}님의 판매내역</div>
+    <!-- Header Section Begin -->
+    <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
+    <!-- Header Section End -->
+<div class="sell-title">${sessionScope.memId}님의 판매내역</div>
 
 <div class="main" style=" padding-left: 100px;">
-<input type="hidden" name="sellmemId" value="${sessionScope.memberId}">
+<input type="hidden" name="sellmemId" value="${sessionScope.memId}">
 <a href="${pageContext.request.contextPath }/">메인페이지</a><br>
 <a href="${pageContext.request.contextPath }/sell/판매페이지">판매하기</a><br>
 <%-- <div>나의 매너온도: ${reviewDTO.revTotalscore}</div> --%>
@@ -46,15 +68,15 @@ font-size: 50px;
                <th>이미지</th>
                <th>상품명</th>
                <th>금액</th>
-               <th>상태</th>
+<!--                <th>상태</th> -->
            </tr>
          <c:forEach var="dto" items="${sellList}">
                  <tr class="KOTRA-fontsize-90">
-                    <td>${dto.sellDate}</td> 
-                    <td>${dto.prodPic}</td>
-                    <td>${dto.prodName}</td>
-                    <td>${dto.prodPrice}</td>
-                     <td>${dto.prodStatus}</td>
+                    <td>${dto.productDate}</td> 
+                    <td>${dto.productPic}</td>
+                    <td>${dto.productTitle}</td>
+                    <td>${dto.productPrice}</td>
+<%--                      <td>${dto.prodStatus}</td> --%>
                     <td>
                        <input type="hidden" name="sellmemId" value="${sessionScope.memberId}">
                     </td>
@@ -78,8 +100,18 @@ font-size: 50px;
 </c:if>
 
 
+    <!-- Footer Section Begin -->
+    <%@include file = "/resources/fragments/footer.jsp" %>
+    <!-- Footer Section End -->
 
-
+    <!-- Js Plugins -->
+    <script src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/jquery.nice-select.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/jquery-ui.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/jquery.slicknav.js"/>"></script>
+    <script src="<c:url value ="/resources/js/mixitup.min.js"/>"></script>
+    <script src="<c:url value ="/resources/js/owl.carousel.min.js"/>"></script>
 
 
 </body>

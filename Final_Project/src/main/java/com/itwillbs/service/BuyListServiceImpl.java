@@ -17,18 +17,18 @@ public class BuyListServiceImpl implements BuyListService{
 	private BuyListDAO buyListDAO;
 
 	@Override
-	public List<BuyListDTO> getbuyList(PageDTO dto) {
+	public List<BuyListDTO> getbuyList(PageDTO pageDTO) {
 		
 		// startRow 구하기
-		int startRow=(dto.getCurrentPage()-1)*dto.getPageSize()+1;
+		int startRow=(pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1;
 		// endRow 구하기
-		int endRow=startRow+dto.getPageSize()-1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
 		
 		// 디비 limit startRow-1 
-		dto.setStartRow(startRow-1);
-		dto.setEndRow(endRow);
+		pageDTO.setStartRow(startRow-1);
+		pageDTO.setEndRow(endRow);
 		
-		return buyListDAO.getbuyList(dto);
+		return buyListDAO.getbuyList(pageDTO);
 	}
 
 	@Override

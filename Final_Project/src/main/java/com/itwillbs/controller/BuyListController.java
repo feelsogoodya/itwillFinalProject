@@ -56,16 +56,18 @@ public class BuyListController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
-		pageDTO.setBuymemId((String)session.getAttribute("memberId"));
+		pageDTO.setBuymemId((String)session.getAttribute("memId"));
+		System.out.println("세션 아이디:"+(String)session.getAttribute("memId"));
 		// 디비작업 메서드 호출
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 		// List<BoardDTO> boardList =dao.getBoardList(dto);
 		List<BuyListDTO> buyList= buyListService.getbuyList(pageDTO);
-		
+		System.out.println("@@@@@@@@@@@@@@@@@@@");
 		//페이징 작업
 		// 전체 게시판 글의 개수 가져오기
 		// select count(*) from board  
 		int count=buyListService.getBuyCount();
+		System.out.println("여기여기");
 		int pageBlock=10; 
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;

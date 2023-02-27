@@ -1,5 +1,8 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,10 +25,13 @@ public class WishController {
 	public String productDetails(HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession();
-//		String name = session.getId();
-		String name = "spring";
+		//TODO 추후 수정
+//		String memberId = session.getId();
+		String memberId = "spring";
 		
+		List<Map<String, Object>> wishMapList = wishService.getWishList(memberId);
 		
+		model.addAttribute("wishMapList", wishMapList);
 		
 		return "wish/wishList";
 	}

@@ -5,7 +5,7 @@
 <mapper namespace="com.itwillbs.mappers.productMapper">
 
 	<select id="getCategories" resultType="String">
-		SELECT product_cat
+		SELECT product_cate
 		FROM categories
 	</select>
 	

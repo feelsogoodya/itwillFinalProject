@@ -20,9 +20,8 @@ public class WishDAOImpl implements WishDAO{
 	private static final String namespace = "com.itwillbs.mappers.wishMapper";
 
 	@Override
-	public List<Map<String, Object>> getWishList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map<String, Object>> getWishList(String memberId) {
+		return sqlSession.selectList(namespace+".getMyWish", memberId);
 	}
 
 }

@@ -12,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>관심 목록</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -138,43 +138,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="${pageContext.request.contextPath }/resources/img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $55.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <h5>5</h5>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        <h5>100</h5>
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
+                            
+                            <c:if test="${empty wishMapList }">
+                            	<tr>
+                            		<td>
+                                		<h5>관심있는 상품이 없습니다.</h5>
+                                	</td>
+                            	</tr>
+                            </c:if>
                                 
+                            <c:forEach var="map" items="${wishMapList }">
                                 <tr>
+                                
                                     <td class="shoping__cart__item">
-                                        <img src="${pageContext.request.contextPath }/resources/img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(map.productPic,'|')[0]}" alt="">
+                                        <h5>${map.productTitle }</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                        ${map.productPrice }
                                     </td>
                                     <td class="shoping__cart__quantity">
-                                        <h5>5</h5>
+                                        <h5>${map.productGrade }</h5>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        <h5>100</h5>
+                                        <h5>${map.wishCount }</h5>
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
                                     </td>
                                 </tr>
+                            </c:forEach>    
                             </tbody>
                         </table>
                     </div>

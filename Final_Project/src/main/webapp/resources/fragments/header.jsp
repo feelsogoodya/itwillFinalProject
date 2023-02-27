@@ -140,7 +140,7 @@
                             <li><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
                             	<ul class="header__menu__dropdown">
                                     <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
-                                    <li><a href="./blog-details.html">관심상품</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
                                     <li><a href="./blog-details.html">채팅목록</a></li>
                                     <li><a href="./shoping-cart.html">판매내역</a></li>
                                     <li><a href="./checkout.html">구매내역</a></li>

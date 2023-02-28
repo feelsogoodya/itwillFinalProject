@@ -16,7 +16,7 @@
 
 
 <h1>구매완료</h1>
-<h2>${memberId}님! 구매가 완료 되었습니다!</h2>
+<h2>${sessionScope.memId}님! 구매가 완료 되었습니다!</h2>
 
 <input type="button" class="goBuylist" id="goBuylist" value="구매 리스트로 이동하기 " 
 			onclick="location.href='${pageContext.request.contextPath}/list/buylist'" >

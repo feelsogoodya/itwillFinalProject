@@ -22,6 +22,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		sqlSession.insert(namespace+".insertReview", reviewDTO);
 		
 	}
+
+	@Override
+	public ReviewDTO getReviewer(String reviewer) {
+		
+		return sqlSession.selectOne(namespace+".getReviewer", reviewer);
+	}
 	
 
 	

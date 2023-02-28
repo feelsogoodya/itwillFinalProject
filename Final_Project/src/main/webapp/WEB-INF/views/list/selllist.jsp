@@ -44,7 +44,7 @@ text-align: center;
 font-size: 50px;
 }
 </style>
-</head>
+
 
 
 <body>
@@ -68,7 +68,8 @@ font-size: 50px;
                <th>이미지</th>
                <th>상품명</th>
                <th>금액</th>
-<!--                <th>상태</th> -->
+               <th>상태</th>
+               <th></th>
            </tr>
          <c:forEach var="dto" items="${sellList}">
                  <tr class="KOTRA-fontsize-90">
@@ -76,10 +77,8 @@ font-size: 50px;
                     <td>${dto.productPic}</td>
                     <td>${dto.productTitle}</td>
                     <td>${dto.productPrice}</td>
-<%--                      <td>${dto.prodStatus}</td> --%>
-                    <td>
-                       <input type="hidden" name="sellmemId" value="${sessionScope.memberId}">
-                    </td>
+                     <td>${dto.productStatus}</td>
+                     <td><input type="button" value="거래후기 보기" class="showreview"onclick="openPop()"></td>
                  </tr>
            </c:forEach>
         </tbody>
@@ -112,6 +111,17 @@ font-size: 50px;
     <script src="<c:url value ="/resources/js/jquery.slicknav.js"/>"></script>
     <script src="<c:url value ="/resources/js/mixitup.min.js"/>"></script>
     <script src="<c:url value ="/resources/js/owl.carousel.min.js"/>"></script>
+
+
+<script type="text/javascript">
+
+function  openPop() {
+	var showReviewpopup = window.open(
+		"${pageContext.request.contextPath}/review/showreview","거래후기","width=500,height=500,top=100,left=100");
+
+}
+
+</script>
 
 
 </body>

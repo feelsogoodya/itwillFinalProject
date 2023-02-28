@@ -18,13 +18,17 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		
 		if(reviewDTO.getRevTotalscore() == 0) {
-			reviewDTO.setRevTotalscore(50);
+			reviewDTO.setRevTotalscore(30);
 		} 
 		
 		reviewDAO.insertReview(reviewDTO);
+
+	}
+
+	@Override
+	public ReviewDTO getReviewer(String reviewer) {
 		
-		
-		
+		return reviewDAO.getReviewer(reviewer);
 	}
 
 }

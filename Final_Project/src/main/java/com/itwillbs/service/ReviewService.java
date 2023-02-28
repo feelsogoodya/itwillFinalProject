@@ -6,6 +6,7 @@ public interface ReviewService {
 
 	public void insertReview(ReviewDTO reviewDTO);
 	
+	public ReviewDTO getReviewer(String reviewer); 
 	
 	
 }

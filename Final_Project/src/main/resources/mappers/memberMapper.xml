@@ -7,8 +7,8 @@
 
 	<insert id="insertMember">
 		insert into
-		members(mem_num,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
-		values(#{memNum},#{memId},#{memPass},#{memPhone},#{memName},#{memNname},#{memEmail},#{memAddress},#{memAccount},#{memTime})
+		members(mem_num,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_time)
+		values(#{memNum},#{memId},#{memPass},#{memPhone},#{memName},#{memNname},#{memEmail},#{memAddress},#{memTime})
 	</insert>
 
 	<select id="userCheck"
@@ -22,7 +22,6 @@
 		mem_nname as memNname,
 		mem_email as memEmail,
 		mem_address as memAddress,
-		mem_account as memAccount,
 		mem_time as memTime
 		from members
 		where mem_id=#{memId} and mem_pass=#{memPass}

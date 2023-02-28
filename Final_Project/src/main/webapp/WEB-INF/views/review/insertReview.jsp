@@ -49,8 +49,8 @@
 			<div class="modal-content">
 			
 
-				<input type="hidden" name="reviewee" value="${sessionScope.productSeller}" id="reviewee">
-				<input type="hidden" name="reviewer" value="${sessionScope.memId}" id="reviewer">
+				<input type="hidden" name="reviewee" value="${sessionScope.memId}" id="reviewee">
+				<input type="hidden" name="reviewer" value="${sessionScope.productSeller}" id="reviewer">
 
 				<div class="modal-title"></div>
 
@@ -65,12 +65,12 @@
 							id="soso" class="review_img_soso review"><br> 좋아요</div>
 					<div class="img_style">
 						<img src="${pageContext.request.contextPath }/resources/img/review/good.png"
-							id="good" class="review_img_good review"><br> 최고예요</div>
+							id="good" class="review_img_good review" ><br> 최고예요</div>
 				</fieldset>
-			</div>
+			</div >
 			
 			<br>
-			
+			<input type="hidden" name="revCate" value="" id="revCate">
 			<div name="contentCk">
 			<div class="badCk" style="display: none;">
 				<label for="termCheck">
@@ -196,10 +196,16 @@ function reviewClick(){
 		var name = '.' + item.id + 'Ck';
 	    if(item.id == id){
 	    	$(name).css('display', 'block');
+	    	$('#revCate').val(id);
 	    } else {
 	    	$(name).css('display', 'none');
 	    }
 	});
+	
+	
+	
+	
+	
 }
 // $(document).ready(function() {
 // 	$('.review_img_bad').click( function () {

@@ -63,11 +63,11 @@ font-size: 50px;
   <table  class="rwd-table">
          <tbody>
            <tr class="color_menu">
-			<tr><td>구매일</td>
-			<td>이미지</td>
-			<td>상품명</td>
-			<td>금액</td>
-			<td></td>
+			<th>구매일</th>
+			<th>이미지</th>
+			<th>상품명</th>
+			<th>금액</th>
+			<th></th>
            </tr>
     <c:forEach var="dto" items="${buyList}">
     <%System.out.println("jsp 동작! 222222");  %>
@@ -96,15 +96,12 @@ font-size: 50px;
 </c:if>
 
 
-    <!-- Footer Section Begin -->
+
+
+
+   <!-- Footer Section Begin -->
     <%@include file = "/resources/fragments/footer.jsp" %>
     <!-- Footer Section End -->
-
-
-
-
-
-
 
 
     <!-- Js Plugins -->

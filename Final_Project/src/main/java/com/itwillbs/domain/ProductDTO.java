@@ -14,8 +14,14 @@ public class ProductDTO {
 	private String productPic;
 	private int productReadcount;
 	private Timestamp productDate;
+	private String productStatus;
 	
-	
+	public String getProductStatus() {
+		return productStatus;
+	}
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
+	}
 	public int getProductNum() {
 		return productNum;
 	}

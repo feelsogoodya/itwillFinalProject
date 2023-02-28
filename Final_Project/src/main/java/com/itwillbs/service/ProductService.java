@@ -19,5 +19,5 @@ public interface ProductService {
 	
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap);
 	
-	
+	public void insertProduct(ProductDTO productDTO);
 }

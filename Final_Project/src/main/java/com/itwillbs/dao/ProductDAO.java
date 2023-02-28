@@ -18,4 +18,8 @@ public interface ProductDAO {
 	public Map<String, Object> getProductInfo(String productNum);
 	
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap);
+	
+	public void insertProduct(ProductDTO productDTO);
+	
+	public Integer getMaxNum();
 }

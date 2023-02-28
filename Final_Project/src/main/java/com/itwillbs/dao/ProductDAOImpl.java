@@ -58,5 +58,15 @@ public class ProductDAOImpl implements ProductDAO{
 		return sqlSession.selectList(namespace + ".productInfo", param);
 	}
 
+	@Override
+	public void insertProduct(ProductDTO productDTO) {
+		sqlSession.insert(namespace+".insertProduct", productDTO);
+	}
+	
+	@Override
+	public Integer getMaxNum() {
+		return sqlSession.selectOne(namespace+".getMaxNum");
+	}
+	
 	
 }

@@ -81,15 +81,26 @@
                     <div class="col-lg-12 col-md-12">
                         <input type="text" value="${freeboardDTO.date }" readonly>
                     </div>
-                    <div class="col-lg-12 text-center" >
+                    <div class="col-lg-12 text-center">
                         <textarea name="content" readonly>${freeboardDTO.content }</textarea>
-                        <c:if test="${sessionScope.memId eq freeboardDTO.memberId }">
-                        <div class="col-lg-12 col-md-12" style="text-align: right;">
-                        	<button type="button" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/update?freeboardNum=${freeboardDTO.freeboardNum}'">글수정</button>
-                       		<button type="button" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/delete?freeboardNum=${freeboardDTO.freeboardNum}'">글삭제</button>
-                    	</div>
+                        <c:if test="${sessionScope.memId eq freeboardDTO.memberId}">
+	                        <div class="col-lg-12 col-md-12" style="text-align: right;">
+	                        	<button type="button" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/update?freeboardNum=${freeboardDTO.freeboardNum}'">글수정</button>
+	                       		<button type="button" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/delete?freeboardNum=${freeboardDTO.freeboardNum}'">글삭제</button>
+	                    	</div>
                     	</c:if>
-                    </div> 
+                    	<div class="col-lg-12">
+                    		<div class="shoping__checkout" style="text-align: left;">
+                        		<h5>댓글</h5>
+                        		<ul id="commList">
+                        		</ul>
+                    		</div>
+               			</div>
+               			<div class="col-lg-12">
+	                    	<input type="text" id="comm" placeholder="댓글을 입력하세요">
+	                    	<button type="button" class="site-btn" onclick="writeComm()">댓글쓰기</button>
+                    	</div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -101,6 +112,7 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script>
@@ -110,5 +122,46 @@
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 </body>
-
+    <script type="text/javascript">
+    
+    	function writeComm() {
+    		if('${sessionScope.memId}' === '') alert("로그인 후 이용할 수 있습니다.");
+    		else if($('#comm').val() === '') alert("댓글내용을 입력해주세요.");
+    		else {
+	    		$.ajax({
+	    			url : "${pageContext.request.contextPath}/free/incomm",
+	    			type : "POST",
+	    			data : {
+	    				freeboardNum : '${freeboardDTO.freeboardNum }',
+	    				memberId : '${sessionScope.memId}',
+	    				content: $('#comm').val()
+	    			},
+	    			success : function() {
+	    				$('#comm').val('');
+	    				getComm();
+	    			}
+	    		});
+			}
+    	}
+    	function getComm() {
+    		$.ajax({
+    			url : "${pageContext.request.contextPath}/free/comm",
+    			type : "POST",
+    			data : {
+    				freeboardNum : '${freeboardDTO.freeboardNum }'
+    			},
+    			success : function(data) {
+    				$('#commList').empty();
+    				if(data == null) $('#commList').append("<li>" + "댓글이 없습니다." + "</li>");
+    				else {
+	    				$(data).each(function() {
+	    					$('#commList').append("<li>" + this.memberId + "<br>" + this.content + "</li>");
+	    				});
+    				}
+    			}
+    		});
+		}
+    	$("#comm").keyup(function(e){if(e.keyCode == 13)  writeComm(); });
+    	getComm();
+    </script>
 </html>

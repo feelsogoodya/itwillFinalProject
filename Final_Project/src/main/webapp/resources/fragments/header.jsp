@@ -11,7 +11,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
+            <a href="${pageContext.request.contextPath }/main/main"><img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -65,11 +65,12 @@
         </div>
     </div>
     <!-- Humberger End -->
-    
-<header class="header">
+   
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    
+  <!-- Header Begin -->
   <header class="header">
         <div class="header__top">
             <div class="container">
@@ -77,8 +78,8 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> gajimarket@secondhand.com</li>
+                                <li>중고거래 편하고 쉽게 집에서 즐겨보세요</li>
                             </ul>
                         </div>
                     </div>
@@ -112,35 +113,39 @@
                 </div>
             </div>
         </div>
+        <!-- 메뉴 아래 연결 -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="${pageContext.request.contextPath }/main/main"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
+                        <a href="${pageContext.request.contextPath }/main/main"><img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a>
-                            	<ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
+                            
+                            <li><a href="./shop-grid.html">전체상품</a></li>
+                            
+                            <li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
+                            
+                            <li><a href="${pageContext.request.contextPath }/notice/list">고객센터</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/notice/list">공지사항</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/customerservice/list">Q & A</a></li>
                                 </ul>
                             </li>
-                            <li><a href="${pageContext.request.contextPath }/free/list">Free</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            
+                            <li><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
+                            	<ul class="header__menu__dropdown">
+                                    <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
+                                    <li><a href="javascript:chatList();">채팅목록</a></li>
+                                    <li><a href="./shoping-cart.html">판매내역</a></li>
+                                    <li><a href="./checkout.html">구매내역</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -162,5 +167,11 @@
     </header>
 </head>
 <body>
+<script type="text/javascript">
+	function chatList() {
+		if('${sessionScope.memId}' === '') alert('로그인 후 사용할 수 있습니다.');
+		else window.open('${pageContext.request.contextPath }/chat/list', 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+	}
+</script>
 </body>
 </html>

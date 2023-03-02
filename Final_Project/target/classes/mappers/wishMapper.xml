@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwillbs.mappers.wishMapper">
+
+	
+	<resultMap type="map" id="wishMap">
+		<id column="product_num" property="productNum"/>
+		<result column="product_seller" property="productSeller"/>
+		<result column="product_title" property="productTitle"/>
+		<result column="product_price" property="productPrice"/>
+		<result column="product_grade" property="productGrade"/>
+		<result column="product_pic" property="productPic"/>
+		<result column="mem_nname" property="memNname"/>
+		<result column="wish_count" property="wishCount"/>
+	</resultMap>
+	
+	<select id="getMyWish" resultMap="wishMap">
+	
+  		
+	</select>
+
+</mapper>

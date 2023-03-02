@@ -16,8 +16,9 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>카테고리</span>
                         </div>
+                        <!-- 카테고리 section -->
                         <ul>
                             <c:forEach var="item" items="${sessionScope.categories}">
 	                            <li><a href="#">${item}</a></li>
@@ -33,7 +34,7 @@
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="어떤 상품을 찾으시나요?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -42,20 +43,20 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+                                <h5>051-803-0909</h5>
+                                <span>평일 10-18시 상담가능</span>
                             </div>
                         </div>
                     </div>
                     <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
                     <c:set var="truePath" value="/main/main" />
                     <c:if test="${path eq truePath}">
-	                    <div class="hero__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero/banner.jpg">
+	                    <div class="hero__item set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero/banner.png">
 	                        <div class="hero__text">
-	                            <span>가지마</span>
+	                            <!-- <span>가지마</span>
 	                            <h2>가지마켓 <br />가지가지</h2>
-	                            <p>중고마켓 어쩌구</p>
-	                            <a href="${pageContext.request.contextPath }/product/details" class="primary-btn">바로가기</a>
+	                            <p>중고마켓 어쩌구</p> -->
+	                            <a href="${pageContext.request.contextPath }/product/details" class="primary-btn" style="position: relative; left: 200px; top: 150px;">바로가기</a>
 	                        </div>
 	                    </div>
                     </c:if>

@@ -21,11 +21,11 @@ public class ProductController {
 	@RequestMapping(value = "/product/details", method = RequestMethod.GET)
 	public String productDetails(Model model) {
 		//TODO 추후 연결 시, 수정
+		//선택한 상품의 정보 가져오기
 //		HttpServletRequest request, String productNum = request.getParameter("productNum");
 		String productNum = "2302004";
-		
 		Map<String, Object> productMap = productService.getProductInfo(productNum);
-		System.out.println(productMap.get("memNname"));
+		
 		
 		//판매자 다른 상품 정보 가져오기
 		List<Map<String, Object>> sellerProducts = productService.getSellerProduct(productMap);

@@ -72,18 +72,15 @@
                         <c:if test=""></c:if>
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/product-details-1.jpg" alt="">
+                                src="${pageContext.request.contextPath }/resources/upload/${fn:split(productMap.productPic,'|')[0]}" alt="">
                         </div>
                         <!-- 나머지 사진 -->
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="${pageContext.request.contextPath }/resources/img/product/details/thumb-4.jpg" alt="">
+	                        <c:set var="pictures" value="${fn:split(productMap.productPic,'|')}"></c:set>
+	                        <c:forEach var="pic" items="${pictures }">
+	                        	<img data-imgbigurl="img/product/details/product-details-2.jpg"
+	                                src="${pageContext.request.contextPath }/resources/upload/${pic}" alt="">
+	                        </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -91,15 +88,15 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
+                            <!-- <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(9 좋아요)</span>
+                            <i class="fa fa-star-half-o"></i> -->
+                            <span>(좋아요 ${productMap.wishCount })</span>
                         </div>
-                        <div class="product__details__price">${productDTO.productPrice }</div>
-                        <p>${productDTO.productContent }</p>
+                        <div class="product__details__price">${productMap.productPrice }</div>
+                        <p>${productMap.productContent }</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -107,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">채팅하기</a>
+                        <button class="primary-btn" onclick="createRoom()">채팅하기</button>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
@@ -208,7 +205,7 @@
     <!-- Footer Section Begin -->
     <jsp:include page="../../../resources/fragments/footer.jsp"></jsp:include>
     <!-- Footer Section End -->
-
+	
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
@@ -218,8 +215,32 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-
-
+	<script type="text/javascript">
+	function createRoom() {
+		console.log('${productMap.productNum}');
+		console.log('${sessionScope.memId}');
+		console.log('${productMap.productSeller}');
+		if('${sessionScope.memId}' === '') {
+			alert('로그인 후 사용할 수 있습니다.');
+		} else {
+			$.ajax({
+				url : "${pageContext.request.contextPath }/chat/room",
+				type : "POST",
+				data : {
+					productNum : '${productMap.productNum}',
+					memberId : '${sessionScope.memId}',
+					seller : '${productMap.productSeller}'
+				},
+				success : function(response) {
+					window.open('${pageContext.request.contextPath }' + response, 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			      }
+			});
+		}
+	}
+	</script>
 </body>
 
 </html>

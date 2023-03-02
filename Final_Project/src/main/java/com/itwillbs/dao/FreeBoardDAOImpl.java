@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.FreeBoardCommDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -51,6 +52,22 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 	@Override
 	public void deleteBoard(int num) {
 		sqlSession.delete(namespace + ".delete", num);
+	}
+
+	@Override
+	public List<FreeBoardCommDTO> getCommList(int freeboardNum) {
+		return sqlSession.selectList(namespace + ".getCommList", freeboardNum);
+	}
+
+	@Override
+	public void insertComm(FreeBoardCommDTO freeBoardCommDTO) {
+		sqlSession.insert(namespace + ".insertComm", freeBoardCommDTO);
+	}
+	
+	@Override
+	public Integer getMaxCommNum() {
+		System.out.println("maxComm");
+		return sqlSession.selectOne(namespace + ".getMaxCommNum");
 	}
 	
 }

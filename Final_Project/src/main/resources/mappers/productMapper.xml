@@ -5,7 +5,7 @@
 <mapper namespace="com.itwillbs.mappers.productMapper">
 
 	<select id="getCategories" resultType="String">
-		SELECT product_cat
+		SELECT product_cate
 		FROM categories
 	</select>
 	
@@ -59,6 +59,7 @@
 		<result column="product_readcount" property="productReadcount"/>
 		<result column="product_date" property="productDate"/>
 		<result column="mem_nname" property="memNname"/>
+		<result column="wish_count" property="wishCount"/>
 	</resultMap>
 	
 	<select id="productInfo" resultMap="productMap" parameterType="hashMap">
@@ -78,18 +79,23 @@
 				  ,p.product_readcount as "product_readcount"
 				  ,p.product_date as "product_date"
 				  ,m.mem_nname as "mem_nname"
+				  <if test='productSeller == null'>
+				  ,count(w.product_num) as "wish_count"
+	  			  </if>
 			FROM product p join members m
 			on (p.product_seller = m.mem_id)
 			<if test='productSeller == null'>
-	    	WHERE product_num = CAST(#{productNum} AS decimal(7,0))
+			left join wish w
+            on (w.product_num = p.product_num)
+	    	WHERE p.product_num = CAST(#{productNum} AS decimal(7,0))
 	  		</if>
   		<if test='productSeller != null'>
-    	WHERE product_seller = #{productSeller}
-    	AND product_num NOT IN (CAST(#{productNum} AS decimal(7,0)))
-    	ORDER BY product_date DESC) A
+    	WHERE p.product_seller = #{productSeller}
+    	AND p.product_num NOT IN (CAST(#{productNum} AS decimal(7,0)))
+    	ORDER BY p.product_date DESC) A
     	LIMIT 4
   		</if>
   		
 	</select>
-	
+
 </mapper>

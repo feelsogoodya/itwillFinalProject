@@ -16,7 +16,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 부산광역시 부산진구 동천로 109 삼한골든게이트빌딩</li>

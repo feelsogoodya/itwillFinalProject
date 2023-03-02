@@ -50,7 +50,8 @@
 			
 
 				<input type="hidden" name="reviewee" value="${sessionScope.memId}" id="reviewee">
-				<input type="hidden" name="reviewer" value="${sessionScope.productSeller}" id="reviewer">
+				<input type="hidden" name="reviewer" value="${sessionScope.memId}" id="reviewer">
+<%-- 				<input type="hidden" name="productNum" value="${sessionScope.productNum}" id="productNum">  --%>
 
 				<div class="modal-title"></div>
 
@@ -71,6 +72,7 @@
 			
 			<br>
 			<input type="hidden" name="revCate" value="" id="revCate">
+			
 			<div name="contentCk">
 			<div class="badCk" style="display: none;">
 				<label for="termCheck">
@@ -154,7 +156,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.6.3.js"></script>
 <script type="text/javascript">
-
+//
 $(document).ready(function() { 
 	 $('form').submit(function(event) {
 		 event.preventDefault(); // 기본 동작 방지
@@ -165,7 +167,7 @@ $(document).ready(function() {
 		        url: '${pageContext.request.contextPath }/review/insertReview', // 서버 URL
 		        data: formData, // 전송할 데이터
 		        success: function(response) {
-		        	alert('성공');
+		        	alert('후기가 상대방의 매너점수에 반영됩니다');
 		          // 성공시 처리할 코드
 		          window.close();
 		        },
@@ -185,10 +187,13 @@ $(document).ready(function() {
 		});
 	 $('.review').click(reviewClick)	
 	 
-	});
+	 
+	 
+	});//
+	
 
 
-
+//
 function reviewClick(){
 	var id = this.id;	// bad, soso, good
 	
@@ -201,12 +206,10 @@ function reviewClick(){
 	    	$(name).css('display', 'none');
 	    }
 	});
-	
-	
-	
-	
-	
-}
+}//
+
+
+
 // $(document).ready(function() {
 // 	$('.review_img_bad').click( function () {
 // 		$('.badCk').css({	"display":"block" });
@@ -227,9 +230,6 @@ function reviewClick(){
 // 	});
 	
 // });
-
-
-
 
 
 </script>

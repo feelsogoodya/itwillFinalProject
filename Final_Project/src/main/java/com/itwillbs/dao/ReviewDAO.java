@@ -8,4 +8,6 @@ public interface ReviewDAO {
 		
 	public ReviewDTO getReviewer(String reviewer); 
 	
+	public void updateReview(ReviewDTO reviewDTO);
+	
 }

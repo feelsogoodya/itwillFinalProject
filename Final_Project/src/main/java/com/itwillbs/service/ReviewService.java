@@ -8,5 +8,6 @@ public interface ReviewService {
 	
 	public ReviewDTO getReviewer(String reviewer); 
 	
+	public void updateReview(ReviewDTO reviewDTO);
 	
 }

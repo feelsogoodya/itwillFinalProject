@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.ReviewDTO;
 import com.itwillbs.service.MemberService;
 import com.itwillbs.service.MemberServiceImpl;
+import com.itwillbs.service.ReviewService;
 
 
 @Controller
@@ -26,6 +28,8 @@ public class MemberController {
 
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private ReviewService reviewService;
 
 	@RequestMapping(value = "/member/insert", method = RequestMethod.GET)
 	public String insert() {
@@ -139,10 +143,19 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
-	public String mypage(HttpSession session, Model model) {
+	public String mypage(HttpSession session, Model model, ReviewDTO reviewDTO) {
 		String memId = (String) session.getAttribute("memId");
+		
+//		session.setAttribute("revTotalscore", reviewDTO.getRevTotalscore());
+		
+		
 		MemberDTO dto = memberService.getMember(memId);
+		
+		reviewDTO =reviewService.getReviewer(memId);
+		
 		model.addAttribute("dto", dto);
+		model.addAttribute("reviewDTO",reviewDTO);
+		System.out.println("reviewDTO: "+ reviewDTO.getRevTotal());
 		return "member/mypage";
 	}
 	

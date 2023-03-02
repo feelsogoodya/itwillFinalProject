@@ -8,19 +8,17 @@
 	
 
 	<insert id="insertReview">
-		insert into revscore(reviewer, rev_score, rev_totalscore)
-		values(#{reviewer}, #{revScore} , #{revTotalscore})
+		insert into revscore(reviewer, rev_score, rev_total, rev_cate)
+		values(#{reviewer}, #{revScore} , #{revTotal}, #{revCate})
 	</insert>
 	
-	<update id="updateTotalscore">
-		update review set rev_totalscore = #{revScore} + rev_totalscore
-		where reviewee = #{reviewee}
+	<update id="updateReview">
+		update revscore set rev_total = #{revScore} + rev_total
+		, rev_score=#{revScore}
+		,rev_cate=#{revCate}
+		where reviewer = #{reviewer}
 	</update>
 
-	<!-- <select id="updateScore" resultType="java.lang.Integer"> -->
-	<!-- update review set rev_total = rev_score+rev_totalscore -->
-	<!-- where reviewee = #{reviewee} -->
-	<!-- </select> -->
 	
 	<select id="getReviewer" resultType="com.itwillbs.domain.ReviewDTO">
 		select * from revscore where reviewer = #{reviewer}

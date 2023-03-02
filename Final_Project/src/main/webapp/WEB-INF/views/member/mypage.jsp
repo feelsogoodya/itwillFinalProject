@@ -165,6 +165,7 @@
 											<div class="myname">
 												<div class="name_text">${dto.memNname }</div>
 												<div class="myaddress">${dto.memId }</div>
+												<div class="myreviewscore">나의 거래점수: 	${reviewDTO.revTotal}</div>
 												<!--                             <button type="button" class="btn_edit" onclick="changeName()"> -->
 												<!--                                 <span class="text">수정</span> -->
 												<!--                             </button> -->

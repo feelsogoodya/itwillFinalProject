@@ -17,8 +17,8 @@ public class ReviewServiceImpl implements ReviewService{
 	public void insertReview(ReviewDTO reviewDTO) {
 		
 		
-		if(reviewDTO.getRevTotalscore() == 0) {
-			reviewDTO.setRevTotalscore(30);
+		if(reviewDTO.getRevTotal() == 0) {
+			reviewDTO.setRevTotal(30);
 		} 
 		
 		reviewDAO.insertReview(reviewDTO);
@@ -29,6 +29,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public ReviewDTO getReviewer(String reviewer) {
 		
 		return reviewDAO.getReviewer(reviewer);
+	}
+
+	@Override
+	public void updateReview(ReviewDTO reviewDTO) {
+		
+		reviewDAO.updateReview(reviewDTO);
 	}
 
 }

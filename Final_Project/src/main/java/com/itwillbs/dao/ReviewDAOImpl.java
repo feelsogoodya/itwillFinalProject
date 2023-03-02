@@ -28,6 +28,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return sqlSession.selectOne(namespace+".getReviewer", reviewer);
 	}
+
+	@Override
+	public void updateReview(ReviewDTO reviewDTO) {
+		
+		sqlSession.update(namespace+".updateReview", reviewDTO);
+
+	}
+	
 	
 
 	

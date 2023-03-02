@@ -7,10 +7,19 @@ public class ReviewDTO {
 	private String reviewer;
 	private int productNum;
 	private int revScore;
-	private int revTotalscore;
+
+	private int revTotal;
 	private String revContent;
 	private String revCate;
 	
+	
+	
+	public int getRevTotal() {
+		return revTotal;
+	}
+	public void setRevTotal(int revTotal) {
+		this.revTotal = revTotal;
+	}
 
 	public int getProductNum() {
 		return productNum;
@@ -48,12 +57,7 @@ public class ReviewDTO {
 	public void setRevScore(int revScore) {
 		this.revScore = revScore;
 	}
-	public int getRevTotalscore() {
-		return revTotalscore;
-	}
-	public void setRevTotalscore(int revTotalscore) {
-		this.revTotalscore = revTotalscore;
-	}
+
 	public String getRevContent() {
 		return revContent;
 	}

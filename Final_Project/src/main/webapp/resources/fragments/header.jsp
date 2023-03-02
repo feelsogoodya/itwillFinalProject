@@ -118,7 +118,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="${pageContext.request.contextPath }/main/main"><img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
+                        <a href="${pageContext.request.contextPath }/main/main">
+                        <img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">

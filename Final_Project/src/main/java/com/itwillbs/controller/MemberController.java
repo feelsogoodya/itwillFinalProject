@@ -1,7 +1,5 @@
 package com.itwillbs.controller;
 
-import java.lang.System.Logger;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -10,15 +8,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.service.MemberService;
-import com.itwillbs.service.MemberServiceImpl;
+
 
 
 @Controller
@@ -27,6 +24,12 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 
+	// 약관
+	@RequestMapping(value = "/member/terms", method = RequestMethod.GET)
+	public String terms() {
+		return "member/terms";
+	}
+	
 	@RequestMapping(value = "/member/insert", method = RequestMethod.GET)
 	public String insert() {
 		return "member/insertForm";
@@ -51,7 +54,7 @@ public class MemberController {
 
 		MemberDTO memberDTO = memberService.userCheck(dto);
 		System.out.println(memberDTO);
-
+		
 		if (memberDTO != null) {
 			session.setAttribute("memId", memberDTO.getMemId());
 			session.setAttribute("memNname", memberDTO.getMemNname());
@@ -67,6 +70,7 @@ public class MemberController {
 		return "member/idFind";
 	}
 	
+	// 아이디 찾기 결과
 	@RequestMapping(value = "/member/searchId")
 	public String searchId(HttpServletRequest request, Model model,
 	    @RequestParam(required = true, value = "memName") String memName, 
@@ -86,13 +90,14 @@ public class MemberController {
 	
 	return "member/searchId";
 	}
-
+	
 	// 비밀번호 찾기
 	@RequestMapping(value = "/member/passFind", method = RequestMethod.GET)
 	public String passFind(HttpServletRequest request, Model model) {
 		return "member/passFind";
 	}
 	
+	// 비밀번호 찾기 결과
 	@RequestMapping(value = "/member/searchPass", method = RequestMethod.POST)
 	public String searchPass(HttpServletRequest request, Model model,
 	    @RequestParam(required = true, value = "memName") String memName, 
@@ -121,16 +126,9 @@ public class MemberController {
 	    System.out.println(e.toString());
 	    model.addAttribute("msg", "오류가 발생되었습니다.");
 	}
-	 
-	 
 	return "/member/searchPass";
 	}
 
-	// 약관
-	@RequestMapping(value = "/member/terms", method = RequestMethod.GET)
-	public String terms() {
-		return "member/terms";
-	}
 	
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
@@ -138,7 +136,8 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/member/mypage";
 	}
-
+	
+	
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public String mypage(HttpSession session, Model model) {
 		String memId = (String) session.getAttribute("memId");
@@ -155,7 +154,7 @@ public class MemberController {
 		model.addAttribute("dto", dto);
 		return "member/myshop";
 	}
-
+	
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		String memId = (String) session.getAttribute("memId");
@@ -185,4 +184,5 @@ public class MemberController {
 			return "redirect:/member/mypage";
 	}
 	
+		
 }

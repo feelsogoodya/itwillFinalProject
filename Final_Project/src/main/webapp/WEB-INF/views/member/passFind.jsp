@@ -75,7 +75,8 @@ return false;
         <div class="col-lg-3">
 			<div class="header__logo" style="text-align: center;">
 				<a href="./index.html">
-				<img src="${pageContext.request.contextPath }/resources/img/logo.png" alt="" style="position : absolute; top : 130px; right :890px;"></a>
+				<img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt="" style="position : absolute; top : 130px; right : 835px;" width="250"></a>
+				<br>
 			</div>
 		</div>
     <div id="container" class="container">

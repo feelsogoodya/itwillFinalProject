@@ -15,10 +15,8 @@ import com.itwillbs.domain.MemberDTO;
 @Repository
 public class MemberDAOImpl implements MemberDAO{
 	
-	// 마이바티스 객체생성 => 멤버변수 자동 주입
 	@Inject
 	private SqlSession sqlSession;
-	
 	private static final String namespace="com.itwillbs.mappers.memberMapper";
 
 	@Override
@@ -34,17 +32,10 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println(dto.getMemAddress());
 		System.out.println(dto.getMemAccount());
 		System.out.println(dto.getMemPhone());
-		//날짜
 		Timestamp date=new Timestamp(System.currentTimeMillis());
 		dto.setMemTime(date);
 		
-//		jdbcTemplate.update(insertSql, dto.getId(),dto.getPass(),dto.getName(),date);
-		//memberMapper.xml 
 		sqlSession.insert(namespace+".insertMember",dto);
-		//update => sqlSession.update(null);
-		//delete => sqlSession.delete(null);
-		//select 리턴값 하나 => sqlSession.selectOne(null);
-		//select List(배열) 리턴할때 =>  sqlSession.selectList(null);
 	}
 
 	@Override
@@ -93,5 +84,5 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println(searchVO.getMemPhone());
 		sqlSession.selectOne(namespace+".passwordUpdate", searchVO);
 	}
-
+	
 }

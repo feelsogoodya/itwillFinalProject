@@ -30,8 +30,6 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println(dto.getMemAddress());
 		System.out.println(dto.getMemAccount());
 		System.out.println(dto.getMemPhone());
-		//MemberController => MemberService => MemberDAO
-//		MemberDAO memberDAO=new MemberDAOImpl();
 		memberDAO.insertMember(dto);
 		
 	}
@@ -42,9 +40,6 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println(dto.getMemId());
 		System.out.println(dto.getMemPass());
 		
-		// 객체생성
-		//메서드 호출
-//		MemberDAO memberDAO=new MemberDAOImpl();
 		return memberDAO.userCheck(dto);
 		
 	}

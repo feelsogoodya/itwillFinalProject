@@ -4,13 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.mappers.memberMapper">
-
-	<insert id="insertMember">
+	
+	<insert id="insertMember" parameterType="com.itwillbs.domain.MemberDTO">
+		<selectKey keyProperty="memNum" resultType="int" order="BEFORE">
+	      SELECT IFNULL(MAX(mem_num+1),1) FROM members
+	    </selectKey>
 		insert into
-		members(mem_num,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
+		members(mem_num ,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
 		values(#{memNum},#{memId},#{memPass},#{memPhone},#{memName},#{memNname},#{memEmail},#{memAddress},#{memAccount},#{memTime})
 	</insert>
-
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberDTO">
 		select

@@ -7,16 +7,35 @@
 <meta charset="utf-8">
 <title>마이페이지</title>
 <!-- Css Styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/nice-select.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/mypage.css" type="text/css">
-<link href="https://nid.naver.com/favicon_1024.png" rel="apple-touch-icon-precomposed" sizes="1024x1024" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/elegant-icons.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/nice-select.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/slicknav.min.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/style.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/member/mypage.css"
+	type="text/css">
+<link href="https://nid.naver.com/favicon_1024.png"
+	rel="apple-touch-icon-precomposed" sizes="1024x1024" />
 <script type="text/javascript"></script>
 <meta name="decorator" content="NEW_USER_MYINFO_V2">
 </head>
@@ -26,104 +45,111 @@
 </c:if>
 
 <body onclick="clearDocs();gnbClose();" id="mainBody" class="bgother">
-<!-- 	<!-- Header Section Begin --> -->
-<%-- 	<jsp:include page="../../../resources/fragments/header.jsp"></jsp:include> --%>
-<!-- 	<!-- Header Section End --> -->
- <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> gajimarket@secondhand.com</li>
-                                <li>중고거래 편하고 쉽게 집에서 즐겨보세요</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
-                        
-                        <!-- SNS 연결 로고 => 앱 버전 다운로드 링크 연결 예정 -->
-<!--                             <div class="header__top__right__social"> -->
-<!--                                 <a href="#"><i class="fa fa-facebook"></i></a> -->
-<!--                                 <a href="#"><i class="fa fa-twitter"></i></a> -->
-<!--                                 <a href="#"><i class="fa fa-linkedin"></i></a> -->
-<!--                                 <a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-<!--                             </div> -->
-                            
-						<!-- 세션값이 없을 때, 로그인 / 있을 때, 닉네임 & 로그아웃 -->
-						<c:if test="${empty sessionScope.memId}">
-                            <div class="header__top__right__auth">
-                                <a href="${pageContext.request.contextPath }/member/login"><i class="fa fa-user"></i> Login</a>
-                            </div>
-                        </c:if>
-                        <c:if test="${! empty sessionScope.memId}">
-                        	<div class="header__top__right__auth">
-                                <i class="fa fa-user"></i> ${sessionScope.memId }님 로그인하셨습니다.</a>
-                            </div>
-                            <div class="header__top__right__auth">
-                                <a href="${pageContext.request.contextPath }/member/logout"><i class="fa fa-user"></i> Logout</a>
-                            </div>
-                        </c:if>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 메뉴 아래 연결 -->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="${pageContext.request.contextPath }/main/main">
-                        <img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt="" style="width: 190px;"></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
-                            
-                            <li><a href="./shop-grid.html">전체상품</a></li>
-                            
-                            <li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
-                            
-                            <li><a href="${pageContext.request.contextPath }/notice/list">고객센터</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="${pageContext.request.contextPath }/notice/list">공지사항</a></li>
-                                    <li><a href="${pageContext.request.contextPath }/customerservice/list">Q & A</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
-                            	<ul class="header__menu__dropdown">
-                                    <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
-                                    <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
-                                    <li><a href="./blog-details.html">채팅목록</a></li>
-                                    <li><a href="./shoping-cart.html">판매내역</a></li>
-                                    <li><a href="./checkout.html">구매내역</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <!-- 가격 -->
-                        <!-- <div class="header__cart__price">item: <span>$150.00</span></div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
+	<header class="header">
+		<div class="header__top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<div class="header__top__left">
+							<ul>
+								<li><i class="fa fa-envelope"></i>
+									gajimarket@secondhand.com</li>
+								<li>중고거래 편하고 쉽게 집에서 즐겨보세요</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<div class="header__top__right">
+
+							<!-- SNS 연결 로고 => 앱 버전 다운로드 링크 연결 예정 -->
+							<!--                             <div class="header__top__right__social"> -->
+							<!--                                 <a href="#"><i class="fa fa-facebook"></i></a> -->
+							<!--                                 <a href="#"><i class="fa fa-twitter"></i></a> -->
+							<!--                                 <a href="#"><i class="fa fa-linkedin"></i></a> -->
+							<!--                                 <a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+							<!--                             </div> -->
+
+							<!-- 세션값이 없을 때, 로그인 / 있을 때, 닉네임 & 로그아웃 -->
+							<c:if test="${empty sessionScope.memId}">
+								<div class="header__top__right__auth">
+									<a href="${pageContext.request.contextPath }/member/login"><i
+										class="fa fa-user"></i> Login</a>
+								</div>
+							</c:if>
+							<c:if test="${! empty sessionScope.memId}">
+								<div class="header__top__right__auth">
+									<i class="fa fa-user"></i> ${sessionScope.memId }님 로그인하셨습니다.</a>
+								</div>
+								<div class="header__top__right__auth">
+									<a href="${pageContext.request.contextPath }/member/logout"><i
+										class="fa fa-user"></i> Logout</a>
+								</div>
+							</c:if>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 메뉴 아래 연결 -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="header__logo">
+						<a href="${pageContext.request.contextPath }/main/main"> <img
+							src="${pageContext.request.contextPath }/resources/img/marketLogo.png"
+							alt="" style="width: 190px;"></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<nav class="header__menu">
+						<ul>
+							<li class="active"><a
+								href="${pageContext.request.contextPath }/main/main">Home</a></li>
+
+							<li><a href="./shop-grid.html">전체상품</a></li>
+
+							<li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
+
+							<li><a
+								href="${pageContext.request.contextPath }/notice/list">고객센터</a>
+								<ul class="header__menu__dropdown">
+									<li><a
+										href="${pageContext.request.contextPath }/notice/list">공지사항</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/customerservice/list">Q
+											& A</a></li>
+								</ul></li>
+
+							<li><a
+								href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
+								<ul class="header__menu__dropdown">
+									<li><a
+										href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
+									<li><a href="./blog-details.html">채팅목록</a></li>
+									<li><a href="./shoping-cart.html">판매내역</a></li>
+									<li><a href="./checkout.html">구매내역</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-lg-3">
+					<div class="header__cart">
+						<ul>
+							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+							<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+						</ul>
+						<!-- 가격 -->
+						<!-- <div class="header__cart__price">item: <span>$150.00</span></div> -->
+					</div>
+				</div>
+			</div>
+			<div class="humberger__open">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
+	</header>
 	<div id="wrap" class="wrap naverid">
 		<div class="u_skip">
 			<a href="#container">본문 바로가기</a>
@@ -132,17 +158,17 @@
 		<header class="header" role="banner">
 			<div class="header_subindex">
 
-<!-- 				<div class="gnb_area"> -->
-<!-- 					<div class="header__logo" style="text-align: center;"> -->
-<!-- 						<a href="./index.html"> <img -->
-<%-- 							src="${pageContext.request.contextPath }/resources/img/marketLogo.png" --%>
-<!-- 							alt="" width="180"></a> -->
-<!-- 					</div> -->
-<!-- 					        </a> -->
-<!-- 					        <a href="/user2/help/myInfoV2?lang=ko_KR" class="gnb_title" onclick="clickcr(this,'gnb.naverID','','',event)"> -->
-<!-- 					            <h1 class="text"><span class="blind"></span></h1> -->
-<!-- 					        </a> -->
-<!-- 				</div> -->
+				<!-- 				<div class="gnb_area"> -->
+				<!-- 					<div class="header__logo" style="text-align: center;"> -->
+				<!-- 						<a href="./index.html"> <img -->
+				<%-- 							src="${pageContext.request.contextPath }/resources/img/marketLogo.png" --%>
+				<!-- 							alt="" width="180"></a> -->
+				<!-- 					</div> -->
+				<!-- 					        </a> -->
+				<!-- 					        <a href="/user2/help/myInfoV2?lang=ko_KR" class="gnb_title" onclick="clickcr(this,'gnb.naverID','','',event)"> -->
+				<!-- 					            <h1 class="text"><span class="blind"></span></h1> -->
+				<!-- 					        </a> -->
+				<!-- 				</div> -->
 
 				<div class="profile_area">
 					<div class="profile_inner">

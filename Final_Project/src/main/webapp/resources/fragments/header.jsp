@@ -102,7 +102,8 @@
                         </c:if>
                         <c:if test="${! empty sessionScope.memId}">
                         	<div class="header__top__right__auth">
-                                <i class="fa fa-user"></i> ${sessionScope.memId }님 로그인하셨습니다.</a>
+                        		<a href="${pageContext.request.contextPath }/member/mypage">
+                                <i class="fa fa-user"></i>${sessionScope.memId }님 로그인하셨습니다.</a>
                             </div>
                             <div class="header__top__right__auth">
                                 <a href="${pageContext.request.contextPath }/member/logout"><i class="fa fa-user"></i> Logout</a>

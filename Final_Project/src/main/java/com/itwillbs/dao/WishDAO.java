@@ -5,5 +5,5 @@ import java.util.Map;
 
 public interface WishDAO {
 	
-	public List<Map<String, Object>> getWishList();
+	public List<Map<String, Object>> getWishList(String memberId);
 }

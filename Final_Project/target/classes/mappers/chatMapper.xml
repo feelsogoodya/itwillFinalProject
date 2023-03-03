@@ -32,13 +32,13 @@
 			   c.seller_id, 
 			   date_format(c.date, '%Y-%m-%d') as date, 
 			   p.product_title, 
-			   b.mem_nname as buyer_nick, 
-			   s.mem_nname as seller_nick
-		from chat c join product p
+			   ifnull(b.mem_nname, '상대가 나갔습니다.') as buyer_nick, 
+			   ifnull(s.mem_nname, '상대가 나갔습니다.') as seller_nick
+		from chat c left join product p
 		on c.product_num = p.product_num
-		join members b
+		left join members b
 		on c.buyer_id = b.mem_id
-		join members s
+		left join members s
 		on c.seller_id = s.mem_id
 		where buyer_id = #{memberId} or seller_id = #{memberId}
 	</select>
@@ -56,13 +56,13 @@
 			   c.buyer_id, 
 			   c.seller_id, 
 			   p.product_title, 
-			   b.mem_nname as buyer_nick, 
-			   s.mem_nname as seller_nick
-		from chat c join product p
+			   ifnull(b.mem_nname, '상대가 나갔습니다.') as buyer_nick, 
+			   ifnull(s.mem_nname, '상대가 나갔습니다.') as seller_nick
+		from chat c left join product p
 		on c.product_num = p.product_num
-		join members b
+		left join members b
 		on c.buyer_id = b.mem_id
-		join members s
+		left join members s
 		on c.seller_id = s.mem_id
 		where room_id = #{roomId}
 	</select>
@@ -72,6 +72,12 @@
 		values(#{roomId}, #{productNum}, #{buyerId}, #{sellerId}, #{date})
 	</insert>
 	
+	<update id="deleteRoom">
+		update chat
+		   set buyer_id = case when buyer_id = #{sender} then null else buyer_id end,
+		       seller_id = case when seller_id = #{sender} then null else seller_id end
+		 where room_id = #{roomId}
+	</update>
 <!-- 	<update id="setRead"> -->
 <!-- 		update chat  -->
 <!-- 		set read=#{read}  -->

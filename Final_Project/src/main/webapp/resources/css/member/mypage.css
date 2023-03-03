@@ -444,7 +444,7 @@ h1, h2, h3, h4, h5, h6 {
 @media all and (min-width:1024px) {
 	.gnb_area {
 		height: 78px;
-		padding: 24px 10px 24px 56px
+		padding: 24px 10px 24px 10px
 	}
 }
 
@@ -547,7 +547,7 @@ h1, h2, h3, h4, h5, h6 {
 	height: 30px;
 	border-radius: 50%;
 	border: 2px solid #fff;
-	background-color: #02da78;
+	background-color: #CE93D8;
 	box-shadow: 2px 6px 8px 0 rgba(30, 30, 35, .08);
 	box-sizing: border-box
 }
@@ -2337,7 +2337,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 16px 17px 0;
 	border-radius: 12px;
 	box-shadow: 2px 2px 14px 0 rgba(0, 164, 73, .08);
-	border: solid 1px rgba(3, 213, 128, .8);
+	border: solid 1px rgba(206, 147, 216, 1);
 	background-color: #fff;
 	box-sizing: border-box
 }

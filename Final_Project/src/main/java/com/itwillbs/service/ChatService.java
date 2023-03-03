@@ -143,4 +143,26 @@ public class ChatService {
     public void setRead(ChatRoomDTO chatRoomDTO) {
 		chatDAO.setRead(chatRoomDTO);
 	}
+    
+    public void deleteRoom(MessageDTO messageDTO, String productNum, String senderNick) throws IOException {
+    	String roomId = messageDTO.getRoomId();
+		
+		String fileName = productNum + "_" + roomId + ".txt";
+		
+		String pathName = fileUploadPath + fileName;
+		
+		FileOutputStream fos = new FileOutputStream(pathName, true);
+		String sendTime = messageDTO.getSendTime();
+		
+		String writeContent = senderNick + "\n회원님이 방을 나가셨습니다.\n" + sendTime + "\n";
+		
+		byte[] b = writeContent.getBytes();
+		
+		fos.write(b);
+		fos.close();
+		
+		System.out.println(roomId);
+		
+		chatDAO.deleteRoom(messageDTO);
+    }
 }

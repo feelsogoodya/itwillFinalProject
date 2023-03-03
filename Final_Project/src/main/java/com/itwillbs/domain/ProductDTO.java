@@ -14,6 +14,7 @@ public class ProductDTO {
 	private String productPic;
 	private int productReadcount;
 	private Timestamp productDate;
+	private String productStatus;
 	
 	
 	public int getProductNum() {
@@ -75,6 +76,12 @@ public class ProductDTO {
 	}
 	public void setProductDate(Timestamp productDate) {
 		this.productDate = productDate;
+	}
+	public String getProductStatus() {
+		return productStatus;
+	}
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
 	}
 	
 }

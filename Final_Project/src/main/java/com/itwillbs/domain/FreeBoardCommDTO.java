@@ -5,6 +5,7 @@ public class FreeBoardCommDTO {
 	private int commNum;
 	private int freeboardNum;
 	private String memberId;
+	private String memberNick;
 	private String content;
 	private String date;
 	
@@ -37,6 +38,12 @@ public class FreeBoardCommDTO {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public String getMemberNick() {
+		return memberNick;
+	}
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
 	}
 	
 	

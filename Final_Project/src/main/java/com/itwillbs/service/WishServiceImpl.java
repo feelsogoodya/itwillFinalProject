@@ -16,9 +16,8 @@ public class WishServiceImpl implements WishService{
 	private WishDAO wishDAO;
 
 	@Override
-	public List<Map<String, Object>> getWishList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map<String, Object>> getWishList(String memberId) {
+		return wishDAO.getWishList(memberId);
 	}
 
 }

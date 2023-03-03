@@ -76,7 +76,7 @@
                         <input type="text" name="subject" value="${freeboardDTO.subject }" readonly>
                     </div>
                 	<div class="col-lg-12 col-md-12">
-                        <input type="text" value="${freeboardDTO.memberId }" readonly>
+                        <input type="text" value="${freeboardDTO.memberNick }" readonly>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <input type="text" value="${freeboardDTO.date }" readonly>
@@ -155,7 +155,7 @@
     				if(data == null) $('#commList').append("<li>" + "댓글이 없습니다." + "</li>");
     				else {
 	    				$(data).each(function() {
-	    					$('#commList').append("<li>" + this.memberId + "<br>" + this.content + "</li>");
+	    					$('#commList').append("<li>" + this.memberNick + "<br>" + this.content + "</li>");
 	    				});
     				}
     			}

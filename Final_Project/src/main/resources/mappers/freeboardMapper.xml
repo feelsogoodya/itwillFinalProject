@@ -24,7 +24,14 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select b.*, m.mem_nname as member_nick
+		select b.freeboard_num, 
+			   b.member_id, 
+			   b.subject, 
+			   b.content, 
+			   b.readcount, 
+			   date_format(b.date, '%Y.%m.%d %H:%i') as date, 
+			   b.like_count, 
+			   m.mem_nname as member_nick
 		from freeboard b left join members m
 		on b.member_id = m.mem_id
 		where 1=1
@@ -36,7 +43,13 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select b.*, m.mem_nname as member_nick
+		select b.freeboard_num, 
+			   b.member_id, 
+			   b.subject, 
+			   b.content, 
+			   b.readcount, 
+			   date_format(b.date, '%Y.%m.%d %H:%i') as date,
+			   m.mem_nname as member_nick
 		from freeboard b left join members m
 		on b.member_id = m.mem_id
 		where freeboard_num = #{freeboardNum}
@@ -55,7 +68,12 @@
 	</delete>
 	
 	<select id="getCommList" resultType="com.itwillbs.domain.FreeBoardCommDTO">
-		select bc.*, m.mem_nname as member_nick
+		select bc.comm_num, 
+			   bc.freeboard_num, 
+			   bc.member_id, 
+			   bc.content, 
+			   date_format(bc.date, '%Y.%m.%d %H:%i') as date,
+			   m.mem_nname as member_nick
 		from freeboard_comm bc left join members m
 		on bc.member_id = m.mem_id
 		where freeboard_num = #{freeboardNum}
@@ -71,4 +89,10 @@
 		select max(comm_num)
 		  from freeboard_comm
 	</select>
+	
+	<update id="updateReadcount">
+		update freeboard
+		   set readcount = readcount + 1
+		 where freeboard_num = #{num}
+	</update>
 </mapper>

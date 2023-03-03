@@ -41,6 +41,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 
 	@Override
 	public FreeBoardDTO getBoard(int num) {
+		sqlSession.update(namespace + ".updateReadcount", num);
 		return sqlSession.selectOne(namespace + ".getBoard", num);
 	}
 

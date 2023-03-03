@@ -11,6 +11,7 @@
 
 
 	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/channels.css" type="text/css">
@@ -24,6 +25,7 @@
 <div class="container" id="app" v-cloak>
 	<div class="talk_header">
 		<!---->
+		<div style="float:left; font-size:36px;  margin-left:5px;  margin-top:5px; " class="fas fa-bars" id="goList"></div>
 		<div class="title_area">
 			<div class="tit_room">
 				<strong class="tit">${chatRoomMap.productTitle}</strong>
@@ -34,7 +36,8 @@
 	<div class="list-scroll" style="height:500px; overflow-x: hidden; overflow-y: scroll;">
 	    <ul class="list-group">
 	        <li class="list-group-item" v-for="message in messages" :style="messageStyle(message)">
-	            {{message.sender}} - {{message.message}}<br>
+	            {{message.sender}}<br>
+	            {{message.message}}<br>
 	            {{message.sendTime}}
 	        </li>
 	    </ul>
@@ -75,12 +78,8 @@
         created() {
             this.roomId = '${roomId}';
             this.sender = '${sessionScope.memId}' === '${chatRoomMap.sellerId}' ?  '${chatRoomMap.sellerNickname}' : '${chatRoomMap.buyerNickname}';
-            this.findRoom();
         },
         methods: {
-            findRoom: function() {
-                axios.get('${pageContext.request.contextPath }/chat/room/'+this.roomId).then(response => { this.room = response.data; });
-            },
             sendMessage: function() {
             	stomp.send("/app/chat/message", {}, JSON.stringify({roomId:this.roomId, sender:this.sender, message:this.message}));
                 this.message = '';
@@ -94,10 +93,9 @@
             messageStyle: function(message) {
                 var style = {};
                 style.wordWrap = "break-word";
-                if (message.sender === '${sessionScope.memId}') {
+                if (message.sender === '${sessionScope.memNname}') {
                   style.textAlign = 'right';
                 }
-                $('.list-scroll').scrollTop($('.list-scroll')[0].scrollHeight);
                 return style;
               }
         }
@@ -123,6 +121,14 @@
             }
         });
     }
+    
+    $('#goList').on('click', function () {
+		location.href="${pageContext.request.contextPath}/chat/list";
+	});
+    <c:if test="${sessionScope.memId eq null}">
+    	alert("로그인 후 사용할 수 있습니다.");
+    	location.href="${pageContext.request.contextPath}/member/login";
+    </c:if>
     <c:forEach items="${chatHistory}" var="item">
     	vm.$data.messages.unshift({"type":"TALK", "sender":'${item.sender}',"message":'${item.message}',"sendTime":'${item.sendTime}'});
     </c:forEach>

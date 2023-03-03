@@ -1,5 +1,6 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +46,26 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap) {
 		return productDAO.getSellerProduct(productMap);
+	}
+	
+	@Override
+	public void insertProduct(ProductDTO productDTO) {
+		// name,subject,content
+		// num,readcount,date
+		// num = max(num) + 1 
+		if(productDAO.getMaxNum()==null) {
+//					//글이 없는 경우
+			productDTO.setProductNum(1);
+		}else {
+//					//글이 있는 경우
+			productDTO.setProductNum(productDAO.getMaxNum()+1);
+		}
+		
+		productDTO.setProductReadcount(0);
+		productDTO.setProductDate(new Timestamp(System.currentTimeMillis()));
+		//메서드 호출
+		productDAO.insertProduct(productDTO);
+		
 	}
 
 }

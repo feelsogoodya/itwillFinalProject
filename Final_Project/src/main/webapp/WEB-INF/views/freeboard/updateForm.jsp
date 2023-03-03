@@ -73,7 +73,7 @@
             <input type="hidden" name="freeboardNum" value="${freeboardDTO.freeboardNum }"/>
                 <div class="row">
                 	<div class="col-lg-12 col-md-12">
-                        <input type="text" value="${sessionScope.memberId }" readonly>
+                        <input type="text" value="${sessionScope.memNname }" readonly>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <input type="text" name="subject" value="${freeboardDTO.subject }">

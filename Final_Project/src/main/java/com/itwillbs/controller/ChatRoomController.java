@@ -50,11 +50,6 @@ public class ChatRoomController {
     public String roomDetail(Model model, @PathVariable String roomId) throws IOException{
     	
     	Map<String, Object> chatRoomMap = chatService.findById(roomId);
-    	System.out.println(chatRoomMap.get("buyerNickname"));
-    	System.out.println(chatRoomMap.get("buyerId"));
-    	System.out.println(chatRoomMap.get("sellerNickname"));
-    	System.out.println(chatRoomMap.get("sellerId"));
-    	
     	
 //    	chatService.setRead(chatRoomDTO);
     	List<MessageDTO> chatHistory = chatService.readChatHistory(chatRoomMap);

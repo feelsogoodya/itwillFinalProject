@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.ChatRoomDTO;
+import com.itwillbs.domain.MessageDTO;
 
 
 @Repository
@@ -41,6 +42,11 @@ public class ChatDAOImpl implements ChatDAO{
 	@Override
 	public void setRead(ChatRoomDTO chatRoomDTO) {
 		sqlSession.update(namespace + ".setRead", chatRoomDTO);
+	}
+
+	@Override
+	public void deleteRoom(MessageDTO messageDTO) {
+		sqlSession.update(namespace + ".deleteRoom", messageDTO);
 	}
 
 }

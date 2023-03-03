@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwillbs.domain.ChatRoomDTO;
+import com.itwillbs.domain.MessageDTO;
 import com.itwillbs.service.ChatService;
 
 
@@ -54,6 +56,7 @@ public class ChatAjaxController {
 			chatRoomDTO.setBuyerId(memberId);
 			chatRoomDTO.setProductNum(productNum);
 			chatRoomDTO.setSellerId(request.getParameter("seller"));
+			chatRoomDTO.setDate(new Timestamp(System.currentTimeMillis()));
 			System.out.println(chatRoomDTO);
 			chatService.createRoom(chatRoomDTO);
 			chatRoomDTO = chatService.findByIdAndNum(chatRoomDTO);
@@ -62,5 +65,21 @@ public class ChatAjaxController {
 		
 		// 입장
         return "/chat/room/enter/" + chatRoomDTO.getRoomId();
+    }
+	
+	// 내 채팅방 삭제
+    @RequestMapping(value = "/chat/delete", method = RequestMethod.POST)
+    public void deleteRoom(HttpServletRequest request) throws IOException {
+
+    	String roomId = request.getParameter("roomId"); 
+    	String sender = request.getParameter("sender");
+    	String senderNick = request.getParameter("senderNick");
+    	
+    	MessageDTO messageDTO = new MessageDTO();
+    	messageDTO.setRoomId(roomId);
+    	messageDTO.setSender(sender);
+    	messageDTO.setSendTime("[" + new Timestamp(System.currentTimeMillis()).toString() + "]");
+    	String productNum = request.getParameter("productNum");
+    	chatService.deleteRoom(messageDTO, productNum, senderNick);
     }
 }

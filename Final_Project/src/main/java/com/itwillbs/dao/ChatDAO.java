@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.itwillbs.domain.ChatRoomDTO;
+import com.itwillbs.domain.MessageDTO;
 
 
 public interface ChatDAO {
@@ -17,4 +18,6 @@ public interface ChatDAO {
 	public ChatRoomDTO findByIdAndNum(ChatRoomDTO chatRoomDTO);
 	
 	public void setRead(ChatRoomDTO chatRoomDTO);
+	
+	public void deleteRoom(MessageDTO messageDTO);
 }

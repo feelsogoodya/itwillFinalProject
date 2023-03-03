@@ -87,19 +87,19 @@ font-size: 50px;
     </table>
 
 
-
+<div style="text-align: center;"> 
 <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
 <a href="${pageContext.request.contextPath }/list/buylist?pageNum=${pageDTO.startPage - pageDTO.pageBlock}">[10페이지 이전] </a>
 </c:if>
  
 <c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-<a href="${pageContext.request.contextPath }/list/buylist?pageNum=${i}">${i}</a> 
+<a href="${pageContext.request.contextPath }/list/buylist?pageNum=${i}">[${i}]</a> 
 </c:forEach>
 
 <c:if test="${pageDTO.endPage < pageDTO.pageCount}">
 <a href="${pageContext.request.contextPath }/list/buylist?pageNum=${pageDTO.startPage + pageDTO.pageBlock}">[10페이지 다음] </a>
 </c:if>
-
+</div>
 
 
 

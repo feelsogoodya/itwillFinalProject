@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.itwillbs.domain.BuyListDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.ProductDTO;
 import com.itwillbs.service.BuyListService;
 import com.itwillbs.service.MemberService;
 
@@ -62,7 +63,7 @@ public class BuyListController {
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 		// List<BoardDTO> boardList =dao.getBoardList(dto);
 		List<BuyListDTO> buyList= buyListService.getbuyList(pageDTO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@");
+		System.out.println("buylist 페이지"+ pageNum);
 		//페이징 작업
 		// 전체 게시판 글의 개수 가져오기
 		// select count(*) from board  
@@ -83,7 +84,7 @@ public class BuyListController {
 		
 		// model 담아서 이동
 		model.addAttribute("buyList", buyList);
-		model.addAttribute("pageDto",pageDTO);
+		model.addAttribute("pageDTO",pageDTO);
 	
 		
 		// 기본 이동방식 : 주소변경 없이 이동 

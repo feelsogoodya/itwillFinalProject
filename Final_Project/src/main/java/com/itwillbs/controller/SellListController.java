@@ -26,7 +26,7 @@ public class SellListController {
 
 	@RequestMapping(value = "/list/selllist", 
 			method = RequestMethod.GET)
-	public String list(Model model, HttpServletRequest request, HttpSession session, ProductDTO productDTO) {
+	public String list(Model model, HttpServletRequest request, HttpSession session) {
 		// http://localhost:8080/myweb/board/list
 		// http://localhost:8080/myweb/board/list?pageNum=2
 		// 한 화면에 보여줄 글 개수 설정 (10개 설정)
@@ -51,7 +51,8 @@ public class SellListController {
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 		// List<BoardDTO> boardList =dao.getBoardList(dto);
 		List<ProductDTO> sellList= productService.getSellList(pageDTO);
-		System.out.println("sellList 리스트!!!!!!!!!!!!!");
+		
+		System.out.println("sellList 페이지: "+ pageNum);
 		//페이징 작업
 		// 전체 게시판 글의 개수 가져오기
 		// select count(*) from board  

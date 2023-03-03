@@ -12,10 +12,20 @@ public class PageDTO {
 	private int startPage;
 	private int endPage;
 	private int pageCount;
+	
 	private String buymemId;
 	private String sellmemId;
 	
 	private String search;
+	
+	@Override
+	public String toString() {
+		return "PageDTO [pageSize=" + pageSize + ", pageNum=" + pageNum + ", currentPage=" + currentPage + ", startRow="
+				+ startRow + ", endRow=" + endRow + ", count=" + count + ", pageBlock=" + pageBlock + ", startPage="
+				+ startPage + ", endPage=" + endPage + ", pageCount=" + pageCount + "]";
+	}
+	
+	
 	
 	public String getSearch() {
 		return search;

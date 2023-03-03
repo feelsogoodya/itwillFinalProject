@@ -209,6 +209,18 @@
 						<!--             <li><a href="https://talk.naver.com/ct/wc4bsu#nafullscreen" class="left_item" onclick="clickcr(this,'fot.membertalktalk','','',event)"> -->
 						<!--                     <div class="link_text">흠</div> -->
 						<!--                 </a></li> -->
+											<li><a
+							href="${pageContext.request.contextPath }/list/buylist"
+							class="left_item">
+								<div class="link_text">구매내역</div>
+						</a></li>
+						<li><a
+							href="${pageContext.request.contextPath }/list/selllist"
+							class="left_item">
+								<div class="link_text">판매내역</div>
+						</a></li>
+						
+						
 					</ul>
 
 					<!-- footerLeft -->
@@ -273,7 +285,9 @@
 										<div class="myaccount">
 											<div class="myname">
 												<div class="name_text">${dto.memNname }</div>
-												<div class="myaddress">${dto.memId }</div>
+												<div class="myaddress">${dto.memId }</div><br>
+											<div class="myreviewscore">
+												나의 거래점수: ${dto.revTotal}점</div>
 												<!--                             <button type="button" class="btn_edit" onclick="changeName()"> -->
 												<!--                                 <span class="text">수정</span> -->
 												<!--                             </button> -->

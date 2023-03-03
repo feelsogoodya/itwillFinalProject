@@ -3,6 +3,7 @@ package com.itwillbs.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ProductDTO;
 
 public interface ProductDAO {
@@ -22,4 +23,9 @@ public interface ProductDAO {
 	public void insertProduct(ProductDTO productDTO);
 	
 	public Integer getMaxNum();
+	
+	public List<ProductDTO> getSellList(PageDTO pageDTO);
+
+	public int getSellCount();
+	
 }

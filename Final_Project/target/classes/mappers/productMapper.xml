@@ -7,126 +7,137 @@
 	<!-- 카테고리 가져오기 -->
 	<select id="getCategories" resultType="String">
 		SELECT product_cate
-		FROM categories
+		FROM
+		categories
 	</select>
-	
+
 	<!-- main 화면에 조회수, 관심수, 등록 순으로 TOP 6 가져오기 -->
-	<select id="orderProduct" resultType="com.itwillbs.domain.ProductDTO">
-		<!-- SELECT * 
-		FROM (SELECT @ROWNUM:=@ROWNUM+1 AS rank, A.product_title
-				   , A.product_price, A.product_seller, A.product_pic
-			  FROM product A, (SELECT @ROWNUM:=0) R ) B 
-		<![CDATA[WHERE B.rank <= 20]]> -->
-		
-		
+	<select id="orderProduct"
+		resultType="com.itwillbs.domain.ProductDTO">
+		<!-- SELECT * FROM (SELECT @ROWNUM:=@ROWNUM+1 AS rank, A.product_title 
+			, A.product_price, A.product_seller, A.product_pic FROM product A, (SELECT 
+			@ROWNUM:=0) R ) B <![CDATA[WHERE B.rank <= 20]]> -->
+
+
 		SELECT *
 		FROM( SELECT p.product_title
-				   , p.product_price
-				   , p.product_seller
-				   , p.product_pic
-				   , p.product_readcount
-			  FROM product p
-			  <if test='GB.equals("date")'>
-			  WHERE p.product_status = '판매중'
-			  ORDER BY product_date DESC
-			  </if>
-			  <if test='GB.equals("views")'>
-			  WHERE p.product_status = '판매중'
-		 	  ORDER BY product_readcount DESC
-			  </if>
-			  <if test='GB.equals("wish")'>
-			  JOIN wish w
-			  on (p.product_num = w.product_num)
-			  WHERE p.product_status = '판매중'
-              GROUP BY p.product_title
-              		 , p.product_price
-              		 , p.product_seller
-              		 , p.product_pic
-              		 , p.product_readcount
-			  ORDER BY count(w.product_num) DESC
-			  </if>
-			) A
+		, p.product_price
+		, p.product_seller
+		, p.product_pic
+		, p.product_readcount
+		FROM product p
+		<if test='GB.equals("date")'>
+			WHERE p.product_status = '판매중'
+			ORDER BY product_date DESC
+		</if>
+		<if test='GB.equals("views")'>
+			WHERE p.product_status = '판매중'
+			ORDER BY product_readcount DESC
+		</if>
+		<if test='GB.equals("wish")'>
+			JOIN wish w
+			on (p.product_num = w.product_num)
+			WHERE p.product_status = '판매중'
+			GROUP BY p.product_title
+			, p.product_price
+			, p.product_seller
+			, p.product_pic
+			, p.product_readcount
+			ORDER BY count(w.product_num) DESC
+		</if>
+		) A
 		LIMIT 6
 	</select>
-	
-	<!-- 상품 상세 정보 가져오기 (상품 하나 및 그 상품을 올린 판매자의 다른 상품 가져오기)-->
+
+	<!-- 상품 상세 정보 가져오기 (상품 하나 및 그 상품을 올린 판매자의 다른 상품 가져오기) -->
 	<resultMap type="map" id="productMap">
-		<id column="product_num" property="productNum"/>
-		<result column="product_seller" property="productSeller"/>
-		<result column="product_cate" property="productCate"/>
-		<result column="product_title" property="productTitle"/>
-		<result column="product_content" property="productContent"/>
-		<result column="product_price" property="productPrice"/>
-		<result column="product_grade" property="productGrade"/>
-		<result column="product_pic" property="productPic"/>
-		<result column="product_readcount" property="productReadcount"/>
-		<result column="product_date" property="productDate"/>
-		<result column="mem_nname" property="memNname"/>
-		<result column="wish_count" property="wishCount"/>
+		<id column="product_num" property="productNum" />
+		<result column="product_seller" property="productSeller" />
+		<result column="product_cate" property="productCate" />
+		<result column="product_title" property="productTitle" />
+		<result column="product_content" property="productContent" />
+		<result column="product_price" property="productPrice" />
+		<result column="product_grade" property="productGrade" />
+		<result column="product_pic" property="productPic" />
+		<result column="product_readcount" property="productReadcount" />
+		<result column="product_date" property="productDate" />
+		<result column="mem_nname" property="memNname" />
+		<result column="wish_count" property="wishCount" />
 	</resultMap>
-	
-	<select id="productInfo" resultMap="productMap" parameterType="hashMap">
-	
+
+	<select id="productInfo" resultMap="productMap"
+		parameterType="hashMap">
+
 		<if test='productSeller != null'>
-    	SELECT *
-    	FROM (
-  		</if>
-			SELECT p.product_num as "product_num"
-				  ,p.product_seller as "product_seller"
-				  ,p.product_cate as "product_cate"
-				  ,p.product_title as "product_title"
-				  ,p.product_content as "product_content"
-				  ,p.product_price as "product_price"
-				  ,p.product_grade as "product_grade"
-				  ,p.product_pic as "product_pic"
-				  ,p.product_readcount as "product_readcount"
-				  ,p.product_date as "product_date"
-				  ,m.mem_nname as "mem_nname"
-				  <if test='productSeller == null'>
-				  ,count(w.product_num) as "wish_count"
-	  			  </if>
-			FROM product p join members m
-			on (p.product_seller = m.mem_id)
-			<if test='productSeller == null'>
+			SELECT *
+			FROM (
+		</if>
+		SELECT p.product_num as "product_num"
+		,p.product_seller as "product_seller"
+		,p.product_cate as "product_cate"
+		,p.product_title as "product_title"
+		,p.product_content as "product_content"
+		,p.product_price as "product_price"
+		,p.product_grade as "product_grade"
+		,p.product_pic as "product_pic"
+		,p.product_readcount as "product_readcount"
+		,p.product_date as "product_date"
+		,m.mem_nname as "mem_nname"
+		<if test='productSeller == null'>
+			,count(w.product_num) as "wish_count"
+		</if>
+		FROM product p join members m
+		on (p.product_seller = m.mem_id)
+		<if test='productSeller == null'>
 			left join wish w
-            on (w.product_num = p.product_num)
-	    	WHERE p.product_num = CAST(#{productNum} AS decimal(7,0))
-	  		</if>
-  		<if test='productSeller != null'>
-    	WHERE p.product_seller = #{productSeller}
-    	AND p.product_num NOT IN (CAST(#{productNum} AS decimal(7,0)))
-    	ORDER BY p.product_date DESC) A
-    	LIMIT 4
-  		</if>
-  		
+			on (w.product_num = p.product_num)
+			WHERE p.product_num = CAST(#{productNum} AS decimal(7,0))
+		</if>
+		<if test='productSeller != null'>
+			WHERE p.product_seller = #{productSeller}
+			AND p.product_num NOT IN (CAST(#{productNum} AS decimal(7,0)))
+			ORDER BY p.product_date DESC) A
+			LIMIT 4
+		</if>
+
 	</select>
-	
+
 	<!-- 상품 등록 -->
 	<insert id="insertProduct">
-	  	insert into product(
-	  						  product_num
-	  						, product_cate
-	  						, product_title
-	  						, product_content
-	  						, product_price
-	  						, product_grade
-	  						, product_pic
-	  						, product_readcount
-	  						, product_date) 
-	  	values(#{productNum}
-	  		  ,#{productCate}
-	  		  ,#{productTitle}
-	  		  ,#{productContent}
-	  		  ,#{productPrice}
-	  		  ,#{productGrade}
-	  		  ,#{productPic}
-	  		  ,#{productReadcount}
-	  		  ,#{productDate})
-  	</insert>
-  	
-  	<!-- 상품 넘버 max값 출력 -->
-    <select id="getMaxNum" resultType="java.lang.Integer">
-    	select max(product_num) from product
-    </select>
+		insert into product(
+		product_num
+		, product_cate
+		, product_title
+		, product_content
+		, product_price
+		, product_grade
+		, product_pic
+		, product_readcount
+		, product_date)
+		values(#{productNum}
+		,#{productCate}
+		,#{productTitle}
+		,#{productContent}
+		,#{productPrice}
+		,#{productGrade}
+		,#{productPic}
+		,#{productReadcount}
+		,#{productDate})
+	</insert>
+
+	<!-- 상품 넘버 max값 출력 -->
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(product_num) from product
+	</select>
+
+	<select id="getSellList"
+		resultType="com.itwillbs.domain.ProductDTO">
+		select * from product where product_seller= #{sellmemId}
+		order by product_date desc
+	</select>
+
+	<select id="getSellCount" resultType="java.lang.Integer">
+		select count(*) from product
+	</select>
 
 </mapper>

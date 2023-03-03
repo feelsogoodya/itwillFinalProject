@@ -32,8 +32,13 @@
 
 	<select id="getMember"
 		resultType="com.itwillbs.domain.MemberDTO">
-		select * from members
-		where mem_id=#{memId}
+		select m.*
+	  , ifnull(max(rev_total), 0) as rev_total
+   		from members m
+		left join revscore r
+      	on m.mem_id = r.reviewer
+   		where 1=1
+	 	and mem_id =#{memId}
 	</select>
 
 	<update id="updateMember">

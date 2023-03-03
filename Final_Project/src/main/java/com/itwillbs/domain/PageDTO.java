@@ -12,9 +12,29 @@ public class PageDTO {
 	private int startPage;
 	private int endPage;
 	private int pageCount;
+	private String buymemId;
+	private String sellmemId;
 	
 	private String search;
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public String getBuymemId() {
+		return buymemId;
+	}
+	public void setBuymemId(String buymemId) {
+		this.buymemId = buymemId;
+	}
+	public String getSellmemId() {
+		return sellmemId;
+	}
+	public void setSellmemId(String sellmemId) {
+		this.sellmemId = sellmemId;
+	}
 	public int getPageSize() {
 		return pageSize;
 	}
@@ -75,12 +95,7 @@ public class PageDTO {
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
 	}
-	public String getSearch() {
-		return search;
-	}
-	public void setSearch(String search) {
-		this.search = search;
-	}
+	
 	
 	
 }

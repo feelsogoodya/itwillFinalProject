@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.ReviewDTO;
 import com.itwillbs.service.MemberService;
+import com.itwillbs.service.ReviewService;
 
 
 
@@ -23,6 +25,9 @@ public class MemberController {
 
 	@Inject
 	private MemberService memberService;
+	
+	@Inject
+	private ReviewService reviewService;
 
 	// 약관
 	@RequestMapping(value = "/member/terms", method = RequestMethod.GET)
@@ -139,10 +144,19 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
-	public String mypage(HttpSession session, Model model) {
+	public String mypage(HttpSession session, Model model, ReviewDTO reviewDTO) {
 		String memId = (String) session.getAttribute("memId");
+		
 		MemberDTO dto = memberService.getMember(memId);
+		
+//		reviewDTO =reviewService.getReviewer(memId);
+		
 		model.addAttribute("dto", dto);
+//		model.addAttribute("reviewDTO",reviewDTO);
+		System.out.println("reviewDTO: "+ dto.getRevTotal());
+		
+		
+		;
 		return "member/mypage";
 	}
 	

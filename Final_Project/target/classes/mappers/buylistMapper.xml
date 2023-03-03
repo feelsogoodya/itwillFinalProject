@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwillbs.mappers.buylistMapper">
+
+<!-- 	<insert id="insertBuyList"> -->
+<!-- 	insert into buylist(buymem_id, prod_name, prod_pic, prod_price, buy_date ) -->
+<!-- 	values (#{member_id}, #{product_name},#{product_pic},#{product_price},#{buy_date}) -->
+<!-- 	</insert> -->
+
+
+	<select id="getBuyList"
+		resultType="com.itwillbs.domain.BuyListDTO">
+		select * from buylist where buymem_name= #{buymemId}
+		order by buy_date desc
+	</select>
+
+  <select id="getBuyCount" resultType="java.lang.Integer">
+  	select count(*) from buylist
+  </select>
+
+</mapper>

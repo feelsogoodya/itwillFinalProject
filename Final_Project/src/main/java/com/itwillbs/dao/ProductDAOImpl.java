@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ProductDTO;
 
 @Repository
@@ -68,5 +69,15 @@ public class ProductDAOImpl implements ProductDAO{
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 	
+	@Override
+	public List<ProductDTO> getSellList(PageDTO pageDTO) {
+
+		return sqlSession.selectList(namespace+".getSellList", pageDTO);
+	}
 	
+	@Override
+	public int getSellCount() {
+		return sqlSession.selectOne(namespace + ".getSellCount");
+
+	}//
 }

@@ -13,7 +13,16 @@ public class MemberDTO {
 	private String memAddress;
 	private String memAccount;
 	private Timestamp memTime;
+	private double revTotal;
 	
+	
+	
+	public double getRevTotal() {
+		return revTotal;
+	}
+	public void setRevTotal(double revTotal) {
+		this.revTotal = revTotal;
+	}
 	public int getMemNum() {
 		return memNum;
 	}

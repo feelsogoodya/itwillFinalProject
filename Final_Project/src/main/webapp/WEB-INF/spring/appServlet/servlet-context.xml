@@ -50,4 +50,7 @@
 		<beans:constructor-arg value="C:\\workspace_project\\Final_Project\\src\\main\\webapp\\resources\\txt\\"></beans:constructor-arg>
 	</beans:bean>
 	
+	<!-- 프로필 사진 업로드 -->
+	<beans:bean id="multipartResolver2" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>	
+	
 </beans:beans>

@@ -115,6 +115,7 @@ function check() {
 		return false;
 	}
 
+	
 }
 
 // 주소 api
@@ -165,6 +166,39 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+/* 이미지 업로드 */
+$("input[type='file']").on("change", function(e){
+	let fileInput = $('input[name="uploadFile"]');
+	let fileList = fileInput[0].files;
+	let fileObj = fileList[0];
+	
+	if(!fileCheck(fileObj.name, fileObj.size)){
+		return false;
+	}
+	
+	alert("통과");
+});
+
+/* var, method related with attachFile */
+let regex = new RegExp("(.*?)\.(jpg|png)$");
+let maxSize = 1048576; //1MB	
+
+function fileCheck(fileName, fileSize){
+
+	if(fileSize >= maxSize){
+		alert("파일 사이즈 초과");
+		return false;
+	}
+		  
+	if(!regex.test(fileName)){
+		alert("해당 종류의 파일은 업로드할 수 없습니다.");
+		return false;
+	}
+	
+	return true;		
+	
+}
 </script>
 </head>
 
@@ -172,10 +206,10 @@ function sample6_execDaumPostcode() {
 	<c:redirect url="/member/login"></c:redirect>
 </c:if>
 
-<body onclick="clearDocs();gnbClose();" id="mainBody" class="bgother">
     <!-- Header Section Begin -->
     <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
+    
 <form action="${pageContext.request.contextPath }/member/updatePro" onsubmit="return check()" method="POST">
 	<div id="wrap" class="wrap naverid">
 		<div class="u_skip">
@@ -185,24 +219,23 @@ function sample6_execDaumPostcode() {
 		<header class="header" role="banner">
 			<div class="header_subindex">
 
-				<!-- 				<div class="gnb_area"> -->
-				<!-- 					<div class="header__logo" style="text-align: center;"> -->
-				<!-- 						<a href="./index.html"> <img -->
-				<%-- 							src="${pageContext.request.contextPath }/resources/img/marketLogo.png" --%>
-				<!-- 							alt="" width="180"></a> -->
-				<!-- 					</div> -->
-				<!-- 					        </a> -->
-				<!-- 					        <a href="/user2/help/myInfoV2?lang=ko_KR" class="gnb_title" onclick="clickcr(this,'gnb.naverID','','',event)"> -->
-				<!-- 					            <h1 class="text"><span class="blind"></span></h1> -->
-				<!-- 					        </a> -->
-				<!-- 				</div> -->
+      		<div class="form_section">
+      			<div class="form_section_title">
+      				<label>상품 이미지</label>
+      			</div>
+      			<div class="form_section_content">
+					<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
+      			</div>
+      		</div>  
 
 				<div class="profile_area">
+				
+<!-- 				파일 여러개 -->
+<!-- 				<input type="file" multiple> -->
 					<div class="profile_inner">
-						<a href="#" onclick="changeImage()" class="photo"> <img
-							src="https://static.nid.naver.com/images/web/user/default.png"
-							width="84" height="84" alt="프로필 이미지"> <span
-							class="photo_edit"></span>
+						<a href="#" onclick="changeImage()" class="photo"> 
+						<img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지"> 
+							<span class="photo_edit"></span>
 						</a>
 						<div class="profile">
 							<p class="useid">${dto.memName }</p>
@@ -318,9 +351,11 @@ function sample6_execDaumPostcode() {
 					                    <input type="password" id="memPass" name="memPass" class="int"
 											aria-describedby="pswd1Msg" maxlength="20" value="${dto.memPass }"
 											placeholder="4~12자의 영문 대소문자와 숫자로만 입력" style="width: 550px;" readonly>
-					                    <button type="submit" class="btn_edit">
+										<a href="${pageContext.request.contextPath }/member/update">
+					                    <button type="button" class="btn_edit">
 					                        <span class="text">수정</span>
 					                    </button>
+					                    </a>
 					                </div>
 								</li>
 								<li>

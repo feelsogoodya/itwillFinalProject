@@ -65,10 +65,10 @@
 		var memphone = RegExp(/^01[0179][0-9]{7,8}$/);
 		
 	 		
-	 	if(document.getElementById("Idchk").checked == false) {
-	 	     alert("중복확인을 해주세요");
-	 	     return false;
-	    }
+// 	 	if(document.getElementById("Idchk").checked == false) {
+// 	 	     alert("중복확인을 해주세요");
+// 	 	     return false;
+// 	    }
 		if ($('#memId').val() == "") {
 			alert("아이디를 입력하세요");
 			$('#memId').focus();

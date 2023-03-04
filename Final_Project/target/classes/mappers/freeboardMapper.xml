@@ -24,19 +24,34 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select *
-		from freeboard
+		select b.freeboard_num, 
+			   b.member_id, 
+			   b.subject, 
+			   b.content, 
+			   b.readcount, 
+			   date_format(b.date, '%Y.%m.%d %H:%i') as date, 
+			   b.like_count, 
+			   m.mem_nname as member_nick
+		from freeboard b left join members m
+		on b.member_id = m.mem_id
 		where 1=1
 		<if test="search != null">
-		 and subject like concat('%',#{search},'%')
+		 and b.subject like concat('%',#{search},'%')
 		</if>
-		order by freeboard_num desc
+		order by b.freeboard_num desc
 		limit #{startRow}, #{pageSize}
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select *
-		from freeboard
+		select b.freeboard_num, 
+			   b.member_id, 
+			   b.subject, 
+			   b.content, 
+			   b.readcount, 
+			   date_format(b.date, '%Y.%m.%d %H:%i') as date,
+			   m.mem_nname as member_nick
+		from freeboard b left join members m
+		on b.member_id = m.mem_id
 		where freeboard_num = #{freeboardNum}
 	</select>
 	
@@ -51,4 +66,33 @@
 		delete from freeboard
 		 where freeboard_num = #{freeboardNum}
 	</delete>
+	
+	<select id="getCommList" resultType="com.itwillbs.domain.FreeBoardCommDTO">
+		select bc.comm_num, 
+			   bc.freeboard_num, 
+			   bc.member_id, 
+			   bc.content, 
+			   date_format(bc.date, '%Y.%m.%d %H:%i') as date,
+			   m.mem_nname as member_nick
+		from freeboard_comm bc left join members m
+		on bc.member_id = m.mem_id
+		where freeboard_num = #{freeboardNum}
+		order by date
+	</select>
+	
+	<insert id="insertComm">
+		insert into freeboard_comm(comm_num, freeboard_num, member_id, content, date)
+		values(#{commNum}, #{freeboardNum}, #{memberId}, #{content}, #{date})
+	</insert>
+	
+	<select id="getMaxCommNum" resultType="java.lang.Integer">
+		select max(comm_num)
+		  from freeboard_comm
+	</select>
+	
+	<update id="updateReadcount">
+		update freeboard
+		   set readcount = readcount + 1
+		 where freeboard_num = #{num}
+	</update>
 </mapper>

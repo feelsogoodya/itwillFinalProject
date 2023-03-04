@@ -64,6 +64,11 @@
 		var memNname = RegExp(/^[가-힣a-zA-Z0-9]{2,10}$/);
 		var memphone = RegExp(/^01[0179][0-9]{7,8}$/);
 		
+	 		
+	 	if(document.getElementById("Idchk").checked == false) {
+	 	     alert("중복확인을 해주세요");
+	 	     return false;
+	    }
 		if ($('#memId').val() == "") {
 			alert("아이디를 입력하세요");
 			$('#memId').focus();
@@ -136,7 +141,7 @@
 		}
 
 		//이메일 유효성 검사
-		if (!getMail.test($("#memEmail").val())) {
+		if (!memEmail.test($("#memEmail").val())) {
 			alert("이메일 형식에 맞게 입력해주세요")
 			$("#memEmail").val("");
 			$("#memEmail").focus();
@@ -226,13 +231,12 @@
 							<h3 class="join_title">
 								<label for="id">아이디</label>
 							</h3>
-							<span class="ps_box int_id"> <input type="text" id="memId"
-								name="memId" class="int" maxlength="20"
-								placeholder="4~12자의 영문 대소문자와 숫자로만 입력">
+							<span class="ps_box int_id"> 
+							<input type="text" id="memId" name="memId" class="int" maxlength="20" placeholder="4~12자의 영문 대소문자와 숫자로만 입력">
 							</span>
 							<div class="dupdiv"></div>
 						</div>
-						<input type="button" value="중복확인" class="dup"><br>
+						<input type="button" value="중복확인" id="Idchk" class="dup"><br>
 						<div class="join_row">
 							<h3 class="join_title">
 								<label for="pswd1">비밀번호</label>
@@ -319,7 +323,7 @@
 					</div>
 					<div class="join_row join_mobile" id="mobDiv">
 						<h3 class="join_title">
-							<label for="phoneNo">휴대전화</label>
+							<label for="phoneNo">전화번호</label>
 						</h3>
 						<div class="int_mobile_area">
 							<span class="ps_box int_mobile"> 

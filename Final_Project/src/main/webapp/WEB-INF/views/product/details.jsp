@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">채팅하기</a>
+                        <button class="primary-btn" onclick="createRoom()">채팅하기</button>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
@@ -205,7 +205,7 @@
     <!-- Footer Section Begin -->
     <jsp:include page="../../../resources/fragments/footer.jsp"></jsp:include>
     <!-- Footer Section End -->
-
+	
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
@@ -215,8 +215,32 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-
-
+	<script type="text/javascript">
+	function createRoom() {
+		console.log('${productMap.productNum}');
+		console.log('${sessionScope.memId}');
+		console.log('${productMap.productSeller}');
+		if('${sessionScope.memId}' === '') {
+			alert('로그인 후 사용할 수 있습니다.');
+		} else {
+			$.ajax({
+				url : "${pageContext.request.contextPath }/chat/room",
+				type : "POST",
+				data : {
+					productNum : '${productMap.productNum}',
+					memberId : '${sessionScope.memId}',
+					seller : '${productMap.productSeller}'
+				},
+				success : function(response) {
+					window.open('${pageContext.request.contextPath }' + response, 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			      }
+			});
+		}
+	}
+	</script>
 </body>
 
 </html>

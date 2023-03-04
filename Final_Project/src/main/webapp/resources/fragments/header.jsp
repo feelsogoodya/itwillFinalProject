@@ -142,7 +142,7 @@
                             	<ul class="header__menu__dropdown">
                                     <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
                                     <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
-                                    <li><a href="./blog-details.html">채팅목록</a></li>
+                                    <li><a href="javascript:chatList();">채팅목록</a></li>
                                     <li><a href="./shoping-cart.html">판매내역</a></li>
                                     <li><a href="./checkout.html">구매내역</a></li>
                                 </ul>
@@ -168,5 +168,11 @@
     </header>
 </head>
 <body>
+<script type="text/javascript">
+	function chatList() {
+		if('${sessionScope.memId}' === '') alert('로그인 후 사용할 수 있습니다.');
+		else window.open('${pageContext.request.contextPath }/chat/list', 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+	}
+</script>
 </body>
 </html>

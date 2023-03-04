@@ -1,6 +1,5 @@
 package com.itwillbs.domain;
 
-import java.sql.Timestamp;
 
 public class NoticeDTO {
 	//멤버변수

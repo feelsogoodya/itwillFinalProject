@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwillbs.mappers.chatMapper">
+	
+	<resultMap type="map" id="chatList">
+		<id column="room_id" property="roomId"/>
+		<result column="product_num" property="productNum"/>
+		<result column="buyer_id" property="buyerId"/>
+		<result column="seller_id" property="sellerId"/>
+		<result column="date" property="date"/>
+		<result column="product_title" property="productTitle"/>
+		<result column="buyer_nick" property="buyerNickname"/>
+		<result column="seller_nick" property="sellerNickname"/>
+	</resultMap>
+	
+	<resultMap type="map" id="chat">
+		<id column="room_id" property="roomId"/>
+		<result column="product_num" property="productNum"/>
+		<result column="buyer_id" property="buyerId"/>
+		<result column="seller_id" property="sellerId"/>
+		<result column="product_title" property="productTitle"/>
+		<result column="buyer_nick" property="buyerNickname"/>
+		<result column="seller_nick" property="sellerNickname"/>
+	</resultMap>
+	
+	<select id="findAllRoom" resultMap="chatList">
+		select c.room_id, 
+			   c.product_num,
+			   c.buyer_id, 
+			   c.seller_id, 
+			   date_format(c.date, '%Y-%m-%d') as date, 
+			   p.product_title, 
+			   ifnull(b.mem_nname, '상대가 나갔습니다.') as buyer_nick, 
+			   ifnull(s.mem_nname, '상대가 나갔습니다.') as seller_nick
+		from chat c left join product p
+		on c.product_num = p.product_num
+		left join members b
+		on c.buyer_id = b.mem_id
+		left join members s
+		on c.seller_id = s.mem_id
+		where buyer_id = #{memberId} or seller_id = #{memberId}
+	</select>
+	
+	<select id="findByIdAndNum" resultType="com.itwillbs.domain.ChatRoomDTO">
+		select *
+		from chat
+		where product_num = #{productNum} 
+		  and buyer_id = #{buyerId}
+	</select>
+	
+	<select id="findById"  resultMap="chat">
+		select c.room_id, 
+			   c.product_num, 
+			   c.buyer_id, 
+			   c.seller_id, 
+			   p.product_title, 
+			   ifnull(b.mem_nname, '상대가 나갔습니다.') as buyer_nick, 
+			   ifnull(s.mem_nname, '상대가 나갔습니다.') as seller_nick
+		from chat c left join product p
+		on c.product_num = p.product_num
+		left join members b
+		on c.buyer_id = b.mem_id
+		left join members s
+		on c.seller_id = s.mem_id
+		where room_id = #{roomId}
+	</select>
+	
+	<insert id="createRoom">
+		insert into chat(room_id, product_num, buyer_id, seller_id, date)
+		values(#{roomId}, #{productNum}, #{buyerId}, #{sellerId}, #{date})
+	</insert>
+	
+	<update id="deleteRoom">
+		update chat
+		   set buyer_id = case when buyer_id = #{sender} then null else buyer_id end,
+		       seller_id = case when seller_id = #{sender} then null else seller_id end
+		 where room_id = #{roomId}
+	</update>
+<!-- 	<update id="setRead"> -->
+<!-- 		update chat  -->
+<!-- 		set read=#{read}  -->
+<!-- 		where roomId=#{roomId} -->
+<!-- 	</update> -->
+</mapper>

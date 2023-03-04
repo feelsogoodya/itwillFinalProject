@@ -1,12 +1,5 @@
 package com.itwillbs.domain;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.web.multipart.MultipartFile;
-
-
 public class CustomerserviceDTO {
 	
 //	cs_num

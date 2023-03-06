@@ -79,4 +79,10 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.passwordUpdate(searchVO);
 	}
 
+	@Override
+	public void updateImg(String memberImg, String memId) {
+		
+		
+	}
+
 }

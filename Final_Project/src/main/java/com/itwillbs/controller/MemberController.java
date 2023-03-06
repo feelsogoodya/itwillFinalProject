@@ -1,20 +1,27 @@
 package com.itwillbs.controller;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.protobuf.Message;
@@ -186,6 +193,22 @@ public class MemberController {
 			memberService.deleteMember(dto);
 			session.invalidate();
 			return "redirect:/member/mypage";
+	}
+	
+	@RequestMapping(value="/updateImg", method=RequestMethod.POST)
+	public String updateImg(MultipartHttpServletRequest mpRequest, HttpSession session , String memId)throws Exception {
+		
+		String memberImg = FileUtil.updateImg(mpRequest); 
+
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		
+		memberService.updateImg(memberImg, memId);
+		
+		memberDTO.setMemberImg(memberImg);
+		session.setAttribute("login", memberDTO);
+		
+				
+		return "/member/infoView";
 	}
 	
 }

@@ -28,4 +28,6 @@ public interface MemberService {
 	
 	public void passwordUpdate(MemberDTO searchVO);
 
+	public void updateImg(String memberImg, String memId);
+
 }

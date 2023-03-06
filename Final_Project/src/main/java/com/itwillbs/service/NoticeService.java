@@ -22,7 +22,7 @@ public interface NoticeService {
 	// 글가져오기 메서드 호출
 	public NoticeDTO getNotice(int num);
 	
-	public void deleteNotice(NoticeDTO dto);
+	public void deleteNotice(int num);
 	
 	public void updateNotice(NoticeDTO noticeDTO);
 }

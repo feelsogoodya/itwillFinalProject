@@ -12,7 +12,15 @@ public class NoticePageDTO {
 	private int startPage;
 	private int endPage;
 	private int pageCount;
+	private String search;
 	
+	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getPageSize() {
 		return pageSize;
 	}

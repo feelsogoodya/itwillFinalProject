@@ -66,16 +66,17 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNotice(num);
 	}
 
-	@Override
-	public void deleteNotice(NoticeDTO dto) {
-		noticeDAO.deleteNotice(dto);	
-		
-	}
+
 
 	@Override
 	public void updateNotice(NoticeDTO noticeDTO) {
 		noticeDAO.updateNotice(noticeDTO);
 		
+	}
+
+	@Override
+	public void deleteNotice(int num) {
+		noticeDAO.deleteNotice(num);
 	}
 
 }

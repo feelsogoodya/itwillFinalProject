@@ -95,6 +95,7 @@ public class NoticeController {
 		// http://localhost:8080/myweb/board/list
 		// http://localhost:8080/myweb/board/list?pageNum=2
 		// 한 화면에 보여줄 글 개수 설정 (10개 설정)
+		System.out.println("teasdas" + request.getParameter("search"));
 		int pageSize=10;
 		// 현 페이지 번호 파라미터값 가져오기
 		String pageNum=request.getParameter("pageNum");
@@ -110,7 +111,7 @@ public class NoticeController {
 		dto.setPageSize(pageSize);
 		dto.setPageNum(pageNum);
 		dto.setCurrentPage(currentPage);
-		
+		dto.setSearch(request.getParameter("search"));
 		// 디비작업 메서드 호출
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 		// List<BoardDTO> boardList =dao.getBoardList(dto);
@@ -155,10 +156,11 @@ public class NoticeController {
 		return "notice/content";
 	}//
 	
-	@RequestMapping(value = "/notice/delete")	
-	public String deletePro(NoticeDTO dto) {
+	@RequestMapping(value = "/notice/delete", method = RequestMethod.GET)	
+	public String deletePro(HttpServletRequest request) {
 		System.out.println("NoticeController deletePro() ");
-			noticeService.deleteNotice(dto);
+		int notiNum=Integer.parseInt(request.getParameter("notiNum"));
+			noticeService.deleteNotice(notiNum);
 			// 세션초기화
 //			session.invalidate();
 			// 이동방식 : 주소변경 하면서 이동 
@@ -166,6 +168,18 @@ public class NoticeController {
 			return "redirect:/notice/list";
 		
 	}//
+	
+//	@RequestMapping(value = "/notice/delete")	
+//	public String deletePro(NoticeDTO dto) {
+//		System.out.println("NoticeController deletePro() ");
+//		noticeService.deleteNotice(dto);
+//		// 세션초기화
+////			session.invalidate();
+//		// 이동방식 : 주소변경 하면서 이동 
+//		// response.sendRedirect() 이동
+//		return "redirect:/notice/list";
+//		
+//	}//
 	
 	@RequestMapping(value = "/notice/update", method = RequestMethod.GET)	
 	public String update(HttpServletRequest request,Model model) {

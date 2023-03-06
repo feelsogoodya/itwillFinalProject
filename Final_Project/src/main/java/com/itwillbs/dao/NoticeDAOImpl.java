@@ -31,7 +31,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 
 	@Override
 	public List<NoticeDTO> getNoticeList(NoticePageDTO dto) {
-		
+		System.out.println("입력값" + dto.getSearch());
 		return sqlSession.selectList(namespace+".getNoticeList",dto);
 	}
 
@@ -50,17 +50,18 @@ public class NoticeDAOImpl implements NoticeDAO{
 		return sqlSession.selectOne(namespace+".getNotice", num);
 	}
 
-	@Override
-	public void deleteNotice(NoticeDTO dto) {
-		
-		sqlSession.delete(namespace+".deleteNotice", dto);
-		
-	}
+
 
 	@Override
 	public void updateNotice(NoticeDTO noticeDTO) {
 		System.out.println(noticeDTO.getNotiNum());
 		sqlSession.update(namespace +".updateNotice", noticeDTO);
+	}
+
+	@Override
+	public void deleteNotice(int num) {
+		sqlSession.delete(namespace + ".delete", num);
+		
 	}
 
 

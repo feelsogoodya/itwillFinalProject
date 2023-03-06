@@ -55,23 +55,20 @@
                         <h4>조회순</h4>
                         <!-- 조회순 -->
                         <div class="latest-product__slider owl-carousel">
-                            <c:forEach var="ProductDTO" items="${orderViews }" varStatus="status">
-	                        	<c:if test="${status.index % 3 eq 0 }">
-	                        		<div class="latest-prdouct__slider__item">
-	                        	</c:if>
-                        			<a href="#" class="latest-product__item">
-	                                    <div class="latest-product__item__pic">
-	                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
-	                                    </div>
-	                                    <div class="latest-product__item__text">
-	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
-	                                        <span>${ProductDTO.productPrice }</span>
-	                                    </div>
-	                                </a>
-		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
-		                   	</c:forEach>
+                      		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${orderViews }">
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                    </div>
+		                                </a>
+			                   	</c:forEach>
+                       		</div>
 	                   </div>
-                  	</div>
                 </div>
               </div>
                 <div class="col-lg-4 col-md-6">
@@ -92,7 +89,9 @@
 		                                        <span>${ProductDTO.productPrice }</span>
 		                                    </div>
 		                                </a>
-			                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
+			                         <c:if test="${status.index % 3 eq 2 }">
+			                         	</div>
+			                         </c:if>
 			                   </c:forEach>
                          </div>
                     </div>

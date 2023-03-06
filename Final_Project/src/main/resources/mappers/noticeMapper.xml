@@ -30,7 +30,7 @@
 		 and noti_title like concat('%',#{search},'%')
 		 </if>
   </select>
-  
+   
   <update id="updateReadcount">
   	update notice set noti_readcount=noti_readcount+1 where noti_num=#{notiNum}
   </update>

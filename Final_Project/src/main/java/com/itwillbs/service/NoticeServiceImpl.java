@@ -17,7 +17,7 @@ public class NoticeServiceImpl implements NoticeService{
 	//자동 객체생성 부모=자식
 	@Inject
 	private NoticeDAO noticeDAO;
-	
+	 
 	@Override
 	public void insertNotice(NoticeDTO noticeDTO) {
 		// name,subject,content

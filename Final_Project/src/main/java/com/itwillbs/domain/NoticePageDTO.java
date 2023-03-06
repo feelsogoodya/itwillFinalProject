@@ -14,7 +14,7 @@ public class NoticePageDTO {
 	private int pageCount;
 	private String search;
 	
-	
+	 
 	public String getSearch() {
 		return search;
 	}

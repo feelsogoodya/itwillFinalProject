@@ -95,7 +95,6 @@ public class NoticeController {
 		// http://localhost:8080/myweb/board/list
 		// http://localhost:8080/myweb/board/list?pageNum=2
 		// 한 화면에 보여줄 글 개수 설정 (10개 설정)
-		System.out.println("teasdas" + request.getParameter("search"));
 		int pageSize=10;
 		// 현 페이지 번호 파라미터값 가져오기
 		String pageNum=request.getParameter("pageNum");

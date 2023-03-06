@@ -11,7 +11,7 @@ public interface NoticeDAO {
 	public void insertNotice(NoticeDTO noticeDTO);
 	// getMaxNum
 	public Integer getMaxNum();
-	
+	 
 	// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 	public List<NoticeDTO> getNoticeList(NoticePageDTO dto);
 	

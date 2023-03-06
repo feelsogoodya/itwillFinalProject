@@ -26,3 +26,4 @@ public interface NoticeService {
 	
 	public void updateNotice(NoticeDTO noticeDTO);
 }
+ 

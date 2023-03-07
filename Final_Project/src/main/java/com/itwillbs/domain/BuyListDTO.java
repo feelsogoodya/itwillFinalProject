@@ -3,8 +3,8 @@ package com.itwillbs.domain;
 public class BuyListDTO {
 
 	private int buyNum;
-	private String buymemId;
-	private String prodName;
+	private String buymemName;
+	private String prodTitle;
 	private String prodPic;
 	private int prodPrice;
 	private String buyDate;
@@ -22,18 +22,20 @@ public class BuyListDTO {
 	public void setBuyNum(int buyNum) {
 		this.buyNum = buyNum;
 	}
-	public String getBuymemId() {
-		return buymemId;
+
+	public String getBuymemName() {
+		return buymemName;
 	}
-	public void setBuymemId(String buymemId) {
-		this.buymemId = buymemId;
+	public void setBuymemName(String buymemName) {
+		this.buymemName = buymemName;
 	}
-	public String getProdName() {
-		return prodName;
+	public String getProdTitle() {
+		return prodTitle;
 	}
-	public void setProdName(String prodName) {
-		this.prodName = prodName;
+	public void setProdTitle(String prodTitle) {
+		this.prodTitle = prodTitle;
 	}
+	
 	public String getProdPic() {
 		return prodPic;
 	}

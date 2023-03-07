@@ -53,7 +53,7 @@ font-size: 50px;
 <div class="buy-title">${sessionScope.memId}님의 구매내역</div>
 
 <div class="main" style=" padding-left: 100px;">
-<input type="hidden" name="buymemId" value="${sessionScope.memId}">
+<input type="hidden" name="buymemName" value="${sessionScope.memId}">
 <a href="${pageContext.request.contextPath }/">메인페이지</a><br>
 <a href="${pageContext.request.contextPath }/sell/판매페이지">판매하기</a><br>
 <%-- <div>나의 매너온도: ${reviewDTO.revTotalscore}</div> --%>
@@ -78,8 +78,8 @@ font-size: 50px;
 	</c:forTokens>
 	
 	</td>
-	<td><a href="${pageContext.request.contextPath }/selllist/prodName?num=${dto.buyNum}">
-    ${dto.prodName}</a></td>
+	<td><a href="${pageContext.request.contextPath }/product/details/prodName?num=${dto.buyNum}">
+    ${dto.prodTitle}</a></td>
 	<td>${dto.prodPrice} 원</td>
 	<td><input type="button" value="거래후기 작성" class="goreview"onclick="openPop()"> </td>
            </c:forEach>

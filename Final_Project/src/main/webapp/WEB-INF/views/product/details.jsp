@@ -70,16 +70,16 @@
                     <div class="product__details__pic">
                         <!-- 첫번째 사진 -->
                         <c:if test=""></c:if>
-                        <div class="product__details__pic__item">
+                        <div class="product__details__pic__item" style="width:100%; text-align:center; align-items: center;">
                             <img class="product__details__pic__item--large"
-                                src="${pageContext.request.contextPath }/resources/upload/${fn:split(productMap.productPic,'|')[0]}" alt="">
+                                src="${pageContext.request.contextPath }/resources/upload/${fn:split(productMap.productPic,'|')[0]}" alt="" height="553">
                         </div>
                         <!-- 나머지 사진 -->
                         <div class="product__details__pic__slider owl-carousel">
 	                        <c:set var="pictures" value="${fn:split(productMap.productPic,'|')}"></c:set>
-	                        <c:forEach var="pic" items="${pictures }">
+	                        <c:forEach var="pic" items="${pictures}">
 	                        	<img data-imgbigurl="img/product/details/product-details-2.jpg"
-	                                src="${pageContext.request.contextPath }/resources/upload/${pic}" alt="">
+	                                src="${pageContext.request.contextPath }/resources/upload/${pic}" alt="" class="small" height="124">
 	                        </c:forEach>
                         </div>
                     </div>
@@ -215,6 +215,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<<<<<<< HEAD
 	<script type="text/javascript">
 	function createRoom() {
 		console.log('${productMap.productNum}');
@@ -241,6 +242,20 @@
 		}
 	}
 	</script>
+=======
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('.small').on('click', function(){
+    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
+//     			$('.product__details__pic__item--large').css({
+//     				 "margin": "auto",
+//     				 "display": "block"
+//     			});
+    		});
+    	});
+    	
+    </script>
+>>>>>>> branch 'main' of https://github.com/pds07208/itwillFinalProject.git
 </body>
 
 </html>

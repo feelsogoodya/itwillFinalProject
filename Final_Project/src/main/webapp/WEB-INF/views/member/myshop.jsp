@@ -22,6 +22,7 @@
     <!-- Header Section Begin -->
     <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
+    
 	<div id="wrap" class="wrap naverid">
 		<header class="header" role="banner">
 			<div class="header_subindex">
@@ -51,26 +52,9 @@
 							aria-current="true">
 								<div class="menu_text on">내 상점</div>
 						</a></li>
-						<!-- 					<li><a -->
-						<!-- 						href="/user2/help/myInfoV2?m=viewManageHistory&lang=ko_KR" -->
-						<!-- 						class="left_item" role="menuitem" -->
-						<!-- 						onclick="clickcr(this,'lnb.history','','',event)" aria-current=> -->
-						<!-- 							<div class="menu_text ">흠</div> -->
-						<!-- 					</a></li> -->
 					</ul>
 					<ul class="left_link">
-						<!-- 					<li><a href="https://nca.naver.com/chat/account/view" -->
-						<!-- 						class="left_item" -->
-						<!-- 						onclick="clickcr(this,'fot.smartbot','','',event)"> -->
-						<!-- 							<div class="link_text">음</div> -->
-						<!-- 					</a></li> -->
-						<!-- 					<li><a href="https://talk.naver.com/ct/wc4bsu#nafullscreen" -->
-						<!-- 						class="left_item" -->
-						<!-- 						onclick="clickcr(this,'fot.membertalktalk','','',event)"> -->
-						<!-- 							<div class="link_text">흠</div> -->
-						<!-- 					</a></li> -->
 					</ul>
-
 					<!-- footerLeft -->
 					<footer class="left_footer" role="contentinfo">
 						<ul class="left_guide">

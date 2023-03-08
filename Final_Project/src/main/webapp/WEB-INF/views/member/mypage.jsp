@@ -185,15 +185,8 @@ function sample6_execDaumPostcode() {
 
 		<header class="header" role="banner">
 			<div class="header_subindex">
-			<img src="/image/${login.memberImg}" style=" max-width: 50%;  height: auto;"> <br />	  
-          	 <div class="card">           
-           	<form action="/member/updateImg" method="post" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <input type="hidden" name="memberId" id="memberId" value="${login.memberId}">
-               <button type="submit" class="btn btn-primary">사진변경</button>
-             </form>
+          		<div class="card">
 				<div class="profile_area">
-				
 					<div class="profile_inner">
 						<a href="#" onclick="changeImage()" class="photo"> 
 						<img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지"> 
@@ -236,8 +229,8 @@ function sample6_execDaumPostcode() {
 						</ul>
 					</footer>
 				</div>
-
 			</div>
+		</div>
 		</header>
 		<div id="container" class="container">
 			<!-- container -->
@@ -267,20 +260,10 @@ function sample6_execDaumPostcode() {
 										</div>
 									</li>
 									<li>
-<!-- 										<div class="myaccount"> -->
-<!-- 											<div class="myname"> -->
-<%-- 												<div class="name_text">${dto.memNname }</div> --%>
-<%-- 												<div class="myaddress">${dto.memId }</div> --%>
-<!-- 						                            <button type="button" class="btn_edit" onclick="changeName()"> -->
-<!-- 						                                <span class="text">닉네임 수정</span> -->
-<!-- 						                            </button> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
 										<div class="myaccount">
 											<div class="myname">
 												<input type="text" id="memNname" name="memNname" title="닉네임" class="int" value="${dto.memNname }"
-													maxlength="40" placeholder="2~10자의 한글, 영문 대소문자와 숫자로만 입력" style="font-size:25px;">
-<%-- 												<div class="myaddress">${dto.memId }</div> --%><br>
+													maxlength="40" placeholder="2~10자의 한글, 영문 대소문자와 숫자로만 입력" style="font-size:25px;"><br>
 													<input type="text" name="memId" value="${dto.memId }" class="myaddress" 
 														title="ID" maxlength="20" oninput="checkId()" readonly>
 						                            <button type="submit" class="btn_edit" >
@@ -294,11 +277,6 @@ function sample6_execDaumPostcode() {
 							</div>
 
 							<ul class="subindex_row">
-<!-- 								<li> -->
-<!-- 									<div id="phoneNoRegDiv" class="row_item name "> -->
-<%-- 										<span id="phoneNoRegSpan" class="item_text">${dto.memName }</span> --%>
-<!-- 									</div> -->
-<!-- 								</li> -->
 								<li>
 									<div id="phoneNoRegDiv" class="row_item name ">
 										<input type="text" id="memName" name="memName" title="이름" class="int" value="${dto.memName }"
@@ -322,7 +300,6 @@ function sample6_execDaumPostcode() {
 								</li>
 								<li>
 									<div class="row_item mail ">
-<%-- 										<span id="myLetterEmailRegSpan" class="item_text">${dto.memEmail }</span> --%>
 										<input type="text" id="memEmail" name="memEmail" aria-label="선택입력" value="${dto.memEmail }"
 											class="int" maxlength="100" placeholder="ex)...@naver.com" style="width: 550px;">
 						                    <button type="submit" class="btn_edit">
@@ -332,7 +309,6 @@ function sample6_execDaumPostcode() {
 								</li>
 								<li>
 									<div id="phoneNoRegDiv" class="row_item phone ">
-<%-- 										<span id="phoneNoRegSpan" class="item_text">${dto.memPhone }</span> --%>
 										<input type="text" id="memPhone" name="memPhone" placeholder="전화번호 입력" value="${dto.memPhone }"
 											aria-label="전화번호 입력" class="int" style="width: 550px;">
 						                    <button type="submit" class="btn_edit">
@@ -367,13 +343,6 @@ function sample6_execDaumPostcode() {
 								class="btn_link"> <span class="text">회원탈퇴</span>
 							</a>
 						</div>
-						<br>
-						<!--     <div class="drop_link"> -->
-						<%--         	<a href="${pageContext.request.contextPath }/member/logout" class="btn_link" > --%>
-						<!--             <span class="text">로그아웃</span> -->
-						<!--         </a> -->
-						<!--     </div> -->
-
 					</div>
 				</div>
 			</div>

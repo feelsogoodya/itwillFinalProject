@@ -1,34 +1,39 @@
 package com.itwillbs.controller;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpHeaders;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.util.UrlPathHelper;
 
 import com.google.protobuf.Message;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.service.MemberService;
-
-
 
 @Controller
 public class MemberController {
@@ -195,20 +200,26 @@ public class MemberController {
 			return "redirect:/member/mypage";
 	}
 	
-	@RequestMapping(value="/updateImg", method=RequestMethod.POST)
-	public String updateImg(MultipartHttpServletRequest mpRequest, HttpSession session , String memId)throws Exception {
+//	@RequestMapping(value = "/member/kakao", method = RequestMethod.GET)
+//	public String kakao() {
+//		return "member/kakao";
+//	}
+	
+	@RequestMapping(value="/member/kakao", method=RequestMethod.GET)
+	public String kakao(@RequestParam(value = "code", required = false) String code) throws Exception {
+		System.out.println("#########" + code);
+		return "member/kakao";
+		/*
+		 * 리턴값의 testPage는 아무 페이지로 대체해도 괜찮습니다.
+		 * 없는 페이지를 넣어도 무방합니다.
+		 * 404가 떠도 제일 중요한건 #########인증코드 가 잘 출력이 되는지가 중요하므로 너무 신경 안쓰셔도 됩니다.
+		 */
+		// 위에서 만든 코드 아래에 코드 추가
+		String access_Token = memberService.getAccessToken(code);
+		System.out.println("###access_Token#### : " + access_Token);
+        
+		return "member/testPage";
 		
-		String memberImg = FileUtil.updateImg(mpRequest); 
-
-		MemberDTO dto = (MemberDTO) session.getAttribute("login");
-		
-		memberService.updateImg(memberImg, memId);
-		
-		memberDTO.setMemberImg(memberImg);
-		session.setAttribute("login", memberDTO);
-		
-				
-		return "/member/infoView";
 	}
 	
 }

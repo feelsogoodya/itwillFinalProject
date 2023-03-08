@@ -84,7 +84,6 @@
 	        mem_id = #{memId}
 	]]>    
 	</select>
-	 
 	    
 	<update id="passwordUpdate" parameterType="com.itwillbs.domain.MemberDTO" >
 	    UPDATE 

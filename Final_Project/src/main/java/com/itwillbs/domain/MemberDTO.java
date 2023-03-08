@@ -13,7 +13,14 @@ public class MemberDTO {
 	private String memAddress;
 	private String memAccount;
 	private Timestamp memTime;
+	private String memImg;
 	
+	public String getMemImg() {
+		return memImg;
+	}
+	public void setMemImg(String memImg) {
+		this.memImg = memImg;
+	}
 	public int getMemNum() {
 		return memNum;
 	}

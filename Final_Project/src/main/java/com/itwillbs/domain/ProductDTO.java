@@ -84,4 +84,13 @@ public class ProductDTO {
 		this.productStatus = productStatus;
 	}
 	
+	@Override
+	public String toString() {
+		return "ProductDTO [productNum=" + productNum + ", productSeller=" + productSeller + ", productCate="
+				+ productCate + ", productTitle=" + productTitle + ", productContent=" + productContent
+				+ ", productPrice=" + productPrice + ", productGrade=" + productGrade + ", productPic=" + productPic
+				+ ", productReadcount=" + productReadcount + ", productDate=" + productDate + ", productStatus="
+				+ productStatus + "]";
+	}
+	
 }

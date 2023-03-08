@@ -1,78 +1,71 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
- 
-<script>
-var path = "${pageContext.request.contextPath }";
- 
-$(document).ready(function() {
- 
-});
- 
-</script>
- 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<html lang="ko">
 <head>
- 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
- 
-<title>SB Admin 2 - Register</title>
- 
-<!-- Custom fonts for this template-->
-<link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link
-href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-rel="stylesheet">
- 
-<!-- Custom styles for this template-->
-<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
- 
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="title" content="아이디 찾기 결과">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/searchId.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/searchId2.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/searchId3.css" type="text/css">
+<title>비밀번호 찾기 결과</title>
+<style data-styled="active" data-styled-version="5.3.6"></style>
+<script>
+	var path = "${pageContext.request.contextPath }";
+
+	$(document).ready(function() {
+
+	});
+</script>
 </head>
- 
- 
-<body class="bg-gradient-primary">
-<div class="container">
-<!-- Outer Row -->
-<div class="row justify-content-center">
- 
-<div class="col-xl-10 col-lg-12 col-md-9">
- 
-<div class="card o-hidden border-0 shadow-lg my-5">
-<div class="card-body p-0">
-<!-- Nested Row within Card Body -->
-<div class="row">
-<div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
-<div class="col-lg-6">
-  <div class="p-5">
-      <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-2">Please check your Password</h1><br><br>
-                 <p class="mb-4">${newPwd}</p>    
-      </div>
-      <hr>
-      <div class="text-center">
-          <a class="small" href="/account/search_pwd">Forgot Your Password?</a>
-      </div>
-      <div class="text-center">
-          <a class="small" href="/account/register">Create an Account!</a>
-      </div>
-      <div class="text-center">
-          <a class="small" href="/account/login">Already have an account? Login!</a>
-      </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
- 
-</div>
- 
-</div>
- 
-</div>
+
+<body class="devicePC">
+	<div class="container login" role="main">
+
+		<div id="headerCommonLayout"></div>
+		<header data-system="CCommonAppbar"
+			class="common-layout__sc-1q47zu5-0 bUzayd">
+			<div class="common-layout__sc-1q47zu5-1 gKMDnM">
+				<h2 class="common-layout__sc-wllrag-0 gZwINX">비밀번호 찾기 결과</h2>
+			</div>
+
+		</header>
+		<!-- content -->
+		<section class="content content--middle">
+			<div class="login-find-result">
+				<p class="login-find-result__title">
+					고객님의 정보와 <br>일치하는 임시 비밀번호 입니다.
+				</p>
+				<ul class="login-find-result__result-list">
+					<li class="login-find-result__result-item">
+						<div class="text-center">
+							<div class="text-center">
+								<p class="mb-4">${newPwd}</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="login-button">
+				<p class="login-button__link">
+					아이디가 기억나지 않으세요? <a href="idFind"
+						class="login-button__link__link">아이디 찾기</a>
+				</p>
+
+				<a href="login" class="login-button__item login-button__item--blue">로그인</a>
+
+			</div>
+
+		</section>
+
+		<div id="commonLayoutFooter"></div>
+
+	</div>
+	<!-- //WRAPPER -->
 </body>
 </html>

@@ -17,7 +17,7 @@ public class NoticeServiceImpl implements NoticeService{
 	//자동 객체생성 부모=자식
 	@Inject
 	private NoticeDAO noticeDAO;
-	
+	 
 	@Override
 	public void insertNotice(NoticeDTO noticeDTO) {
 		// name,subject,content
@@ -66,16 +66,17 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNotice(num);
 	}
 
-	@Override
-	public void deleteNotice(NoticeDTO dto) {
-		noticeDAO.deleteNotice(dto);	
-		
-	}
+
 
 	@Override
 	public void updateNotice(NoticeDTO noticeDTO) {
 		noticeDAO.updateNotice(noticeDTO);
 		
+	}
+
+	@Override
+	public void deleteNotice(int num) {
+		noticeDAO.deleteNotice(num);
 	}
 
 }

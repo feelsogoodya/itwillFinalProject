@@ -383,7 +383,7 @@ div[tabindex='-1'] {
 }
 
 .btn_area>span .btn_type {
-	width: auto;
+	width: -webkit-fill-available;
 	margin: 0 5px
 }
 
@@ -472,7 +472,7 @@ select::-ms-expand {
 }
 
 .green {
-	color: #08a600 !important
+	color: #CE93D8 !important
 }
 
 #wrap {
@@ -699,7 +699,7 @@ select::-ms-expand {
 }
 
 .section a {
-	color: #08a600;
+	color: #CE93D8;
 	text-decoration: underline
 }
 
@@ -814,7 +814,7 @@ html[lang=en] .input_chk label, html[lang=zh-Hans] .input_chk label,
 .input_chk label .terms_choice {
 	font-size: 12px;
 	font-weight: 400;
-	color: #08a600
+	color: #CE93D8
 }
 
 .input_chk label .terms_no {
@@ -856,12 +856,12 @@ html[lang=en] .input_chk label, html[lang=zh-Hans] .input_chk label,
 	display: block;
 	margin-top: 8px;
 	padding: 6px 8px;
-	border: 1px solid #08a600;
+	border: 1px solid #CE93D8;
 	background: #fff;
 	box-sizing: border-box;
 	text-align: center;
 	font-size: 12px;
-	color: #08a600
+	color: #CE93D8
 }
 
 .easy_guide:active, .easy_guide:focus, .easy_guide:hover {
@@ -1207,7 +1207,7 @@ ul.terms_list li {
 }
 
 .article__text a {
-	color: #08a600
+	color: #CE93D8
 }
 
 .article__text em {
@@ -1263,7 +1263,7 @@ ul.terms_list li {
 	font-size: 12px;
 	font-weight: 400;
 	display: inline-block;
-	color: #08a600
+	color: #CE93D8
 }
 
 .terms_choice {
@@ -1494,7 +1494,7 @@ html[lang=en] .ps_box.accord, html[lang=en] .ps_box.discord {
 }
 
 .join_row .green {
-	color: #08a600
+	color: #CE93D8
 }
 
 .join_email .terms_choice {
@@ -1724,7 +1724,7 @@ html[lang=en] .btn_c, html[lang=zh-Hans] .btn_c, html[lang=zh-Hant] .btn_c
 }
 
 .accord .input_code {
-	color: #08a600
+	color: #CE93D8
 }
 
 .discord .input_code {
@@ -1872,7 +1872,7 @@ html[lang=en] .btn_c, html[lang=zh-Hans] .btn_c, html[lang=zh-Hant] .btn_c
 .ipin_certify_btn {
 	width: 128px;
 	padding: 18px 0 17px;
-	background: #08a600;
+	background: #CE93D8;
 	font-size: 15px;
 	color: #fff;
 	box-sizing: border-box;
@@ -2066,7 +2066,7 @@ html[lang=zh-Hans] .btn_join input.int_home, html[lang=zh-Hant] .btn_join input.
 }
 
 .join_success .join_success_txt em {
-	color: #08a600
+	color: #CE93D8
 }
 
 .join_success_txt+.btn_area {

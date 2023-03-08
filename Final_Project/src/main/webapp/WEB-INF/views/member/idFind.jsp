@@ -58,7 +58,7 @@ return false;
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/login.css" type="text/css">
 </head>
 <body>
-<form action="${pageContext.request.contextPath }/member/searchId"  commandName="searchVO"  id="createForm" method="post">
+<form action="${pageContext.request.contextPath }/member/searchId"  commandName="searchVO"  id="createForm" method="post" >
 	<div id="wrap" class="wrap">
 		<div class="u_skip">
 			<a href="https://www..com">본문 바로가기</a>
@@ -66,7 +66,8 @@ return false;
 		<div class="col-lg-3">
 			<div class="header__logo" style="text-align: center;">
 				<a href="./index.html">
-				<img src="${pageContext.request.contextPath }/resources/img/logo.png" alt="" style="position : absolute; top : 130px; right :890px;"></a>
+				<img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt="" style="position : absolute; top : 130px; right : 835px;" width="250"></a>
+				<br>
 			</div>
 		</div>
 		<div id="container" class="container">

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ProductDTO;
 
 @Repository
@@ -65,8 +66,34 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 	
 	@Override
+	public ProductDTO getProduct(int num) {
+		return sqlSession.selectOne(namespace+".getProduct", num);
+	}
+
+	@Override
+	public void updateProduct(ProductDTO productDTO) {
+		sqlSession.update(namespace+".updateProduct", productDTO);
+		
+	}
+
+	@Override
+	public void deleteProduct(int num) {
+		sqlSession.delete(namespace + ".delete", num);
+	}
+	
+	@Override
 	public Integer getMaxNum() {
 		return sqlSession.selectOne(namespace+".getMaxNum");
+	}
+
+	@Override
+	public List<ProductDTO> getSellList(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getSellList", pageDTO);
+	}
+
+	@Override
+	public int getSellCount() {
+		return sqlSession.selectOne(namespace+".getSellList");
 	}
 	
 	

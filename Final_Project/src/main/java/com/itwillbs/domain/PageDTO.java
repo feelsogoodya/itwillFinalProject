@@ -13,7 +13,23 @@ public class PageDTO {
 	private int endPage;
 	private int pageCount;
 	
+	private String buymemId;
+	private String sellmemId;
+	
 	private String search;
+	
+	public String getBuymemId() {
+		return buymemId;
+	}
+	public void setBuymemId(String buymemId) {
+		this.buymemId = buymemId;
+	}
+	public String getSellmemId() {
+		return sellmemId;
+	}
+	public void setSellmemId(String sellmemId) {
+		this.sellmemId = sellmemId;
+	}
 	
 	public int getPageSize() {
 		return pageSize;
@@ -80,6 +96,13 @@ public class PageDTO {
 	}
 	public void setSearch(String search) {
 		this.search = search;
+	}
+	
+	@Override
+	public String toString() {
+		return "PageDTO [pageSize=" + pageSize + ", pageNum=" + pageNum + ", currentPage=" + currentPage + ", startRow="
+				+ startRow + ", endRow=" + endRow + ", count=" + count + ", pageBlock=" + pageBlock + ", startPage="
+				+ startPage + ", endPage=" + endPage + ", pageCount=" + pageCount + "]";
 	}
 	
 	

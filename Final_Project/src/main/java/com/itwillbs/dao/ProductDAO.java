@@ -3,9 +3,12 @@ package com.itwillbs.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ProductDTO;
 
 public interface ProductDAO {
+	
+	//------------------도연
 	
 	public List<String> getCategories();
 	
@@ -19,17 +22,22 @@ public interface ProductDAO {
 	
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap);
 	
+	//-------------------성일
+	
 	public void insertProduct(ProductDTO productDTO);
+	
+	public void updateProduct(ProductDTO productDTO);
 	
 	public Integer getMaxNum();
 	
-	public List<Map<String, Object>> getProductList(Map<String, String> params);
+	public ProductDTO getProduct(int num);
 	
-	public void addwish(String memId, String productNum);
+	public void deleteProduct(int num);
 	
-	public void removewish(String memId, String productNum);
+	//-------------------도경
 	
-	public List<Map<String, Object>> getproductCateList();
+	public List<ProductDTO> getSellList(PageDTO pageDTO);
 	
-	public int getproductMax(Map<String, String> params);
+	public int getSellCount();
+	
 }

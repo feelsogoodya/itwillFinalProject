@@ -40,4 +40,14 @@ public interface ProductDAO {
 	
 	public int getSellCount();
 	
+	//-------------------보정
+	public List<Map<String, Object>> getProductList(Map<String, String> params);
+	
+	public void addwish(String memId, String productNum);
+	
+	public void removewish(String memId, String productNum);
+	
+	public List<Map<String, Object>> getproductCateList();
+	
+	public int getproductMax(Map<String, String> params);
 }

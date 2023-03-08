@@ -15,13 +15,22 @@
   </select>
  
   <select id="getNoticeList" resultType="com.itwillbs.domain.NoticeDTO">
-    select * from notice order by noti_num desc limit #{startRow},#{pageSize}
+    select * from notice
+    	where 1=1
+		<if test="search != null">
+		 and noti_title like concat('%',#{search},'%')
+		</if>
+     order by noti_num desc limit #{startRow},#{pageSize}
   </select>
   
   <select id="getNoticeCount" resultType="java.lang.Integer">
   	select count(*) from notice
+  	 where 1=1
+		 <if test="search != null">
+		 and noti_title like concat('%',#{search},'%')
+		 </if>
   </select>
-  
+   
   <update id="updateReadcount">
   	update notice set noti_readcount=noti_readcount+1 where noti_num=#{notiNum}
   </update>
@@ -30,7 +39,7 @@
  	 select * from notice where noti_num=#{notiNum}
   </select>
   
-     <delete id="deleteNotice">
+     <delete id="delete">
   	delete from notice
   	where noti_num=#{notiNum}
   	</delete>
@@ -42,4 +51,3 @@
   </update>
  
 </mapper>
-

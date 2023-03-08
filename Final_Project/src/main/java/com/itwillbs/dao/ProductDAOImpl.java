@@ -92,7 +92,7 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public int getSellCount() {
-		return sqlSession.selectOne(namespace+".getSellList");
+		return sqlSession.selectOne(namespace+".getSellCount");
 	}
 	
 	

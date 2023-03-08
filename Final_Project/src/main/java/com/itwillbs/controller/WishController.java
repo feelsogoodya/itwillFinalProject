@@ -26,8 +26,7 @@ public class WishController {
 		
 		HttpSession session = request.getSession();
 		//TODO 추후 수정
-//		String memberId = session.getId();
-		String memberId = "spring";
+		String memberId = session.getId();
 		
 		List<Map<String, Object>> wishMapList = wishService.getWishList(memberId);
 		

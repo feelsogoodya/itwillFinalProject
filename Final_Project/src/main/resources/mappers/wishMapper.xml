@@ -16,7 +16,7 @@
 		<result column="wish_count" property="wishCount"/>
 	</resultMap>
 	
-	<select id="getMyWish" resultMap="wishMap">
+	<select id="getMyWish" resultMap="wishMap" parameterType="String">
 		SELECT p.product_num as "productNum"
 			  ,p.product_title as "productTitle"
 			  ,p.product_price as "productPrice"
@@ -27,7 +27,9 @@
 		ON (p.product_num = w.product_num)
 		join wish c
 		on (p.product_num = c.product_num)
-		WHERE w.member_id = #{memberId}
+		<if test='value != "admin"'>
+		WHERE w.member_id = #{value}
+		</if>
 		GROUP BY p.product_num
 		ORDER BY p.product_num DESC
 	</select>

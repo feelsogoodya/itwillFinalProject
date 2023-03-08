@@ -69,12 +69,9 @@
 				<div class="col-lg-12">
 					<div class="col-lg-4 blog__sidebar__search float-right">
 						<form action="#">
-							<input type="text" name="search" placeholder="Search...">
-							<button type="submit"
-								onclick="location.href='${pageContext.request.contextPath }'">
-								<span class="icon_search"></span>
-							</button>
-						</form>
+                                <input type="text" name="search" placeholder="Search...">
+                                <button type="submit" onclick="location.href='${pageContext.request.contextPath }'"><span class="icon_search"></span></button>
+                        </form>
 					</div>
 				</div>
 			</div>

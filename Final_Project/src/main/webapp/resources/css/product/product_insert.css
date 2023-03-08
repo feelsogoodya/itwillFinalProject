@@ -30,7 +30,7 @@
 	#insert_box {
 		width: 1020px;
 		margin: auto;
-		padding-top : 160px;
+		padding-top : 30px;
 		/* 		background: gray; */
 		min-height: 1000px;
 		text-align: center;
@@ -64,7 +64,9 @@
 		font-size: 15px;
 		border-radius: 5px;
 	}
-	
+	.prod-info {
+		height:200px;
+	}
 	/* 이미지 미리보기 css */
 	#img_preview0, #img_preview1, #img_preview2, #img_preview3, #img_preview4, #img_preview5{
 		display: none;

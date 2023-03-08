@@ -40,7 +40,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
 <!-- insert JavaScript -->
-<script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/product/product_insert.js"></script>
+<script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/product/product_update.js"></script>
 <script type="text/javascript">
 
 function checkNum(e) {
@@ -106,8 +106,6 @@ $(document).ready(function() {
 
 });
  </script>
- <script>
-</script>
  
 </head>
 <body>
@@ -140,7 +138,8 @@ $(document).ready(function() {
     </section>
     <!-- Breadcrumb Section End -->
 
-<form action="${pageContext.request.contextPath }/product/insertPro" method="post" id="join" enctype="multipart/form-data" name="fr">
+<form action="${pageContext.request.contextPath }/product/updatePro" method="post" id="join" enctype="multipart/form-data" name="fr">
+<input type="hidden" name="num" value="${dto.productNum}">
 <!-- 	<div id="root"> -->
 
 		<div id="insert_box">
@@ -182,7 +181,7 @@ $(document).ready(function() {
 						
 						<input maxlength="40"
 						oninput="numberMaxLength(this);" type="text" id="productTitle"
-						name="productTitle" class="input-tag" placeholder="제목을 입력하세요.">
+						name="productTitle" class="input-tag" placeholder="제목을 입력하세요." value="${dto.productTitle}">
 					</td>
 				</tr>
 
@@ -194,11 +193,10 @@ $(document).ready(function() {
 				<tr>	
 					<td class="td1" align="left" style="vertical-align: top;"><span
 						class="pro_info">가격<span style="color: red">*</span></span></td>
-					<td class="td2" align="left"><input type="text" id="productPrice" maxlength="9" onKeyPress="return checkNum(event)"
+					<td class="td2" align="left"><input type="text" id="productPrice" maxlength="9" value="${dto.productPrice}" onKeyPress="return checkNum(event)"
 						name="productPrice" class="input-tag" placeholder="가격"
 						oninput="this.value = this.value.replaceAll(/\D/g, '').replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,')"
-						oninput="numberMaxLength(this);"
-						 style="width: 30%;"> &nbsp; <span class="pro_info">원</span>
+						oninput="numberMaxLength(this);" style="width: 30%;"> &nbsp; <span class="pro_info">원</span>
 						<br>
 						<span class="pro_info" id="price_under"></span>
 					</td>
@@ -220,11 +218,12 @@ $(document).ready(function() {
 					</select></td>
 				</tr>
 
+
 				<tr>
 					<td colspan="2"><hr></td>
 				</tr>
 		
-<!-- 				거래지역 -->
+				<!-- 거래지역 -->
 <!-- 				<tr> -->
 <!-- 					<td class="td1" align="left" style="vertical-align: top;"><span -->
 <!-- 						class="pro_info">거래지역<span style="color: red">*</span></span></td> -->
@@ -274,7 +273,7 @@ $(document).ready(function() {
 						<textarea  class="input-tag prod-info"  maxlength="1000"
 							id="productContent" name="productContent" 
 							oninput="numberMaxLength(this);"
-							placeholder="상품의 필요한 정보를 넣어주세요. &#13;구매자의 문의를 줄일 수 있습니다."></textarea>
+							placeholder="상품의 필요한 정보를 넣어주세요. &#13;구매자의 문의를 줄일 수 있습니다.">${dto.productContent}</textarea>
 						</div>
 						<div align="right"><span style="font-size: 18px;"id="exp_length">0/1000</span></div>
 					</td>

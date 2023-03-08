@@ -20,4 +20,15 @@ public interface ProductService {
 	public List<Map<String, Object>> getSellerProduct(Map<String, Object> productMap);
 	
 	public void insertProduct(ProductDTO productDTO);
+	
+	
+	public List<Map<String, Object>> getProductList(Map<String, String> params);
+	
+	public void addwish(String memId, String productNum);
+
+	public void removewish(String memId, String productNum);
+	
+	public List<Map<String, Object>> getproductCateList();
+
+	public int getproductMax(Map<String, String> params);
 }

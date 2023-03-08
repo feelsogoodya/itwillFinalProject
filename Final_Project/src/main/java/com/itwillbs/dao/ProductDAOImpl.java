@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -66,6 +67,50 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public Integer getMaxNum() {
 		return sqlSession.selectOne(namespace+".getMaxNum");
+	}
+	
+	
+	@Override
+	public List<Map<String, Object>> getProductList(Map<String, String> params) {
+		
+		System.out.println("111"+params.get("startPrice"));
+		System.out.println("22"+params.get("endPrice"));
+		
+		
+		int offset = Integer.parseInt(params.get("offset")); 
+		int limit = Integer.parseInt(params.get("limit"));
+		
+		
+		
+		RowBounds rowBounds = new RowBounds(offset,limit);
+		return sqlSession.selectList(namespace+".productList", params, rowBounds);
+	}
+	
+	@Override
+	public void addwish(String memId, String productNum) {
+	    Map<String, String> params = new HashMap<>();
+	    params.put("memId", memId);
+	    params.put("productNum", productNum);
+	    sqlSession.insert(namespace + ".addwish", params);
+	}
+	
+	@Override
+	public void removewish(String memId, String productNum) {
+	    Map<String, String> params = new HashMap<>();
+	    params.put("memId", memId);
+	    params.put("productNum", productNum);
+	    sqlSession.insert(namespace + ".removewish", params);
+	}
+	
+	@Override
+	public List<Map<String, Object>> getproductCateList() {
+		return sqlSession.selectList(namespace+".getproductCateList");
+	}
+	
+	@Override
+	public int getproductMax(Map<String, String> params) {
+		
+		return sqlSession.selectOne(namespace + ".getproductMax", params);
 	}
 	
 	

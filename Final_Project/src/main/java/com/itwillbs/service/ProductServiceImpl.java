@@ -68,4 +68,31 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 
+	
+	@Override
+	public List<Map<String, Object>> getProductList(Map<String, String> params) {
+		
+		return productDAO.getProductList(params);
+	}
+	
+	@Override
+	public void addwish(String memId, String productNum) {
+		productDAO.addwish(memId, productNum);
+	}
+	
+	@Override
+	public void removewish(String memId, String productNum) {
+		productDAO.removewish(memId, productNum);
+	}
+	
+	@Override
+	public List<Map<String, Object>> getproductCateList() {
+		
+		return productDAO.getproductCateList();
+	}
+	
+	@Override
+	public int getproductMax(Map<String, String> params) {
+		return productDAO.getproductMax(params);
+	}
 }

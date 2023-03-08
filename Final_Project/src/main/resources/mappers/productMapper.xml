@@ -128,5 +128,104 @@
     <select id="getMaxNum" resultType="java.lang.Integer">
     	select max(product_num) from product
     </select>
+    
+    <resultMap type="map" id="productlistmap">
+		<id column="product_num" property="productNum"/>
+		<result column="product_seller" property="productSeller"/>
+		<result column="product_cate" property="productCate"/>
+		<result column="product_title" property="productTitle"/>
+		<result column="product_content" property="productContent"/>
+		<result column="product_price" property="productPrice"/>
+		<result column="product_price_format" property="productPriceFormat"/>
+		<result column="product_grade" property="productGrade"/>
+		<result column="product_pic" property="productPic"/>
+		<result column="product_readcount" property="productReadcount"/>
+		<result column="product_date" property="productDate"/>
+		<result column="member_id" property="memId"/>
+	</resultMap>
+	
+	<select id="productList" resultMap="productlistmap" parameterType="hashMap">
+		select p.product_num as product_num 
+			 , p.product_seller as product_seller 
+			 , p.product_cate as product_cate 
+			 , p.product_title as product_title 
+			 , p.product_content as product_content 
+			 , p.product_price as product_price 
+			 , FORMAT(p.product_price , 0) as product_price_format
+			 , p.product_grade as product_grade 
+			 , p.product_pic as product_pic 
+			 , p.product_readcount as product_readcount 
+			 , p.product_date as product_date
+			 <if test='!"".equals(memId)'> 
+			 , w.member_id as member_id 
+			 </if>
+		  from product p
+		  <if test='!"".equals(memId)'>  
+		  left join (select product_num, member_id
+					from wish
+                    where member_id = #{memId})w  
+		    on p.product_num = w.product_num
+		  </if>
+		 where 1=1
+		<if test='productCate != null and !"".equals(productCate)'>
+		  	   and p.product_cate = #{productCate}
+		</if>	    
+		<if test='searchText != null and !"".equals(searchText)'>
+		  	   and p.product_title like '%${searchText}%'
+		</if>
+		<if test='endPrice != null and !"".equals(endPrice)'>
+			   and p.product_price  between #{startPrice} and  #{endPrice}
+		</if>
+	
+		<trim prefix="ORDER BY"> 
+
+               <if test="filterValue == 'productDate'">  p.product_Date desc</if>
+               
+               <if test="filterValue == 'productReadcount'">  p.product_readcount desc</if>
+
+               <if test="filterValue == 'productPrice'">  p.product_price desc</if>
+
+         </trim> 
+	</select>
+	
+	
+	<insert id="addwish"> 
+		insert into wish(member_id, product_num) values (#{memId}, #{productNum}) 
+	</insert>
+	
+	
+	<delete id="removewish"> 
+		delete from wish where member_id = #{memId} and product_num = #{productNum} 
+	</delete>
+	
+	
+ 	<resultMap type="map" id="getproductCateListmap"> 
+ 		<id column="product_cate" property="productCate"/> 
+ 	</resultMap> 
+ 	<select id="getproductCateList" resultMap="getproductCateListmap" parameterType="hashMap"> 
+ 		select product_cate from categories 
+ 	</select> 
+ 	
+ 	
+ 	
+ 	
+ 	<select id="getproductMax" resultType="java.lang.Integer" parameterType="hashmap">
+
+		  select count(*) 
+          from product p
+          where 1=1
+			<if test='productCate != null and !"".equals(productCate)'>
+			  	   and p.product_cate = #{productCate}
+			</if>	    
+			<if test='searchText != null and !"".equals(searchText)'>
+			  	   and p.product_title like '%${searchText}%'
+			</if>
+			<if test='endPrice != null and !"".equals(endPrice)'>
+			   	   and p.product_price  between #{startPrice} and  #{endPrice}
+			</if>
+
+ 	</select>
+ 	
+ 	
 
 </mapper>

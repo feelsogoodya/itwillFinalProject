@@ -93,22 +93,20 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i> -->
-                            <span>(좋아요 ${productMap.wishCount })</span>
+                            <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
                         <p>${productMap.productContent }</p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                        </div>
+                        
                         <a href="#" class="primary-btn">채팅하기</a>
+                        
+                        <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
+                        
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
-                            <li><b>거래</b> <span>택배 거래 원해요 <!-- <samp>Free pickup today</samp> --></span></li>
+                            <li><b>관심수</b> <span>${productMap.wishCount }</span></li>
+                            <!-- <li><b>거래</b> <span>택배 거래 원해요 <samp>Free pickup today</samp></span></li> -->
                             <li><b>판매자</b> <span>${productMap.memNname }</span></li>
                             <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
                             <!-- 공유하기 버튼 -->
@@ -215,6 +213,8 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/product/details.js"></script>
+    
     <script type="text/javascript">
     	$(document).ready(function(){
     		$('.small').on('click', function(){

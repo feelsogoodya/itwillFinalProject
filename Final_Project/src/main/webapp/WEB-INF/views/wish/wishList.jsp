@@ -178,24 +178,22 @@
                     <div class="col-lg-12" style="text-align: center;">
                         <div class="product__pagination blog__pagination">
                         	<c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
-                        		<a href="${pageContext.request.contextPath }/free/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">
+                        		<a href="${pageContext.request.contextPath }//mypage/wish?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">
                         			<i class="fa fa-long-arrow-right"></i>
                         		</a>
                         	</c:if>
                         	
                         	<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-                        		<a href="${pageContext.request.contextPath }/free/list?pageNum=${i}">${i }</a>
+                        		<a href="${pageContext.request.contextPath }//mypage/wish?pageNum=${i}">${i }</a>
                         	</c:forEach>
                         	
                         	<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-                        		<a href="${pageContext.request.contextPath }/free/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">
+                        		<a href="${pageContext.request.contextPath }//mypage/wish?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">
                         			<i class="fa fa-long-arrow-right"></i>
                         		</a>
                         	</c:if>
                         </div>
-                        <div style="text-align: right;">
-                        	<button type="submit" class="site-btn" onclick="location.href='${pageContext.request.contextPath }/free/wirte'">글쓰기</button>
-                        </div>
+                       
                     </div>
                 </div>
                 <!-- paging -->

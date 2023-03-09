@@ -16,7 +16,7 @@
 		<result column="wish_count" property="wishCount"/>
 	</resultMap>
 	
-	<select id="getMyWish" resultMap="wishMap" parameterType="string">
+	<select id="getMyWish" resultMap="wishMap" parameterType="hashMap">
 		SELECT p.product_num as "productNum"
 			  ,p.product_title as "productTitle"
 			  ,p.product_price as "productPrice"
@@ -27,11 +27,18 @@
 		ON (p.product_num = w.product_num)
 		join wish c
 		on (p.product_num = c.product_num)
-		<if test='value.equals("admin")'>
-		WHERE w.member_id = #{value}
+		<!-- <if test='value.equals("admin")'> parameterType string -->
+		<if test='memberId.equals("admin")'>
+		WHERE w.member_id = #{memberId}
 		</if>
 		GROUP BY p.product_num
 		ORDER BY p.product_num DESC
+		LIMIT #{pageDTO.startRow},#{pageDTO.pageSize}
+	</select>
+	
+	
+	<select id="getwishCount" resultType = "java.lang.Integer">
+		select count(*) from wish
 	</select>
 
 </mapper>

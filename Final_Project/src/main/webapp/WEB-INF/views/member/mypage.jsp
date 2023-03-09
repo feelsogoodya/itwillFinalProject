@@ -176,13 +176,19 @@ function sample6_execDaumPostcode() {
     <!-- Header Section Begin -->
     <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
-    
+    <img src="/image/${login.memImg}" style=" max-width: 50%;  height: auto;"> <br />	  
+           <div class="card">           
+              <form action="${pageContext.request.contextPath }/member/updateImg" method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <input type="hidden" name="memId" id="memId" value="${login.memId}">
+               <button type="submit" class="btn btn-primary">사진변경</button>
+             </form>
 <form action="${pageContext.request.contextPath }/member/updatePro" onsubmit="return check()" method="POST">
 	<div id="wrap" class="wrap naverid">
 		<div class="u_skip">
 			<a href="#container">본문 바로가기</a>
 		</div>
-
+		  
 		<header class="header" role="banner">
 			<div class="header_subindex">
           		<div class="card">

@@ -83,5 +83,10 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println(searchVO.getMemPhone());
 		sqlSession.selectOne(namespace+".passwordUpdate", searchVO);
 	}
+
+	@Override
+	public void updateImg(MemberDTO dto) {
+		sqlSession.update(namespace+".updateImg", dto);
+	}
 	
 }

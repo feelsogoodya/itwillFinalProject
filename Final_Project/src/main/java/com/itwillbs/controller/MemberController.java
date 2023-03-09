@@ -34,13 +34,14 @@ import org.springframework.web.util.UrlPathHelper;
 import com.google.protobuf.Message;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.service.MemberService;
+import com.itwillbs.util.FileUtil;
 
 @Controller
 public class MemberController {
 
 	@Inject
 	private MemberService memberService;
-
+	
 	// 약관
 	@RequestMapping(value = "/member/terms", method = RequestMethod.GET)
 	public String terms() {
@@ -200,26 +201,31 @@ public class MemberController {
 			return "redirect:/member/mypage";
 	}
 	
-//	@RequestMapping(value = "/member/kakao", method = RequestMethod.GET)
-//	public String kakao() {
-//		return "member/kakao";
+//	@RequestMapping(value="/member/updateImg", method=RequestMethod.POST)
+//	public String updateImg(MultipartHttpServletRequest mpRequest, HttpSession session , MemberDTO dto, FileUtil fileutil)throws Exception {
+//		
+//		String memImg = fileutil.updateImg(mpRequest); 
+//
+//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("login");
+//		
+//		memberService.updateImg(dto);
+//		
+//		memberDTO.setMemImg(memImg);
+//		session.setAttribute("login", memberDTO);
+//		
+//				
+//		return "/member/mypage";
 //	}
 	
-	@RequestMapping(value="/member/kakao", method=RequestMethod.GET)
-	public String kakao(@RequestParam(value = "code", required = false) String code) throws Exception {
-		System.out.println("#########" + code);
-		return "member/kakao";
-		/*
-		 * 리턴값의 testPage는 아무 페이지로 대체해도 괜찮습니다.
-		 * 없는 페이지를 넣어도 무방합니다.
-		 * 404가 떠도 제일 중요한건 #########인증코드 가 잘 출력이 되는지가 중요하므로 너무 신경 안쓰셔도 됩니다.
-		 */
-		// 위에서 만든 코드 아래에 코드 추가
-		String access_Token = memberService.getAccessToken(code);
-		System.out.println("###access_Token#### : " + access_Token);
-        
-		return "member/testPage";
+
+	// 게시판 글 작성
+	@RequestMapping(value = "member/mypage", method = RequestMethod.POST)
+	public String write(MemberDTO memberDTO, MultipartHttpServletRequest mpRequest) throws Exception{
+		logger.info("write");
+		memberService.write(memberDTO, mpRequest);
 		
+		return "redirect:/board/list";
 	}
+
 	
 }

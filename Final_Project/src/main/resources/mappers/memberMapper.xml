@@ -98,4 +98,8 @@
 	        mem_id = #{memId}
 	</update>
 	
+	<update id="updateImg" parameterType="com.itwillbs.domain.MemberDTO" >
+		update members set mem_img = #{memImg} where mem_id = #{memId}
+	</update>
+	
 </mapper>

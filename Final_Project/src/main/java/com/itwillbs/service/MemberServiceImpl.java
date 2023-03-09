@@ -80,9 +80,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void updateImg(String memberImg, String memId) {
-		
+	public void updateImg(MemberDTO dto) {
+		memberDAO.updateImg(dto);
 		
 	}
+
 
 }

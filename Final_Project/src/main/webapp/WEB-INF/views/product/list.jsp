@@ -60,13 +60,10 @@
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                     		<c:choose>
-                    			<c:when test="${endPrice ne null}">
-                    				<h2>전체상품 리스트</h2>
-                    			</c:when>
-                    			<c:when test="${productCate ne null}">
+                    			<c:when test="${productCate ne null and productCate ne ''}">
                     				<h2>${productCate} 리스트</h2>
                     			</c:when>
-                    			<c:when test="${searchText ne null}">
+                    			<c:when test="${searchText ne null and searchText ne ''}">
                     				<h2>${searchText} 리스트</h2>
                     			</c:when>
                     			<c:otherwise>
@@ -91,7 +88,7 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Department</h4>
+                            <h4>카테고리</h4>
                             <ul>
                           		<c:forEach var="map" items="${productCateList}">
 	                            <li><a href="${pageContext.request.contextPath }/product/list?productCate=${map.productCate}">${map.productCate}</a></li>
@@ -127,9 +124,10 @@
                                     <div class="latest-prdouct__slider__item">
                                     <c:set var="count" value="1" />
                                     <c:forEach var="dto" items="${popularProductList }">
+                                    <c:set var="productPicture" value="${dto.productPic}"/>
                                     	<a href="${pageContext.request.contextPath}/product/details?productNum=${dto.productNum}" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="${pageContext.request.contextPath }/resources/img/latest-product/lp-1.jpg" alt="">
+                                                <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(productPicture, '|')[0]}" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>${dto.productTitle }</h6>
@@ -200,8 +198,8 @@
 								  	<div class="set-bg">
 								    	<div class="product__item__pic "> 
 								    		<c:set var="detailsPath" value="location.href='${pageContext.request.contextPath}/product/details?productNum=${dto.productNum}'" />
-											<img onclick="${detailsPath}" src="${pageContext.request.contextPath }/resources/img/product/product-1.jpg" alt="">
-			<%-- 		파일경로 정해지면 이거 사용할것					    <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/product/ ${fn:split(productPicture, '|')[0]}"> --%>
+								    		
+											<img onclick="${detailsPath}" src="${pageContext.request.contextPath }/resources/upload/${fn:split(productPicture, '|')[0]}" alt="">
 										      <ul class="product__item__pic__hover">
 										      
 										      
@@ -214,12 +212,12 @@
 									      			<c:set var="fasORfar" value="${dto.memId eq sessionScope.memId ? 'fas' : 'far'}" />
 												      		<li><a class="heart-icon"  data-productnum="${dto.productNum}" ><i class="${fasORfar} fa-heart"></i></a></li>
 									      		</c:otherwise> 
-										      </c:choose>
+		 								      </c:choose>
 										      
 										      		
 										        	
 										        
-										        
+										         
 										        
 										      </ul>
 							     		</div> 
@@ -330,7 +328,7 @@ $(function() {
     function moreList()  {
 		var memId = $('.getMemId').val();
         var offset = $('.rowOne').children('div').length; 
-        var limit = 12;
+        var limit = 3;
         
         var productCate = $('.getproductCate').val();
         var searchText = $('.getsearchText').val();
@@ -359,14 +357,16 @@ $(function() {
 				var cnt = 0;
             	
             	$.each(html,function(index,item){
+            		const arr = item.productPic.split("|");
+            		
+            		
             		let newList = ''
 			            		newList+='<input type="hidden" class="getProductNum IDX" id="' +  cnt +'"' + ' value='+item.productNum+'>'
-// 		            			newList+='<c:set var="productPicture" value="${dto.productPic}"/>'
 			       				newList+='<div class="col-lg-4 col-md-6 col-sm-6">'
 			  					newList+=	'<div class="product__item">'
 			  					newList+=		'<div class="set-bg">'
 			  					newList+=			'<div class="product__item__pic ">'
-			  					newList+=				'<img class="pathDetails" id="' +  cnt + '"' + 'src="../resources/img/product/product-1.jpg" alt="">'
+			  					newList+=				'<img class="pathDetails" id="' +  cnt + '"' + 'src="../resources/upload/'+arr[0]+'" alt="">'
 			  					newList+=					'<ul class="product__item__pic__hover">'
 			  					
 			  					
@@ -497,6 +497,7 @@ function keepselect() {
 	$('#'+selectfilter).prop("selected", true);
 }
 
+
 function keepMoney() {
 	var startPrice = $('#startPrice').val();
 	$('#keepStartPrice').attr('value',startPrice);
@@ -513,13 +514,6 @@ function keepMoney() {
  }
 
 </script>
-
-
-<style>
-/*     div {margin-bottom:1000px;} */
-
-</style>
-
 
     
 

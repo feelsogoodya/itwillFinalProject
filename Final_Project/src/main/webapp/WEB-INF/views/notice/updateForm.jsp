@@ -13,7 +13,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+ 
     <!-- Css Styles -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
@@ -91,12 +91,12 @@ if(id==null){
 							<tr><th>글내용</th>
 							<td><textarea name="notiContent" rows="10" cols="100">${dto.notiContent}</textarea></td></tr>
 							<tr><td>첨부파일</td>
-   							<td><input type="file" name="file">${dto.notiImage}<br>
+   							<td><input type="file" name="file"><br>
    							<input type="hidden" name="oldfile" value="${dto.notiImage}">
    							<input type="hidden" name="oldfile1" value="${dto.notiImage1}">
    							<input type="hidden" name="oldfile2" value="${dto.notiImage2}">
-   							<input type="file" name="file1" >${dto.notiImage1}<br>
-   							<input type="file" name="file2">${dto.notiImage2}<br></td></tr>   
+   							<input type="file" name="file1" ><br>
+   							<input type="file" name="file2"><br></td></tr>   
 						</table>
 						<div class="text-right">
 							<input type="submit" value="글수정" class="write_btn">

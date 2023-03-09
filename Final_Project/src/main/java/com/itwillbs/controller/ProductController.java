@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -8,6 +9,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwillbs.domain.Cs_PageDTO;
 import com.itwillbs.domain.ProductDTO;
 import com.itwillbs.service.ProductService;
 
@@ -106,5 +109,88 @@ public class ProductController {
 
 		
 	}//
+	
+	@RequestMapping(value = "/product/list", method = RequestMethod.GET)
+	public String productList(Model model,HttpServletRequest request, HttpSession session) {
+		
+		// 정렬 값 설정하기 기본값 최신순으로 
+		String filterValue = request.getParameter("filterValue");
+		if ("".equals(filterValue ) || filterValue == null) {
+			filterValue = "productDate";
+		}
+		
+
+
+		
+		
+		// 카테고리 리스트 불러오기
+		List<Map<String, Object>> productCateList = productService.getproductCateList();
+		// 카테고리 리스트 불러오기
+		
+		
+		String startPrice = request.getParameter("startPrice");
+//		if ("".equals(startPrice ) || startPrice == null) {
+//			startPrice = "0";
+//		}
+		String endPrice = request.getParameter("endPrice");
+		System.out.println(startPrice + "~~~~~~"+endPrice);
+		
+		String productCate = request.getParameter("productCate");
+		String searchText = request.getParameter("searchText");
+		
+		String offset="0";
+		String limit="12";
+		
+		Map<String, String> params = new HashMap<>();
+		
+		params.put("memId", (String)session.getAttribute("memId"));
+		params.put("productCate", productCate);
+	    params.put("searchText", searchText);
+	    params.put("offset", offset);
+	    params.put("limit", limit);
+	    params.put("filterValue", filterValue);
+	    params.put("startPrice", startPrice);
+	    params.put("endPrice", endPrice);
+	    
+		
+
+		
+		List<Map<String, Object>> productList = productService.getProductList(params);
+		int productMax = productService.getproductMax(params);
+		System.out.println("productMax : "+productMax);
+		
+		
+		model.addAttribute("productCateList", productCateList);
+		model.addAttribute("productList", productList);
+		
+		
+		model.addAttribute("productCate", productCate);
+		model.addAttribute("searchText", searchText);
+		model.addAttribute("productMax", productMax);
+		model.addAttribute("filterValue", filterValue);
+		model.addAttribute("startPrice", startPrice);
+		model.addAttribute("endPrice", endPrice);
+		model.addAttribute("contextPath", request.getQueryString()); //데이터있을경우 화면 이동하게
+		
+		
+		
+		// 인기상품 리스트 
+		params.put("memId", null);
+		params.put("productCate", null);
+	    params.put("searchText", null);
+	    params.put("offset", "0");
+	    params.put("limit", "9");
+	    params.put("filterValue", "productDate");
+	    params.put("startPrice", null);
+	    params.put("endPrice", null);
+	    List<Map<String, Object>> popularProductList = productService.getProductList(params);
+		model.addAttribute("popularProductList", popularProductList);
+		
+		return "product/list";
+	}
+	
+	
+	
+	
 	
 }

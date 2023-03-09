@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.itwillbs.service.WishService;
 
 
+
 @Controller
 public class WishController {
 	
@@ -22,12 +22,10 @@ public class WishController {
 	private WishService wishService;
 	
 	@RequestMapping(value = "/mypage/wish", method = RequestMethod.GET)
-	public String productDetails(HttpServletRequest request, Model model) {
+	public String productDetails(HttpSession session, Model model) {
 		
-		HttpSession session = request.getSession();
 		//TODO 추후 수정
-//		String memberId = session.getId();
-		String memberId = "spring";
+		String memberId = (String)session.getAttribute("memId");
 		
 		List<Map<String, Object>> wishMapList = wishService.getWishList(memberId);
 		

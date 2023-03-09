@@ -1,9 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
 <head>
 <meta charset="UTF-8">
+   <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/list.css" type="text/css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/product/product_insert.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/product/basic.css">
 <title>상품등록</title>
@@ -75,10 +97,10 @@ $(document).ready(function() {
 		}
 		
 // 		/* 가격 콤마 제거 */
-// 		productPrice = productPrice.replace(/,/g, "");
+	var productPrice = $('#productPrice').val().replace(/,/gi, ''); 
+		$('#productPrice').val(productPrice)
 		
-		
-		$("form").submit();
+		$("#join").submit();
 
 	});
 
@@ -89,13 +111,40 @@ $(document).ready(function() {
  
 </head>
 <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+    	<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+    </section>
+    <!-- Hero Section End -->
+    
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>상품등록</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
 
 <form action="${pageContext.request.contextPath }/product/insertPro" method="post" id="join" enctype="multipart/form-data" name="fr">
 <!-- 	<div id="root"> -->
 
-		<input type="hidden" id="memId">
 		<div id="insert_box">
-			<span id="title">상품등록</span>
+<!-- 			<span id="title">상품등록</span> -->
 
 			<table style="margin-top: 30px;">
 				<!-- 기본정보 -->
@@ -147,7 +196,9 @@ $(document).ready(function() {
 						class="pro_info">가격<span style="color: red">*</span></span></td>
 					<td class="td2" align="left"><input type="text" id="productPrice" maxlength="9" onKeyPress="return checkNum(event)"
 						name="productPrice" class="input-tag" placeholder="가격"
-						oninput="numberMaxLength(this);" style="width: 30%;"> &nbsp; <span class="pro_info">원</span>
+						oninput="this.value = this.value.replaceAll(/\D/g, '').replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,')"
+						oninput="numberMaxLength(this);"
+						 style="width: 30%;"> &nbsp; <span class="pro_info">원</span>
 						<br>
 						<span class="pro_info" id="price_under"></span>
 					</td>
@@ -163,8 +214,9 @@ $(document).ready(function() {
 					<td class="td2" align="left"><select class="input-tag"
 						id="productCate" name="productCate" style="width: 30%; height: 35px;">
 							<option value="0">카테고리 선택</option>
-							<option>남성의류</option>
-							<option>여성의류</option>
+							<c:forEach var="cate" items="${categories }">
+								<option>${cate }</option>
+							</c:forEach>
 					</select></td>
 				</tr>
 
@@ -172,7 +224,7 @@ $(document).ready(function() {
 					<td colspan="2"><hr></td>
 				</tr>
 		
-				<!-- 거래지역 -->
+<!-- 				거래지역 -->
 <!-- 				<tr> -->
 <!-- 					<td class="td1" align="left" style="vertical-align: top;"><span -->
 <!-- 						class="pro_info">거래지역<span style="color: red">*</span></span></td> -->
@@ -196,11 +248,11 @@ $(document).ready(function() {
 					<td class="td1" align="left" style="vertical-align: top;"><span
 						class="pro_info">상품상태<span style="color: red">*</span></span></td>
 					<td class="td2" align="left">
-						<input type="radio"	name="productGrade" id="productGrade" value="미개봉" checked="checked">
+						<input type="radio"	name="productGrade" id="productGrade" value="상" checked="checked">
 						<span class="pro_info">상</span>
-						<input type="radio"	name="productGrade" id="productGrade" value="A급">
+						<input type="radio"	name="productGrade" id="productGrade" value="중">
 						<span class="pro_info">중</span>
-						<input type="radio"	name="productGrade" id="productGrade" value="B급">
+						<input type="radio"	name="productGrade" id="productGrade" value="하">
 						<span class="pro_info">하</span>
 					</td>
 				</tr>
@@ -219,8 +271,8 @@ $(document).ready(function() {
 					
 						<br>
 						<div>
-						<textarea class="input-tag"
-							id="productContent" name="productContent" maxlength="1000"
+						<textarea  class="input-tag prod-info"  maxlength="1000"
+							id="productContent" name="productContent" 
 							oninput="numberMaxLength(this);"
 							placeholder="상품의 필요한 정보를 넣어주세요. &#13;구매자의 문의를 줄일 수 있습니다."></textarea>
 						</div>
@@ -239,7 +291,7 @@ $(document).ready(function() {
 						<span class="pro_info" id="img_number">(0/6)</span>
 						<span style="color: red">*</span>
 						<img id="imgup" onclick="img_preview();"
-								src="${ pageContext.request.contextPath }/resources/image/product/image_upload.png" width="150px" height="150px">
+								src="${ pageContext.request.contextPath }/resources/img/product/image_upload.png" width="150px" height="150px">
 						</td>
 					<td class="td2" align="left">
 					
@@ -304,7 +356,7 @@ $(document).ready(function() {
 
 
 
-<!-- 				등록 취소버튼 -->
+<!-- 				등록 버튼 -->
 				<tr>
 					<td colspan="2">
 						<th colspan="2"><input type="button" id="submitButn" value="등록하기"></th>
@@ -314,7 +366,19 @@ $(document).ready(function() {
 			</table>
 
 		</div>
+    <!-- Footer Section Begin -->
+    <%@include file = "/resources/fragments/footer.jsp" %>
+    <!-- Footer Section End -->
 
+    <!-- Js Plugins -->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 
 
 </body>

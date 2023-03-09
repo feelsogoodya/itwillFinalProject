@@ -12,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>가지마켓?</title>
+    <title>가지마켓</title>
 	
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -49,39 +49,14 @@
     <section class="latest-product spad">
         <div class="container">
             <div class="row">
+            
                 <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
+                	<div class="latest-product__text">
                         <h4>조회순</h4>
                         <!-- 조회순 -->
                         <div class="latest-product__slider owl-carousel">
-                            <c:forEach var="ProductDTO" items="${orderViews }" varStatus="status">
-	                        	<c:if test="${status.index % 3 eq 0 }">
-	                        		<div class="latest-prdouct__slider__item">
-	                        	</c:if>
-                        			<a href="#" class="latest-product__item">
-	                                    <div class="latest-product__item__pic">
-	                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
-	                                    </div>
-	                                    <div class="latest-product__item__text">
-	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
-	                                        <span>${ProductDTO.productPrice }</span>
-	                                    </div>
-	                                </a>
-		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
-		                   	</c:forEach>
-		                   </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>관심순</h4>
-                        <!-- 관심순 -->
-                        <div class="latest-product__slider owl-carousel">
-	                            <c:forEach var="ProductDTO" items="${wishList }" varStatus="status">
-		                        	<c:if test="${status.index % 3 eq 0 }">
-		                        		<div class="latest-prdouct__slider__item">
-		                        	</c:if>
+                      		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${orderViews }" begin="0" end="2">
 	                        			<a href="#" class="latest-product__item">
 		                                    <div class="latest-product__item__pic">
 		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
@@ -91,39 +66,97 @@
 		                                        <span>${ProductDTO.productPrice }</span>
 		                                    </div>
 		                                </a>
-			                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
-			                   </c:forEach>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>최신순</h4>
-                        <!-- 최근 등록된 상품 -->
-                        <div class="latest-product__slider owl-carousel">
-                        
-	                        <c:forEach var="ProductDTO" items="${latestPrdList }" varStatus="status">
-	                        	<c:if test="${status.index % 3 eq 0 }">
-	                        		<div class="latest-prdouct__slider__item">
-	                        	</c:if>
-                        			<a href="#" class="latest-product__item">
-	                                    <div class="latest-product__item__pic">
-	                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
-	                                    </div>
-	                                    <div class="latest-product__item__text">
-	                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
-	                                        <span>${ProductDTO.productPrice }</span>
-	                                    </div>
-	                                </a>
-		                         <c:if test="${status.index % 3 eq 2 }"></div></c:if>
-		                   </c:forEach>
-	                  </div>
-                  </div>
+			                   	</c:forEach>
+                       		</div>
+                       		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${orderViews }" begin="3" end="5">
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                    </div>
+		                                </a>
+			                   	</c:forEach>
+                       		</div>
+	                   </div>
+              	  </div>
               </div>
-          </div>
-       </div>
-    </section>
+              
+              <div class="col-lg-4 col-md-6">
+                	<div class="latest-product__text">
+                        <h4>관심순</h4>
+                        <!-- 관심순 -->
+                        <div class="latest-product__slider owl-carousel">
+                      		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${wishList }" begin="0" end="2">
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                    </div>
+		                                </a>
+			                   	</c:forEach>
+                       		</div>
+                       		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${orderViews }" begin="3" end="5">
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                    </div>
+		                                </a>
+			                   	</c:forEach>
+                       		</div>
+	                   </div>
+              	  </div>
+              </div>
+              
+              <div class="col-lg-4 col-md-6">
+                	<div class="latest-product__text">
+                        <h4>최심순</h4>
+                        <!-- 최심순 -->
+                        <div class="latest-product__slider owl-carousel">
+                      		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${latestPrdList }" begin="0" end="2">
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                    </div>
+		                                </a>
+			                   	</c:forEach>
+                       		</div>
+                       		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
+	                            <c:forEach var="ProductDTO" items="${orderViews }" begin="3" end="5">
+	                        			<a href="#" class="latest-product__item">
+		                                    <div class="latest-product__item__pic">
+		                                        <img src="${pageContext.request.contextPath }/resources/upload/${fn:split(ProductDTO.productPic,'|')[0]}" alt="">
+		                                    </div>
+		                                    <div class="latest-product__item__text">
+		                                        <h6>${status.count}. ${ProductDTO.productTitle }</h6>
+		                                        <span>${ProductDTO.productPrice }</span>
+		                                    </div>
+		                                </a>
+			                   	</c:forEach>
+                       		</div>
+	                   </div>
+              	  </div>
+              </div>
+         </div>
+      </div>
+   </section>
     <!-- Latest Product Section End -->
     
     <!-- Banner Begin -->

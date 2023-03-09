@@ -3,7 +3,9 @@ package com.itwillbs.controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +42,7 @@ public class ChatRoomController {
 	
     @MessageMapping("/chat/message")
     public void enter(MessageDTO message) throws FileNotFoundException, IOException {
-    	message.setSendTime("[" + new Timestamp(System.currentTimeMillis()).toString() + "]");
+    	message.setSendTime("[" + new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()).toString() + "]");
     	chatService.appendMessage(message);
         simpMessage.convertAndSend("/user/chat/room/"+message.getRoomId(), message);
     }
@@ -53,7 +55,7 @@ public class ChatRoomController {
     	
 //    	chatService.setRead(chatRoomDTO);
     	List<MessageDTO> chatHistory = chatService.readChatHistory(chatRoomMap);
-    	
+    		
     	Collections.reverse(chatHistory);
     	
     	model.addAttribute("chatRoomMap", chatRoomMap);

@@ -16,5 +16,5 @@ public interface FreeBoardService {
 	public void deleteBoard(int num);
 	public List<FreeBoardCommDTO> getCommList(int freeboardNum);
 	public void insertComm(FreeBoardCommDTO freeBoardCommDTO);
-	
+	public void deleteComm(String commNum);
 }

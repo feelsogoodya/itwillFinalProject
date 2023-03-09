@@ -36,6 +36,11 @@ body {
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	text-decoration: none;
+}
+
+body a{
+	text-decoration: none;
 }
 
 h1,

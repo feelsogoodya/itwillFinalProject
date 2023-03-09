@@ -70,5 +70,10 @@ public class FreeBoardDAOImpl implements FreeBoardDAO{
 		System.out.println("maxComm");
 		return sqlSession.selectOne(namespace + ".getMaxCommNum");
 	}
+
+	@Override
+	public void deleteComm(String commNum) {
+		sqlSession.delete(namespace + ".deleteComm", commNum);
+	}
 	
 }

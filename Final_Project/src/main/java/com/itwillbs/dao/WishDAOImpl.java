@@ -25,8 +25,6 @@ public class WishDAOImpl implements WishDAO{
 		param.put("memberId", memberId);
 		param.put("startRow", pageDTO.getStartRow() + "");
 		param.put("pageSize", pageDTO.getPageSize() + "");
-//		System.out.println(memberId);
-		System.out.println(param);
 		return sqlSession.selectList(namespace+".getMyWish",param);
 	}
 

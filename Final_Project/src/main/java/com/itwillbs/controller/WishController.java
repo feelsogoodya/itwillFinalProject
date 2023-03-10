@@ -60,8 +60,6 @@ public class WishController {
 		
 		
 		//데이터 담기
-		System.out.println("@@@@@@@@@");
-		System.out.println(pageDTO);
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("wishMapList", wishMapList);
 		

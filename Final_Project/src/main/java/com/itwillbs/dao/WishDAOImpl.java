@@ -17,21 +17,24 @@ public class WishDAOImpl implements WishDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private Map<String, Object> param = new HashMap<String, Object>();
-	
 	private static final String namespace = "com.itwillbs.mappers.wishMapper";
 
 	@Override
 	public List<Map<String, Object>> getWishList(String memberId, PageDTO pageDTO) {
+		Map<String, String> param = new HashMap<String, String>();
 		param.put("memberId", memberId);
-		param.put("pageDTO", pageDTO);
-		System.out.println(memberId);
+		param.put("startRow", pageDTO.getStartRow() + "");
+		param.put("pageSize", pageDTO.getPageSize() + "");
+//		System.out.println(memberId);
+		System.out.println(param);
 		return sqlSession.selectList(namespace+".getMyWish",param);
 	}
 
 	@Override
-	public int getwishCount() {
-		return sqlSession.selectOne(namespace+".getwishCount");
+	public int getwishCount(String memberId) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("memberId", memberId);
+		return sqlSession.selectOne(namespace+".getwishCount", param);
 	}
 
 }

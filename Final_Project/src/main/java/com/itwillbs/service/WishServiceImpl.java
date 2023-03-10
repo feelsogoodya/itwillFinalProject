@@ -19,19 +19,18 @@ public class WishServiceImpl implements WishService{
 	@Override
 	public List<Map<String, Object>> getWishList(String memberId, PageDTO pageDTO) {
 		
-		/*
-		 * int startRow=(pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1; 
-		 * int endRow=startRow+pageDTO.getPageSize()-1;
-		 * 
-		 * pageDTO.setStartRow(startRow-1); pageDTO.setEndRow(endRow);
-		 */
+		
+		 int startRow=(pageDTO.getCurrentPage()-1)*pageDTO.getPageSize()+1; 
+		 int endRow=startRow+pageDTO.getPageSize()-1;
+		 
+		 pageDTO.setStartRow(startRow-1); pageDTO.setEndRow(endRow);
 		
 		return wishDAO.getWishList(memberId, pageDTO);
 	}
 
 	@Override
-	public int getwishCount() {
-		return wishDAO.getwishCount();
+	public int getwishCount(String memberId) {
+		return wishDAO.getwishCount(memberId);
 	}
 
 }

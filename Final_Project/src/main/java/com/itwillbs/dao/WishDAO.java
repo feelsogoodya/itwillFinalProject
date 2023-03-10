@@ -9,5 +9,5 @@ public interface WishDAO {
 	
 	public List<Map<String, Object>> getWishList(String memberId, PageDTO pageDTO);
 	
-	public int getwishCount();
+	public int getwishCount(String memberId);
 }

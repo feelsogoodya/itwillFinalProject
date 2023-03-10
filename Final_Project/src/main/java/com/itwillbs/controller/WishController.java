@@ -29,12 +29,11 @@ public class WishController {
 		String memberId = (String)session.getAttribute("memId");
 		
 		//화면에 보여줄 글개수 
-		int pageSize=5;
+		int pageSize=3;
 		//페이지 번호 가져오기
 		String pageNum=request.getParameter("pageNum");
-		if(pageNum==null) {
-			pageNum="1";
-		}
+		if(pageNum == null) pageNum="1";
+		
 		int currentPage=Integer.parseInt(pageNum);
 		PageDTO pageDTO=new PageDTO();
 		pageDTO.setPageSize(pageSize);
@@ -44,24 +43,25 @@ public class WishController {
 //		List<BoardDTO> boardList=boardService.getBoardList(pageDTO);
 		List<Map<String, Object>> wishMapList = wishService.getWishList(memberId, pageDTO);
 		
-		model.addAttribute("wishMapList", wishMapList);
+		int count = wishService.getwishCount(memberId);
 		
-		int count = wishService.getwishCount();
-		
-		int pageBlock=10; 
+		int pageBlock=3; 
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
 		int pageCount = count/pageSize+(count%pageSize==0 ? 0 : 1);
-		if(endPage > pageCount){
-	 	   endPage=pageCount;
-	    }
+		
+		if(endPage > pageCount) endPage=pageCount;
+	    
 		pageDTO.setCount(count);
 		pageDTO.setPageBlock(pageBlock);
 		pageDTO.setStartPage(startPage);
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
 		
+		
 		//데이터 담기
+		System.out.println("@@@@@@@@@");
+		System.out.println(pageDTO);
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("wishMapList", wishMapList);
 		

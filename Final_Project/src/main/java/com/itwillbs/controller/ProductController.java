@@ -45,6 +45,7 @@ public class ProductController {
 		List<Map<String, Object>> sellerProducts = productService.getSellerProduct(productMap);
 		
 		
+		
 		model.addAttribute("productMap", productMap);
 		model.addAttribute("sellerProducts", sellerProducts);
 		

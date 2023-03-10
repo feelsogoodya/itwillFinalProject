@@ -102,7 +102,19 @@
                         
                         <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
                         
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <%-- <c:choose>
+				      		<c:when test="${sessionScope.memId eq null}">
+				      			<li><a class="cantwish"><i class="far fa-heart"></i></a></li>
+				      		</c:when>
+				      		<c:otherwise>
+				      			<c:set var="fasORfar" value="${dto.memId eq sessionScope.memId ? 'fas' : 'far'}" />
+							      		<a class="heart-icon"  data-productnum="${productMap.productNum}" ><i class="fas-fa-heart"></i></a>
+				      		</c:otherwise> 
+						 </c:choose> --%>
+						 
+						 <!-- 	color 누르기 전: #6f6f6f; 누르면 바뀔 컬러: #FF0040 -->
+						 <a class="heart-icon"><span class="icon_heart_alt"></span></a>
+						 
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
                             <li><b>관심수</b> <span>${productMap.wishCount }</span></li>
@@ -219,13 +231,44 @@
     	$(document).ready(function(){
     		$('.small').on('click', function(){
     			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-//     			$('.product__details__pic__item--large').css({
-//     				 "margin": "auto",
-//     				 "display": "block"
-//     			});
+//     			
     		});
     	});
     	
+    	$(function() {
+    		// events
+    	    $('.heart-icon').on('click', heart);
+    	});
+    	
+    	function heart() {
+    		alert("하트누름");
+    		$('.icon_heart_alt').toggleClass(".heart-icon_active");
+    	    /* var icon = this.querySelector('i');
+    	    var productNum = this.getAttribute('data-productnum');
+    	    if (icon.classList.contains('far')) {  // 하트 생성
+    	      icon.classList.remove('far');
+    	      icon.classList.add('fas');
+    			$.ajax( {
+    				url:'${pageContext.request.contextPath}/product/addWish',
+    				data:{ 'productNum' : productNum,
+    							'memId': $('.getMemId').val()
+    					 },
+    				success: function(rdata){ 
+    				}
+    			});
+    	    } else { //하트제거
+    	      icon.classList.remove('fas');
+    	      icon.classList.add('far');
+    	      $.ajax( {
+    				url:'${pageContext.request.contextPath}/product/removeWish',
+    				data:{ 'productNum' : productNum,
+    							'memId': $('.getMemId').val()
+    					 },
+    				success: function(rdata){ 
+    				}
+    			});
+    	    } */
+    	}
     </script>
 </body>
 

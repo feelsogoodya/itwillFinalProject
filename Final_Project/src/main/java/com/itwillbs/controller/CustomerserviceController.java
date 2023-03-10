@@ -191,7 +191,7 @@ public class CustomerserviceController {
 	public String list(Model model, HttpServletRequest request) {
 		String searchText = request.getParameter("searchText");
 		
-		int pageSize=10;
+		int pageSize=12;
 		// 현 페이지 번호 파라미터값 가져오기
 		String pageNum=request.getParameter("pageNum");
 		// 페이지 번호가 없으면 => "1" 설정

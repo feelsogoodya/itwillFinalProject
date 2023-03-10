@@ -26,8 +26,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/Cs_content.css" type="text/css">
+<%--     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css"> --%>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/Cs_content_style.css" type="text/css">
-     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/Cs_content.css" type="text/css">
 </head>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.3.js"></script>
@@ -176,6 +177,32 @@
 // 		}
 	}
 
+	
+	
+//아래로 조금 이동
+$(document).ready(fnMove);
+//select box (최신순,인기순,가격순...) 유지되도록
+$(document).ready(keepselect);
+
+function fnMove(){
+	 if ($('.contextPath').val() != "") {
+		 $('html, body').animate({scrollTop : 250}, 400);
+	}
+}
+
+
+function keepselect() {
+	var  el = document.getElementById('processField');
+	var  len = document.getElementById('processField').length
+	var  selectfilter = $('#filterValue').val();
+		  
+	for (let i=0; i<len; i++) {  
+		  if(el.options[i].value == selectfilter){
+		   el.options[i].selected = true;
+		  }
+		}
+}
+
 </script>
 
 
@@ -213,8 +240,18 @@
                             <li>${dto.memNname }</li>
                             <fmt:parseDate value="${dto.csDate}" var="Udate" pattern="yyyy.MM.dd HH:mm" />
                             <li><fmt:formatDate value="${Udate}" pattern="yyyy-MM-dd HH:mm" /></li>
-                            <li>${dto.csReadcount} readcount</li>  <!-- 조회수 -->
-                            <li>${pageDto.count} Comments</li> <!-- 댓글수  -->
+                            <li>${dto.csReadcount} 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+							  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+							  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+							</svg>
+                            </li>  <!-- 조회수 -->
+                            <li>${pageDto.count} 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-text" viewBox="0 0 16 16">
+							  <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+							  <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+							</svg>
+                            </li> <!-- 댓글수  -->
                         </ul>
                     </div>
                 </div>
@@ -228,67 +265,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 order-md-1 order-2">
-                    <div class="blog__sidebar">
-                        <div class="blog__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </form>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Categories</h4>
-                            <ul>
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Beauty (20)</a></li>
-                                <li><a href="#">Food (5)</a></li>
-                                <li><a href="#">Life Style (9)</a></li>
-                                <li><a href="#">Travel (10)</a></li>
-                            </ul>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Recent News</h4>
-                            <div class="blog__sidebar__recent">
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/sidebar/sr-1.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/sidebar/sr-2.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/sidebar/sr-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Search By</h4>
-                            <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
@@ -341,8 +318,8 @@
                                         <li><span>처리상태</span>
 	                                         <c:choose>
 													<c:when test="${sessionScope.memId eq 'admin'}">
+															<input type="hidden" id="filterValue" value="${dto.csProcess}">
 															<select id="processField" class="processChange"  onchange="processField()">
-																<option value="현재" >${dto.csProcess}</option>
 																<option value="접수대기" >접수대기</option>
 																<option value="처리중">처리중</option>
 																<option value="처리완료">처리완료</option>
@@ -601,7 +578,6 @@
 	</div>
 </div>
 	
-	 </section>
 	
 
 
@@ -614,7 +590,7 @@
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script> --%>
     <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>

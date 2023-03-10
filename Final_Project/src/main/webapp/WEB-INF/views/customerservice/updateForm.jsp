@@ -43,7 +43,6 @@ $(document).ready(function() {
 // 		  alert(console.log(files));
 		  
 		  
-		  debugger;
 // 		  formData.append('file', '아아아아아아ㅏ아아아아ㅏㅇ되라라라ㅏ');
 // 		  formData.set('file', '111');
 // 		  formData.append('file', files[1]);
@@ -65,7 +64,6 @@ $(document).ready(function() {
 		  
 		  
 		});
-
 	
 // 	$("#file").on('change',function(){
 // 		  var fileName = $("#file").val();
@@ -111,12 +109,34 @@ $(document).ready(function() {
 	
 	
 });
-</script>
-<script type="text/javascript">
+
+
+
+//아래로 조금 이동
+$(document).ready(fnMove);
+//select box (최신순,인기순,가격순...) 유지되도록
+$(document).ready(keepselect);
+
+
+function fnMove(){
+	 if ($('.contextPath').val() != "") {
+		 $('html, body').animate({scrollTop : 250}, 400);
+	}
+}
+
+function keepselect() {
+	var  el = document.getElementById('categoryField');
+	var  len = document.getElementById('categoryField').length
+	var  selectfilter = $('#filterValue').val();
+		  
+	for (let i=0; i<len; i++) {  
+		  if(el.options[i].value == selectfilter){
+		   el.options[i].selected = true;
+		  }
+		}
+}
 
 </script>
-
-
 
 <script type="text/javascript">
 	function selectCategoryField() {
@@ -167,11 +187,7 @@ $(document).ready(function() {
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Contact Us</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Contact Us</span>
-                        </div>
+                        <h2>글수정</h2>
                     </div>
                 </div>
             </div>
@@ -186,13 +202,7 @@ $(document).ready(function() {
     <!-- Contact Form Begin -->
     <div class="contact-form spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave Message</h2>
-                    </div>
-                </div>
-            </div>
+
             <form action="${pageContext.request.contextPath}/customerservice/UpdatePro" method="post" enctype="multipart/form-data" onsubmit="return check()">
             		<input type="hidden" name="memNname" value="${sessionScope.memNname }">
 					<input type="hidden" name="memId" value="${sessionScope.memId }">
@@ -206,8 +216,8 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-lg-12 text-center category">
 						<p>카테고리</p>
+							<input type="hidden" id="filterValue" value="${dto.csCategory}">
 						<select id="categoryField" onchange="selectCategoryField()">
-							<option value="">${dto.csCategory}</option>
 							<option value="계정관리">계정관리</option>
 							<option value="게시글">게시글</option>
 							<option value="결제환불">결제환불</option>
@@ -254,7 +264,7 @@ $(document).ready(function() {
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script> --%>
     <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>

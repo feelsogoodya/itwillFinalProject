@@ -127,7 +127,7 @@
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
                             
-                            <li><a href="./shop-grid.html">전체상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/list">전체상품</a></li>
                             
                             <li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
                             

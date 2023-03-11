@@ -163,7 +163,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #CE93D8;
 }
 
 ul,
@@ -2402,12 +2402,11 @@ ol {
 }
 
 .blog__pagination {
-	padding-top: 5px;
+	padding-top: 60px;
 	position: relative;
 }
 
 .blog__pagination:before {
-	position: absolute;
 	left: 0;
 	top: -29px;
 	height: 1px;
@@ -2631,6 +2630,7 @@ ol {
 }
 
 .button {
+    margin-top: 200px;
 	text-align: center;
 }
 .button a {

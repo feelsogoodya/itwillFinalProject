@@ -208,7 +208,6 @@ function keepselect() {
 
 
 
-<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a><br>
 
 
 <body>
@@ -271,9 +270,9 @@ function keepselect() {
                     <div class="blog__details__text">
 	                    <input type="hidden" id="processFieldHidden"  value="${dto.csProcess }">
 						<input type="hidden" class="Cs_num"  value="${dto.csNum }">
-                        <img src="${pageContext.request.contextPath }/resources/customerservice/upload/${dto.csFile0}" alt="">
-                        <img src="${pageContext.request.contextPath }/resources/customerservice/upload/${dto.csFile1}" alt="">
-                        <img src="${pageContext.request.contextPath }/resources/customerservice/upload/${dto.csFile2}" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/customerservice/img/${dto.csFile0}" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/customerservice/img/${dto.csFile1}" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/customerservice/img/${dto.csFile2}" alt="">
                         <p>${dto.csContent}</p>
 <!--                         <h3>The corner window forms a place within a place that is a resting point within the large -->
 <!--                             space.</h3> -->
@@ -398,7 +397,7 @@ function keepselect() {
 <div id="commentWrap">
 	<div class="profile">
 		<div class="my-img">
-			<img src="${pageContext.request.contextPath}/resources/customerservice/img/Cs_PFP.png" width="70px">
+			<img src="${pageContext.request.contextPath}/resources/customerservice/Cs_PFP.png" width="70px">
 		</div>
 	</div>
 	<div class="comment-cont">
@@ -470,7 +469,7 @@ function keepselect() {
 						<div id="commentWrap">
 							<div class="profile">
 								<div class="my-img">
-									<img src="${pageContext.request.contextPath}/resources/customerservice/img/Cs_PFP.png" width="70px">
+									<img src="${pageContext.request.contextPath}/resources/customerservice/Cs_PFP.png" width="70px">
 								</div>
 							</div>
 							<div class="comment-cont">
@@ -493,10 +492,12 @@ function keepselect() {
 									        ${fn:split(Vfiles, '高')[5]}
 									    </a>
 								</div>
+								<c:if test="${sessionScope.memId eq inner.memId || sessionScope.memId eq 'admin'}">
 								<div class="cmt-btn">
 									<input type="button" value="삭제"
 									onclick="location.href='${pageContext.request.contextPath }/customerservice/CsComCommdelete?csComNum2=${inner.csComNum2}&csComNum1=${inner.csComNum1}&num=${dto.csNum}'" >
 								</div>
+								</c:if>
 							</div>
 						</div>
 					</div>

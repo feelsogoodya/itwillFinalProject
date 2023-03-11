@@ -41,10 +41,10 @@ public class CustomerserviceController {
 	@Inject
 	private CustomerserviceService customerservice;
 	
-	@Resource(name="uploadPath")
-	private String uploadPath;
 	@Resource(name="uploadPath1")
 	private String uploadPath1;
+	@Resource(name="uploadPath2")
+	private String uploadPath2;
 	
 	@RequestMapping(value = "/customerservice/write", method = RequestMethod.GET)	
 	public String write() {
@@ -70,7 +70,7 @@ public class CustomerserviceController {
 		String fileList1 = "";
 		String fileList2 = "";
 		
-		
+//		System.out.println(request.getSession().getServletContext().getRealPath("resources"));
 		// isnotnull 이 비어있지 않을 때
 		if (!isnotnull.isEmpty()) {
 			
@@ -79,7 +79,7 @@ public class CustomerserviceController {
 
 			// path 가져오기
 			String path = request.getSession().getServletContext().getRealPath("resources");
-			String root = path + "\\" + "uploadFiles";
+			String root = path + "\\" + "customerservice" + "\\" + "img";
 			File fileCheck = new File(root);
 			if(!fileCheck.exists()) fileCheck.mkdirs();
 			
@@ -108,16 +108,15 @@ public class CustomerserviceController {
 				
 				
 				
-				System.out.println(fileList);
 				
 				try {
 					for(int i = 0; i < multiFileList.size(); i++) {
 //						File uploadFile = new File(root + "\\" + fileList.get(i).get("changeFile"));
 //						multiFileList.get(i).transferTo(uploadFile);
 						// spring에 저장
-//						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath, fileList.get(i).get("mixFile")));
-						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 2군대 저장함
 						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath1, fileList.get(i).get("mixFile")));
+						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 2군대 저장함
+						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath2, fileList.get(i).get("mixFile")));
 					}
 					
 					System.out.println("다중 파일 업로드 성공!");
@@ -337,7 +336,7 @@ public class CustomerserviceController {
 
 			// path 가져오기
 			String path = request.getSession().getServletContext().getRealPath("resources");
-			String root = path + "\\" + "uploadFiles";
+			String root = path + "\\" + "customerservice" + "\\" + "img";
 			File fileCheck = new File(root);
 			if(!fileCheck.exists()) fileCheck.mkdirs();
 			
@@ -368,9 +367,9 @@ public class CustomerserviceController {
 //								File uploadFile = new File(root + "\\" + fileList.get(i).get("changeFile"));
 //								multiFileList.get(i).transferTo(uploadFile);
 						// spring에 저장
-//						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath, fileList.get(i).get("mixFile")));
-						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 두 군데 저장함
 						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath1, fileList.get(i).get("mixFile")));
+						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 두 군데 저장함
+						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath2, fileList.get(i).get("mixFile")));
 					}
 					
 					System.out.println("다중 파일 업로드 성공!");
@@ -491,7 +490,7 @@ public class CustomerserviceController {
 
 			// path 가져오기
 			String path = request.getSession().getServletContext().getRealPath("resources");
-			String root = path + "\\" + "uploadFiles";
+			String root = path + "\\" + "customerservice" + "\\" + "img";
 			File fileCheck = new File(root);
 			if(!fileCheck.exists()) fileCheck.mkdirs();
 			
@@ -527,9 +526,9 @@ public class CustomerserviceController {
 //								File uploadFile = new File(root + "\\" + fileList.get(i).get("changeFile"));
 //								multiFileList.get(i).transferTo(uploadFile);
 						// spring에 저장
-//						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath, fileList.get(i).get("mixFile")));
-						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 두 군데 저장함
 						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath1, fileList.get(i).get("mixFile")));
+						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 두 군데 저장함
+						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath2, fileList.get(i).get("mixFile")));
 					}
 					
 					System.out.println("다중 파일 업로드 성공!");
@@ -644,9 +643,22 @@ public class CustomerserviceController {
 			isnotnull = multiFileList.get(i).getOriginalFilename();
 		}
 		
+		
 		String fileList0 = "";
 		String fileList1 = "";
 		String fileList2 = "";
+		if (multiFileList.size() == 1) {
+			fileList0 = request.getParameter("csFile0");
+		}
+		if (multiFileList.size() == 2) {
+			fileList0 = request.getParameter("csFile0");
+			fileList1 = request.getParameter("csFile1");
+		}
+		if (multiFileList.size() == 3) {
+			fileList0 = request.getParameter("csFile0");
+			fileList1 = request.getParameter("csFile1");
+			fileList2 = request.getParameter("csFile2");
+		}
 		
 		
 		// isnotnull 이 비어있지 않을 때
@@ -657,7 +669,7 @@ public class CustomerserviceController {
 
 			// path 가져오기
 			String path = request.getSession().getServletContext().getRealPath("resources");
-			String root = path + "\\" + "uploadFiles";
+			String root = path + "\\" + "customerservice" + "\\" + "img";
 			File fileCheck = new File(root);
 			if(!fileCheck.exists()) fileCheck.mkdirs();
 			
@@ -693,9 +705,9 @@ public class CustomerserviceController {
 //						File uploadFile = new File(root + "\\" + fileList.get(i).get("changeFile"));
 //						multiFileList.get(i).transferTo(uploadFile);
 						// spring에 저장
-//						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath, fileList.get(i).get("mixFile")));
-						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 두 군데 저장함
 						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath1, fileList.get(i).get("mixFile")));
+						// 새로고침안하고 바로보이게 하기위해서 하나더 추가함 즉 두 군데 저장함
+						FileCopyUtils.copy(multiFileList.get(i).getBytes(), new File(uploadPath2, fileList.get(i).get("mixFile")));
 					}
 					
 					System.out.println("다중 파일 업로드 성공!");
@@ -744,9 +756,9 @@ public class CustomerserviceController {
 		dto.setCsContent(request.getParameter("csContent"));
 		
 		String cs_secret = request.getParameter("csSecret");
-//		if (cs_secret == null) {
-//			cs_secret = "N";
-//		}
+		if (cs_secret == null) {
+			cs_secret = "N";
+		}
 		dto.setCsSecret(cs_secret);
 		
 		System.out.println(dto.toString());
@@ -827,7 +839,7 @@ public class CustomerserviceController {
 //		System.out.println("이거 경로 어떻게 됨??"+uploadPath+"\\"+filename);
 		System.out.println(filename);
 		  try {
-	        	String path = uploadPath1+"\\"+filename; // 경로에 접근할 때 역슬래시('\') 사용
+	        	String path = uploadPath2+"\\"+filename; // 경로에 접근할 때 역슬래시('\') 사용
 	        	String browser = getBrowser(request);
 	        	// 파일저장 이름
 	        	

@@ -174,10 +174,10 @@ $(document).ready(function() {
 									</ul>
 									<c:choose>
 										<c:when test="${dto.csSecret ne 'Y' || sessionScope.memId eq dto.memId || sessionScope.memId eq 'admin'}">
-	                                    	<a href="${pageContext.request.contextPath }/customerservice/content?num=${dto.csNum}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+	                                    	<a href="${pageContext.request.contextPath }/customerservice/content?num=${dto.csNum}" class="blog__btn">더보기 <span class="arrow_right"></span></a>
 										</c:when> 
                                 		<c:otherwise>
-                                			<a class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                			<a class="blog__btn">더보기 <span class="arrow_right"></span></a>
                                 		</c:otherwise> 
                                 	</c:choose>
                                 </div>

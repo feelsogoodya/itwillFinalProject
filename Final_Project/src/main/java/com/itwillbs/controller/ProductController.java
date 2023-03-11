@@ -136,7 +136,7 @@ public class ProductController {
 		
 		
 		String offset="0";
-		String limit="3";
+		String limit="9";
 		
 		Map<String, String> params = new HashMap<>();
 		

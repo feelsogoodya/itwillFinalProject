@@ -114,7 +114,7 @@ $(document).ready(function() {
 
 //아래로 조금 이동
 $(document).ready(fnMove);
-//select box (최신순,인기순,가격순...) 유지되도록
+//select box 유지되도록
 $(document).ready(keepselect);
 
 
@@ -208,6 +208,9 @@ function keepselect() {
 					<input type="hidden" name="memId" value="${sessionScope.memId }">
 					<input type="hidden" id="categoryFieldHidden" name="csCategory" value="${dto.csCategory}">
 					<input type="hidden" name="csProcess" value="접수대기">
+					<input type="hidden" name="csFile0" value="${dto.csFile0}">
+					<input type="hidden" name="csFile1" value="${dto.csFile1}">
+					<input type="hidden" name="csFile2" value="${dto.csFile2}">
             		
             		
             		<input type="hidden" name="csNum" value="${dto.csNum}">
@@ -226,7 +229,7 @@ function keepselect() {
                    
                    
                     <div class="col-lg-12 text-center">
-                        <input type="text" type="text" name="csSub" id="cs_sub" value="${dto.csSub}">
+                        <input type="text" type="text" name="csSub" id="cs_sub" value="${dto.csSub}" placeholder="제목을 입력해주세요.">
                         <div class="file_box">
 	                        <input type="file" multiple="multiple" name="multiFile" class ="uploadfile" id="file" style="display:none;" >
 	                        <label for="file">파일첨부</label>
@@ -237,19 +240,19 @@ function keepselect() {
                     	</div>
                     </div>
                     <div class="col-lg-12 text-center">
-                    	<textarea name="csContent" rows="10" cols="20" placeholder="Your message">${dto.csContent}</textarea>
+                    	<textarea name="csContent" rows="10" cols="20" placeholder="글내용 입력해주세요.">${dto.csContent}</textarea>
                     </div>
                     <div class="col-lg-12 text-center">
                      <c:if test="${dto.csSecret == 'N'}">
-                     	<input type="checkbox" name="csSecret" value="Y" ><p>비밀글</p>
+                     	<input type="checkbox" name="csSecret" value="Y" ><span class="secretbtn">비밀글</span>
                      </c:if>
                      <c:if test="${dto.csSecret == 'Y'}">
-                     	<input type="checkbox" name="csSecret" value="Y" checked ><p>비밀글</p>
+                     	<input type="checkbox" name="csSecret" value="Y" checked ><span class="secretbtn">비밀글</span>
                      </c:if>
                     	
                     </div>
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn" id = "button1">Change</button>
+                        <button type="submit" class="site-btn" id="button1">수정하기</button>
                     </div>
                 </div>
             </form>

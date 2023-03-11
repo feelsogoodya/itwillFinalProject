@@ -29,6 +29,11 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+button#button1 {
+    margin-top: 30px;
+}
+
+
 
 .file_box {
 	display: flex;
@@ -37,12 +42,19 @@ label[for="file"] {
 	width: 150px;
 	height: 50px;
 	line-height: 50px;
-	background: #c6c5c4;
+	background: #CE93D8;
+    color: #FFFFFF;
 }
 
+input[name="csSecret"] {
+    height: 20px;
+    width: 50px;
+    padding-bottom: 10px;
+}
 
-
-
+span.secretbtn {
+    font-size: 20px;
+}
 
 
 html,
@@ -89,6 +101,7 @@ h6 {
 	font-size: 16px;
 }
 .category {
+	margin-bottom: 15px;
 	display: inherit;
 }
 p {
@@ -2885,7 +2898,7 @@ ol {
 	padding-bottom: 80px;
 }
 
-.contact-form form input {
+.contact-form form input:not(input[name="csSecret"]) {
 	width: 100%;
 	height: 50px;
 	font-size: 16px;
@@ -2902,7 +2915,7 @@ ol {
 
 .contact-form form textarea {
 	width: 100%;
-	height: 150px;
+	height: 250px;
 	font-size: 16px;
 	color: #6f6f6f;
 	padding-left: 20px;

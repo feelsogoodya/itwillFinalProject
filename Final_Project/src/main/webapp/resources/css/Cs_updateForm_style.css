@@ -29,6 +29,52 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+select#categoryField {
+    /* margin: 0 0 10px 15px; */
+    margin-left: 8px;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px #e8e8e8;
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    height: 35px;
+    line-height: 35px;
+    outline: none;
+    padding-left: 18px;
+    padding-right: 10px;
+    position: relative;
+    text-align: left !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+}
+
+
+
+span.secretbtn {
+    font-size: 20px;
+}
+input[name="csSecret"] {
+    height: 20px;
+	width: 50px;
+	padding-bottom: 10px;
+}
+#button1 {
+	margin-top: 30px;
+}
+
 
 .file_box {
 	display: flex;
@@ -90,6 +136,7 @@ h6 {
 	font-size: 16px;
 }
 .category {
+	margin-bottom: 15px;
 	display: inherit;
 }
 p {
@@ -2886,7 +2933,7 @@ ol {
 	padding-bottom: 80px;
 }
 
-.contact-form form input {
+.contact-form form input:not(input[name="csSecret"]) {
 	width: 100%;
 	height: 50px;
 	font-size: 16px;
@@ -2903,7 +2950,7 @@ ol {
 
 .contact-form form textarea {
 	width: 100%;
-	height: 150px;
+	height: 250px;
 	font-size: 16px;
 	color: #6f6f6f;
 	padding-left: 20px;

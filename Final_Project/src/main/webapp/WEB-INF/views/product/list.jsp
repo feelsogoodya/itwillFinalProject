@@ -111,7 +111,7 @@
 								    <a>~</a>
 								    <input type="number" name="endPrice" id="keepEndPrice"  min="0" placeholder="1000000">
 								    <label for="start-price">원</label>
-								  	<button type="submit" id="filter-button">Filter</button>
+								  	<button type="submit" id="filter-button">검색</button>
 							  	</form>
 							</div>
                         </div>
@@ -242,7 +242,7 @@
                     
                     
 	                    <div class="seeMoreBtncss">
-						    <button id="seeMoreBtn"><span>seemore</span></button>
+						    <button id="seeMoreBtn"><span>더보기</span></button>
 						</div>
 					
                 </div>
@@ -328,7 +328,7 @@ $(function() {
     function moreList()  {
 		var memId = $('.getMemId').val();
         var offset = $('.rowOne').children('div').length; 
-        var limit = 3;
+        var limit = 9;
         
         var productCate = $('.getproductCate').val();
         var searchText = $('.getsearchText').val();

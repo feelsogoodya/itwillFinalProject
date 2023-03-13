@@ -171,7 +171,7 @@
 	
 	<!-- 보정 -->
 	
-	<resultMap type="map" id="productlistmap">
+    <resultMap type="map" id="productlistmap">
       <id column="product_num" property="productNum"/>
       <result column="product_seller" property="productSeller"/>
       <result column="product_cate" property="productCate"/>

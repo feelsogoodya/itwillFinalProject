@@ -45,6 +45,7 @@ public class ProductController {
 		List<Map<String, Object>> sellerProducts = productService.getSellerProduct(productMap);
 		
 		
+		
 		model.addAttribute("productMap", productMap);
 		model.addAttribute("sellerProducts", sellerProducts);
 		
@@ -119,9 +120,6 @@ public class ProductController {
 			filterValue = "productDate";
 		}
 		
-
-
-		
 		
 		// 카테고리 리스트 불러오기
 		List<Map<String, Object>> productCateList = productService.getproductCateList();
@@ -133,13 +131,13 @@ public class ProductController {
 //			startPrice = "0";
 //		}
 		String endPrice = request.getParameter("endPrice");
-		System.out.println(startPrice + "~~~~~~"+endPrice);
 		
 		String productCate = request.getParameter("productCate");
 		String searchText = request.getParameter("searchText");
 		
+		
 		String offset="0";
-		String limit="12";
+		String limit="9";
 		
 		Map<String, String> params = new HashMap<>();
 		
@@ -157,7 +155,6 @@ public class ProductController {
 		
 		List<Map<String, Object>> productList = productService.getProductList(params);
 		int productMax = productService.getproductMax(params);
-		System.out.println("productMax : "+productMax);
 		
 		
 		model.addAttribute("productCateList", productCateList);
@@ -188,9 +185,5 @@ public class ProductController {
 		
 		return "product/list";
 	}
-	
-	
-	
-	
 	
 }

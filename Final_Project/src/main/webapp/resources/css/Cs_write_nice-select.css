@@ -1,4 +1,5 @@
 .nice-select {
+  margin-left: 8px;
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
   border-radius: 5px;
@@ -11,8 +12,8 @@
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
-  height: 25px;
-  line-height: 25px;
+  height: 35px;
+  line-height: 35px;
   outline: none;
   padding-left: 18px;
   padding-right: 30px;

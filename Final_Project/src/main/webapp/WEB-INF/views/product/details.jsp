@@ -88,10 +88,12 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
+
                             <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
                         <p>${productMap.productContent }</p>
+
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -101,18 +103,27 @@
                         </div>
 
                         <button class="primary-btn" onclick="createRoom()">채팅하기</button>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-
-                        <a href="#" class="primary-btn">채팅하기</a>
                         <!-- 좋아요 버튼 -->
                         <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
+                        
+                        <%-- <c:choose>
+				      		<c:when test="${sessionScope.memId eq null}">
+				      			<li><a class="cantwish"><i class="far fa-heart"></i></a></li>
+				      		</c:when>
+				      		<c:otherwise>
+				      			<c:set var="fasORfar" value="${dto.memId eq sessionScope.memId ? 'fas' : 'far'}" />
+							      		<a class="heart-icon"  data-productnum="${productMap.productNum}" ><i class="fas-fa-heart"></i></a>
+				      		</c:otherwise> 
+						 </c:choose> --%>
+						 
+						 <!-- 	color 누르기 전: #6f6f6f; 누르면 바뀔 컬러: #FF0040 -->
 
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
                             <li><b>좋아요</b> <span>${productMap.wishCount }</span></li>
                             <li><b>판매자</b> <span>${productMap.memNname }</span></li>
                             <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
-                           
                         </ul>
                     </div>
                 </div>
@@ -168,7 +179,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-
+    <script src="${pageContext.request.contextPath }/resources/js/product/details.js"></script>
 
 	<script type="text/javascript">
 	function createRoom() {
@@ -201,18 +212,13 @@
     	$(document).ready(function(){
     		$('.small').on('click', function(){
     			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-//     			$('.product__details__pic__item--large').css({
-//     				 "margin": "auto",
-//     				 "display": "block"
-//     			});
     		});
     	});
       
-    function heart() {
-	    	alert("하트를 눌렀습니다.");
-	      $(".heart-icon").attr("class", "heart-icon-active");
-		}
-    	
+      function heart() {
+      alert("하트를 눌렀습니다.");
+        $(".heart-icon").attr("class", "heart-icon-active");
+	    }
     </script>
 
 </body>

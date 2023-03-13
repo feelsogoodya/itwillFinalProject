@@ -66,7 +66,7 @@ public class Pd_AjaxController {
 																		) {
 		
 		
-		System.out.println("productCate : " + filter);
+		System.out.println("productCate : " + filter); 
 		
 		Map<String, String> params = new HashMap<>();
 		params.put("memId", memId);
@@ -76,14 +76,14 @@ public class Pd_AjaxController {
 	    params.put("limit", limit);
 	    params.put("filterValue", filter);
 	    params.put("startPrice", startPrice);
-	    params.put("endPrice", endPrice);
+	    params.put("endPrice", endPrice); 
 
 	    
 	    
 	    
 	    
 	    List<Map<String, Object>> productList = productService.getProductList(params);
-	    System.out.println("========================");
+	    System.out.println("========================"); 
 	    System.out.println(productList);
 	    model.addAttribute("productList", productList);
 	    

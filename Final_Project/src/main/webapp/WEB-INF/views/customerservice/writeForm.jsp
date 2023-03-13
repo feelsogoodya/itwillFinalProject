@@ -124,6 +124,14 @@ $(document).ready(function() {
 			return false;
 		}
 	}
+	
+//아래로 조금 이동
+$(document).ready(fnMove);
+function fnMove(){
+	 if ($('.contextPath').val() != "") {
+		 $('html, body').animate({scrollTop : 250}, 400);
+	}
+}
 </script>
 
 
@@ -152,10 +160,6 @@ $(document).ready(function() {
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>글작성</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">List</a>
-                            <span>글작성</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -166,15 +170,8 @@ $(document).ready(function() {
     <!-- Contact Form Begin -->
     <div class="contact-form spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave Message</h2>
-                    </div>
-                </div>
-            </div>
             <form  action="${pageContext.request.contextPath }/customerservice/writePro" method="post" enctype="multipart/form-data"  onsubmit="return check()" >
-	                <input type="hidden" name="memNname" value="${sessionScope.memName }">
+	                <input type="hidden" name="memNname" value="${sessionScope.memNname }">
 					<input type="hidden" name="memId" value="${sessionScope.memId }">
 					<input type="hidden" id="categoryFieldHidden" name="csCategory" value="${dto.csCategory}">
 					<input type="hidden" name="csProcess" value="접수대기">
@@ -193,7 +190,7 @@ $(document).ready(function() {
                 
 	            	
                     <div class="col-lg-12 text-center">
-                        <input type="text" type="text" name="csSub" id="cs_sub" placeholder="Your Sub">
+                        <input type="text" type="text" name="csSub" id="cs_sub" placeholder="제목을 입력해주세요.">
                         <div class="file_box">
 	                        <input type="file" multiple="multiple" name="multiFile" class ="uploadfile" id="file" style="display:none;">
 	                        <label for="file">파일첨부</label>
@@ -201,13 +198,13 @@ $(document).ready(function() {
                     	</div>
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea name="csContent" placeholder="Your message"></textarea>
+                        <textarea name="csContent" placeholder="글내용 입력해주세요."></textarea>
                     </div>
                     <div class="col-lg-12 text-center">
-                    	<input type="checkbox" name="csSecret" value="Y"><p>비밀글</p>
+                    	<input type="checkbox" name="csSecret" value="Y"><span class="secretbtn">비밀글</span>
                     </div>
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn" id = "button1">SEND MESSAGE</button>
+                        <button type="submit" class="site-btn" id = "button1">글작성하기</button>
                     </div>
                     	
                 </div>

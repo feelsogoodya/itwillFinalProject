@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -15,22 +16,13 @@
   </select>
  
   <select id="getNoticeList" resultType="com.itwillbs.domain.NoticeDTO">
-    select * from notice
-    	where 1=1
-		<if test="search != null">
-		 and noti_title like concat('%',#{search},'%')
-		</if>
-     order by noti_num desc limit #{startRow},#{pageSize}
+    select * from notice order by noti_num desc limit #{startRow},#{pageSize}
   </select>
   
   <select id="getNoticeCount" resultType="java.lang.Integer">
   	select count(*) from notice
-  	 where 1=1
-		 <if test="search != null">
-		 and noti_title like concat('%',#{search},'%')
-		 </if>
   </select>
-   
+  
   <update id="updateReadcount">
   	update notice set noti_readcount=noti_readcount+1 where noti_num=#{notiNum}
   </update>
@@ -38,8 +30,8 @@
   <select id="getNotice" resultType="com.itwillbs.domain.NoticeDTO">
  	 select * from notice where noti_num=#{notiNum}
   </select>
-  
-  <delete id="delete">
+
+   <delete id="deleteNotice">
   	delete from notice
   	where noti_num=#{notiNum}
   </delete>

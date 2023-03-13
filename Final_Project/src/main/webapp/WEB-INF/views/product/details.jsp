@@ -190,6 +190,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <script src="${pageContext.request.contextPath }/resources/js/product/details.js"></script>
     
     <script type="text/javascript">
@@ -242,11 +243,60 @@
     	function heart() {
 	    	alert("하트를 눌렀습니다.");
 	        $(".heart-icon").attr("class", "heart-icon-active");
+=======
+
+<script type="text/javascript">
+	function createRoom() {
+		console.log('${productMap.productNum}');
+		console.log('${sessionScope.memId}');
+		console.log('${productMap.productSeller}');
+		if('${sessionScope.memId}' === '') {
+			alert('로그인 후 사용할 수 있습니다.');
+		} else {
+			$.ajax({
+				url : "${pageContext.request.contextPath }/chat/room",
+				type : "POST",
+				data : {
+					productNum : '${productMap.productNum}',
+					memberId : '${sessionScope.memId}',
+					seller : '${productMap.productSeller}'
+				},
+				success : function(response) {
+					window.open('${pageContext.request.contextPath }' + response, 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			      }
+			});
+>>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 		}
+<<<<<<< HEAD
     </script>
 
 
 >>>>>>> refs/remotes/origin/main
+=======
+	}
+    
+    	$(document).ready(function(){
+    		$('.small').on('click', function(){
+    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
+//     			$('.product__details__pic__item--large').css({
+//     				 "margin": "auto",
+//     				 "display": "block"
+//     			});
+    		});
+    	});
+      
+    function heart() {
+	    alert("하트를 눌렀습니다.");
+	    $(".heart-icon").attr("class", "heart-icon-active");
+		}
+    
+</script>
+
+
+>>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 </body>
 
 </html>

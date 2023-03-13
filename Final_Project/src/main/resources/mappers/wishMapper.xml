@@ -16,7 +16,7 @@
 		<result column="wish_count" property="wishCount"/>
 	</resultMap>
 	
-	<select id="getMyWish" resultMap="wishMap" parameterType="hashMap">
+	<select id="getMyWish" resultMap="wishMap" parameterType="hashMap"> <!-- DD -->
 		SELECT productNum
 			 , productTitle
 			 , productPrice

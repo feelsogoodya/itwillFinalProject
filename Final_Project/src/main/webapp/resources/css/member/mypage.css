@@ -1223,7 +1223,7 @@ h1, h2, h3, h4, h5, h6 {
 @media all and (min-width:1024px) {
 	.path_area {
 		display: block;
-		padding: 26px 0 38px;
+		padding: 1px 0 38px;
 		text-align: right
 	}
 }

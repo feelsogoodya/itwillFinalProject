@@ -34,10 +34,10 @@
 		<!-- [D] input type="text"에 focus 되었을때 class에 on 추가 (ie6,ie7 대응) -->
 		<div class="section_delete">
 			<h3 class="h_dropout">
-						     	  사용하고 계신 아이디(<em>${dto.memId }</em>)는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
+						     	  사용하고 계신 아이디(<em>${dto.memId }</em>)는 탈퇴할 경우 복구가 불가능합니다.
 						     </h3>
 			<p class="dropout_dsc">
-						     	  <em>탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가</em>하오니 신중하게 선택하시기 바랍니다.
+						     	  <em>탈퇴한 아이디는 본인과 타인 모두 복구가 불가</em>하오니 신중하게 선택하시기 바랍니다.
 						     </p>
 			<h3 class="h_dropout">탈퇴 후 회원정보 및 개인형 서비스 이용기록은 모두 삭제됩니다.</h3>
 			<p class="dropout_dsc">

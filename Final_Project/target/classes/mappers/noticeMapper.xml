@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -33,59 +30,13 @@
   <select id="getNotice" resultType="com.itwillbs.domain.NoticeDTO">
  	 select * from notice where noti_num=#{notiNum}
   </select>
-  
-     <delete id="deleteNotice">
+
+   <delete id="deleteNotice">
   	delete from notice
   	where noti_num=#{notiNum}
-  	</delete>
+  </delete>
   	
-  	 <update id="updateNotice">
-  	update notice
-  	set noti_title=#{notiTitle}, noti_content=#{notiContent}, noti_image=#{notiImage}, noti_image1=#{notiImage1},noti_image2=#{notiImage2}
-  	where noti_num=#{notiNum}
-  </update>
- 
-</mapper>
-<<<<<<< HEAD
-=======
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="com.itwillbs.mappers.noticeMapper">
-  
-  <insert id="insertNotice">
-  	insert into notice(noti_num, noti_title, noti_content, noti_date, noti_readcount, noti_image, noti_image1, noti_image2) 
-  	values(#{notiNum},#{notiTitle},#{notiContent},#{notiDate},#{notiReadcount},#{notiImage},#{notiImage1},#{notiImage2})
-  </insert>
-  
-  <select id="getMaxNum" resultType="java.lang.Integer">
-    select max(noti_num) from notice
-  </select>
- 
-  <select id="getNoticeList" resultType="com.itwillbs.domain.NoticeDTO">
-    select * from notice order by noti_num desc limit #{startRow},#{pageSize}
-  </select>
-  
-  <select id="getNoticeCount" resultType="java.lang.Integer">
-  	select count(*) from notice
-  </select>
-  
-  <update id="updateReadcount">
-  	update notice set noti_readcount=noti_readcount+1 where noti_num=#{notiNum}
-  </update>
-  
-  <select id="getNotice" resultType="com.itwillbs.domain.NoticeDTO">
- 	 select * from notice where noti_num=#{notiNum}
-  </select>
-  
-     <delete id="deleteNotice">
-  	delete from notice
-  	where noti_num=#{notiNum}
-  	</delete>
-  	
-  	 <update id="updateNotice">
+  <update id="updateNotice">
   	update notice
   	set noti_title=#{notiTitle}, noti_content=#{notiContent}, noti_image=#{notiImage}, noti_image1=#{notiImage1},noti_image2=#{notiImage2}
   	where noti_num=#{notiNum}
@@ -93,7 +44,3 @@
  
 </mapper>
 
->>>>>>> refs/remotes/origin/main
-=======
-
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git

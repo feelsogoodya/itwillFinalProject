@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 //import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;

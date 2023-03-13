@@ -72,7 +72,8 @@
             <form action="${pageContext.request.contextPath }/free/writePro" method="post">
                 <div class="row">
                 	<div class="col-lg-12 col-md-12">
-                        <input type="text" name="memberId" value="${sessionScope.memId }" readonly>
+                        <input type="hidden" name="memberId" value="${sessionScope.memId }" readonly>
+                        <input type="text" name="memberNick" value="${sessionScope.memNname }" readonly>
                     </div>
                     <div class="col-lg-12 col-md-12">
                         <input type="text" name="subject" placeholder="제목">

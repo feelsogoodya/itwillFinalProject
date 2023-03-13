@@ -102,7 +102,8 @@
                         </c:if>
                         <c:if test="${! empty sessionScope.memId}">
                         	<div class="header__top__right__auth">
-                                <i class="fa fa-user"></i> ${sessionScope.memId }님 로그인하셨습니다.</a>
+                        		<a href="${pageContext.request.contextPath }/member/mypage">
+                                <i class="fa fa-user"></i>${sessionScope.memId }님 로그인하셨습니다.</a>
                             </div>
                             <div class="header__top__right__auth">
                                 <a href="${pageContext.request.contextPath }/member/logout"><i class="fa fa-user"></i> Logout</a>
@@ -122,7 +123,7 @@
                         <img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
@@ -137,12 +138,11 @@
                                     <li><a href="${pageContext.request.contextPath }/customerservice/list">Q & A</a></li>
                                 </ul>
                             </li>
-                            
                             <li><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
                             	<ul class="header__menu__dropdown">
                                     <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
                                     <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
-                                    <li><a href="./blog-details.html">채팅목록</a></li>
+                                    <li><a href="javascript:chatList();">채팅목록</a></li>
                                     <li><a href="./shoping-cart.html">판매내역</a></li>
                                     <li><a href="./checkout.html">구매내역</a></li>
                                 </ul>
@@ -150,7 +150,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
@@ -168,5 +168,11 @@
     </header>
 </head>
 <body>
+<script type="text/javascript">
+	function chatList() {
+		if('${sessionScope.memId}' === '') alert('로그인 후 사용할 수 있습니다.');
+		else window.open('${pageContext.request.contextPath }/chat/list', 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+	}
+</script>
 </body>
 </html>

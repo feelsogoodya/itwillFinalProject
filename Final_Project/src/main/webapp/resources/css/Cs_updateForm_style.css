@@ -29,15 +29,62 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+select#categoryField {
+    /* margin: 0 0 10px 15px; */
+    margin-left: 8px;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px #e8e8e8;
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    height: 35px;
+    line-height: 35px;
+    outline: none;
+    padding-left: 18px;
+    padding-right: 10px;
+    position: relative;
+    text-align: left !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+}
+
+
+
+span.secretbtn {
+    font-size: 20px;
+}
+input[name="csSecret"] {
+    height: 20px;
+	width: 50px;
+	padding-bottom: 10px;
+}
+#button1 {
+	margin-top: 30px;
+}
+
 
 .file_box {
 	display: flex;
 }
 label[for="file"] {
+	color: #ffffff;
 	width: 150px;
 	height: 50px;
 	line-height: 50px;
-	background: #c6c5c4;
+	background: #CE93D8;
 }
 
 
@@ -89,6 +136,7 @@ h6 {
 	font-size: 16px;
 }
 .category {
+	margin-bottom: 15px;
 	display: inherit;
 }
 p {
@@ -146,7 +194,7 @@ ol {
 	right: 0;
 	height: 4px;
 	width: 80px;
-	background: #7fad39;
+	background: #CE93D8;
 	content: "";
 	margin: 0 auto;
 }
@@ -184,7 +232,7 @@ ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	background: #7fad39;
+	background: #CE93D8;
 	letter-spacing: 2px;
 }
 
@@ -195,7 +243,7 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
-	background: #7fad39;
+	background: #CE93D8;
 	border: none;
 }
 
@@ -466,7 +514,7 @@ ol {
 }
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .header__menu ul li .header__menu__dropdown li a {
@@ -477,7 +525,7 @@ ol {
 }
 
 .header__menu ul li.active a {
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .header__menu ul li:hover .header__menu__dropdown {
@@ -487,7 +535,7 @@ ol {
 }
 
 .header__menu ul li:hover>a {
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .header__menu ul li:last-child {
@@ -541,7 +589,7 @@ ol {
 .header__cart ul li a span {
 	height: 13px;
 	width: 13px;
-	background: #7fad39;
+	background: #CE93D8;
 	font-size: 10px;
 	color: #ffffff;
 	line-height: 13px;
@@ -604,7 +652,7 @@ ol {
 }
 
 .hero__categories__all {
-	background: #7fad39;
+	background: #CE93D8;
 	position: relative;
 	padding: 10px 25px 10px 40px;
 	cursor: pointer;
@@ -717,7 +765,7 @@ ol {
 
 .hero__search__phone__icon {
 	font-size: 18px;
-	color: #7fad39;
+	color: #CE93D8;
 	height: 50px;
 	width: 50px;
 	background: #f5f5f5;
@@ -755,7 +803,7 @@ ol {
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 4px;
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .hero__text h2 {
@@ -857,7 +905,7 @@ ol {
 	bottom: -2px;
 	width: 100%;
 	height: 2px;
-	background: #7fad39;
+	background: #CE93D8;
 	content: "";
 	opacity: 0;
 }
@@ -905,8 +953,8 @@ ol {
 }
 
 .featured__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #CE93D8;
+	border-color: #CE93D8;
 }
 
 .featured__item__pic__hover li:hover a i {
@@ -1341,8 +1389,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #CE93D8;
+	border-color: #CE93D8;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1540,7 +1588,7 @@ ol {
 }
 
 .filter__option span:hover {
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .product__item {
@@ -1581,8 +1629,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #CE93D8;
+	border-color: #CE93D8;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1662,8 +1710,8 @@ ol {
 
 .product__pagination a:hover,
 .blog__pagination a:hover {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #CE93D8;
+	border-color: #CE93D8;
 	color: #ffffff;
 }
 
@@ -2171,8 +2219,8 @@ ol {
 }
 
 .checkout__input__checkbox label input:checked~.checkmark {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #CE93D8;
+	border-color: #CE93D8;
 }
 
 .checkout__input__checkbox label input:checked~.checkmark:after {
@@ -2404,7 +2452,7 @@ ol {
 }
 
 .blog__sidebar__item ul li a:hover {
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .blog__sidebar__search {
@@ -2624,7 +2672,7 @@ ol {
 }
 
 .blog__details__widget .blog__details__social a:hover {
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .blog__details__widget .blog__details__social a:last-child {
@@ -2742,7 +2790,7 @@ ol {
 }
 
 .footer__widget .footer__widget__social a:hover {
-	background: #7fad39;
+	background: #CE93D8;
 	color: #ffffff;
 	border-color: #ffffff;
 }
@@ -2780,7 +2828,7 @@ ol {
 
 .contact__widget span {
 	font-size: 36px;
-	color: #7fad39;
+	color: #CE93D8;
 }
 
 .contact__widget h4 {
@@ -2819,7 +2867,7 @@ ol {
 
 .map .map-inside i {
 	font-size: 48px;
-	color: #7fad39;
+	color: #CE93D8;
 	position: absolute;
 	bottom: -75px;
 	left: 50%;
@@ -2885,7 +2933,7 @@ ol {
 	padding-bottom: 80px;
 }
 
-.contact-form form input {
+.contact-form form input:not(input[name="csSecret"]) {
 	width: 100%;
 	height: 50px;
 	font-size: 16px;
@@ -2902,7 +2950,7 @@ ol {
 
 .contact-form form textarea {
 	width: 100%;
-	height: 150px;
+	height: 250px;
 	font-size: 16px;
 	color: #6f6f6f;
 	padding-left: 20px;
@@ -3076,7 +3124,7 @@ ol {
 	.humberger__menu__cart ul li a span {
 		height: 13px;
 		width: 13px;
-		background: #7fad39;
+		background: #CE93D8;
 		font-size: 10px;
 		color: #ffffff;
 		line-height: 13px;
@@ -3142,7 +3190,7 @@ ol {
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		background: transparent;
-		color: #7fad39;
+		color: #CE93D8;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_row,
 	.humberger__menu__wrapper .slicknav_nav a {
@@ -3334,7 +3382,7 @@ ol {
 	.humberger__menu__cart ul li a span {
 		height: 13px;
 		width: 13px;
-		background: #7fad39;
+		background: #CE93D8;
 		font-size: 10px;
 		color: #ffffff;
 		line-height: 13px;
@@ -3400,7 +3448,7 @@ ol {
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		background: transparent;
-		color: #7fad39;
+		color: #CE93D8;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_row,
 	.humberger__menu__wrapper .slicknav_nav a {

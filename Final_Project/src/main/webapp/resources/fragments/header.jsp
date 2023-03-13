@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head> 
-        <!-- Humberger Begin -->
+    <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
@@ -118,7 +118,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="${pageContext.request.contextPath }/main/main"><img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
+                        <a href="${pageContext.request.contextPath }/main/main">
+                        <img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -126,7 +127,7 @@
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
                             
-                            <li><a href="./shop-grid.html">전체상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/list">전체상품</a></li>
                             
                             <li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
                             

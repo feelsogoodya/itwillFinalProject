@@ -1,444 +1,329 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>네이버 : 회원가입</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/insert.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/insert.js" ></script>
-<script type="text/javascript" src="https://nid.naver.com/js/clickcr.js"></script>
-<script src="<c:url value ="/resources/js/insert.js"/>"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.6.3.js"></script>
 <script type="text/javascript">
-	lcs_do();
-</script>
-<meta name="decorator" content="V2_JOIN">
-<style>
-.id_ok{
-color:#008000;
-display: none;
-}
+	// 비밀번호 재입력
+	$(function() {
+		$("#alert-success").hide();
+		$("#alert-danger").hide();
+		$("input").keyup(function() {
+			var memPass = $("#memPass").val();
+			var memPass2 = $("#memPass2").val();
+			if (memPass != "" || memPass2 != "") {
+				if (memPass == memPass2) {
+					$("#alert-success").show();
+					$("#alert-danger").hide();
+					$("#submit").removeAttr("disabled");
+				} else {
+					$("#alert-success").hide();
+					$("#alert-danger").show();
+					$("#submit").attr("disabled", "disabled");
+				}
+			}
+		});
+	});
+	// 유효성 검사
+	function check() {
+		var memEmail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
+		var memName = RegExp(/^[가-힣]{2,6}$/);
+		var memNname = RegExp(/^[가-힣a-zA-Z0-9]{2,10}$/);
+		var memphone = RegExp(/^01[0179][0-9]{7,8}$/);
+		
+		if ($('#memId').val() == "") {
+			alert("아이디를 입력하세요");
+			$('#memId').focus();
+			return false;
+		}
+		//아이디 유효성검사
+		if (!getCheck.test($("#memId").val())) {
+			alert("아이디 형식에 맞게 입력해주세요");
+			$("#memId").val("");
+			$("#memId").focus();
+			return false;
+		}
+		if ($('#memPass').val() == "") {
+			alert("비밀번호를 입력하세요");
+			$('#memPass').focus();
+			return false;
+		}
+		//비밀번호 유효성검사
+		if (!getCheck.test($("#memPass").val())) {
+			alert("비밀번호 형식에 맞게 입력해주세요");
+			$("#memPass").val("");
+			$("#memPass").focus();
+			return false;
+		}
+		if ($('#memPass2').val() == "") {
+			alert("비밀번호를 재입력하세요");
+			$('#memPass2').focus();
+			return false;
+		}
+		if ($("#memPass").val() != $("#memPass2").val()) {
+			alert("비밀번호가 일치하지 않습니다");
+			$("#memPass").val("");
+			$("#memPass2").val("");
+			$("#memPass").focus();
+			return false;
+		}
+		if ($('#memName').val() == "") {
+			alert("이름을 입력하세요");
+			$('#memName').focus();
+			return false;
+		}
+		//이름 유효성 검사
+		if (!memName.test($("#memName").val())) {
+			alert("이름 형식에 맞게 입력해주세요")
+			$("#memName").val("");
+			$("#memName").focus();
+			return false;
+		}
+		if ($('#memNname').val() == "") {
+			alert("닉네임을 입력하세요");
+			$('#memNname').focus();
+			return false;
+		}
+		//닉네임 유효성 검사
+		if (!memNname.test($("#memNname").val())) {
+			alert("닉네임 형식에 맞게 입력해주세요")
+			$("#memNname").val("");
+			$("#memNname").focus();
+			return false;
+		}
+// 		if($('#memAddress').val()==""){
+// 			alert("주소을 입력하세요");
+// 			$('#memAddress').focus();
+// 			return false;
+// 		}
+		if ($('#memEmail').val() == "") {
+			alert("이메일을 입력하세요");
+			$('#memEmail').focus();
+			return false;
+		}
 
-.id_already{
-color:#6A82FB; 
-display: none;
-}
-</style>
+		//이메일 유효성 검사
+		if (!getMail.test($("#memEmail").val())) {
+			alert("이메일 형식에 맞게 입력해주세요")
+			$("#memEmail").val("");
+			$("#memEmail").focus();
+			return false;
+		}
+		if ($('#memPhone').val() == "") {
+			alert("전화번호를 입력하세요");
+			$('#memPhone').focus();
+			return false;
+		}
+		//전화번호 유효성 검사
+		if (!memPhone.test($("#memPhone").val())) {
+			alert("전화번호 형식에 맞게 입력해주세요")
+			$("#memPhone").val("");
+			$("#memPhone").focus();
+			return false;
+		}
+
+	}
+	
+	    function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    document.getElementById("sample6_extraAddress").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("sample6_extraAddress").value = '';
+	                }
+
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+// 	                document.getElementById('sample6_postcode').value = data.zonecode;
+	                document.getElementById("sample6_address").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+// 	                document.getElementById("sample6_detailAddress").focus();
+	            }
+	        }).open();
+	    }
+</script>
 </head>
 <body>
-			<!-- 스킵네비게이션 : 웹접근성대응-->
-			<div id="u_skip">
-				<a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;">
-				<span>본문으로 바로가기</span></a>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<form action="${pageContext.request.contextPath }/member/updatePro" onsubmit="return check()" method="POST">
+		<!-- header -->
+		<div class="col-lg-3">
+			<div class="header__logo" style="text-align: center;">
+				<a href="./index.html"> 
+				<img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""  width="200"></a>
 			</div>
-			
-			<!-- header -->
-			<div class="col-lg-3">
-				<div class="header__logo" style="text-align: center;">
-					<a href="./index.html">
-					<img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
-				</div>
-			</div>
-
-		<form action="${pageContext.request.contextPath }/member/updatePro" method="POST">
-				<input type="hidden" id="token_sjoin" name="token_sjoin"
-					value="TM3vbMIE8Wvp7Nr1"> <input type="hidden" id="encPswd"
-					name="encPswd" value=""> <input type="hidden" id="encKey"
-					name="encKey" value=""> <input type="hidden" id="birthday"
-					name="birthday" value=""> <input type="hidden"
-					id="joinMode" name="joinMode" value="unreal"> <input
-					type="hidden" id="pbirthday" name="pbirthday" value=""> <input
-					type="hidden" id="ipinFlag" name="ipinFlag" value=""> <input
-					type="hidden" id="nid_kb2" name="nid_kb2" value="">
-
-				<!-- container -->
-				<div id="container" role="main">
-					<div id="content">
-						<!-- tg-text=title -->
-						<h2 class="blind">네이버 회원가입</h2>
-						<div class="join_content">
-							<!-- 아이디, 비밀번호 입력 -->
-							<div class="row_group">
-								<div class="join_row">
-									<h3 class="join_title">
-										<label for="id">아이디</label>
-									</h3>
-									<span class="ps_box int_id"> 
-									<input type="text" name="memId" value="${dto.memId }" class="int" title="ID" maxlength="20" oninput = "checkId()" readonly>
-									<span class="error_next_box" id="idMsg" style="display: none" aria-live="assertive"></span>
-									<span class="id_ok">사용 가능한 아이디입니다.</span>
-									<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
-								</div>
-
-								<div class="join_row">
-									<h3 class="join_title">
-										<label for="pswd1">비밀번호</label>
-									</h3>
-									<span class="ps_box int_pass" id="pswd1Img"> 
-									<input type="password" name="memPass" value="${dto.memPass }" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
-										<span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
-									</span> <span class="error_next_box" id="pswd1Msg"
-										style="display: none" aria-live="assertive">5~12자의 영문
-										소문자, 숫자와 특수기호(_)만 사용 가능합니다.</span>
-
-									<h3 class="join_title">
-										<label for="pswd2">비밀번호 재확인</label>
-									</h3>
-									<span class="ps_box int_pass_check" id="pswd2Img"> <input
-										type="password" id="pswd2" name="pswd2" class="int"
-										title="비밀번호 재확인 입력" aria-describedby="pswd2Blind"
-										maxlength="20"> <span id="pswd2Blind" class="wa_blind">설정하려는
-											비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.</span>
-									</span> <span class="error_next_box" id="pswd2Msg"
-										style="display: none" aria-live="assertive"></span>
-								</div>
-							</div>
-							<!-- // 아이디, 비밀번호 입력 -->
-
-							<!-- 이름, 생년월일 입력 -->
-							<div class="row_group">
-
-								<!-- lang = ko_KR -->
-								<div class="join_row">
-									<h3 class="join_title">
-										<label for="name">닉네임</label>
-									</h3>
-									<span class="ps_box box_right_space"> 
-									<input type="text" name="memNname" value="${dto.memNname }" title="닉네임" class="int" maxlength="40">
-									</span> <span class="error_next_box" id="nameMsg"
-										style="display: none" aria-live="assertive"></span>
-								</div>
-								
-								<div class="join_row">
-									<h3 class="join_title">
-										<label for="name">이름</label>
-									</h3>
-									<span class="ps_box box_right_space"> 
-									<input type="text" name="memName" value="${dto.memName }" title="이름" class="int" maxlength="40">
-									</span> <span class="error_next_box" id="nameMsg"
-										style="display: none" aria-live="assertive"></span>
-								</div>
-
-								<div class="join_address">
-									<h3 class="join_title">
-										<label for="name">주소</label>
-									</h3>
-									<span class="ps_box box_right_space"> 
-									<input type="text" name="memAddress" value="${dto.memAddress }" title="주소" class="int" maxlength="40">
-									</span> <span class="error_next_box" id="nameMsg"
-										style="display: none" aria-live="assertive"></span>
-								</div>
-
-								<div class="join_row join_email">
-									<h3 class="join_title">
-										<label for="email">이메일<span class="terms_choice">(선택)</span></label>
-									</h3>
-									<span class="ps_box int_email box_right_space"> 
-									<input type="text" name="memEmail" value="${dto.memEmail }" placeholder="선택입력" aria-label="선택입력" class="int" maxlength="100">
-									</span>
-								</div>
-								<span class="error_next_box" id="emailMsg" style="display: none"
-									aria-live="assertive"></span>
-							</div>
-							<!-- // 이름, 생년월일 입력 -->
-
-							<!-- 휴대전화 번호, 인증번호 입력 -->
-							<div class="join_row join_mobile" id="mobDiv">
-								<h3 class="join_title">
-									<label for="phoneNo">휴대전화</label>
-								</h3>
-
-								<div class="int_mobile_area">
-									<span class="ps_box int_mobile"> 
-									<input type="text" name="memPhone" value="${dto.memPhone }" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16"> <label
-										for="phoneNo" class="lbl"></label>
-									</span> <a href="#" class="btn_verify btn_primary" id="btnSend"
-										role="button"> <span class="">인증번호 받기</span>
-									</a>
-								</div>
-								<div class="ps_box_disable box_right_space" id="authNoBox">
-									<input type="tel" id="authNo" name="authNo"
-										placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-										aria-describedby="wa_verify" class="int" disabled
-										maxlength="4"> <label id="wa_verify" for="authNo"
-										class="lbl"> <span class="wa_blind">인증받은 후
-											인증번호를 입력해야 합니다.</span> <span class="input_code" id="authNoCode"
-										style="display: none;"></span>
-									</label>
-								</div>
-
-								<span class="error_next_box" id="phoneNoMsg"
-									style="display: none" aria-live="assertive"></span> <span
-									class="error_next_box" id="authNoMsg" style="display: none"
-									aria-live="assertive"></span> <span class="error_next_box"
-									id="joinMsg" style="display: none" aria-live="assertive"></span>
-							</div>
-							<!-- // 휴대전화 번호, 인증번호 입력 -->
-
-							<!-- tg-display=>{"보호자 모바일 인증": [], "오류 메시지": []} -->
-							<div class="join_minor tab" id="pmobDiv" style="display: none">
-								<ul class="tab_m" role="tablist">
-									<li class="m1" role="presentation"><a href="#"
-										onclick="return false;" class="on" role="tab"
-										aria-selected="true" aria-controls="wa_tab_phone">휴대전화인증</a></li>
-									<li class="m2" role="presentation"><a href="#"
-										id="tabPrtsIpin" role="tab" aria-selected="false"
-										aria-controls="wa_tab_ipin">아이핀 인증</a></li>
-								</ul>
-								<div id="wa_tab_phone" role="tabpanel">
-									<div class="agree_check_wrap">
-										<div class="terms_chk_all">
-											<span class="input_chk"> <input type="checkbox"
-												id="pagree_all" class="chk_all"> <label
-												for="pagree_all"> <span class="chk_all_txt">아래
-														약관에 모두 동의합니다.</span>
-											</label>
-											</span>
-										</div>
-										<div class="small_check_box">
-											<span class="input_chk"> <input type="checkbox"
-												id="pagree_01" class="chk"> <label for="pagree_01">
-													<a
-													href="https://nid.naver.com/user2/common/terms/terms?m=viewPersonalInfoTerms"
-													target="_blank"><span>개인정보 이용</span></a>
-											</label>
-											</span> <span class="input_chk"> <input type="checkbox"
-												id="pagree_02" class="chk"> <label for="pagree_02">
-													<a
-													href="https://nid.naver.com/user2/common/terms/terms?m=viewUniqInfoTerms"
-													target="_blank"><span>고유식별정보 처리</span></a>
-											</label>
-											</span> <span class="input_chk"> <input type="checkbox"
-												id="pagree_03" class="chk"> <label for="pagree_03">
-													<a
-													href="https://nid.naver.com/user2/common/terms/terms?m=viewCellPhoneCarriersTerms"
-													target="_blank"><span>통신사 이용약관</span></a>
-											</label>
-											</span> <span class="input_chk"> <input type="checkbox"
-												id="pagree_04" class="chk"> <label for="pagree_04">
-													<a
-													href="https://nid.naver.com/user2/common/terms/terms?m=viewServiceTerms"
-													target="_blank"><span>인증사 이용약관</span></a>
-											</label>
-											</span> <span class="input_chk"> <input type="checkbox"
-												id="pagree_05" class="chk"> <label for="pagree_05">
-													<a
-													href="https://nid.naver.com/user2/common/terms/terms?m=viewNaverTerms"
-													target="_blank"><span>네이버 개인정보 수집</span></a>
-											</label>
-											</span>
-										</div>
-										<span class="error_next_box" id="pagreeMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-									<div class="row_group">
-										<div class="join_row">
-											<h3 class="join_title">
-												<label for="pname">보호자 이름</label>
-											</h3>
-											<span class="ps_box box_right_space"> <input
-												type="text" id="pname" name="pname" title="보호자 이름"
-												class="int" maxlength="40">
-											</span> <span class="error_next_box" id="pnameMsg"
-												style="display: none" aria-live="assertive">필수 정보입니다.</span>
-										</div>
-										<div class="join_row join_birthday">
-											<h3 class="join_title">
-												<label for="pyy">보호자 생년월일</label>
-											</h3>
-											<div class="bir_wrap">
-												<div class="bir_yy">
-													<span class="ps_box"> <input type="text" id="pyy"
-														placeholder="년(4자)" aria-label="년(4자)" class="int"
-														maxlength="4">
-													</span>
-												</div>
-												<div class="bir_mm">
-													<span class="ps_box"> <select id="pmm" name="pmm"
-														class="sel" aria-label="월">
-															<option>월</option>
-															<option>1</option>
-															<option>2</option>
-															<option>3</option>
-															<option>4</option>
-															<option>5</option>
-															<option>6</option>
-															<option>7</option>
-															<option>8</option>
-															<option>9</option>
-															<option>10</option>
-															<option>11</option>
-															<option>12</option>
-													</select>
-													</span>
-												</div>
-												<div class="bir_dd">
-													<span class="ps_box"> <input type="text" id="pdd"
-														placeholder="일" aria-label="일" class="int" maxlength="2">
-														<label for="pdd" class="lbl"></label>
-													</span>
-												</div>
-											</div>
-											<span class="error_next_box" id="pbirthdayMsg"
-												style="display: none" aria-live="assertive">필수 정보입니다.</span>
-										</div>
-										<div class="join_row">
-											<h3 class="join_title">
-												<label for="pgender">보호자 성별/국적</label>
-											</h3>
-											<div class="join_guardian">
-												<div class="gender_nationality">
-													<div class="ps_box gender_code">
-														<select id="pgender" name="pgender" class="sel"
-															aria-label="성별">
-															<option value="" selected="">성별</option>
-															<option value="0">남자</option>
-															<option value="1">여자</option>
-														</select>
-													</div>
-												</div>
-												<div class="gender_nationality">
-													<div class="ps_box gender_code">
-														<select id="pforeign" name="pforeign" class="sel"
-															aria-label="내국인여부">
-															<option value="0" selected="">내국인</option>
-															<option value="1">외국인</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<span class="error_next_box" id="pgenderMsg"
-												style="display: none" aria-live="assertive"></span>
-										</div>
-									</div>
-									<div class="join_row join_mobile">
-										<h3 class="join_title">
-											<label for="ptelecom">통신사</label>
-										</h3>
-										<div class="ps_box country_code">
-											<select id="ptelecom" name="ptelecom" class="sel"
-												aria-label="통신사">
-												<option value="SKT">SKT</option>
-												<option value="KTF">KT</option>
-												<option value="LGT">LG U+</option>
-												<option value="SKR">SKT 알뜰폰</option>
-												<option value="KTR">KT 알뜰폰</option>
-												<option value="LGR">LG U+ 알뜰폰</option>
-											</select>
-										</div>
-									</div>
-									<div class="join_row join_mobile">
-										<h3 class="join_title">
-											<label for="pphoneNo">휴대전화</label>
-										</h3>
-										<div class="int_mobile_area">
-											<span class="ps_box int_mobile"> <input type="tel"
-												id="pphoneNo" name="pphoneNo" placeholder="전화번호 입력"
-												aria-label="전화번호 입력" class="int" maxlength="16">
-											</span> <a href="#" class="btn_verify btn_primary" id="btnPrtsSend"
-												role="button"> <span class="">인증번호 받기</span>
-											</a>
-										</div>
-										<div class="ps_box_disable box_right_space" id="pauthNoBox">
-											<input type="tel" id="pauthNo" name="pauthNo"
-												placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-												aria-describedby="pwa_verify" class="int" disabled
-												maxlength="6"> <label id="pwa_verify" for="pauthNo"
-												class="lbl"> <span class="wa_blind">인증받은 후
-													인증번호를 입력해야 합니다.</span> <span class="input_code" id="pauthNoCode"
-												style="display: none;"></span>
-											</label>
-										</div>
-										<span class="error_next_box" id="pphoneNoMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-										<span class="error_next_box" id="pauthNoMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-										<span class="error_next_box" id="pjoinMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-								</div>
-							</div>
-							<!-- tg-display -->
-
-							<!-- tg-display=>{"보호자 아이핀 인증": [], "오류 메시지": []} -->
-							<div class="join_minor tab" id="pipinDiv" style="display: none">
-								<ul class="tab_m" role="tablist">
-									<li class="m1" role="presentation"><a href="#"
-										id="tabPrtsMobile" role="tab" aria-selected="false"
-										aria-controls="wa_tab_phone">휴대전화인증</a></li>
-									<li class="m2" role="presentation"><a href="#"
-										onclick="return false;" class="on" role="tab"
-										aria-selected="true" aria-controls="wa_tab_ipin">아이핀 인증</a></li>
-								</ul>
-								<div id="wa_tab_ipin" role="tabpanel">
-									<div class="terms_chk_all">
-										<span class="input_chk"> <input type="checkbox"
-											id="iagree_all" class="chk"> <label for="iagree_all"
-											class="ipin_label"> <span class="txt">보호자 인증이
-													완료되면 보호자 이름, 생년월일, 성별, 중복가입확인정보(DI)가 보호자 동의 확인을 위하여 아동의 정보와
-													함께 저장되며, <strong class="point">아동이 성년이 되는 시점에
-														파기됩니다.</strong>
-											</span>
-										</label>
-										</span> <span class="error_next_box" id="iagreeMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-									<div class="ipin_box">
-										<p class="ipin_certify_txt">
-											보호자 명의의 아이핀으로 인증 후<br> 가입이 가능 합니다.
-										</p>
-										<button type="button" id="btnIpinPopup"
-											class="ipin_certify_btn" title="새 창">
-											<span>아이핀 인증하기</span>
-										</button>
-										<span class="error_next_box" id="ipopupMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-									<div class="join_row join_mobile">
-										<h3 class="join_title">
-											<label for="iphoneNo">휴대전화</label>
-										</h3>
-										<div class="int_mobile_area">
-											<span class="ps_box int_mobile"> <input type="tel"
-												id="iphoneNo" name="iphoneNo" placeholder="전화번호 입력"
-												aria-label="전화번호 입력" class="int" maxlength="16">
-											</span> <a href="#" class="btn_verify btn_primary" id="btnIpinSend"
-												role="button"> <span class="">인증번호 받기</span>
-											</a>
-										</div>
-										<div class="ps_box_disable box_right_space" id="iauthNoBox">
-											<input type="tel" id="iauthNo" name="iauthNo"
-												placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-												aria-describedby="iwa_verify" class="int" disabled
-												maxlength="4"> <label id="iwa_verify" for="iauthNo"
-												class="lbl"> <span class="wa_blind">인증받은 후
-													인증번호를 입력해야 합니다.</span> <span class="input_code" id="iauthNoCode"
-												style="display: none;"></span>
-											</label>
-										</div>
-										<span class="error_next_box" id="iphoneNoMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-										<span class="error_next_box" id="iauthNoMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-										<span class="error_next_box" id="ijoinMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="btn_area">
-								<button type="submit" id="btnJoin" class="btn_type btn_primary">
-									<span>수정하기</span>
-								</button>
-							</div>
+		</div>
+		<!-- container -->
+		<div id="container" role="main">
+			<div id="content">
+				<!-- tg-text=title -->
+				<div class="join_content">
+					<div class="row_group">
+						<div class="join_row">
+							<h3 class="join_title">
+								<label for="id">아이디</label>
+							</h3>
+							<span class="ps_box int_id"> 
+								<input type="text" name="memId" value="${dto.memId }" class="int" title="ID" maxlength="20" oninput="checkId()" readonly>
+							</span>
+							<div class="dupdiv"></div>
+						</div>
+						<div class="join_row">
+							<h3 class="join_title">
+								<label for="pswd1">비밀번호</label>
+							</h3>
+							<span class="ps_box int_pass" id="pw1"> 
+							<input type="password" id="memPass" name="memPass" class="int"
+								aria-describedby="pswd1Msg" maxlength="20" value="${dto.memPass }"
+								placeholder="4~12자의 영문 대소문자와 숫자로만 입력">
+							</span>
+							<h3 class="join_title">
+								<label for="pswd2">비밀번호 재확인</label>
+							</h3>
+							<span class="ps_box int_pass_check" id="pw2"> 
+							<input type="password" id="memPass2" name="memPass2" class="int"
+								aria-describedby="pswd2Blind" maxlength="20" placeholder="비밀번호 재입력">
+							</span>
+							<div class="alert alert-success" id="alert-success">
+								비밀번호가 일치합니다.</div>
+							<div class="alert alert-danger" id="alert-danger" style="color: #FF0000;">
+								비밀번호가 일치하지 않습니다.</div>
 						</div>
 					</div>
+						
+					<div class="row_group">
+
+						<div class="join_row">
+							<h3 class="join_title">
+								<label for="name">이름</label>
+							</h3>
+							<span class="ps_box box_right_space"> 
+							<input type="text" id="memName" name="memName" title="이름" class="int" value="${dto.memName }"
+								maxlength="10" placeholder="2~6자의 한글만 입력">
+							</span> <span class="error_next_box" id="nameMsg" style="display: none"
+								aria-live="assertive"></span>
+						</div>
+
+						<div class="join_row">
+							<h3 class="join_title">
+								<label for="name">닉네임</label>
+							</h3>
+							<span class="ps_box box_right_space"> 
+							<input type="text" id="memNname" name="memNname" title="닉네임" class="int" value="${dto.memNname }"
+								maxlength="40" placeholder="2~10자의 한글, 영문 대소문자와 숫자로만 입력">
+							</span> <span class="error_next_box" id="nameMsg" style="display: none"
+								aria-live="assertive"></span>
+						</div>
+						
+<!-- 						<input type="text" id="sample6_postcode" placeholder="우편번호"> -->
+<!-- 						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> -->
+<!-- 						<input type="text" id="sample6_address" placeholder="주소"><br> -->
+<!-- 						<input type="text" id="sample6_detailAddress" placeholder="상세주소"> -->
+<!-- 						<input type="text" id="sample6_extraAddress" placeholder="참고항목"> -->
+						
+						<div class="join_row join_mobile">
+							<h3 class="join_title">
+								<label for="name">주소<span class="terms_choice">(선택)</span></label>
+							</h3>
+							
+							<div class="int_mobile_area">
+								<span class="ps_box int_mobile"> 
+									<input type="text" id="sample6_address" name="memAddress" placeholder="선택입력" class="int" value="${dto.memAddress }">
+								</span>
+								<a href="#" class="btn_verify btn_primary" id="btnSend" role="button" onclick="sample6_execDaumPostcode()" > 
+									<span class="">우편번호 찾기</span>
+								</a>
+							</div>
+							<span class="ps_box box_right_space"> 
+								<input type="text" id="sample6_extraAddress" name="memAddress" class="int" placeholder="상세주소">
+							</span>
+							
+						</div>
+						
+						<div class="join_row join_email">
+							<h3 class="join_title">
+								<label for="email">이메일<span class="terms_choice"></span></label>
+							</h3>
+							<span class="ps_box int_email box_right_space"> 
+							<input type="text" id="memEmail" name="memEmail" aria-label="선택입력" value="${dto.memEmail }"
+								class="int" maxlength="100" placeholder="ex)...@naver.com">
+							</span>
+						</div>
+						<span class="error_next_box" id="emailMsg" style="display: none"
+							aria-live="assertive"></span>
+					</div>
+					<div class="join_row join_mobile" id="mobDiv">
+						<h3 class="join_title">
+							<label for="phoneNo">휴대전화</label>
+						</h3>
+						<div class="int_mobile_area">
+							<span class="ps_box int_mobile"> 
+								<input type="text" id="memPhone" name="memPhone" placeholder="전화번호 입력" value="${dto.memPhone }"
+										aria-label="전화번호 입력" class="int" >
+								 <label for="memPhone" class="lbl"></label>
+							</span> 
+							<a href="#" class="btn_verify btn_primary" id="btnSend"
+								role="button"> <span class="">인증번호 받기</span>
+							</a>
+						</div>
+						<div class="ps_box_disable box_right_space" id="authNoBox">
+							<input type="tel" id="authNo" name="authNo"
+								placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
+								aria-describedby="wa_verify" class="int" disabled maxlength="4">
+							<label id="wa_verify" for="authNo" class="lbl"> <span
+								class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span> <span
+								class="input_code" id="authNoCode" style="display: none;"></span>
+							</label>
+						</div>
+					</div>
+
+					<div class="btn_area">
+						<button type="submit" id="btnJoin" class="btn_type btn_primary">
+							<span>정보 수정</span>
+						</button>
+					</div>
 				</div>
-				<!-- // container -->
-			</form>
+			</div>
+		</div>
+	</form>
 </body>
 </html>
 

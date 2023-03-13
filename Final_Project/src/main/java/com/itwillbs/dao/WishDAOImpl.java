@@ -21,6 +21,7 @@ public class WishDAOImpl implements WishDAO{
 
 	@Override
 	public List<Map<String, Object>> getWishList(String memberId) {
+		System.out.println(memberId);
 		return sqlSession.selectList(namespace+".getMyWish", memberId);
 	}
 

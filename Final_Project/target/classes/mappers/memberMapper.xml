@@ -4,13 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.mappers.memberMapper">
-
-	<insert id="insertMember">
+	
+	<insert id="insertMember" parameterType="com.itwillbs.domain.MemberDTO">
+		<selectKey keyProperty="memNum" resultType="int" order="BEFORE">
+	      SELECT IFNULL(MAX(mem_num+1),1) FROM members
+	    </selectKey>
 		insert into
-		members(mem_num,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
+		members(mem_num ,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
 		values(#{memNum},#{memId},#{memPass},#{memPhone},#{memName},#{memNname},#{memEmail},#{memAddress},#{memAccount},#{memTime})
 	</insert>
-
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberDTO">
 		select
@@ -28,11 +30,11 @@
 		where mem_id=#{memId} and mem_pass=#{memPass}
 	</select>
 
-	<select id="getMember"
+	<!-- <select id="getMember"
 		resultType="com.itwillbs.domain.MemberDTO">
 		select * from members
 		where mem_id=#{memId}
-	</select>
+	</select> -->
 
 	<update id="updateMember">
 		update members
@@ -96,5 +98,16 @@
 	    and
 	        mem_id = #{memId}
 	</update>
+	
+	<select id="getMember"
+      resultType="com.itwillbs.domain.MemberDTO">
+      select m.*
+     , ifnull(max(rev_total), 0) as rev_total
+         from members m
+      left join revscore r
+         on m.mem_id = r.reviewer
+         where 1=1
+       and mem_id =#{memId}
+   </select>
 	
 </mapper>

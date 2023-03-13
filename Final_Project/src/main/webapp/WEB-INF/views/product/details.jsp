@@ -88,12 +88,7 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
-                            <!-- <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i> -->
-                            <span>(좋아요 ${productMap.wishCount })</span>
+                            <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
                         <p>${productMap.productContent }</p>
@@ -105,64 +100,17 @@
                             </div>
                         </div>
                         <a href="#" class="primary-btn">채팅하기</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <!-- 좋아요 버튼 -->
+                        <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
-                            <li><b>거래</b> <span>택배 거래 원해요 <!-- <samp>Free pickup today</samp> --></span></li>
+                            <li><b>좋아요</b> <span>${productMap.wishCount }</span></li>
                             <li><b>판매자</b> <span>${productMap.memNname }</span></li>
                             <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
-                            <!-- 공유하기 버튼 -->
-                            <!-- <li><b>Share on</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li> -->
+                           
                         </ul>
                     </div>
                 </div>
-                <!-- 상세내용, 정보, 리뷰 조회 -->
-                <!-- <div class="col-lg-12">
-                    <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Description</h6>
-                                    <p>묘사</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>info1</p>
-                                    <p>info2</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Review</h6>
-                                    <p>Review</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
@@ -215,7 +163,33 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-    <script type="text/javascript">
+
+<script type="text/javascript">
+	function createRoom() {
+		console.log('${productMap.productNum}');
+		console.log('${sessionScope.memId}');
+		console.log('${productMap.productSeller}');
+		if('${sessionScope.memId}' === '') {
+			alert('로그인 후 사용할 수 있습니다.');
+		} else {
+			$.ajax({
+				url : "${pageContext.request.contextPath }/chat/room",
+				type : "POST",
+				data : {
+					productNum : '${productMap.productNum}',
+					memberId : '${sessionScope.memId}',
+					seller : '${productMap.productSeller}'
+				},
+				success : function(response) {
+					window.open('${pageContext.request.contextPath }' + response, 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+				},
+				error : function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			      }
+			});
+		}
+	}
+    
     	$(document).ready(function(){
     		$('.small').on('click', function(){
     			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
@@ -225,8 +199,15 @@
 //     			});
     		});
     	});
-    	
-    </script>
+      
+    function heart() {
+	    alert("하트를 눌렀습니다.");
+	    $(".heart-icon").attr("class", "heart-icon-active");
+		}
+    
+</script>
+
+
 </body>
 
 </html>

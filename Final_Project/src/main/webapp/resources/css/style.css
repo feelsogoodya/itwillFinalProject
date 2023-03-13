@@ -1730,6 +1730,14 @@ ol {
 	background: #f5f5f5;
 }
 
+.product__details__text .heart-icon-active {
+	display: inline-block;
+	font-size: 16px;
+	color: #ff4081;
+	padding: 13px 16px 13px;
+	background: #f5f5f5;
+}
+
 .product__details__text ul {
 	border-top: 1px solid #ebebeb;
 	padding-top: 40px;

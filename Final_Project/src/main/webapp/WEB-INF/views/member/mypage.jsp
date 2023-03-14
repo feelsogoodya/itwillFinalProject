@@ -317,7 +317,7 @@ function sample6_execDaumPostcode() {
 												<div class="name_text">${dto.memNname }</div>
 												<div class="myaddress">${dto.memId }</div><br>
 											<div class="myreviewscore">
-												나의 거래점수: ${dto.revTotal}점</div>
+<%-- 												나의 거래점수: ${dto.revTotal}점</div> --%>
 												<!--                             <button type="button" class="btn_edit" onclick="changeName()"> -->
 												<!--                                 <span class="text">수정</span> -->
 												<!--                             </button> -->

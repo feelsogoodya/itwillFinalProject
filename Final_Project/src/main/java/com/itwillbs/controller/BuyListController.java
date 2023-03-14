@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.BuyListDTO;
-import com.itwillbs.domain.MemberDTO;
+
 import com.itwillbs.domain.PageDTO;
-import com.itwillbs.domain.ProductDTO;
+
 import com.itwillbs.service.BuyListService;
-import com.itwillbs.service.MemberService;
+
 
 @Controller
 public class BuyListController {
@@ -38,7 +38,7 @@ public class BuyListController {
 
 	@RequestMapping(value = "/list/buylist", 
 			method = RequestMethod.GET)
-	public String list(Model model, HttpServletRequest request, HttpSession session) {
+	public String list(Model model, HttpServletRequest request, HttpSession session, BuyListDTO buylistDTO) {
 		// http://localhost:8080/myweb/board/list
 		// http://localhost:8080/myweb/board/list?pageNum=2
 		// 한 화면에 보여줄 글 개수 설정 (10개 설정)
@@ -83,7 +83,12 @@ public class BuyListController {
 		pageDTO.setPageCount(pageCount);
 		
 		// model 담아서 이동
+		model.addAttribute("reviewer", buylistDTO.getProdSeller());
 		model.addAttribute("buyList", buyList);
+//		model.addAttribute("productDTO", productDTO.getProductSeller());
+//		System.out.println(buyList.get(0));
+//		System.out.println(buyList.get(1));
+		
 		model.addAttribute("pageDTO",pageDTO);
 	
 		

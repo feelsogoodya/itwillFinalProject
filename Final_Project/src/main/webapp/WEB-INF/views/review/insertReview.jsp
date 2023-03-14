@@ -42,7 +42,7 @@
   %>
 
 
-		<div class="modal-title">${sessionScope.productSeller}님과의 거래후기를남겨주세요!</div>
+		<div class="modal-title">${reviewer} 님과의 거래후기를남겨주세요!</div>
 		<br>
 		<form action="${pageContext.request.contextPath }/review/insertReview"  
 		id="insertReview" method="post">
@@ -50,8 +50,8 @@
 			
 
 				<input type="hidden" name="reviewee" value="${sessionScope.memId}" id="reviewee">
-				<input type="hidden" name="reviewer" value="${sessionScope.memId}" id="reviewer">
-<%-- 				<input type="hidden" name="productNum" value="${sessionScope.productNum}" id="productNum">  --%>
+				<input type="hidden" name="reviewer" value="${reviewer}" id="reviewer">
+				<input type="hidden" name="buyNum" value="${buyNum}" id="buyNum"> 
 
 				<div class="modal-title"></div>
 

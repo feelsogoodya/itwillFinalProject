@@ -140,7 +140,7 @@
 						 
 
                         <!-- 좋아요 버튼 -->
-                        <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <a onclick="heart()" id="heart" class="heart-icon"><span class="icon_heart_alt"></span></a>
 
 =======
 
@@ -273,20 +273,39 @@
     	function heart() {
 	    	alert("하트를 눌렀습니다.");
 	        
-	        $.ajax({
-				url : "${pageContext.request.contextPath }/product/addWish",
-				type : "POST",
-				data : {
-					productNum : '${productMap.productNum}',
-					memberId : '${sessionScope.memId}',
-				},
-				success : function() {
-					$(".heart-icon").attr("class", "heart-icon-active");
-				},
-				error : function(){
-			        alert("error 발생");
-			      }
-			});
+	    	if(${'#test'}.val() == ".heart-icon"){
+	    		$.ajax({
+					url : "${pageContext.request.contextPath }/product/addWish",
+					type : "POST",
+					data : {
+						productNum : '${productMap.productNum}',
+						memberId : '${sessionScope.memId}',
+					},
+					success : function() {
+						$(".heart-icon").attr("class", "heart-icon-active");
+					},
+					error : function(){
+				        alert("error 발생");
+				      }
+				});
+	    	}
+	    	if(){
+	    		$.ajax({
+					url : "${pageContext.request.contextPath }/product/removeWish",
+					type : "POST",
+					data : {
+						productNum : '${productMap.productNum}',
+						memberId : '${sessionScope.memId}',
+					},
+					success : function() {
+						$(".heart-icon").attr("class", "heart-icon-active");
+					},
+					error : function(){
+				        alert("error 발생");
+				      }
+				});
+	    	}
+	        
 	        
 =======
 >>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git

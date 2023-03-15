@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
@@ -226,8 +227,7 @@ function sample6_execDaumPostcode() {
 						</li>
 					</ul>
 					<ul class="left_link">
-<<<<<<< HEAD
-=======
+
 						<!--             <li><a href="https://nca.naver.com/chat/account/view" class="left_item" onclick="clickcr(this,'fot.smartbot','','',event)"> -->
 						<!--                     <div class="link_text">음</div> -->
 						<!--                 </a></li> -->
@@ -246,7 +246,7 @@ function sample6_execDaumPostcode() {
 						</a></li>
 						
 						
->>>>>>> 58dfeda2880c7828687e5c688f5cf8a9c5c83a32
+
 					</ul>
 
 					<!-- footerLeft -->
@@ -304,7 +304,7 @@ function sample6_execDaumPostcode() {
 <!-- 										</div> -->
 										<div class="myaccount">
 											<div class="myname">
-<<<<<<< HEAD
+
 												<input type="text" id="memNname" name="memNname" title="닉네임" class="int" value="${dto.memNname }"
 													maxlength="40" placeholder="2~10자의 한글, 영문 대소문자와 숫자로만 입력" style="font-size:25px;">
 <%-- 												<div class="myaddress">${dto.memId }</div> --%><br>
@@ -313,15 +313,22 @@ function sample6_execDaumPostcode() {
 						                            <button type="submit" class="btn_edit" >
 						                                <span class="text">닉네임 수정</span>
 						                            </button>
-=======
+
 												<div class="name_text">${dto.memNname }</div>
+												
 												<div class="myaddress">${dto.memId }</div><br>
-											<div class="myreviewscore">
-												나의 거래점수: ${dto.revTotal}점</div>
-												<!--                             <button type="button" class="btn_edit" onclick="changeName()"> -->
+												<div class="myreviewscore">
+													<c:if test="${ dto.revTotal == 0.0}">
+														<div> 거래 매너 점수:  아직 거래후기가 없어요 </div>	
+													</c:if>
+													<c:if test="${dto.revTotal != 0.0 }">
+													<div> 거래 매너 점수:  ${dto.revTotal }점</div>
+													</c:if>
+												</div>
+											<!--                             <button type="button" class="btn_edit" onclick="changeName()"> -->
 												<!--                                 <span class="text">수정</span> -->
 												<!--                             </button> -->
->>>>>>> 58dfeda2880c7828687e5c688f5cf8a9c5c83a32
+
 											</div>
 										</div>
 

@@ -170,23 +170,10 @@
     			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));		
     		});
     		
-    		$('.heart-icon').on('click', function(){
-   	    		$.ajax({
-   					url : "${pageContext.request.contextPath }/product/addWish",
-   					data : {
-   						productNum : '${productMap.productNum}',
-   						memId : '${sessionScope.memId}'
-   					},
-   					success : function(rdata) {
-   						$(".heart-icon").attr("class", "heart-icon-active");
-   					},
-   					error : function(){
-   				        alert("error 발생");
-   				      }
-   				});
-    		});
     		
-    		$('.heart-icon-active').on('click', function(){
+    	});
+    	function active(){
+    		$('.heart-icon-active').off('click').on('click', function(){
    	    		$.ajax({
    					url : "${pageContext.request.contextPath }/product/removeWish",
    					data : {
@@ -195,13 +182,35 @@
    					},
    					success : function(rdata) {
    						$(".heart-icon-active").attr("class", "heart-icon");
+   						nonactive();
    					},
    					error : function(){
    				        alert("error 발생");
    				      }
    				});
     		});
-    	});
+		}
+    	
+    	function nonactive(){
+    		$('.heart-icon').off('click').on('click', function(){
+   	    		$.ajax({
+   					url : "${pageContext.request.contextPath }/product/addWish",
+   					data : {
+   						productNum : '${productMap.productNum}',
+   						memId : '${sessionScope.memId}'
+   					},
+   					success : function(rdata) {
+   						$(".heart-icon").attr("class", "heart-icon-active");
+   						active();
+   					},
+   					error : function(){
+   				        alert("error 발생");
+   				      }
+   				});
+    		});
+		}
+    	active();
+    	nonactive();
     	
     </script>
 

@@ -53,5 +53,11 @@
 		WHERE member_id = #{memberId}
 		</if>
 	</select>
+	
+	<select id="getWishCheck" resultType="java.lang.Integer" parameterType="hashMap">
+		SELECT count(product_num)
+		FROM wish
+		WHERE product_num = #{productNum} and member_id = #{memberId} 
+	</select>
 
 </mapper>

@@ -35,4 +35,5 @@ public class WishDAOImpl implements WishDAO{
 		return sqlSession.selectOne(namespace+".getwishCount", param);
 	}
 
+
 }

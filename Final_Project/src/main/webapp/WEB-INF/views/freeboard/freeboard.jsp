@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">	
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/list.css" type="text/css">
@@ -52,10 +52,6 @@
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>자유게시판</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Blog</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -105,7 +101,7 @@
 			               <c:forEach var="dto" items="${boardList}">
 			                  <tr onclick="location.href='${pageContext.request.contextPath }/free/content?freeboardNum=${dto.freeboardNum}'">
 			                     <th scope="col" class="th-num">${dto.freeboardNum}</th>
-			                     <th scope="col" class="th-id">${dto.memberId}</th>
+			                     <th scope="col" class="th-id">${dto.memberNick}</th>
 			                     <th scope="col" class="th-title">${dto.subject}</th>
 <%-- 			                     <th scope="col" class="th-date"><fmt:formatDate value="${dto.date}" pattern="yyyy.MM.dd" /></th> --%>
 								<th scope="col" class="th-date">${dto.date }</th>

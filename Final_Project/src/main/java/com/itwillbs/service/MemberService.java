@@ -1,10 +1,12 @@
 package com.itwillbs.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.protobuf.Message;
 import com.itwillbs.domain.MemberDTO;
 
 public interface MemberService {
@@ -25,5 +27,5 @@ public interface MemberService {
 	public int memberPwdCheck(MemberDTO searchVO);
 	
 	public void passwordUpdate(MemberDTO searchVO);
-	
+
 }

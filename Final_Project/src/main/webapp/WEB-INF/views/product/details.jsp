@@ -88,22 +88,23 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
-<<<<<<< HEAD
-                            <!-- <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i> -->
-=======
->>>>>>> refs/remotes/origin/main
+
                             <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
                         <p>${productMap.productContent }</p>
-                        
-                        <a href="#" class="primary-btn">채팅하기</a>
-<<<<<<< HEAD
-                        
+
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="primary-btn" onclick="createRoom()">채팅하기</button>
+                        <!-- 좋아요 버튼 -->
+                        <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
                         
                         <%-- <c:choose>
@@ -117,23 +118,12 @@
 						 </c:choose> --%>
 						 
 						 <!-- 	color 누르기 전: #6f6f6f; 누르면 바뀔 컬러: #FF0040 -->
-						 <a class="heart-icon"><span class="icon_heart_alt"></span></a>
-						 
-=======
-                        <!-- 좋아요 버튼 -->
-                        <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
->>>>>>> refs/remotes/origin/main
+
                         <ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
-<<<<<<< HEAD
-                            <li><b>관심수</b> <span>${productMap.wishCount }</span></li>
-                            <!-- <li><b>거래</b> <span>택배 거래 원해요 <samp>Free pickup today</samp></span></li> -->
-=======
                             <li><b>좋아요</b> <span>${productMap.wishCount }</span></li>
->>>>>>> refs/remotes/origin/main
                             <li><b>판매자</b> <span>${productMap.memNname }</span></li>
                             <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
-                           
                         </ul>
                     </div>
                 </div>
@@ -179,7 +169,7 @@
     <!-- Footer Section Begin -->
     <jsp:include page="../../../resources/fragments/footer.jsp"></jsp:include>
     <!-- Footer Section End -->
-
+	
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
@@ -189,63 +179,9 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <script src="${pageContext.request.contextPath }/resources/js/product/details.js"></script>
-    
-    <script type="text/javascript">
-    	$(document).ready(function(){
-    		$('.small').on('click', function(){
-    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-//     			
-    		});
-    	});
-    	
-    	$(function() {
-    		// events
-    	    $('.heart-icon').on('click', heart);
-    	});
-    	
-    	function heart() {
-    		alert("하트누름");
-    		$('.icon_heart_alt').toggleClass(".heart-icon_active");
-    	    /* var icon = this.querySelector('i');
-    	    var productNum = this.getAttribute('data-productnum');
-    	    if (icon.classList.contains('far')) {  // 하트 생성
-    	      icon.classList.remove('far');
-    	      icon.classList.add('fas');
-    			$.ajax( {
-    				url:'${pageContext.request.contextPath}/product/addWish',
-    				data:{ 'productNum' : productNum,
-    							'memId': $('.getMemId').val()
-    					 },
-    				success: function(rdata){ 
-    				}
-    			});
-    	    } else { //하트제거
-    	      icon.classList.remove('fas');
-    	      icon.classList.add('far');
-    	      $.ajax( {
-    				url:'${pageContext.request.contextPath}/product/removeWish',
-    				data:{ 'productNum' : productNum,
-    							'memId': $('.getMemId').val()
-    					 },
-    				success: function(rdata){ 
-    				}
-    			});
-    	    } */
-    	}
-    </script>
-=======
-    
-    <script type="text/javascript">
-  
-    	function heart() {
-	    	alert("하트를 눌렀습니다.");
-	        $(".heart-icon").attr("class", "heart-icon-active");
-=======
 
-<script type="text/javascript">
+	<script type="text/javascript">
 	function createRoom() {
 		console.log('${productMap.productNum}');
 		console.log('${sessionScope.memId}');
@@ -268,35 +204,23 @@
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			      }
 			});
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 		}
-<<<<<<< HEAD
-    </script>
-
-
->>>>>>> refs/remotes/origin/main
-=======
 	}
-    
+	</script>
+
+    <script type="text/javascript">
     	$(document).ready(function(){
     		$('.small').on('click', function(){
     			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-//     			$('.product__details__pic__item--large').css({
-//     				 "margin": "auto",
-//     				 "display": "block"
-//     			});
     		});
     	});
       
-    function heart() {
-	    alert("하트를 눌렀습니다.");
-	    $(".heart-icon").attr("class", "heart-icon-active");
-		}
-    
-</script>
+      function heart() {
+      alert("하트를 눌렀습니다.");
+        $(".heart-icon").attr("class", "heart-icon-active");
+	    }
+    </script>
 
-
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 </body>
 
 </html>

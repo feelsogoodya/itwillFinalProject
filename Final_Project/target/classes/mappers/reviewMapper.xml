@@ -18,9 +18,17 @@
 		resultType="com.itwillbs.domain.ReviewDTO"> select * from revscore where reviewee = #{reviewee}
 	</select>
 
+
 	<update id="UpdateBuyList"> update buylist set rev_result = 'Y' where buy_num =
 		#{buyNum}
 	</update>
 
+	<update id="UpdateBuyList">
+		
+		update buylist set rev_result = 'Y'
+		where buy_num = #{buyNum}
+
+
+	</update>
 
 </mapper>

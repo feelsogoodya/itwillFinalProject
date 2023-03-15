@@ -57,7 +57,7 @@ public class BuyListController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
-		pageDTO.setBuymemId((String)session.getAttribute("memId"));
+		pageDTO.setBuymemName((String)session.getAttribute("memId"));
 		System.out.println("세션 아이디:"+(String)session.getAttribute("memId"));
 		// 디비작업 메서드 호출
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의

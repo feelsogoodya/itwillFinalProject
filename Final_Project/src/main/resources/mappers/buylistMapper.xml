@@ -15,34 +15,18 @@
 	<select id="getBuyList"
 		resultType="com.itwillbs.domain.BuyListDTO">
 
-		select b.* ,p.product_num as product_num from buylist b left join
-		product p on b.prod_title = p.product_title where buymem_name =
-		#{buymemId} order by buy_date desc
+		select b.* , p.product_num as product_num from buylist b
+		left join product p on b.prod_title = p.product_title 
+		where buymem_name = #{buymemName} order by buy_date desc
 		<!-- select * from buylist where buymem_name= #{buymemId} -->
 		<!-- order by buy_date desc -->
-		
-		select b.*
-		,p.product_num as product_num
-		from buylist b
-		left join product p
-		on b.prod_title = p.product_title
-		where buymem_name = #{buymemId}
-		order by buy_date desc
-
-
-<!-- 		select * from buylist where buymem_name= #{buymemId} -->
-<!-- 		order by buy_date desc -->
 
 	</select>
 
 	<select id="getBuyCount" resultType="java.lang.Integer"> 
 	select count(*) from buylist 
-		</select>
-
-
-	<select id="getBuyCount" resultType="java.lang.Integer">
-		select count(*) from buylist
 	</select>
 
+ 
 
 </mapper>

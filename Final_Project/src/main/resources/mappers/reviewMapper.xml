@@ -4,17 +4,18 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itwillbs.mappers.reviewMapper">
 	<!-- select count(*) as count from review where reviewee=#{reviewee} -->
-	<insert id="insertReview"> insert into revscore(reviewer, rev_score, rev_total,
-		rev_cate) values(#{reviewer}, #{revScore} , #{revTotal}, #{revCate})
+	<insert id="insertReview"> 
+		insert into revscore(reviewee, rev_score, rev_total, rev_cate)
+				 values(#{reviewee}, #{revScore} ,#{revTotal}, #{revCate})
 	</insert>
 
 	<update id="updateReview"> update revscore set rev_total = #{revScore} +
-		rev_total , rev_score=#{revScore} ,rev_cate=#{revCate} where reviewer
-		= #{reviewer}
+		rev_total , rev_score=#{revScore} ,rev_cate=#{revCate} where reviewee
+		= #{reviewee}
 	</update>
 
-	<select id="getReviewer"
-		resultType="com.itwillbs.domain.ReviewDTO"> select * from revscore where reviewer = #{reviewer}
+	<select id="getReviewee"
+		resultType="com.itwillbs.domain.ReviewDTO"> select * from revscore where reviewee = #{reviewee}
 	</select>
 
 	<update id="UpdateBuyList"> update buylist set rev_result = 'Y' where buy_num =

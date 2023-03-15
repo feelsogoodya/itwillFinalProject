@@ -4609,4 +4609,15 @@ input[type=text]::-webkit-input-placeholder {
 		vertical-align: middle;
 		font-size: 15px;
 	}
+	
+/* 	거래매너 점수  */
+.myreviewscore {
+	text-align: right;
+	color: gray;
+	
+}
+
+
+	
+	
 }

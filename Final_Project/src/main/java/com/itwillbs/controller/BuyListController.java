@@ -83,7 +83,7 @@ public class BuyListController {
 		pageDTO.setPageCount(pageCount);
 		
 		// model 담아서 이동
-		model.addAttribute("reviewer", buylistDTO.getProdSeller());
+		model.addAttribute("reviewee", buylistDTO.getProdSeller());
 		model.addAttribute("buyList", buyList);
 //		model.addAttribute("productDTO", productDTO.getProductSeller());
 //		System.out.println(buyList.get(0));

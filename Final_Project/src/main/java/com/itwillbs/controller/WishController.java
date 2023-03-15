@@ -28,6 +28,8 @@ public class WishController {
 		
 		String memberId = (String)session.getAttribute("memId");
 		
+		if(memberId == null) return "redirect:/member/login";
+		
 		//화면에 보여줄 글개수 
 		int pageSize = 5;
 		//페이지 번호 가져오기

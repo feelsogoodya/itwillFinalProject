@@ -27,6 +27,9 @@ public class SellListController {
 	@RequestMapping(value = "/list/selllist", 
 			method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request, HttpSession session) {
+		String memberId = (String)session.getAttribute("memId");
+		if(memberId == null) return "redirect:/member/login";
+		
 		// http://localhost:8080/myweb/board/list
 		// http://localhost:8080/myweb/board/list?pageNum=2
 		// 한 화면에 보여줄 글 개수 설정 (10개 설정)

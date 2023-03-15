@@ -143,8 +143,8 @@
                                     <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
                                     <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
                                     <li><a href="javascript:chatList();">채팅목록</a></li>
-                                    <li><a href="${pageContext.request.contextPath }/list/buylist">구매내역</a></li>
                                     <li><a href="${pageContext.request.contextPath }/list/selllist">판매내역</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/list/buylist">구매내역</a></li>
                                 </ul>
                             </li>
                         </ul>

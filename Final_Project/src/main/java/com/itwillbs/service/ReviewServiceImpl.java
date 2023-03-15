@@ -27,9 +27,9 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public ReviewDTO getReviewer(String reviewer) {
+	public ReviewDTO getReviewee(String reviewee) {
 		
-		return reviewDAO.getReviewer(reviewer);
+		return reviewDAO.getReviewee(reviewee);
 	}
 
 	@Override

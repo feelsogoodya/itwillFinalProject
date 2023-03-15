@@ -31,11 +31,11 @@
 		where mem_id=#{memId} and mem_pass=#{memPass}
 	</select>
 
-	<select id="getMember"
-		resultType="com.itwillbs.domain.MemberDTO">
-		select * from members
-		where mem_id=#{memId}
-	</select>
+<!-- 	<select id="getMember" -->
+<!-- 		resultType="com.itwillbs.domain.MemberDTO"> -->
+<!-- 		select * from members -->
+<!-- 		where mem_id=#{memId} -->
+<!-- 	</select> -->
 
 	<update id="updateMember">
 		update members
@@ -97,20 +97,15 @@
 	    and
 	        mem_id = #{memId}
 	</update>
-	
-<!-- <<<<<<< HEAD -->
-<!-- 	<update id="updateImg" parameterType="com.itwillbs.domain.MemberDTO" > -->
-<!-- 		update members set mem_img = #{memImg} where mem_id = #{memId} -->
-<!-- 	</update> -->
 
-<!-- 	<select id="getMember" resultType="com.itwillbs.domain.MemberDTO"> -->
-<!--       select m.* -->
-<!--      , ifnull(max(rev_total), 0) as rev_total -->
-<!--          from members m -->
-<!--       left join revscore r -->
-<!--          on m.mem_id = r.reviewer -->
-<!--          where 1=1 -->
-<!--        and mem_id =#{memId} -->
-<!--     </select> -->
-	
+	<select id="getMember"
+      resultType="com.itwillbs.domain.MemberDTO">
+      select m.*
+     , ifnull(max(rev_total), 0) as rev_total
+         from members m
+      left join revscore r
+         on m.mem_id = r.reviewee
+         where 1=1
+       and mem_id =#{memId}
+   </select>
 </mapper>

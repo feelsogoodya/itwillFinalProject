@@ -13,7 +13,6 @@ public class MemberDTO {
 	private String memAddress;
 	private String memAccount;
 	private Timestamp memTime;
-	private String memImg;
     private double revTotal;
    
     public double getRevTotal() {
@@ -22,12 +21,6 @@ public class MemberDTO {
     public void setRevTotal(double revTotal) {
        this.revTotal = revTotal;
     }
-	public String getMemImg() {
-		return memImg;
-	}
-	public void setMemImg(String memImg) {
-		this.memImg = memImg;
-	}
 	public int getMemNum() {
 		return memNum;
 	}

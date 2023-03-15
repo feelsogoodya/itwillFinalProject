@@ -276,6 +276,7 @@
 		                                       <div> 거래 매너 점수:  ${dto.revTotal }점</div>
 		                                       </c:if>
 		                                    </div>
+
 											</div>
 										</div>
 									</li>

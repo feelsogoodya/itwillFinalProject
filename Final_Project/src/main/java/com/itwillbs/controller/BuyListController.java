@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.BuyListDTO;
-import com.itwillbs.domain.MemberDTO;
+
 import com.itwillbs.domain.PageDTO;
-import com.itwillbs.domain.ProductDTO;
+
 import com.itwillbs.service.BuyListService;
-import com.itwillbs.service.MemberService;
+
 
 @Controller
 public class BuyListController {
@@ -57,7 +57,7 @@ public class BuyListController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
-		pageDTO.setBuymemId((String)session.getAttribute("memId"));
+		pageDTO.setBuymemName((String)session.getAttribute("memId"));
 		System.out.println("세션 아이디:"+(String)session.getAttribute("memId"));
 		// 디비작업 메서드 호출
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
@@ -83,7 +83,10 @@ public class BuyListController {
 		pageDTO.setPageCount(pageCount);
 		
 		// model 담아서 이동
-		model.addAttribute("reviewer", buylistDTO.getProdSeller());
+
+		model.addAttribute("reviewee", buylistDTO.getProdSeller());
+
+
 		model.addAttribute("buyList", buyList);
 //		model.addAttribute("productDTO", productDTO.getProductSeller());
 //		System.out.println(buyList.get(0));

@@ -48,7 +48,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>비밀번호 찾기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/login.css" type="text/css">
 </head>
@@ -75,11 +74,12 @@
 								id="loinid" class="menu_id" role="tab" aria-selected="false">
 									<span class="menu_text"><span class="text">아이디 찾기</span></span>
 							</a></li>
-							<li class="menu_item" role="presentation"><a href="#none"
-								id="ones" class="menu_ones on" role="tab" aria-selected="true">
+							<li class="menu_item" role="presentation">
+								<a href="#none" id="ones" class="menu_ones on" role="tab" aria-selected="true">
 									<span class="menu_text"><span class="text">비밀번호
 											찾기</span></span>
-							</a></li>
+								</a>
+							</li>
 						</ul>
 						<ul class="panel_wrap">
 							<li class="panel_item" style="display: block;">
@@ -99,7 +99,6 @@
 											placeholder="전화번호를 입력하세요." class="input_text"
 											style="text-align: center;">
 									</div>
-
 									<div class="btn_login_wrap">
 										<button type="submit" class="btn_login" id="log.login"
 											onclick="fnSubmit(); return false;">

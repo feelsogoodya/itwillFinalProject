@@ -47,6 +47,8 @@ public class SellListController {
 		pageDTO.setCurrentPage(currentPage);
 		pageDTO.setSellmemId((String)session.getAttribute("memId"));
 		System.out.println("세션 아이디:"+(String)session.getAttribute("memId"));
+		
+		
 		// 디비작업 메서드 호출
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 		// List<BoardDTO> boardList =dao.getBoardList(dto);

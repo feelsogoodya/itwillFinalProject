@@ -24,6 +24,11 @@
 		select * from revscore where reviewer = #{reviewer}
 	</select>
 
+	<update id="UpdateBuyList">
+		
+		update buylist set rev_result = 'Y'
+		where buy_num = #{buyNum}
 
+	</update>
 
 </mapper>

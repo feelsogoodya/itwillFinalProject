@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.BuyListDTO;
 import com.itwillbs.domain.ReviewDTO;
 
 @Repository
@@ -34,6 +35,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		sqlSession.update(namespace+".updateReview", reviewDTO);
 
+	}
+
+	@Override
+	public void updateBuyList(BuyListDTO buyListDTO) {
+		sqlSession.update(namespace+".UpdateBuyList", buyListDTO);
+		
 	}
 	
 	

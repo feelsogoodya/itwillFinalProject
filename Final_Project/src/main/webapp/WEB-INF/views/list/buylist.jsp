@@ -90,7 +90,8 @@ th, td {
 				<td><a href="${pageContext.request.contextPath }/product/details/prodName?num=${dto.buyNum}">
 						${dto.prodTitle}</a></td>
 				<td>${dto.prodPrice}원</td>
-				<td><c:if test="${dto.revResult eq 'N'}">
+					<td>
+				<c:if test="${dto.revResult eq 'N'}">
 					<input type="button" value="거래후기 작성" class="goreview" onclick="openPop('${dto.buyNum}','${dto.prodSeller}')">
 					</c:if></td>
 					
@@ -140,8 +141,10 @@ th, td {
 	<script type="text/javascript">
 	
 	function openPop(buyNum,prodSeller) {
+
 		alert(buyNum);
 		alert(prodSeller);
+
 			var goReviewpopup = window.open(
 			// buyNum , prodSeller 모델 
 			"${pageContext.request.contextPath}/review/review?prodSeller="+prodSeller+"&buyNum="+buyNum, "거래후기",

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.FreeBoardDAO;
+import com.itwillbs.domain.FreeBoardCommDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -15,7 +16,7 @@ import com.itwillbs.domain.PageDTO;
 public class FreeBoardServiceImpl implements FreeBoardService{
 
 	@Inject
-	FreeBoardDAO freeBoardDAO;
+	private FreeBoardDAO freeBoardDAO;
 	
 	@Override
 	public void insertBoard(FreeBoardDTO freeBoardDTO) {
@@ -61,4 +62,29 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		freeBoardDAO.deleteBoard(num);
 	}
 
+	@Override
+	public List<FreeBoardCommDTO> getCommList(int freeboardNum) {
+		return freeBoardDAO.getCommList(freeboardNum);
+	}
+
+	@Override
+	public void insertComm(FreeBoardCommDTO freeBoardCommDTO) {
+		
+		Integer maxNum = freeBoardDAO.getMaxCommNum();
+		
+		System.out.println("maxNum : " + maxNum);
+		
+		freeBoardCommDTO.setCommNum(maxNum == null ? 1 : maxNum + 1);
+		freeBoardCommDTO.setDate(new Timestamp(System.currentTimeMillis()).toString());
+		System.out.println(freeBoardCommDTO.getDate());
+		
+		freeBoardDAO.insertComm(freeBoardCommDTO);
+	}
+
+	@Override
+	public void deleteComm(String commNum) {
+		freeBoardDAO.deleteComm(commNum);
+	}
+
+	
 }

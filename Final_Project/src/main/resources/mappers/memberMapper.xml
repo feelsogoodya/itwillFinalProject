@@ -105,7 +105,7 @@
      , ifnull(max(rev_total), 0) as rev_total
          from members m
       left join revscore r
-         on m.mem_id = r.reviewer
+         on m.mem_id = r.reviewee
          where 1=1
        and mem_id =#{memId}
    </select>

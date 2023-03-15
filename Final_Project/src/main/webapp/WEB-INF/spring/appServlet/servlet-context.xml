@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -26,6 +28,7 @@
 	<context:component-scan base-package="com.itwillbs.service" />
 	<context:component-scan base-package="com.itwillbs.dao" />
 	<context:component-scan base-package="com.itwillbs.domain" />
+	<context:component-scan base-package="com.itwillbs.config" />
 
 	<!-- 파일 업로드 설정 -->
 	<beans:bean id="multipartResolver"
@@ -45,6 +48,10 @@
 	</beans:bean>
 	<beans:bean id="uploadPath2" class="java.lang.String">
 		<beans:constructor-arg value="C:\\spring-tool-suite-3.9.18.RELEASE-e4.21.0-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\Final_Project\\resources\\customerservice\\img"/>
+	</beans:bean>
+	<!-- 채팅 txt 업로드 -->
+	<beans:bean id="txtUploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\workspace_project\\Final_Project\\src\\main\\webapp\\resources\\txt\\"></beans:constructor-arg>
 	</beans:bean>
 	
 </beans:beans>

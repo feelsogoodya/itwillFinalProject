@@ -16,6 +16,7 @@ import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.WishService;
 
 
+
 @Controller
 public class WishController {
 	

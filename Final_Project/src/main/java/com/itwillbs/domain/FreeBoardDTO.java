@@ -3,6 +3,7 @@ package com.itwillbs.domain;
 public class FreeBoardDTO {
 	private int freeboardNum;
 	private String memberId;
+	private String memberNick;
 	private String subject;
 	private String content;
 	private int readcount;
@@ -50,6 +51,12 @@ public class FreeBoardDTO {
 	}
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
+	}
+	public String getMemberNick() {
+		return memberNick;
+	}
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
 	}
 
 	

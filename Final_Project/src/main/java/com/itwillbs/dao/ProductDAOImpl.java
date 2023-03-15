@@ -6,9 +6,11 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.ProductDTO;
 
 @Repository
@@ -64,9 +66,74 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 	
 	@Override
+	public ProductDTO getProduct(int num) {
+		return sqlSession.selectOne(namespace+".getProduct", num);
+	}
+
+	@Override
+	public void updateProduct(ProductDTO productDTO) {
+		sqlSession.update(namespace+".updateProduct", productDTO);
+		
+	}
+
+	@Override
+	public void deleteProduct(int num) {
+		sqlSession.delete(namespace + ".delete", num);
+	}
+	
+	@Override
 	public Integer getMaxNum() {
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
+
+	@Override
+	public List<ProductDTO> getSellList(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getSellList", pageDTO);
+	}
+
+	@Override
+	public int getSellCount() {
+		return sqlSession.selectOne(namespace+".getSellCount");
+	}
 	
+	
+	@Override
+	public List<Map<String, Object>> getProductList(Map<String, String> params) {
+		
+		int offset = Integer.parseInt(params.get("offset")); 
+		int limit = Integer.parseInt(params.get("limit"));
+		
+		
+		
+		RowBounds rowBounds = new RowBounds(offset,limit);
+		return sqlSession.selectList(namespace+".productList", params, rowBounds);
+	}
+	
+	@Override
+	public void addwish(String memId, String productNum) {
+	    Map<String, String> params = new HashMap<>();
+	    params.put("memId", memId);
+	    params.put("productNum", productNum);
+	    sqlSession.insert(namespace + ".addwish", params);
+	}
+	
+	@Override
+	public void removewish(String memId, String productNum) {
+	    Map<String, String> params = new HashMap<>();
+	    params.put("memId", memId);
+	    params.put("productNum", productNum);
+	    sqlSession.insert(namespace + ".removewish", params);
+	}
+	
+	@Override
+	public List<Map<String, Object>> getproductCateList() {
+		return sqlSession.selectList(namespace+".getproductCateList");
+	}
+	
+	@Override
+	public int getproductMax(Map<String, String> params) {
+		
+		return sqlSession.selectOne(namespace + ".getproductMax", params);
+	}
 	
 }

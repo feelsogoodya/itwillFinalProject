@@ -18,4 +18,5 @@ public interface FreeBoardDAO {
 	public List<FreeBoardCommDTO> getCommList(int freeboardNum);
 	public void insertComm(FreeBoardCommDTO freeBoardCommDTO);
 	public Integer getMaxCommNum();
+	public void deleteComm(String commNum);
 }

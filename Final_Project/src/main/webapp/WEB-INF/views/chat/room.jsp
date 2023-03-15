@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
 </head>
 
-
 <body>
 <div id="app">
 	<div class="GlobalChannelList wrap_chat">

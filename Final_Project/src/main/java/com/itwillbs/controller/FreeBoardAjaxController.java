@@ -24,7 +24,6 @@ public class FreeBoardAjaxController {
 	
 	@RequestMapping(value = "/free/comm", method = RequestMethod.POST)
 	public List<FreeBoardCommDTO> getCommList(HttpServletRequest request) {
-		System.out.println(request.getParameter("freeboardNum"));
 		return boardService.getCommList(Integer.parseInt(request.getParameter("freeboardNum")));
 	}
 
@@ -40,5 +39,12 @@ public class FreeBoardAjaxController {
 		System.out.println(freeBoardCommDTO.getContent());
 		
 		boardService.insertComm(freeBoardCommDTO);
+	}
+	
+	@RequestMapping(value = "/free/deleteComm", method = RequestMethod.POST)
+	public void deleteComm(HttpServletRequest request) {
+		String commNum = request.getParameter("commNum");
+		
+		boardService.deleteComm(commNum);
 	}
 }

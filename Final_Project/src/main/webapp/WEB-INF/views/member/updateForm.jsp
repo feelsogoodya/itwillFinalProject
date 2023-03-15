@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -44,7 +44,6 @@
 			$('#memId').focus();
 			return false;
 		}
-		//아이디 유효성검사
 		if (!getCheck.test($("#memId").val())) {
 			alert("아이디 형식에 맞게 입력해주세요");
 			$("#memId").val("");
@@ -56,7 +55,6 @@
 			$('#memPass').focus();
 			return false;
 		}
-		//비밀번호 유효성검사
 		if (!getCheck.test($("#memPass").val())) {
 			alert("비밀번호 형식에 맞게 입력해주세요");
 			$("#memPass").val("");
@@ -80,7 +78,6 @@
 			$('#memName').focus();
 			return false;
 		}
-		//이름 유효성 검사
 		if (!memName.test($("#memName").val())) {
 			alert("이름 형식에 맞게 입력해주세요")
 			$("#memName").val("");
@@ -92,25 +89,17 @@
 			$('#memNname').focus();
 			return false;
 		}
-		//닉네임 유효성 검사
 		if (!memNname.test($("#memNname").val())) {
 			alert("닉네임 형식에 맞게 입력해주세요")
 			$("#memNname").val("");
 			$("#memNname").focus();
 			return false;
 		}
-// 		if($('#memAddress').val()==""){
-// 			alert("주소을 입력하세요");
-// 			$('#memAddress').focus();
-// 			return false;
-// 		}
 		if ($('#memEmail').val() == "") {
 			alert("이메일을 입력하세요");
 			$('#memEmail').focus();
 			return false;
 		}
-
-		//이메일 유효성 검사
 		if (!memEmail.test($("#memEmail").val())) {
 			alert("이메일 형식에 맞게 입력해주세요")
 			$("#memEmail").val("");
@@ -122,14 +111,12 @@
 			$('#memPhone').focus();
 			return false;
 		}
-		//전화번호 유효성 검사
 		if (!memPhone.test($("#memPhone").val())) {
 			alert("전화번호 형식에 맞게 입력해주세요")
 			$("#memPhone").val("");
 			$("#memPhone").focus();
 			return false;
 		}
-
 	}
 		// 주소 api
 	    function sample6_execDaumPostcode() {
@@ -184,14 +171,12 @@
 <body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<form action="${pageContext.request.contextPath }/member/updatePro" onsubmit="return check()" method="POST">
-		<!-- header -->
 		<div class="col-lg-3">
 			<div class="header__logo" style="text-align: center;">
 				<a href="./index.html"> 
 				<img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""  width="200"></a>
 			</div>
 		</div>
-		<!-- container -->
 		<div id="container" role="main">
 			<div id="content">
 				<!-- tg-text=title -->
@@ -231,7 +216,6 @@
 					</div>
 						
 					<div class="row_group">
-
 						<div class="join_row">
 							<h3 class="join_title">
 								<label for="name">이름</label>
@@ -253,12 +237,6 @@
 							</span> <span class="error_next_box" id="nameMsg" style="display: none"
 								aria-live="assertive"></span>
 						</div>
-						
-<!-- 						<input type="text" id="sample6_postcode" placeholder="우편번호"> -->
-<!-- 						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> -->
-<!-- 						<input type="text" id="sample6_address" placeholder="주소"><br> -->
-<!-- 						<input type="text" id="sample6_detailAddress" placeholder="상세주소"> -->
-<!-- 						<input type="text" id="sample6_extraAddress" placeholder="참고항목"> -->
 						
 						<div class="join_row join_mobile">
 							<h3 class="join_title">
@@ -291,31 +269,18 @@
 						<span class="error_next_box" id="emailMsg" style="display: none"
 							aria-live="assertive"></span>
 					</div>
-					<div class="join_row join_mobile" id="mobDiv">
+					<div class="join_row join_email" id="mobDiv">
 						<h3 class="join_title">
 							<label for="phoneNo">전화번호</label>
 						</h3>
 						<div class="int_mobile_area">
 							<span class="ps_box int_mobile"> 
-								<input type="text" id="memPhone" name="memPhone" placeholder="전화번호 입력" value="${dto.memPhone }"
+								<input type="text" id="memPhone" name="memPhone" placeholder="전화번호 입력"
 										aria-label="전화번호 입력" class="int" >
 								 <label for="memPhone" class="lbl"></label>
 							</span> 
-							<a href="#" class="btn_verify btn_primary" id="btnSend"
-								role="button"> <span class="">인증번호 받기</span>
-							</a>
-						</div>
-						<div class="ps_box_disable box_right_space" id="authNoBox">
-							<input type="tel" id="authNo" name="authNo"
-								placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-								aria-describedby="wa_verify" class="int" disabled maxlength="4">
-							<label id="wa_verify" for="authNo" class="lbl"> <span
-								class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span> <span
-								class="input_code" id="authNoCode" style="display: none;"></span>
-							</label>
 						</div>
 					</div>
-
 					<div class="btn_area">
 						<button type="submit" id="btnJoin" class="btn_type btn_primary">
 							<span>정보 수정</span>

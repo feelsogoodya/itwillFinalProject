@@ -11,7 +11,7 @@ public interface NoticeDAO {
 	public void insertNotice(NoticeDTO noticeDTO);
 	// getMaxNum
 	public Integer getMaxNum();
-	
+	 
 	// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의
 	public List<NoticeDTO> getNoticeList(NoticePageDTO dto);
 	
@@ -23,7 +23,7 @@ public interface NoticeDAO {
 	// 글가져오기 메서드 호출
 	public NoticeDTO getNotice(int num);
 	
-	public void deleteNotice(NoticeDTO dto);
+	public void deleteNotice(int num);
 	
 	public void updateNotice(NoticeDTO noticeDTO);
 }

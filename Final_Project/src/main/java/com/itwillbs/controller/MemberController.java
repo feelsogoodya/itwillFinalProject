@@ -34,7 +34,6 @@ import org.springframework.web.util.UrlPathHelper;
 import com.google.protobuf.Message;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.service.MemberService;
-import com.itwillbs.util.FileUtil;
 
 @Controller
 public class MemberController {
@@ -47,7 +46,7 @@ public class MemberController {
 	public String terms() {
 		return "member/terms";
 	}
-	
+	// 회원가입
 	@RequestMapping(value = "/member/insert", method = RequestMethod.GET)
 	public String insert() {
 		return "member/insertForm";
@@ -58,7 +57,7 @@ public class MemberController {
 		memberService.insertMember(dto);
 		return "redirect:/member/login";
 	}
-
+	// 로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	public String login() {
 		return "member/loginForm";
@@ -66,12 +65,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberDTO dto, HttpSession session) {
-		System.out.println("MemberController loginPro() ");
-		System.out.println(dto.getMemId());
-		System.out.println(dto.getMemPass());
-
 		MemberDTO memberDTO = memberService.userCheck(dto);
-		System.out.println(memberDTO);
 		
 		if (memberDTO != null) {
 			session.setAttribute("memId", memberDTO.getMemId());
@@ -102,7 +96,6 @@ public class MemberController {
 	    model.addAttribute("searchVO", memberSearch);
 	 
 	} catch (Exception e) {
-	    System.out.println(e.toString());
 	    model.addAttribute("msg", "오류가 발생되었습니다.");
 	}
 	
@@ -118,7 +111,7 @@ public class MemberController {
 	// 비밀번호 찾기 결과
 	@RequestMapping(value = "/member/searchPass", method = RequestMethod.POST)
 	public String searchPass(HttpServletRequest request, Model model,
-	    @RequestParam(required = true, value = "memName") String memName, 
+	    @RequestParam(required = true, value = "memName") String memName,
 	    @RequestParam(required = true, value = "memPhone") String memPhone, 
 	    @RequestParam(required = true, value = "memId") String memId, MemberDTO searchVO) {
 	 
@@ -146,16 +139,13 @@ public class MemberController {
 	}
 	return "/member/searchPass";
 	}
-
 	
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		// 로그아웃 처리
 		session.invalidate();
 		return "redirect:/member/mypage";
 	}
-	
-	
+	// 마이페이지
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public String mypage(HttpSession session, Model model) {
 		String memId = (String) session.getAttribute("memId");
@@ -171,7 +161,7 @@ public class MemberController {
 		model.addAttribute("dto", dto);
 		return "member/myshop";
 	}
-	
+	// 수정
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		String memId = (String) session.getAttribute("memId");
@@ -185,7 +175,7 @@ public class MemberController {
 			memberService.updateMember(dto);
 			return "redirect:/member/mypage";
 	}
-	
+	// 탈퇴
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
 	public String delete(HttpSession session, Model model) {
 		String memId = (String) session.getAttribute("memId");
@@ -200,32 +190,4 @@ public class MemberController {
 			session.invalidate();
 			return "redirect:/member/mypage";
 	}
-	
-//	@RequestMapping(value="/member/updateImg", method=RequestMethod.POST)
-//	public String updateImg(MultipartHttpServletRequest mpRequest, HttpSession session , MemberDTO dto, FileUtil fileutil)throws Exception {
-//		
-//		String memImg = fileutil.updateImg(mpRequest); 
-//
-//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("login");
-//		
-//		memberService.updateImg(dto);
-//		
-//		memberDTO.setMemImg(memImg);
-//		session.setAttribute("login", memberDTO);
-//		
-//				
-//		return "/member/mypage";
-//	}
-	
-
-	// 게시판 글 작성
-	@RequestMapping(value = "member/mypage", method = RequestMethod.POST)
-	public String write(MemberDTO memberDTO, MultipartHttpServletRequest mpRequest) throws Exception{
-		logger.info("write");
-		memberService.write(memberDTO, mpRequest);
-		
-		return "redirect:/board/list";
-	}
-
-	
 }

@@ -14,7 +14,7 @@ public class NoticeDTO {
 	private String notiImage2;
 	
 	
-	
+	 
 	
 	
 	

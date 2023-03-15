@@ -14,7 +14,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+ 
     <!-- Css Styles -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" type="text/css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/notice/notice_content.css">
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/notice/basic.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/notice/notice_content.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/notice/basic.css">
 
  	<!-- Required meta tags -->
 <!--     <meta charset="utf-8"> -->

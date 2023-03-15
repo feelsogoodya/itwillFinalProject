@@ -81,5 +81,10 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		freeBoardDAO.insertComm(freeBoardCommDTO);
 	}
 
+	@Override
+	public void deleteComm(String commNum) {
+		freeBoardDAO.deleteComm(commNum);
+	}
+
 	
 }

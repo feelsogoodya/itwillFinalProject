@@ -25,7 +25,7 @@
 <div class="container" id="app" v-cloak>
 	<div class="talk_header">
 		<!---->
-		<div style="float:left; font-size:36px;  margin-left:5px;  margin-top:5px; " class="fas fa-bars" id="goList"></div>
+		<div style="color: #ab47bc; float:left; font-size:36px;  margin-left:5px;  margin-top:5px; " class="fas fa-bars" id="goList"></div>
 		<div class="title_area">
 			<div class="tit_room">
 				<strong class="tit">${chatRoomMap.productTitle}</strong>

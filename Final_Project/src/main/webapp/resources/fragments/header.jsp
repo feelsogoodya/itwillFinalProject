@@ -123,12 +123,12 @@
                         <img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath }/main/main">Home</a></li>
                             
-                            <li><a href="./shop-grid.html">전체상품</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/list">전체상품</a></li>
                             
                             <li><a href="${pageContext.request.contextPath }/free/list">자유게시판</a></li>
                             
@@ -138,7 +138,6 @@
                                     <li><a href="${pageContext.request.contextPath }/customerservice/list">Q & A</a></li>
                                 </ul>
                             </li>
-                            
                             <li><a href="${pageContext.request.contextPath }/member/mypage">마이페이지</a>
                             	<ul class="header__menu__dropdown">
                                     <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
@@ -151,7 +150,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>

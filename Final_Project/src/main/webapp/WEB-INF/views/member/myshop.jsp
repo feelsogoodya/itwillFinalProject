@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,7 +6,6 @@
 <meta charset="utf-8">
 <title>샵</title>
 <script type="text/javascript" src="/inc/common/js/jquery.min.js"></script>
-<!-- Css Styles -->
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/elegant-icons.css" type="text/css">
@@ -41,7 +39,6 @@
 				</div>
 
 				<div id="headerLeft" class="header_left">
-
 					<ul class="left_menu" role="menu">
 						<li><a href="mypage" class="left_item" role="menuitem"
 							onclick="clickcr(this,'lnb.info','','',event)" aria-current=>

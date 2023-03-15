@@ -90,6 +90,11 @@
 		  from freeboard_comm
 	</select>
 	
+	<delete id="deleteComm">
+		delete from freeboard_comm
+		where comm_num = #{commNum}
+	</delete>
+	
 	<update id="updateReadcount">
 		update freeboard
 		   set readcount = readcount + 1

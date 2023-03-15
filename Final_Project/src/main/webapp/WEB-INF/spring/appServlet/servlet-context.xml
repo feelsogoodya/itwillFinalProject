@@ -43,8 +43,12 @@
 			value="C:\\Users\\ITWILL\\git\\itwillFinalProject\\Final_Project\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
 		<!-- upload 물리적 경로 src/main/webapp/resources/upload -->
 	</beans:bean>
+	
 	<beans:bean id="uploadPath1" class="java.lang.String">
-		<beans:constructor-arg value="C:\\spring-tool-suite-3.9.18.RELEASE-e4.21.0-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\Final_Project\\resources\\customerservice\\upload"/>
+		<beans:constructor-arg value="E:\\Spring\\itwillFinalProject\\Final_Project\\src\\main\\webapp\\resources\\customerservice\\img"></beans:constructor-arg>
+	</beans:bean>
+	<beans:bean id="uploadPath2" class="java.lang.String">
+		<beans:constructor-arg value="C:\\spring-tool-suite-3.9.18.RELEASE-e4.21.0-win32-x86_64\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\Final_Project\\resources\\customerservice\\img"/>
 	</beans:bean>
 	<!-- 채팅 txt 업로드 -->
 	<beans:bean id="txtUploadPath" class="java.lang.String">

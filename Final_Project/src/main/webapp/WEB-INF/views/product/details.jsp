@@ -272,7 +272,22 @@
   
     	function heart() {
 	    	alert("하트를 눌렀습니다.");
-	        $(".heart-icon").attr("class", "heart-icon-active");
+	        
+	        $.ajax({
+				url : "${pageContext.request.contextPath }/product/addWish",
+				type : "POST",
+				data : {
+					productNum : '${productMap.productNum}',
+					memberId : '${sessionScope.memId}',
+				},
+				success : function() {
+					$(".heart-icon").attr("class", "heart-icon-active");
+				},
+				error : function(){
+			        alert("error 발생");
+			      }
+			});
+	        
 =======
 >>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 
@@ -329,11 +344,11 @@
 		} -->
     
 =======
-      function heart() {
+<!--       function heart() {
       alert("하트를 눌렀습니다.");
         $(".heart-icon").attr("class", "heart-icon-active");
 	    }
-    </script>
+    </script> -->
 >>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 
 <<<<<<< HEAD

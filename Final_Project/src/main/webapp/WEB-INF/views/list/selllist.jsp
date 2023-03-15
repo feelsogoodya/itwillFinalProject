@@ -56,6 +56,7 @@ font-size: 50px;
 
 <div class="main" style=" padding-left: 100px;">
 <input type="hidden" name="sellmemId" value="${sessionScope.memId}">
+<input type="hidden" name="productNum" value="${sessionScope.productNum}">
 <a href="${pageContext.request.contextPath }/">메인페이지</a><br>
 <a href="${pageContext.request.contextPath }/sell/판매페이지">판매하기</a><br>
 <%-- <div>나의 매너온도: ${reviewDTO.revTotalscore}</div> --%>

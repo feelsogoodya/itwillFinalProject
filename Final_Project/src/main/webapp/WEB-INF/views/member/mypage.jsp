@@ -314,9 +314,6 @@ function sample6_execDaumPostcode() {
 						                                <span class="text">닉네임 수정</span>
 						                            </button>
 
-												<div class="name_text">${dto.memNname }</div>
-												
-												<div class="myaddress">${dto.memId }</div><br>
 												<div class="myreviewscore">
 													<c:if test="${ dto.revTotal == 0.0}">
 														<div> 거래 매너 점수:  아직 거래후기가 없어요 </div>	

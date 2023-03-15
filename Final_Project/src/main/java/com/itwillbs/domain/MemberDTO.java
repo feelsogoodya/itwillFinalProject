@@ -14,7 +14,14 @@ public class MemberDTO {
 	private String memAccount;
 	private Timestamp memTime;
 	private String memImg;
-	
+    private double revTotal;
+   
+    public double getRevTotal() {
+       return revTotal;
+    }
+    public void setRevTotal(double revTotal) {
+       this.revTotal = revTotal;
+    }
 	public String getMemImg() {
 		return memImg;
 	}

@@ -263,19 +263,19 @@
 												<input type="text" id="memNname" name="memNname" title="닉네임" class="int"
 													value="${dto.memNname }" maxlength="40" placeholder="2~10자의 한글, 영문 대소문자와 숫자로만 입력"
 													style="font-size: 25px;"><br>
-													<input type="text" name="memId" value="${dto.memId }" class="myaddress" title="ID" maxlength="20"
+												<input type="text" name="memId" value="${dto.memId }" class="myaddress" title="ID" maxlength="20"
 													oninput="checkId()" readonly>
 												<button type="submit" class="btn_edit">
 													<span class="text">닉네임 수정</span>
 												</button>
-												
-<%-- 												<div class="name_text">${dto.memNname }</div> --%>
-<%-- 												<div class="myaddress">${dto.memId }</div> --%>
-<!-- 												<br> -->
-<%-- 												<div class="myreviewscore">나의 거래점수: ${dto.revTotal}점</div> --%>
-<!-- 						                            <button type="button" class="btn_edit" onclick="changeName()"> -->
-<!-- 						                                <span class="text">수정</span> -->
-<!-- 						                            </button> -->
+										  	<div class="myreviewscore">
+		                                       <c:if test="${ dto.revTotal == 0.0}">
+		                                          <div> 거래 매너 점수:  아직 거래후기가 없어요 </div>   
+		                                       </c:if>
+		                                       <c:if test="${dto.revTotal != 0.0 }">
+		                                       <div> 거래 매너 점수:  ${dto.revTotal }점</div>
+		                                       </c:if>
+		                                    </div>
 
 											</div>
 										</div>

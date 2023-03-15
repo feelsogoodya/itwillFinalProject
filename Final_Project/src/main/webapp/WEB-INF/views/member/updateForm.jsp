@@ -275,7 +275,7 @@
 						</h3>
 						<div class="int_mobile_area">
 							<span class="ps_box int_mobile"> 
-								<input type="text" id="memPhone" name="memPhone" placeholder="전화번호 입력"
+								<input type="text" id="memPhone" name="memPhone" placeholder="전화번호 입력" value="${dto.memPhone }"
 										aria-label="전화번호 입력" class="int" >
 								 <label for="memPhone" class="lbl"></label>
 							</span> 

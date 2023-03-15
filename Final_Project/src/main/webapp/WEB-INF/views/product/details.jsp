@@ -49,11 +49,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Product Details</h2>
+                        <h2>상품 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <a href="./index.html">Products</a>
+                            <span>상품 페이지</span>
                         </div>
                     </div>
                 </div>
@@ -88,7 +87,7 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
-<<<<<<< HEAD
+
 
                             <!-- <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -96,69 +95,23 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i> -->
 
-=======
-
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
                             <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
                         <p>${productMap.productContent }</p>
-<<<<<<< HEAD
-                        
-                        <a href="#" class="primary-btn">채팅하기</a>
 
-                        
-=======
-
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="primary-btn" onclick="createRoom()">채팅하기</button>
-                        <!-- 좋아요 버튼 -->
-                        <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
+                        <button class="primary-btn" onclick="createRoom()" style="border: 0px;">채팅하기</button>
                         <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
-                        
-                        <%-- <c:choose>
-				      		<c:when test="${sessionScope.memId eq null}">
-				      			<li><a class="cantwish"><i class="far fa-heart"></i></a></li>
-				      		</c:when>
-				      		<c:otherwise>
-				      			<c:set var="fasORfar" value="${dto.memId eq sessionScope.memId ? 'fas' : 'far'}" />
-							      		<a class="heart-icon"  data-productnum="${productMap.productNum}" ><i class="fas-fa-heart"></i></a>
-				      		</c:otherwise> 
-						 </c:choose> --%>
-						 
-						 <!-- 	color 누르기 전: #6f6f6f; 누르면 바뀔 컬러: #FF0040 -->
-<<<<<<< HEAD
-						 <a class="heart-icon"><span class="icon_heart_alt"></span></a>
-						 
-
                         <!-- 좋아요 버튼 -->
-                        <a onclick="heart()" id="heart" class="heart-icon"><span class="icon_heart_alt"></span></a>
-
-=======
-
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
-                        <ul>
+                        <a class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <c:if test="${wishCheck eq 'true'}">
+                        <a class="heart-icon-active"><span class="icon_heart_alt"></span></a>
+                        </c:if>
+                        
+              			<ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
-<<<<<<< HEAD
-
-                            <li><b>관심수</b> <span>${productMap.wishCount }</span></li>
                             <!-- <li><b>거래</b> <span>택배 거래 원해요 <samp>Free pickup today</samp></span></li> -->
-
-=======
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
                             <li><b>좋아요</b> <span>${productMap.wishCount }</span></li>
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
                             <li><b>판매자</b> <span>${productMap.memNname }</span></li>
                             <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
                         </ul>
@@ -215,30 +168,51 @@
     <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
-<<<<<<< HEAD
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-=======
-    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
-    <script src="${pageContext.request.contextPath }/resources/js/product/details.js"></script>
-<<<<<<< HEAD
     
     <script type="text/javascript">
     	$(document).ready(function(){
     		$('.small').on('click', function(){
-    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-//     			
+    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));		
+    		});
+    		
+    		$('.heart-icon').on('click', function(){
+   	    		$.ajax({
+   					url : "${pageContext.request.contextPath }/product/addWish",
+   					data : {
+   						productNum : '${productMap.productNum}',
+   						memId : '${sessionScope.memId}'
+   					},
+   					success : function(rdata) {
+   						$(".heart-icon").attr("class", "heart-icon-active");
+   					},
+   					error : function(){
+   				        alert("error 발생");
+   				      }
+   				});
+    		});
+    		
+    		$('.heart-icon-active').on('click', function(){
+   	    		$.ajax({
+   					url : "${pageContext.request.contextPath }/product/removeWish",
+   					data : {
+   						productNum : '${productMap.productNum}',
+   						memId : '${sessionScope.memId}'
+   					},
+   					success : function(rdata) {
+   						$(".heart-icon-active").attr("class", "heart-icon");
+   					},
+   					error : function(){
+   				        alert("error 발생");
+   				      }
+   				});
     		});
     	});
     	
-    	$(function() {
-    		// events
-    	    $('.heart-icon').on('click', heart);
-    	});
     	
-    	function heart() {
+    	/* function heart() {
     		alert("하트누름");
-    		$('.icon_heart_alt').toggleClass(".heart-icon_active");
+    		$('.icon_heart_alt').toggleClass(".heart-icon_active"); */
     	    /* var icon = this.querySelector('i');
     	    var productNum = this.getAttribute('data-productnum');
     	    if (icon.classList.contains('far')) {  // 하트 생성
@@ -264,16 +238,18 @@
     				}
     			});
     	    } */
-    	}
+    	
     </script>
 
     
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
   
-    	function heart() {
+    	/* function heart() {
+    		debugger;
 	    	alert("하트를 눌렀습니다.");
 	        
-	    	if(${'#test'}.val() == ".heart-icon"){
+	    	if(${'#heart'}.val().eq(".heart-icon")){
+	    		alert("하트 누름");
 	    		$.ajax({
 					url : "${pageContext.request.contextPath }/product/addWish",
 					type : "POST",
@@ -281,7 +257,7 @@
 						productNum : '${productMap.productNum}',
 						memberId : '${sessionScope.memId}',
 					},
-					success : function() {
+					success : function(rdata) {
 						$(".heart-icon").attr("class", "heart-icon-active");
 					},
 					error : function(){
@@ -289,7 +265,7 @@
 				      }
 				});
 	    	}
-	    	if(){
+	    	if(${'#heart'}.val() == ".heart-icon-active"){
 	    		$.ajax({
 					url : "${pageContext.request.contextPath }/product/removeWish",
 					type : "POST",
@@ -305,11 +281,9 @@
 				      }
 				});
 	    	}
+	  } */
+	</script>  -->      
 	        
-	        
-=======
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
-
 	<script type="text/javascript">
 	function createRoom() {
 		console.log('${productMap.productNum}');
@@ -333,48 +307,17 @@
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			      }
 			});
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 		}
-<<<<<<< HEAD
+	}
 
     </script>
 
-    
-<!--     	$(document).ready(function(){
-=======
-	}
-	</script>
-
-    <script type="text/javascript">
-    	$(document).ready(function(){
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
-    		$('.small').on('click', function(){
-    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-    		});
-    	});
-      
-<<<<<<< HEAD
-    function heart() {
-	    alert("하트를 눌렀습니다.");
-	    $(".heart-icon").attr("class", "heart-icon-active");
-		} -->
-    
-=======
-<!--       function heart() {
+<!-- function heart() {
       alert("하트를 눌렀습니다.");
         $(".heart-icon").attr("class", "heart-icon-active");
 	    }
     </script> -->
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'main' of https://github.com/Doyeon557/itwillFinalProject.git
 </body>
 
 </html>

@@ -87,14 +87,6 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
-
-
-                            <!-- <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i> -->
-
                             <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
@@ -209,81 +201,8 @@
     		});
     	});
     	
-    	
-    	/* function heart() {
-    		alert("하트누름");
-    		$('.icon_heart_alt').toggleClass(".heart-icon_active"); */
-    	    /* var icon = this.querySelector('i');
-    	    var productNum = this.getAttribute('data-productnum');
-    	    if (icon.classList.contains('far')) {  // 하트 생성
-    	      icon.classList.remove('far');
-    	      icon.classList.add('fas');
-    			$.ajax( {
-    				url:'${pageContext.request.contextPath}/product/addWish',
-    				data:{ 'productNum' : productNum,
-    							'memId': $('.getMemId').val()
-    					 },
-    				success: function(rdata){ 
-    				}
-    			});
-    	    } else { //하트제거
-    	      icon.classList.remove('fas');
-    	      icon.classList.add('far');
-    	      $.ajax( {
-    				url:'${pageContext.request.contextPath}/product/removeWish',
-    				data:{ 'productNum' : productNum,
-    							'memId': $('.getMemId').val()
-    					 },
-    				success: function(rdata){ 
-    				}
-    			});
-    	    } */
-    	
     </script>
 
-    
-    <!-- <script type="text/javascript">
-  
-    	/* function heart() {
-    		debugger;
-	    	alert("하트를 눌렀습니다.");
-	        
-	    	if(${'#heart'}.val().eq(".heart-icon")){
-	    		alert("하트 누름");
-	    		$.ajax({
-					url : "${pageContext.request.contextPath }/product/addWish",
-					type : "POST",
-					data : {
-						productNum : '${productMap.productNum}',
-						memberId : '${sessionScope.memId}',
-					},
-					success : function(rdata) {
-						$(".heart-icon").attr("class", "heart-icon-active");
-					},
-					error : function(){
-				        alert("error 발생");
-				      }
-				});
-	    	}
-	    	if(${'#heart'}.val() == ".heart-icon-active"){
-	    		$.ajax({
-					url : "${pageContext.request.contextPath }/product/removeWish",
-					type : "POST",
-					data : {
-						productNum : '${productMap.productNum}',
-						memberId : '${sessionScope.memId}',
-					},
-					success : function() {
-						$(".heart-icon").attr("class", "heart-icon-active");
-					},
-					error : function(){
-				        alert("error 발생");
-				      }
-				});
-	    	}
-	  } */
-	</script>  -->      
-	        
 	<script type="text/javascript">
 	function createRoom() {
 		console.log('${productMap.productNum}');
@@ -309,14 +228,7 @@
 			});
 		}
 	}
-
     </script>
-
-<!-- function heart() {
-      alert("하트를 눌렀습니다.");
-        $(".heart-icon").attr("class", "heart-icon-active");
-	    }
-    </script> -->
 
 </body>
 

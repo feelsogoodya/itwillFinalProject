@@ -90,7 +90,8 @@ th, td {
 				<td><a href="${pageContext.request.contextPath }/product/details/prodName?num=${dto.buyNum}">
 						${dto.prodTitle}</a></td>
 				<td>${dto.prodPrice}원</td>
-				<td><c:if test="${dto.revResult eq 'N'}">
+					<td>
+				<c:if test="${dto.revResult eq 'N'}">
 					<input type="button" value="거래후기 작성" class="goreview" onclick="openPop('${dto.buyNum}','${dto.prodSeller}')">
 					</c:if></td>
 					

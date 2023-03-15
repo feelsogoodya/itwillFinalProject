@@ -86,7 +86,6 @@ public class BuyListController {
 
 		model.addAttribute("reviewee", buylistDTO.getProdSeller());
 
-		model.addAttribute("reviewer", buylistDTO.getProdSeller());
 
 		model.addAttribute("buyList", buyList);
 //		model.addAttribute("productDTO", productDTO.getProductSeller());

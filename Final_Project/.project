@@ -3,6 +3,7 @@
 	<name>Final_Project</name>
 	<comment></comment>
 	<projects>
+		<project>itwillFinalProject</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

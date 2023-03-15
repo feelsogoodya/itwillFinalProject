@@ -53,7 +53,6 @@
                 <div class="col-lg-4 col-md-6">
                 	<div class="latest-product__text">
                         <h4>조회순</h4>
-                        <!-- 조회순 -->
                         <div class="latest-product__slider owl-carousel">
                       		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
 	                            <c:forEach var="ProductDTO" items="${orderViews }" begin="0" end="2">
@@ -88,7 +87,6 @@
               <div class="col-lg-4 col-md-6">
                 	<div class="latest-product__text">
                         <h4>관심순</h4>
-                        <!-- 관심순 -->
                         <div class="latest-product__slider owl-carousel">
                       		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
 	                            <c:forEach var="ProductDTO" items="${wishList }" begin="0" end="2">
@@ -122,8 +120,7 @@
               
               <div class="col-lg-4 col-md-6">
                 	<div class="latest-product__text">
-                        <h4>최심순</h4>
-                        <!-- 최심순 -->
+                        <h4>최신등록순</h4>
                         <div class="latest-product__slider owl-carousel">
                       		<div class="latest-prdouct__slider__item"> <!-- 동적으로 닫기 -->
 	                            <c:forEach var="ProductDTO" items="${latestPrdList }" begin="0" end="2">

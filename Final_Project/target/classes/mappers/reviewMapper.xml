@@ -11,12 +11,12 @@
 
 	<update id="updateReview"> 
 		update revscore set rev_total = #{revScore} +
-		rev_total , rev_score=#{revScore} ,rev_cate=#{revCate} where reviewee
-		= #{reviewee}
+		rev_total , rev_score=#{revScore} ,rev_cate=#{revCate} where reviewee = #{reviewee}
 	</update>
 
 	<select id="getReviewee"
-		resultType="com.itwillbs.domain.ReviewDTO"> select * from revscore where reviewee = #{reviewee}
+		resultType="com.itwillbs.domain.ReviewDTO"> 
+		select * from revscore where reviewee = #{reviewee}
 	</select>
 
 
@@ -24,9 +24,6 @@
 	update buylist set rev_result = 'Y' where buy_num = #{buyNum}
 	</update>
 
-	<update id="UpdateBuyList">
-		update buylist set rev_result = 'Y'
-		where buy_num = #{buyNum}
-	</update>
+
 
 </mapper>

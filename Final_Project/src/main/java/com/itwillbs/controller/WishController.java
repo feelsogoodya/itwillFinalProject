@@ -26,11 +26,10 @@ public class WishController {
 	@RequestMapping(value = "/mypage/wish", method = RequestMethod.GET)
 	public String productDetails(HttpSession session, HttpServletRequest request, Model model) {
 		
-		//TODO 추후 수정
 		String memberId = (String)session.getAttribute("memId");
 		
 		//화면에 보여줄 글개수 
-		int pageSize=3;
+		int pageSize = 5;
 		//페이지 번호 가져오기
 		String pageNum=request.getParameter("pageNum");
 		if(pageNum == null) pageNum="1";
@@ -46,7 +45,7 @@ public class WishController {
 		
 		int count = wishService.getwishCount(memberId);
 		
-		int pageBlock=3; 
+		int pageBlock = 3; 
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
 		int pageCount = count/pageSize+(count%pageSize==0 ? 0 : 1);

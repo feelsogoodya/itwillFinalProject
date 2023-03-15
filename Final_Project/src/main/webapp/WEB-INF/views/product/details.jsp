@@ -11,7 +11,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>가지마켓:product-details</title>
+    <title>가지마켓: Product Details</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -95,7 +95,9 @@
                         <button class="primary-btn" onclick="createRoom()" style="border: 0px;">채팅하기</button>
                         <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
                         <!-- 좋아요 버튼 -->
+                        <c:if test="${wishCheck eq 'false'}">
                         <a class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        </c:if>
                         <c:if test="${wishCheck eq 'true'}">
                         <a class="heart-icon-active"><span class="icon_heart_alt"></span></a>
                         </c:if>

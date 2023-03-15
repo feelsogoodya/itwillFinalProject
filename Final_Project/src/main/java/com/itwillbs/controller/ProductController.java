@@ -37,11 +37,10 @@ public class ProductController {
 	private String uploadPath;
 	
 	@RequestMapping(value = "/product/details", method = RequestMethod.GET)
-	public String productDetails(Model model, HttpSession session) {
-		//TODO 추후 연결 시, 수정
+	public String productDetails(Model model, HttpSession session, HttpServletRequest request) {
+		
 		//선택한 상품의 정보 가져오기
-//		HttpServletRequest request, String productNum = request.getParameter("productNum");
-		String productNum = "2302004";
+		String productNum = request.getParameter("productNum");
 		Map<String, Object> productMap = productService.getProductInfo(productNum);
 		
 		

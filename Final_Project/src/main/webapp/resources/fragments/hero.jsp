@@ -34,7 +34,7 @@
                                 <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
-                        <div class="hero__search__phone">
+                        <!-- <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
@@ -42,7 +42,7 @@
                                 <h5>051-803-0909</h5>
                                 <span>평일 10-18시 상담가능</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
                     <c:set var="truePath" value="/main/main" />

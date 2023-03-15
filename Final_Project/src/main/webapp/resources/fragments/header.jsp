@@ -15,8 +15,8 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> -->
             </ul>
 <!--             <div class="header__cart__price">item: <span>$150.00</span></div> -->
         </div>
@@ -143,8 +143,8 @@
                                     <li><a href="${pageContext.request.contextPath }/member/mypage">마이프로필</a></li>
                                     <li><a href="${pageContext.request.contextPath }/mypage/wish">관심상품</a></li>
                                     <li><a href="javascript:chatList();">채팅목록</a></li>
-                                    <li><a href="./shoping-cart.html">판매내역</a></li>
-                                    <li><a href="./checkout.html">구매내역</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/list/buylist">구매내역</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/list/selllist">판매내역</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -153,8 +153,8 @@
                 <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> -->
                         </ul>
                         <!-- 가격 -->
                         <!-- <div class="header__cart__price">item: <span>$150.00</span></div> -->

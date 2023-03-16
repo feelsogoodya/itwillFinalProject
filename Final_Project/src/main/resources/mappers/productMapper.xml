@@ -209,6 +209,7 @@
           on p.product_num = w.product_num
         </if>
        where 1=1
+       		  and p.product_status = "판매중"
       <if test='productCate != null and !"".equals(productCate)'>
               and p.product_cate = #{productCate}
       </if>       
@@ -256,6 +257,7 @@
         select count(*) 
           from product p
           where 1=1
+          		 and p.product_status = "판매중"
          <if test='productCate != null and !"".equals(productCate)'>
                  and p.product_cate = #{productCate}
          </if>       

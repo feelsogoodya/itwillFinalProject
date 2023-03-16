@@ -86,16 +86,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 
-	@Override
-	public List<ProductDTO> getSellList(PageDTO pageDTO) {
-		return sqlSession.selectList(namespace+".getSellList", pageDTO);
-	}
 
-	@Override
-	public int getSellCount() {
-		return sqlSession.selectOne(namespace+".getSellCount");
-	}
-	
 	
 	@Override
 	public List<Map<String, Object>> getProductList(Map<String, String> params) {

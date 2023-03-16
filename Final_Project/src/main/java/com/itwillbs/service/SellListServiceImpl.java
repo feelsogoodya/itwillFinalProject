@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.SellListDAO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.ProductDTO;
 import com.itwillbs.domain.SellListDTO;
 
 @Service
@@ -31,11 +32,10 @@ public class SellListServiceImpl implements SellListService {
 	}
 
 	@Override
-	public int getSellCount() {
+	public int getSellCount(PageDTO pageDTO) {
 
-		return sellListDAO.getSellCount();
+		return sellListDAO.getSellCount( pageDTO);
 	}
 	
-
 
 }

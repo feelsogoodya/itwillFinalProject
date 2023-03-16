@@ -8,6 +8,6 @@ import com.itwillbs.domain.SellListDTO;
 public interface SellListService {
 	public List<SellListDTO> getSellList(PageDTO pageDTO);
 	
-	public int getSellCount();
+	public int getSellCount(PageDTO pageDTO);
 	
 }

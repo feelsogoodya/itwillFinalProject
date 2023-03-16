@@ -21,24 +21,20 @@
                         <!-- 카테고리 section -->
                         <ul>
                             <c:forEach var="item" items="${sessionScope.categories}">
-	                            <li><a href="#">${item}</a></li>
+	                            <li><a href="${pageContext.request.contextPath }/product/list?productCate=${item}">${item}</a></li>
 	                        </c:forEach>
                         </ul>
                     </div>
-                </div>
+                </div> 
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="어떤 상품을 찾으시나요?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                            <form action="${pageContext.request.contextPath}/product/list">
+                                <input type="text" name="searchText" placeholder="어떤 상품을 찾으시나요?">
+                                <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
-                        <div class="hero__search__phone">
+                        <!-- <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
@@ -46,7 +42,7 @@
                                 <h5>051-803-0909</h5>
                                 <span>평일 10-18시 상담가능</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
                     <c:set var="truePath" value="/main/main" />

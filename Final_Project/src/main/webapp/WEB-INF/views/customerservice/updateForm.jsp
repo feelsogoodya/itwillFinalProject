@@ -13,7 +13,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>가지마켓: Customer Service</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -43,7 +43,6 @@ $(document).ready(function() {
 // 		  alert(console.log(files));
 		  
 		  
-		  debugger;
 // 		  formData.append('file', '아아아아아아ㅏ아아아아ㅏㅇ되라라라ㅏ');
 // 		  formData.set('file', '111');
 // 		  formData.append('file', files[1]);
@@ -65,7 +64,6 @@ $(document).ready(function() {
 		  
 		  
 		});
-
 	
 // 	$("#file").on('change',function(){
 // 		  var fileName = $("#file").val();
@@ -111,12 +109,34 @@ $(document).ready(function() {
 	
 	
 });
-</script>
-<script type="text/javascript">
+
+
+
+//아래로 조금 이동
+$(document).ready(fnMove);
+//select box 유지되도록
+$(document).ready(keepselect);
+
+
+function fnMove(){
+	 if ($('.contextPath').val() != "") {
+		 $('html, body').animate({scrollTop : 250}, 400);
+	}
+}
+
+function keepselect() {
+	var  el = document.getElementById('categoryField');
+	var  len = document.getElementById('categoryField').length
+	var  selectfilter = $('#filterValue').val();
+		  
+	for (let i=0; i<len; i++) {  
+		  if(el.options[i].value == selectfilter){
+		   el.options[i].selected = true;
+		  }
+		}
+}
 
 </script>
-
-
 
 <script type="text/javascript">
 	function selectCategoryField() {
@@ -167,11 +187,7 @@ $(document).ready(function() {
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Contact Us</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Contact Us</span>
-                        </div>
+                        <h2>글수정</h2>
                     </div>
                 </div>
             </div>
@@ -186,18 +202,15 @@ $(document).ready(function() {
     <!-- Contact Form Begin -->
     <div class="contact-form spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave Message</h2>
-                    </div>
-                </div>
-            </div>
+
             <form action="${pageContext.request.contextPath}/customerservice/UpdatePro" method="post" enctype="multipart/form-data" onsubmit="return check()">
             		<input type="hidden" name="memNname" value="${sessionScope.memNname }">
 					<input type="hidden" name="memId" value="${sessionScope.memId }">
 					<input type="hidden" id="categoryFieldHidden" name="csCategory" value="${dto.csCategory}">
 					<input type="hidden" name="csProcess" value="접수대기">
+					<input type="hidden" name="csFile0" value="${dto.csFile0}">
+					<input type="hidden" name="csFile1" value="${dto.csFile1}">
+					<input type="hidden" name="csFile2" value="${dto.csFile2}">
             		
             		
             		<input type="hidden" name="csNum" value="${dto.csNum}">
@@ -206,8 +219,8 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-lg-12 text-center category">
 						<p>카테고리</p>
+							<input type="hidden" id="filterValue" value="${dto.csCategory}">
 						<select id="categoryField" onchange="selectCategoryField()">
-							<option value="">${dto.csCategory}</option>
 							<option value="계정관리">계정관리</option>
 							<option value="게시글">게시글</option>
 							<option value="결제환불">결제환불</option>
@@ -216,7 +229,7 @@ $(document).ready(function() {
                    
                    
                     <div class="col-lg-12 text-center">
-                        <input type="text" type="text" name="csSub" id="cs_sub" value="${dto.csSub}">
+                        <input type="text" type="text" name="csSub" id="cs_sub" value="${dto.csSub}" placeholder="제목을 입력해주세요.">
                         <div class="file_box">
 	                        <input type="file" multiple="multiple" name="multiFile" class ="uploadfile" id="file" style="display:none;" >
 	                        <label for="file">파일첨부</label>
@@ -227,19 +240,19 @@ $(document).ready(function() {
                     	</div>
                     </div>
                     <div class="col-lg-12 text-center">
-                    	<textarea name="csContent" rows="10" cols="20" placeholder="Your message">${dto.csContent}</textarea>
+                    	<textarea name="csContent" rows="10" cols="20" placeholder="글내용 입력해주세요.">${dto.csContent}</textarea>
                     </div>
                     <div class="col-lg-12 text-center">
                      <c:if test="${dto.csSecret == 'N'}">
-                     	<input type="checkbox" name="csSecret" value="Y" ><p>비밀글</p>
+                     	<input type="checkbox" name="csSecret" value="Y" ><span class="secretbtn">비밀글</span>
                      </c:if>
                      <c:if test="${dto.csSecret == 'Y'}">
-                     	<input type="checkbox" name="csSecret" value="Y" checked ><p>비밀글</p>
+                     	<input type="checkbox" name="csSecret" value="Y" checked ><span class="secretbtn">비밀글</span>
                      </c:if>
                     	
                     </div>
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn" id = "button1">Change</button>
+                        <button type="submit" class="site-btn" id="button1">수정하기</button>
                     </div>
                 </div>
             </form>
@@ -254,7 +267,7 @@ $(document).ready(function() {
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script>
+<%--     <script src="${pageContext.request.contextPath }/resources/js/jquery.nice-select.min.js"></script> --%>
     <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>

@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.BuyListDTO;
 import com.itwillbs.domain.ReviewDTO;
 
 @Repository
@@ -17,16 +18,15 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public void insertReview(ReviewDTO reviewDTO) {
 		System.out.println("DAOIMPL");
-		System.out.println(reviewDTO.getRevScore());
-		System.out.println(reviewDTO.getRevContent());
+
 		sqlSession.insert(namespace+".insertReview", reviewDTO);
 		
 	}
 
 	@Override
-	public ReviewDTO getReviewer(String reviewer) {
+	public ReviewDTO getReviewee(String reviewee) {
 		
-		return sqlSession.selectOne(namespace+".getReviewer", reviewer);
+		return sqlSession.selectOne(namespace+".getReviewee", reviewee);
 	}
 
 	@Override
@@ -34,6 +34,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		sqlSession.update(namespace+".updateReview", reviewDTO);
 
+	}
+
+	@Override
+	public void updateBuyList(BuyListDTO buyListDTO) {
+		sqlSession.update(namespace+".UpdateBuyList", buyListDTO);
+		
 	}
 	
 	

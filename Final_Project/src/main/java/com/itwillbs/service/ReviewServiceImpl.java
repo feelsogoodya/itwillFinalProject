@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.ReviewDAO;
+import com.itwillbs.domain.BuyListDTO;
 import com.itwillbs.domain.ReviewDTO;
 
 @Service
@@ -26,15 +27,21 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public ReviewDTO getReviewer(String reviewer) {
+	public ReviewDTO getReviewee(String reviewee) {
 		
-		return reviewDAO.getReviewer(reviewer);
+		return reviewDAO.getReviewee(reviewee);
 	}
 
 	@Override
 	public void updateReview(ReviewDTO reviewDTO) {
 		
 		reviewDAO.updateReview(reviewDTO);
+	}
+
+	@Override
+	public void updateBuyList(BuyListDTO buyListDTO) {
+		reviewDAO.updateBuyList(buyListDTO);
+		
 	}
 
 }

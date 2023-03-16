@@ -13,6 +13,7 @@
 		members(mem_num ,mem_id,mem_pass,mem_phone,mem_name,mem_nname,mem_email,mem_address,mem_account,mem_time)
 		values(#{memNum},#{memId},#{memPass},#{memPhone},#{memName},#{memNname},#{memEmail},#{memAddress},#{memAccount},#{memTime})
 	</insert>
+	
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberDTO">
 		select
@@ -30,11 +31,11 @@
 		where mem_id=#{memId} and mem_pass=#{memPass}
 	</select>
 
-	<!-- <select id="getMember"
-		resultType="com.itwillbs.domain.MemberDTO">
-		select * from members
-		where mem_id=#{memId}
-	</select> -->
+<!-- 	<select id="getMember" -->
+<!-- 		resultType="com.itwillbs.domain.MemberDTO"> -->
+<!-- 		select * from members -->
+<!-- 		where mem_id=#{memId} -->
+<!-- 	</select> -->
 
 	<update id="updateMember">
 		update members
@@ -72,8 +73,7 @@
 
 	<select id="memberPwdCheck" parameterType="com.itwillbs.domain.MemberDTO" resultType="java.lang.Integer">
 	<![CDATA[
-	    select
-	        count(*)
+	    select count(*)
 	    from
 	        members
 	    where
@@ -84,7 +84,6 @@
 	        mem_id = #{memId}
 	]]>    
 	</select>
-	 
 	    
 	<update id="passwordUpdate" parameterType="com.itwillbs.domain.MemberDTO" >
 	    UPDATE 
@@ -98,16 +97,15 @@
 	    and
 	        mem_id = #{memId}
 	</update>
-	
+
 	<select id="getMember"
       resultType="com.itwillbs.domain.MemberDTO">
       select m.*
      , ifnull(max(rev_total), 0) as rev_total
          from members m
       left join revscore r
-         on m.mem_id = r.reviewer
+         on m.mem_id = r.reviewee
          where 1=1
        and mem_id =#{memId}
    </select>
-	
 </mapper>

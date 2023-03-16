@@ -16,22 +16,48 @@
 		<result column="wish_count" property="wishCount"/>
 	</resultMap>
 	
-	<select id="getMyWish" resultMap="wishMap" parameterType="string">
-		SELECT p.product_num as "productNum"
-			  ,p.product_title as "productTitle"
-			  ,p.product_price as "productPrice"
-			  ,p.product_grade as "productGrade"
-			  ,p.product_pic as "productPic"
-			  ,count(c.member_id) as "wish_count"
-		FROM product p join wish w
-		ON (p.product_num = w.product_num)
-		join wish c
-		on (p.product_num = c.product_num)
-		<if test='value.equals("admin")'>
-		WHERE w.member_id = #{value}
+	<select id="getMyWish" resultMap="wishMap" parameterType="hashMap"> <!-- DD -->
+		SELECT productNum
+			 , productTitle
+			 , productPrice
+			 , productGrade
+			 , productPic
+			 , wish_count
+		FROM (
+			SELECT p.product_num as "productNum"
+				  ,p.product_title as "productTitle"
+				  ,p.product_price as "productPrice"
+				  ,p.product_grade as "productGrade"
+				  ,p.product_pic as "productPic"
+				  ,count(c.member_id) as "wish_count"
+			FROM product p join wish w
+			ON (p.product_num = w.product_num)
+			join wish c
+			on (p.product_num = c.product_num)
+			<!-- <if test='value.equals("admin")'> parameterType string -->
+			<if test='!memberId.equals("admin")'>
+			WHERE w.member_id = #{memberId}
+			</if>
+			GROUP BY p.product_num
+			ORDER BY p.product_num DESC
+		) A
+		LIMIT ${startRow},${pageSize}
+	</select>
+	
+	 <!-- and value != null -->
+	 <!-- parameterType="string" -->
+	<select id="getwishCount" resultType="java.lang.Integer" parameterType="hashMap">
+		SELECT COUNT(DISTINCT product_num) 
+		FROM wish
+		<if test='!memberId.equals("admin")'>
+		WHERE member_id = #{memberId}
 		</if>
-		GROUP BY p.product_num
-		ORDER BY p.product_num DESC
+	</select>
+	
+	<select id="getWishCheck" resultType="java.lang.Integer" parameterType="hashMap">
+		SELECT count(product_num)
+		FROM wish
+		WHERE product_num = #{productNum} and member_id = #{memberId} 
 	</select>
 
 </mapper>

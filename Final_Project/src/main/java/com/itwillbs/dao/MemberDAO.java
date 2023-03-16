@@ -22,5 +22,7 @@ public interface MemberDAO {
 	public int memberPwdCheck(MemberDTO searchVO);
 	
 	public void passwordUpdate(MemberDTO searchVO);
-	
+
+	public void updateImg(MemberDTO dto);
+
 }

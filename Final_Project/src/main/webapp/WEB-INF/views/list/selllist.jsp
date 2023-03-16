@@ -9,7 +9,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>가지마켓:selllist</title>
+    <title>가지마켓: Sell List</title>
     
      <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -52,12 +52,19 @@ font-size: 50px;
     <!-- Header Section Begin -->
     <jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
     <!-- Header Section End -->
+    
+    <!-- Hero Section Begin -->
+    <section class ="hero hero-normal">
+   		<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+   	</section>
+    <!-- Hero Section End -->
+    
 <div class="sell-title">${sessionScope.memId}님의 판매내역</div>
 
-<div class="main" style=" padding-left: 100px;">
+<div class="main" style="padding-right: 100px; text-align:right;">
 <input type="hidden" name="sellmemId" value="${sessionScope.memId}">
-<a href="${pageContext.request.contextPath }/">메인페이지</a><br>
-<a href="${pageContext.request.contextPath }/sell/판매페이지">판매하기</a><br>
+<input type="hidden" name="productNum" value="${sessionScope.productNum}">
+ <button class="primary-btn" onclick="location.href='${pageContext.request.contextPath }//product/insertForm'" style="border: 0px;">판매하기</button>
 <%-- <div>나의 매너온도: ${reviewDTO.revTotalscore}</div> --%>
 <!-- 								${sessionScope.revTotalscore} -->
 </div>

@@ -13,16 +13,17 @@ public class PageDTO {
 	private int endPage;
 	private int pageCount;
 	
-	private String buymemId;
+	private String buymemName;
 	private String sellmemId;
 	
 	private String search;
 	
-	public String getBuymemId() {
-		return buymemId;
+
+	public String getBuymemName() {
+		return buymemName;
 	}
-	public void setBuymemId(String buymemId) {
-		this.buymemId = buymemId;
+	public void setBuymemName(String buymemName) {
+		this.buymemName = buymemName;
 	}
 	public String getSellmemId() {
 		return sellmemId;

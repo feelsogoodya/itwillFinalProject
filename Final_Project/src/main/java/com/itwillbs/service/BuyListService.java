@@ -10,4 +10,6 @@ public interface BuyListService {
 	public List<BuyListDTO> getbuyList(PageDTO dto);
 	
 	public int getBuyCount();
+	
+
 }

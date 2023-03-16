@@ -100,10 +100,6 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public List<Map<String, Object>> getProductList(Map<String, String> params) {
 		
-		System.out.println("111"+params.get("startPrice"));
-		System.out.println("22"+params.get("endPrice"));
-		
-		
 		int offset = Integer.parseInt(params.get("offset")); 
 		int limit = Integer.parseInt(params.get("limit"));
 		
@@ -139,6 +135,5 @@ public class ProductDAOImpl implements ProductDAO{
 		
 		return sqlSession.selectOne(namespace + ".getproductMax", params);
 	}
-	
 	
 }

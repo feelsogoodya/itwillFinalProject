@@ -1,17 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="Ogani Template">
 <title>로그인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/member/login.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.6.3.js"></script>
 <script type="text/javascript">
+	// 유효성 검사
  	function check(){
 		if($('#memId').val() == "" ){
 			alert("아이디 입력하세요");
@@ -35,7 +34,7 @@
 		<div class="col-lg-3">
 			<div class="header__logo" style="text-align: center;">
 				<a href="./index.html">
-				<img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt="" style="position : absolute; top : 130px; right : 835px;" width="250"></a>
+					<img src="${pageContext.request.contextPath }/resources/img/marketLogo.png" alt="" style="position : absolute; top : 130px; right : 835px;" width="250"></a>
 				<br>
 			</div>
 		</div>
@@ -51,7 +50,6 @@
 							<span class="text">ID 로그인</span></span>
 						</a>
 					</ul>
-					
 						
 						<ul class="panel_wrap">
 							<li class="panel_item" style="display: block;">
@@ -76,7 +74,6 @@
 											<input type="password" id="memPass" name="memPass" placeholder="비밀번호" class="input_text" maxlength="16"> 
 										</div>
 									</div>
-									
 									<div class="btn_login_wrap">
 										<button type="submit" class="btn_login" id="log.login">
 											<span class="btn_text">로그인</span>
@@ -89,7 +86,7 @@
 				<ul class="find_wrap" id="find_wrap">
 					<li><a href="idFind" class="find_text">아이디 찾기</a></li>
 					<li><a href="passFind" class="find_text">비밀번호 찾기</a></li>
-					<li><a href="insert" class="find_text">회원가입</a></li>
+					<li><a href="terms" class="find_text">회원가입</a></li>
 				</ul>
 				
 				<!--배너-->
@@ -100,7 +97,6 @@
 		<!-- footer -->
 		<div class="footer">
 			<div class="footer_inner">
-			
 			</div>
 		</div>
 	</div>

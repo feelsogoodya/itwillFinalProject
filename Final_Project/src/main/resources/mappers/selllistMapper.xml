@@ -12,7 +12,7 @@
 	</select>
 
   <select id="getSellCount" resultType="java.lang.Integer">
-  	select count(*) from product
+  	select count(*) from product where product_seller= #{sellmemId}
   </select>
 
 </mapper>

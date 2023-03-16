@@ -26,8 +26,8 @@ public class SellListDAOImpl implements SellListDAO {
 	}//
 
 	@Override
-	public int getSellCount() {
-		return sqlSession.selectOne(namespace + ".getSellCount");
+	public int getSellCount(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace + ".getSellCount", pageDTO);
 
 	}//
 	

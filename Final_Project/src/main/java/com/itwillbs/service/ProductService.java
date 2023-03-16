@@ -31,11 +31,7 @@ public interface ProductService {
 	
 	public void deleteProduct(int num);
 	
-	//-----------------도경
-	
-	public List<ProductDTO> getSellList(PageDTO pageDTO);
-	
-	public int getSellCount();
+
 	
 	//-----------------보정
 	

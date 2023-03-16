@@ -34,11 +34,7 @@ public interface ProductDAO {
 	
 	public void deleteProduct(int num);
 	
-	//-------------------도경
-	
-	public List<ProductDTO> getSellList(PageDTO pageDTO);
-	
-	public int getSellCount();
+
 	
 	//-------------------보정
 	public List<Map<String, Object>> getProductList(Map<String, String> params);

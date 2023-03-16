@@ -39,11 +39,13 @@ public class SellListController {
 		int pageSize=10;
 		// 현 페이지 번호 파라미터값 가져오기
 		String pageNum=request.getParameter("pageNum");
-		System.out.println(pageNum+"ttttttttttttttttttttttt");
+	
 		// 페이지 번호가 없으면 => "1" 설정
 		if(pageNum == null){
 		 	pageNum="1";
 		}
+		System.out.println(pageNum+"ttttttttttttttttttttttt");
+		
 		// pageNum => 정수형 currentPage
 		int currentPage=Integer.parseInt(pageNum);
 		// PageDTO 객체생성

@@ -14,7 +14,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>가지마켓: Product List</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -197,7 +197,7 @@
 								  <div class="product__item">
 								  	<div class="set-bg">
 								    	<div class="product__item__pic "> 
-								    		<c:set var="detailsPath" value="location.href='${pageContext.request.contextPath}/product/details?productNum=${dto.productNum}'" />
+								    		<c:set var="detailsPath" value="${pageContext.request.contextPath}/product/details?productNum=${dto.productNum}" />
 								    		
 											<img onclick="${detailsPath}" src="${pageContext.request.contextPath }/resources/upload/${fn:split(productPicture, '|')[0]}" alt="">
 										      <ul class="product__item__pic__hover">
@@ -477,14 +477,14 @@ function cantwish(){
 
 
 function pathDetails(){
-	var getId = $(this).attr("id")
-	var idx = $('#' + getId).val()
+	var getId = $(this).attr("id");
+	var idx = $('#' + getId).val();
 	location.href='../product/details?productNum=' + idx;
 }
 
 
 function hidemoreBtn() {
-	var getproductMax = parseInt($('.getproductMax').val())
+	var getproductMax = parseInt($('.getproductMax').val());
 	   if (getproductMax <= $('.rowOne').children('div').length) {
 	  		$('#seeMoreBtn').hide();
 	   }

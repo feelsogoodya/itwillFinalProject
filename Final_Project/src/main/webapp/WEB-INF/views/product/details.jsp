@@ -11,7 +11,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>가지마켓:product-details</title>
+    <title>가지마켓: Product Details</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -49,11 +49,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Product Details</h2>
+                        <h2>상품 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <a href="./index.html">Products</a>
+                            <span>상품 페이지</span>
                         </div>
                     </div>
                 </div>
@@ -88,39 +87,24 @@
                     <div class="product__details__text">
                         <h3>${productMap.productTitle }</h3>
                         <div class="product__details__rating">
-
                             <%-- <span>(좋아요 ${productMap.wishCount })</span> --%>
                         </div>
                         <div class="product__details__price">${productMap.productPrice }</div>
                         <p>${productMap.productContent }</p>
 
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="primary-btn" onclick="createRoom()">채팅하기</button>
-                        <!-- 좋아요 버튼 -->
-                        <a onclick="heart()" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <button class="primary-btn" onclick="createRoom()" style="border: 0px;">채팅하기</button>
                         <button onclick="return pay();" class="primary-btn" style="border: 0px;">거래하기</button>
+                        <!-- 좋아요 버튼 -->
+                        <c:if test="${wishCheck eq 'false'}">
+                        <a class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        </c:if>
+                        <c:if test="${wishCheck eq 'true'}">
+                        <a class="heart-icon-active"><span class="icon_heart_alt"></span></a>
+                        </c:if>
                         
-                        <%-- <c:choose>
-				      		<c:when test="${sessionScope.memId eq null}">
-				      			<li><a class="cantwish"><i class="far fa-heart"></i></a></li>
-				      		</c:when>
-				      		<c:otherwise>
-				      			<c:set var="fasORfar" value="${dto.memId eq sessionScope.memId ? 'fas' : 'far'}" />
-							      		<a class="heart-icon"  data-productnum="${productMap.productNum}" ><i class="fas-fa-heart"></i></a>
-				      		</c:otherwise> 
-						 </c:choose> --%>
-						 
-						 <!-- 	color 누르기 전: #6f6f6f; 누르면 바뀔 컬러: #FF0040 -->
-
-                        <ul>
+              			<ul>
                             <li><b>상태</b> <span>${productMap.productGrade }</span></li>
+                            <!-- <li><b>거래</b> <span>택배 거래 원해요 <samp>Free pickup today</samp></span></li> -->
                             <li><b>좋아요</b> <span>${productMap.wishCount }</span></li>
                             <li><b>판매자</b> <span>${productMap.memNname }</span></li>
                             <li><b>등록 날짜</b> <span>${productMap.productDate }</span></li>
@@ -179,7 +163,56 @@
     <script src="${pageContext.request.contextPath }/resources/js/mixitup.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/product/details.js"></script>
+    
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('.small').on('click', function(){
+    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));		
+    		});
+    		
+    		
+    	});
+    	function active(){
+    		$('.heart-icon-active').off('click').on('click', function(){
+   	    		$.ajax({
+   					url : "${pageContext.request.contextPath }/product/removeWish",
+   					data : {
+   						productNum : '${productMap.productNum}',
+   						memId : '${sessionScope.memId}'
+   					},
+   					success : function(rdata) {
+   						$(".heart-icon-active").attr("class", "heart-icon");
+   						nonactive();
+   					},
+   					error : function(){
+   				        alert("error 발생");
+   				      }
+   				});
+    		});
+		}
+    	
+    	function nonactive(){
+    		$('.heart-icon').off('click').on('click', function(){
+   	    		$.ajax({
+   					url : "${pageContext.request.contextPath }/product/addWish",
+   					data : {
+   						productNum : '${productMap.productNum}',
+   						memId : '${sessionScope.memId}'
+   					},
+   					success : function(rdata) {
+   						$(".heart-icon").attr("class", "heart-icon-active");
+   						active();
+   					},
+   					error : function(){
+   				        alert("error 발생");
+   				      }
+   				});
+    		});
+		}
+    	active();
+    	nonactive();
+    	
+    </script>
 
 	<script type="text/javascript">
 	function createRoom() {
@@ -206,19 +239,6 @@
 			});
 		}
 	}
-	</script>
-
-    <script type="text/javascript">
-    	$(document).ready(function(){
-    		$('.small').on('click', function(){
-    			$('.product__details__pic__item--large').attr("src",$(this).attr("src"));
-    		});
-    	});
-      
-      function heart() {
-      alert("하트를 눌렀습니다.");
-        $(".heart-icon").attr("class", "heart-icon-active");
-	    }
     </script>
 
 </body>

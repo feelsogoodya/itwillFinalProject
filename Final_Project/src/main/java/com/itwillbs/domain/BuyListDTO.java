@@ -10,7 +10,6 @@ public class BuyListDTO {
 	private String buyDate;
 	private String prodSeller;
 	private String revResult;
-	
 
 	public String getProdSeller() {
 		return prodSeller;
@@ -24,7 +23,6 @@ public class BuyListDTO {
 	public void setBuyNum(int buyNum) {
 		this.buyNum = buyNum;
 	}
-
 	public String getBuymemName() {
 		return buymemName;
 	}
@@ -37,7 +35,6 @@ public class BuyListDTO {
 	public void setProdTitle(String prodTitle) {
 		this.prodTitle = prodTitle;
 	}
-	
 	public String getProdPic() {
 		return prodPic;
 	}

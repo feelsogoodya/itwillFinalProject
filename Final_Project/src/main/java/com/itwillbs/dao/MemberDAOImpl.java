@@ -20,17 +20,6 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void insertMember(MemberDTO dto) {
-		System.out.println("MemberDAOImpl insertMember()");
-		System.out.println(dto.getMemId());
-		System.out.println(dto.getMemPass());
-		System.out.println(dto.getMemName());
-		System.out.println(dto.getMemNname());
-		System.out.println(dto.getMemNum());
-		System.out.println(dto.getMemPhone());
-		System.out.println(dto.getMemEmail());
-		System.out.println(dto.getMemAddress());
-		System.out.println(dto.getMemAccount());
-		System.out.println(dto.getMemPhone());
 		Timestamp date=new Timestamp(System.currentTimeMillis());
 		dto.setMemTime(date);
 		
@@ -39,10 +28,6 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public MemberDTO userCheck(MemberDTO dto) {
-		System.out.println("MemberDAOImpl userCheck()");
-		System.out.println(dto.getMemId());
-		System.out.println(dto.getMemPass());
-		
 		return sqlSession.selectOne(namespace+".userCheck", dto);
 	}
 
@@ -78,10 +63,12 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void passwordUpdate(MemberDTO searchVO) {
-		System.out.println(searchVO.getMemId());
-		System.out.println(searchVO.getMemName());
-		System.out.println(searchVO.getMemPhone());
 		sqlSession.selectOne(namespace+".passwordUpdate", searchVO);
+	}
+
+	@Override
+	public void updateImg(MemberDTO dto) {
+		sqlSession.update(namespace+".updateImg", dto);
 	}
 	
 }

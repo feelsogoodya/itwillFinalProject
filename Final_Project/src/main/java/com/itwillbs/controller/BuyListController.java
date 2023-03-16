@@ -39,6 +39,9 @@ public class BuyListController {
 	@RequestMapping(value = "/list/buylist", 
 			method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request, HttpSession session, BuyListDTO buylistDTO) {
+		String memberId = (String)session.getAttribute("memId");
+		if(memberId == null) return "redirect:/member/login";
+		
 		// http://localhost:8080/myweb/board/list
 		// http://localhost:8080/myweb/board/list?pageNum=2
 		// 한 화면에 보여줄 글 개수 설정 (10개 설정)
@@ -57,7 +60,7 @@ public class BuyListController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
-		pageDTO.setBuymemId((String)session.getAttribute("memId"));
+		pageDTO.setBuymemName((String)session.getAttribute("memId"));
 		System.out.println("세션 아이디:"+(String)session.getAttribute("memId"));
 		// 디비작업 메서드 호출
 		// List<BoardDTO> 리턴할형 getBoardList(PageDTO dto) 메서드 정의

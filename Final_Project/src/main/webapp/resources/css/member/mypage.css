@@ -61,6 +61,13 @@
 		format("truetype")
 }
 
+/*    거래매너 점수  */
+.myreviewscore {
+   text-align: right;
+   color: gray;
+   
+}
+
 body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input,
 	legend, li, ol, p, select, table, td, textarea, th, ul {
 	margin: 0;
@@ -791,7 +798,7 @@ h1, h2, h3, h4, h5, h6 {
 		width: 100%
 	}
 	.header_left .left_footer {
-		padding: 30px 0 67px
+		padding: 30px 0 450px
 	}
 	.header_left .left_footer li {
 		position: relative;

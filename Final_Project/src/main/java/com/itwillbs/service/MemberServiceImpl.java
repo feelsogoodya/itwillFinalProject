@@ -79,4 +79,11 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.passwordUpdate(searchVO);
 	}
 
+	@Override
+	public void updateImg(MemberDTO dto) {
+		memberDAO.updateImg(dto);
+		
+	}
+
+
 }

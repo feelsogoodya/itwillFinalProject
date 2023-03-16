@@ -10,7 +10,7 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>가지마켓:buylist</title>
+<title>가지마켓: Buy List</title>
 
 <!-- Google Font -->
 <link
@@ -51,16 +51,21 @@ th, td {
 	<!-- Header Section Begin -->
 	<jsp:include page="../../../resources/fragments/header.jsp"></jsp:include>
 	<!-- Header Section End -->
+	
+	<!-- Hero Section Begin -->
+    <section class ="hero hero-normal">
+   		<jsp:include page="../../../resources/fragments/hero.jsp"></jsp:include>
+   	</section>
+    <!-- Hero Section End -->
+	
 	<%
 	System.out.println("jsp 동작!");
 	%>
-	<div class="buy-title">${sessionScope.memId}님의구매내역</div>
+	<div class="buy-title">${sessionScope.memId}님의 구매내역</div>
 
-	<div class="main" style="padding-left: 100px;">
+	<div class="main" style="padding-right: 100px; text-align:right;">
 		<input type="hidden" name="buymemName" value="${sessionScope.memId}">
-
-		<a href="${pageContext.request.contextPath }/">메인페이지</a><br> 
-		<a href="${pageContext.request.contextPath }/sell/판매페이지">판매하기</a><br>
+        <button class="primary-btn" onclick="location.href='${pageContext.request.contextPath }//product/insertForm'" style="border: 0px;">판매하기</button>
 	</div>
 
 	<table class="rwd-table" style="table-layout: fixed;">

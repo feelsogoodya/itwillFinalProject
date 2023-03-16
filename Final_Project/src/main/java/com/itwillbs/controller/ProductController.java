@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itwillbs.domain.Cs_PageDTO;
 import com.itwillbs.domain.ProductDTO;
 import com.itwillbs.service.ProductService;
+import com.itwillbs.service.WishService;
 
 @Controller
 public class ProductController {
@@ -28,26 +29,34 @@ public class ProductController {
 	@Inject
 	ProductService productService;
 	
+	@Inject
+	WishService wishService;
+	
 //	xml 업로드 경로 (자원이름)=> 변수저장
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	
 	@RequestMapping(value = "/product/details", method = RequestMethod.GET)
-	public String productDetails(Model model) {
-		//TODO 추후 연결 시, 수정
+	public String productDetails(Model model, HttpSession session, HttpServletRequest request) {
+		
 		//선택한 상품의 정보 가져오기
-//		HttpServletRequest request, String productNum = request.getParameter("productNum");
-		String productNum = "2302004";
+		String productNum = request.getParameter("productNum");
 		Map<String, Object> productMap = productService.getProductInfo(productNum);
 		
 		
 		//판매자 다른 상품 정보 가져오기
 		List<Map<String, Object>> sellerProducts = productService.getSellerProduct(productMap);
 		
+		//로그인한 회원이 이 상품을 좋아요 눌렀는지 체크
+		int count = wishService.getWishCheck(productNum, (String)session.getAttribute("memId"));
+		
+		String wishCheck = "true";
+		if (count == 0) wishCheck = "false";
 		
 		
 		model.addAttribute("productMap", productMap);
 		model.addAttribute("sellerProducts", sellerProducts);
+		model.addAttribute("wishCheck", wishCheck);
 		
 		return "product/details";
 	}

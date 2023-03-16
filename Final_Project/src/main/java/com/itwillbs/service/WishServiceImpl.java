@@ -33,4 +33,9 @@ public class WishServiceImpl implements WishService{
 		return wishDAO.getwishCount(memberId);
 	}
 
+	@Override
+	public int getWishCheck(String productNum, String memberId) {
+		return wishDAO.getWishCheck(productNum, memberId);
+	}
+
 }

@@ -12,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>관심 목록</title>
+    <title>가지마켓: Wish List</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -67,63 +67,6 @@
     <section class="blog spad">
         <div class="container">
             <div class="row">
-            	<%-- <!-- search -->
-            	<div class="row col-lg-12">
-                	<div class="col-lg-12">
-                        <div class="col-lg-4 blog__sidebar__search float-right">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search...">
-                                <button type="submit" onclick="location.href='${pageContext.request.contextPath }'"><span class="icon_search"></span></button>
-                            </form>
-                        </div>
-                	</div>
-                </div>
-             	<!-- search --> --%>
-             	
-             	<%-- <!-- list -->
-             	<table class="board-table">
-            		<thead>
-               			<tr>
-		                  <th scope="col" class="th-num">상품</th>
-		                  <th scope="col" class="th-id">작성자</th>
-		                  <th scope="col" class="th-title">글제목</th>
-		                  <th scope="col" class="th-date">등록일</th>
-		                  <th scope="col" class="th-readcount">조회수</th>
-               			</tr>
-            		</thead>
-            		<tbody>
-            			<tr>
-           					<td>11</td>
-           					<td>멈무</td>
-           					<td>룰루랄라</td>
-           					<td>오늘</td>
-           					<td>100</td>
-           				</tr>
-            			<c:if test="${empty boardList}">
-            				<tr>
-            					<td></td>
-            					<td></td>
-            					<td>등록된 글이 없습니다.</td>
-            					<td></td>
-            					<td></td>
-            				</tr>
-            			</c:if>
-            			<c:if test="${!empty boardList}">
-			               <c:forEach var="dto" items="${boardList}">
-			                  <tr onclick="location.href='${pageContext.request.contextPath }/free/content?freeboardNum=${dto.freeboardNum}'">
-			                     <th scope="col" class="th-num">${dto.freeboardNum}</th>
-			                     <th scope="col" class="th-id">${dto.memberId}</th>
-			                     <th scope="col" class="th-title">${dto.subject}</th>
-			                     <th scope="col" class="th-date"><fmt:formatDate value="${dto.date}" pattern="yyyy.MM.dd" /></th>
-								<th scope="col" class="th-date">${dto.date }</th>
-			                         <td>${dto.noti_date}</td>
-			                     <th scope="col" class="th-readcount">${dto.readcount}</th>
-			                  </tr>
-			               </c:forEach>
-		               </c:if>
-           	 		</tbody>
-         		</table>
-             	<!-- list --> --%>
              	
              	<div class="col-lg-12">
                     <div class="shoping__cart__table">

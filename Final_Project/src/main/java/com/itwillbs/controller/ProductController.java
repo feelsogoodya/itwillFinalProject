@@ -69,7 +69,8 @@ public class ProductController {
 
 	
 	@RequestMapping(value = "/product/insertPro", method = RequestMethod.POST)	
-	public String insertPro(HttpServletRequest request, 
+	public String insertPro(HttpServletRequest request,
+							HttpSession session,
 							MultipartFile file, 
 							MultipartFile file1, 
 							MultipartFile file2, 
@@ -103,6 +104,7 @@ public class ProductController {
 		
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setProductPic(resultFilename);
+		productDTO.setProductSeller((String)session.getAttribute("memId"));
 		productDTO.setProductTitle(request.getParameter("productTitle"));
 		productDTO.setProductCate(request.getParameter("productCate"));
 		productDTO.setProductContent(request.getParameter("productContent"));
@@ -194,5 +196,30 @@ public class ProductController {
 		
 		return "product/list";
 	}
+	
+	//상품삭제
+	@RequestMapping(value = "/product/delete", method = RequestMethod.GET)	
+	public String delete(HttpServletRequest request) {
+		int productNum=Integer.parseInt(request.getParameter("productNum"));
+		
+		productService.deleteProduct(productNum);
+		
+		
+		return "redirect:/list/selllist";
+	}//
+	
+	//상품업데이트
+	@RequestMapping(value = "/product/update", method = RequestMethod.GET)	
+	public String update(HttpServletRequest request,Model model) {
+		int num=Integer.parseInt(request.getParameter("productNum"));
+		
+		ProductDTO dto=productService.getProduct(num);
+		
+		model.addAttribute("dto", dto);
+		
+		// 기본 이동방식 : 주소변경 없이 이동 
+		return "product/updateForm";
+	}//
+
 	
 }

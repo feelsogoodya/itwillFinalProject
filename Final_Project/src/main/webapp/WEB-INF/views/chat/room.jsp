@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Websocket Chat</title>
+    <title>가지마켓 : 채팅목록</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Google Font -->

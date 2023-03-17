@@ -171,7 +171,7 @@
 <script type="text/javascript">
 	function chatList() {
 		if('${sessionScope.memId}' === '') alert('로그인 후 사용할 수 있습니다.');
-		else window.open('${pageContext.request.contextPath }/chat/list', 'chat', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
+		else window.open('${pageContext.request.contextPath }/chat/list', 'chat:' + '${sessionScope.memNname}', 'height=600, width=500, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no');
 	}
 </script>
 </body>

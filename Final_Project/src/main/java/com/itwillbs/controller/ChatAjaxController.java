@@ -39,7 +39,7 @@ public class ChatAjaxController {
 	// 채팅방 조회 후 없으면 생성
 	@RequestMapping(value = "/chat/room", method = RequestMethod.POST)
     public String chat(HttpServletRequest request) throws IOException {
-		
+		System.out.println("시작");
 		String memberId = request.getParameter("memberId");
 		int productNum = Integer.parseInt(request.getParameter("productNum"));
 		
@@ -49,7 +49,7 @@ public class ChatAjaxController {
 		chatRoomDTO.setProductNum(productNum);
 		
 		chatRoomDTO = chatService.findByIdAndNum(chatRoomDTO); // 채팅방조회
-		
+		System.out.println("채팅방 조회 완료");
 		// 없으면 생성
 		if(chatRoomDTO == null) {
 			chatRoomDTO = new ChatRoomDTO();
@@ -62,7 +62,7 @@ public class ChatAjaxController {
 			chatRoomDTO = chatService.findByIdAndNum(chatRoomDTO);
 			chatService.createFile(chatRoomDTO); // 파일 생성
 		}
-		
+		System.out.println("끝");
 		// 입장
         return "/chat/room/enter/" + chatRoomDTO.getRoomId();
     }

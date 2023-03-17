@@ -59,7 +59,7 @@ public class ChatService {
     
     // ---------textFile---------
 	public void createFile(ChatRoomDTO chatRoomDTO) throws IOException {
-        
+        System.out.println("createFile start");
         String fileName = chatRoomDTO.getProductNum() + "_" + chatRoomDTO.getRoomId() + ".txt";
         String pathName = fileUploadPath + fileName;
         System.out.println(pathName);
@@ -67,7 +67,7 @@ public class ChatService {
         File txtFile = new File(pathName);
         //로컬경로에 파일 생성
         txtFile.createNewFile();
-        
+        System.out.println("createFile end");
 //        chatRoomDAO.updateFileName(chatRoomDTO.getRoomId(), fileName);
     }
 	

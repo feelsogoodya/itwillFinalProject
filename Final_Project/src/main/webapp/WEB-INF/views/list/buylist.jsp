@@ -146,10 +146,6 @@ th, td {
 	<script type="text/javascript">
 	
 	function openPop(buyNum,prodSeller) {
-
-		alert(buyNum);
-		alert(prodSeller);
-
 			var goReviewpopup = window.open(
 			// buyNum , prodSeller 모델 
 			"${pageContext.request.contextPath}/review/review?prodSeller="+prodSeller+"&buyNum="+buyNum, "거래후기",

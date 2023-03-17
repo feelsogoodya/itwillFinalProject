@@ -38,9 +38,10 @@
 	</beans:bean>
 	
 	<!-- 업로드 폴더 경로 지정 -->
-	<beans:bean id="uploadPath" class="java.lang.String">
+<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg
-			value="C:\\Users\\ITWILL\\git\\itwillFinalProject\\Final_Project\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+			value="D:\\workspace_sts2\\itwillFinalProject\\Final_Project\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+					
 		<!-- upload 물리적 경로 src/main/webapp/resources/upload -->
 	</beans:bean>
 	

@@ -8,7 +8,7 @@ import com.itwillbs.domain.SellListDTO;
 public interface SellListDAO {
 	public List<SellListDTO> getSellList(PageDTO dto);
 
-	public int getSellCount();
+	public int getSellCount(PageDTO pageDTO);
 		
 
 }

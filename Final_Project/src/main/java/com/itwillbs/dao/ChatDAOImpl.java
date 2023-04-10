@@ -36,6 +36,7 @@ public class ChatDAOImpl implements ChatDAO{
 	
 	@Override
 	public ChatRoomDTO findByIdAndNum(ChatRoomDTO chatRoomDTO) {
+		System.out.println("진입");
 		return sqlSession.selectOne(namespace + ".findByIdAndNum", chatRoomDTO);
 	}
 
